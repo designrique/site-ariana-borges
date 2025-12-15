@@ -5,22 +5,10 @@ import { useCheckout } from './CheckoutContext';
 
 const plans: PricingOption[] = [
   {
-    title: "Ciclo Individual",
-    price: "R$333,00",
-    features: [
-      "Escolha entre 'Quebra' ou 'Abre Caminho'",
-      "Acesso ao grupo de suporte do ciclo",
-      "Gravações diárias do ciclo escolhido",
-      "Materiais complementares básicos"
-    ],
-    recommended: false
-  },
-  {
     title: "Jornada Completa",
     price: "R$555,00",
     features: [
       "Acesso aos 21 dias completos",
-      "Economia de R$111,00",
       "Grupo VIP de acompanhamento",
       "Gravações vitalícias de todos os dias",
       "Bônus: Ritual de Encerramento ao Vivo"
@@ -37,10 +25,10 @@ const Pricing: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl text-brand-dark mb-4">Investimento em Você</h2>
-          <p className="font-sans text-gray-600">Escolha como deseja iniciar sua transformação.</p>
+          <p className="font-sans text-gray-600">Inicie sua transformação agora.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="flex justify-center max-w-md mx-auto">
           {plans.map((plan, idx) => (
             <div
               key={idx}
