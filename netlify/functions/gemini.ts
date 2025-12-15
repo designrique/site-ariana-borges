@@ -31,7 +31,7 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
   try {
     const { history, newMessage } = JSON.parse(event.body || "{}");
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
 
     const chatHistory = history.map((h: { role: string, text: string }) => ({
       role: h.role === 'user' ? 'user' : 'model',
