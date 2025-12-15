@@ -31,18 +31,29 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
   try {
     const { history, newMessage } = JSON.parse(event.body || "{}");
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      systemInstruction: SYSTEM_INSTRUCTION,
-    });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const chatHistory = history.map((h: { role: string, text: string }) => ({
+      role: h.role === 'user' ? 'user' : 'model',
+      parts: [{ text: h.text }],
+    }));
+
+    const fullHistory = [
+      {
+        role: 'user',
+        parts: [{ text: SYSTEM_INSTRUCTION }],
+      },
+      {
+        role: 'model',
+        parts: [{ text: 'Entendido! Estou aqui para ajudar com dúvidas sobre a Mesa de Salomão. Como posso te ajudar?' }],
+      },
+      ...chatHistory,
+    ];
 
     const chat = model.startChat({
-      history: history.map((h: { role: string, text: string }) => ({
-        role: h.role,
-        parts: [{ text: h.text }],
-      })),
+      history: fullHistory,
     });
-
+    
     const result = await chat.sendMessage(newMessage);
     const response = result.response;
     const text = response.text();
