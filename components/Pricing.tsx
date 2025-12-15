@@ -18,7 +18,7 @@ const plans: PricingOption[] = [
     title: "Jornada Completa",
     price: "R$555,00",
     features: [
-      "Acesso aos 33 dias completos",
+      "Acesso aos 21 dias completos",
       "Economia de R$111,00",
       "Grupo VIP de acompanhamento",
       "Gravações vitalícias de todos os dias",

@@ -7,7 +7,7 @@ const Authority: React.FC = () => {
         <div className="relative order-2 md:order-1">
           <div className="absolute -inset-4 bg-brand-gold/20 rounded-full blur-xl"></div>
           <img 
-            src="https://picsum.photos/600/700" 
+            src="/Ariana-Borges-profile-photo.jpeg" 
             alt="Ariana Borges" 
             className="relative rounded-t-[100px] rounded-b-2xl shadow-2xl w-full max-w-md mx-auto grayscale hover:grayscale-0 transition-all duration-700"
           />
@@ -21,10 +21,7 @@ const Authority: React.FC = () => {
             Ariana Borges
           </h3>
           <p className="font-sans text-gray-600 leading-relaxed">
-            Referência em espiritualidade e cura energética, Ariana tem dedicado sua vida a guiar pessoas em jornadas de libertação e expansão.
-          </p>
-          <p className="font-sans text-gray-600 leading-relaxed">
-            Assim como grandes nomes como Elaine Ourives e Max Tovar, Ariana conduz movimentos de transformação profunda, utilizando a sabedoria ancestral da Mesa de Salomão para desbloquear potenciais adormecidos.
+            Referência em espiritualidade e cura energética, Ariana tem dedicado sua vida a guiar pessoas em jornadas de libertação e expansão. Ela conduz movimentos de transformação profunda, utilizando a sabedoria ancestral da Mesa de Salomão para desbloquear potenciais adormecidos.
           </p>
           <div className="pt-4 border-l-4 border-brand-gold pl-6 italic font-serif text-xl text-gray-500">
             "Minha promessa é guiar você em uma jornada única de libertação, onde cada dia é um passo em direção à sua verdadeira essência."

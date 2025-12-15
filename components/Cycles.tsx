@@ -5,15 +5,15 @@ import { Cycle } from '../types';
 const cycles: Cycle[] = [
   {
     name: "Quebra de Maldição",
-    duration: "21 dias",
-    startDate: "11 de dezembro",
+    duration: "9 dias",
+    startDate: "23/12 à 31/12",
     objective: "Limpeza profunda de bloqueios, traumas e padrões ancestrais.",
     icon: 'shield'
   },
   {
     name: "Abre Caminho",
     duration: "12 dias",
-    startDate: "01 de janeiro",
+    startDate: "01/01 à 12/01",
     objective: "Ativação de prosperidade, novas oportunidades e magnetismo.",
     icon: 'sun'
   }
@@ -21,12 +21,12 @@ const cycles: Cycle[] = [
 
 const Cycles: React.FC = () => {
   return (
-    <section className="py-24 bg-brand-beige">
+    <section id="estrutura" className="py-24 bg-brand-beige">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl text-brand-dark mb-4">A Estrutura da Transformação</h2>
           <p className="font-sans text-gray-600 max-w-2xl mx-auto">
-            A Mesa de Salomão é um ritual profundo dividido em dois momentos cruciais, totalizando 33 dias de imersão espiritual.
+            A Mesa de Salomão é um ritual profundo dividido em dois momentos cruciais, totalizando 21 dias de imersão espiritual.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ const Cycles: React.FC = () => {
 
         <div className="mt-12 text-center">
            <div className="inline-flex flex-col items-center">
-              <span className="font-serif text-5xl text-brand-gold mb-2">33</span>
+              <span className="font-serif text-5xl text-brand-gold mb-2">21</span>
               <span className="font-sans text-gray-500 uppercase tracking-widest text-sm">Dias Totais</span>
            </div>
         </div>

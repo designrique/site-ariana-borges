@@ -28,16 +28,16 @@ const Hero: React.FC = () => {
       <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="mb-6 flex justify-center">
           <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-sm font-sans tracking-widest uppercase animate-pulse">
-            <Sparkles size={14} /> Jornada de 33 Dias
+            <Sparkles size={14} /> Jornada de 21 Dias
           </span>
         </div>
         
         <h1 className="font-serif text-5xl md:text-7xl text-brand-dark mb-6 leading-tight">
-          Liberte-se e Abra seus Caminhos com a <span className="text-brand-gold italic">Mesa de Salomão</span>
+          Pare de Repetir Ciclos de Sofrimento e <span className="text-brand-gold italic">Abra seus Caminhos em 21 Dias</span>
         </h1>
         
         <p className="font-sans text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-          33 dias de limpeza profunda e abertura energética para transformar sua realidade.
+          21 dias de limpeza profunda e abertura energética para transformar sua realidade.
           Desperte, cure e transforme sua vida.
         </p>
         
@@ -46,9 +46,9 @@ const Hero: React.FC = () => {
             Inscreva-se Agora
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
-          <button className="text-brand-dark hover:text-brand-gold font-sans font-semibold py-4 px-8 underline decoration-brand-gold/30 hover:decoration-brand-gold transition-all">
+          <a href="#estrutura" className="text-brand-dark hover:text-brand-gold font-sans font-semibold py-4 px-8 underline decoration-brand-gold/30 hover:decoration-brand-gold transition-all">
             Saiba mais sobre a jornada
-          </button>
+          </a>
         </div>
       </div>
     </section>
