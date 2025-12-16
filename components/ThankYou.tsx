@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, MessageCircle } from 'lucide-react';
 
 const ThankYou: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const ThankYou: React.FC = () => {
           Sua jornada de transformação começa agora. Você receberá um e-mail em breve com todos os detalhes de acesso.
         </p>
 
-        <div className="bg-brand-lilac/10 border border-brand-lilac/30 rounded-2xl p-6">
+        <div className="bg-brand-lilac/10 border border-brand-lilac/30 rounded-2xl p-6 mb-8">
           <h2 className="font-sans font-bold text-xl text-brand-dark mb-3">Próximos Passos</h2>
           <ul className="text-left space-y-3 text-gray-700">
             <li className="flex items-start">
@@ -28,6 +28,16 @@ const ThankYou: React.FC = () => {
             </li>
           </ul>
         </div>
+
+        <a
+          href="https://chat.whatsapp.com/BWDy7XKArYBGuRvj51CqBf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] hover:scale-105 transition-all duration-300 text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl"
+        >
+          <MessageCircle className="w-6 h-6 group-hover:animate-bounce" />
+          Entrar no Grupo Informativo do WhatsApp
+        </a>
       </div>
     </div>
   );
