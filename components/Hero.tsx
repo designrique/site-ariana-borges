@@ -27,23 +27,23 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-beige/80 via-brand-beige/50 to-brand-beige"></div>
       </div>
 
-      <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="mb-6 flex justify-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-sm font-sans tracking-widest uppercase animate-pulse">
+      <div className={`relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center transition-all duration-1000 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="mb-4 md:mb-6 flex justify-center">
+          <span className="inline-flex items-center gap-2 px-3 md:px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs md:text-sm font-sans tracking-widest uppercase animate-pulse">
             <Sparkles size={14} /> Jornada de 21 Dias
           </span>
         </div>
 
-        <h1 className="font-serif text-5xl md:text-7xl text-brand-dark mb-6 leading-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-brand-dark mb-4 md:mb-6 leading-tight">
           Pare de Repetir Ciclos de Sofrimento e <span className="text-brand-gold italic">Abra seus Caminhos em 21 Dias</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="font-sans text-base md:text-lg lg:text-xl text-gray-600 mb-6 md:mb-10 max-w-2xl mx-auto leading-relaxed">
           21 dias de limpeza profunda e abertura energética para transformar sua realidade.
           Desperte, cure e transforme sua vida.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
           <button
             onClick={openCheckout}
             className="group bg-brand-lilac hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-brand-dark font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl flex items-center gap-2"

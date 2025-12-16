@@ -78,25 +78,25 @@ const ChatWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-4 w-[350px] max-w-[90vw] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 fade-in duration-300">
+        <div className="mb-3 md:mb-4 w-[320px] md:w-[350px] max-w-[90vw] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 fade-in duration-300">
           {/* Header */}
-          <div className="bg-brand-lilac p-4 flex justify-between items-center">
+          <div className="bg-brand-lilac p-3 md:p-4 flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <Sparkles size={16} className="text-brand-lilacDark" />
-              <span className="font-serif font-bold text-brand-dark">Guia Virtual</span>
+              <Sparkles size={14} className="md:w-4 md:h-4 text-brand-lilacDark" />
+              <span className="font-serif font-bold text-brand-dark text-sm md:text-base">Guia Virtual</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-brand-dark hover:text-white transition-colors">
-              <X size={20} />
+              <X size={18} className="md:w-5 md:h-5" />
             </button>
           </div>
 
           {/* Messages */}
-          <div className="h-[400px] overflow-y-auto p-4 bg-brand-beige space-y-4">
+          <div className="h-[350px] md:h-[400px] overflow-y-auto p-3 md:p-4 bg-brand-beige space-y-3 md:space-y-4">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                <div className={`max-w-[80%] p-3 rounded-2xl font-sans text-sm leading-relaxed ${msg.role === 'user'
+                <div className={`max-w-[85%] md:max-w-[80%] p-2.5 md:p-3 rounded-2xl font-sans text-xs md:text-sm leading-relaxed ${msg.role === 'user'
                   ? 'bg-brand-gold text-white rounded-tr-none'
                   : 'bg-white text-gray-700 shadow-sm rounded-tl-none border border-gray-100'
                   }`}>
@@ -112,9 +112,9 @@ const ChatWidget: React.FC = () => {
                       href={CHECKOUT_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-brand-gold hover:bg-yellow-600 text-white font-sans font-bold text-sm py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                      className="inline-flex items-center gap-2 bg-brand-gold hover:bg-yellow-600 text-white font-sans font-bold text-xs md:text-sm py-2 px-3 md:px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                     >
-                      <ShoppingCart size={16} />
+                      <ShoppingCart size={14} className="md:w-4 md:h-4" />
                       Garantir Minha Vaga
                     </a>
                   </div>
@@ -123,10 +123,10 @@ const ChatWidget: React.FC = () => {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm flex gap-1">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-75"></span>
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></span>
+                <div className="bg-white p-2.5 md:p-3 rounded-2xl rounded-tl-none shadow-sm flex gap-1">
+                  <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 rounded-full animate-bounce"></span>
+                  <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 rounded-full animate-bounce delay-75"></span>
+                  <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 rounded-full animate-bounce delay-150"></span>
                 </div>
               </div>
             )}
@@ -134,21 +134,21 @@ const ChatWidget: React.FC = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 bg-white border-t border-gray-100 flex gap-2">
+          <div className="p-3 md:p-4 bg-white border-t border-gray-100 flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
               placeholder="Digite sua dúvida..."
-              className="flex-1 bg-gray-50 border-transparent focus:border-brand-lilac focus:bg-white focus:ring-0 rounded-xl px-4 py-2 font-sans text-sm transition-all outline-none"
+              className="flex-1 bg-gray-50 border-transparent focus:border-brand-lilac focus:bg-white focus:ring-0 rounded-xl px-3 md:px-4 py-2 font-sans text-xs md:text-sm transition-all outline-none"
             />
             <button
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
               className="bg-brand-gold text-white p-2 rounded-xl hover:bg-yellow-600 disabled:opacity-50 transition-colors"
             >
-              <Send size={18} />
+              <Send size={16} className="md:w-[18px] md:h-[18px]" />
             </button>
           </div>
         </div>
@@ -156,10 +156,10 @@ const ChatWidget: React.FC = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group flex items-center gap-2 bg-brand-lilac hover:bg-brand-lilacDark text-brand-dark hover:text-white px-5 py-4 rounded-full shadow-lg transition-all duration-300"
+        className="group flex items-center gap-2 bg-brand-lilac hover:bg-brand-lilacDark text-brand-dark hover:text-white px-4 md:px-5 py-3 md:py-4 rounded-full shadow-lg transition-all duration-300"
       >
-        <span className="font-sans font-bold text-sm hidden group-hover:block transition-all">Dúvidas?</span>
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        <span className="font-sans font-bold text-xs md:text-sm hidden group-hover:block transition-all">Dúvidas?</span>
+        {isOpen ? <X size={20} className="md:w-6 md:h-6" /> : <MessageCircle size={20} className="md:w-6 md:h-6" />}
       </button>
     </div>
   );
