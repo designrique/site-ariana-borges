@@ -1,7 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, ShoppingCart } from 'lucide-react';
 import { ChatMessage } from '../types';
 import { sendMessage } from '../services/chatService';
+
+const CHECKOUT_URL = 'https://payfast.greenn.com.br/150027';
+
+// Keywords that indicate a purchase-related message
+const isPurchaseRelated = (text: string): boolean => {
+  const keywords = [
+    'comprar', 'compra', 'compre', 'adquirir', 'garantir', 'inscrever', 'inscrição',
+    'pagamento', 'pagar', 'pix', 'cartão', 'boleto', 'valor', 'preço', 'r$', '555',
+    'greenn', 'checkout', 'vaga', 'participar', 'quero'
+  ];
+  const lowerText = text.toLowerCase();
+  return keywords.some(keyword => lowerText.includes(keyword));
+};
 
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,13 +95,25 @@ const ChatWidget: React.FC = () => {
           {/* Messages */}
           <div className="h-[400px] overflow-y-auto p-4 bg-brand-beige space-y-4">
             {messages.map((msg) => (
-              <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                 <div className={`max-w-[80%] p-3 rounded-2xl font-sans text-sm leading-relaxed ${msg.role === 'user'
                   ? 'bg-brand-gold text-white rounded-tr-none'
                   : 'bg-white text-gray-700 shadow-sm rounded-tl-none border border-gray-100'
                   }`}>
                   {msg.text}
                 </div>
+                {/* Show purchase button for assistant messages about buying */}
+                {msg.role === 'model' && isPurchaseRelated(msg.text) && (
+                  <a
+                    href={CHECKOUT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-2 bg-brand-gold hover:bg-yellow-600 text-white font-sans font-bold text-sm py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                  >
+                    <ShoppingCart size={16} />
+                    Garantir Minha Vaga
+                  </a>
+                )}
               </div>
             ))}
             {isLoading && (
