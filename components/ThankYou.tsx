@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Download, Gift } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 const ThankYou: React.FC = () => {
   return (
@@ -10,8 +10,8 @@ const ThankYou: React.FC = () => {
         <p className="font-sans text-gray-600 text-lg mb-8 leading-relaxed">
           Sua jornada de transformação começa agora. Você receberá um e-mail em breve com todos os detalhes de acesso.
         </p>
-        
-        <div className="bg-brand-lilac/10 border border-brand-lilac/30 rounded-2xl p-6 mb-8">
+
+        <div className="bg-brand-lilac/10 border border-brand-lilac/30 rounded-2xl p-6">
           <h2 className="font-sans font-bold text-xl text-brand-dark mb-3">Próximos Passos</h2>
           <ul className="text-left space-y-3 text-gray-700">
             <li className="flex items-start">
@@ -27,24 +27,6 @@ const ThankYou: React.FC = () => {
               <span><strong>Marque na agenda:</strong> O primeiro ciclo, "Quebra de Maldição", começa em <strong>23 de Dezembro</strong>.</span>
             </li>
           </ul>
-        </div>
-
-        <div className="space-y-4">
-            <a 
-              href="/path-to-your-guide.pdf" 
-              download
-              className="group w-full bg-brand-dark hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-            >
-              <Download className="w-5 h-5 group-hover:animate-bounce" />
-              Baixar Guia de Preparação
-            </a>
-            <a
-              href="/bonus-link"
-              className="group w-full bg-brand-lilac hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-brand-dark font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-            >
-              <Gift className="w-5 h-5 group-hover:rotate-12 transition-transform"/>
-              Acessar Bônus Exclusivo
-            </a>
         </div>
       </div>
     </div>
