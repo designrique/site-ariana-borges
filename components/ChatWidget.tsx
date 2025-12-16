@@ -104,15 +104,20 @@ const ChatWidget: React.FC = () => {
                 </div>
                 {/* Show purchase button for assistant messages about buying */}
                 {msg.role === 'model' && isPurchaseRelated(msg.text) && (
-                  <a
-                    href={CHECKOUT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-2 bg-brand-gold hover:bg-yellow-600 text-white font-sans font-bold text-sm py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
-                  >
-                    <ShoppingCart size={16} />
-                    Garantir Minha Vaga
-                  </a>
+                  <div className="mt-2 flex flex-col items-start gap-2">
+                    <p className="text-xs text-gray-500 font-sans italic">
+                      Você pode clicar direto no botão abaixo, ou em qualquer botão deste site e será redirecionado para a plataforma de compra da Mesa de Salomão.
+                    </p>
+                    <a
+                      href={CHECKOUT_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-brand-gold hover:bg-yellow-600 text-white font-sans font-bold text-sm py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    >
+                      <ShoppingCart size={16} />
+                      Garantir Minha Vaga
+                    </a>
+                  </div>
                 )}
               </div>
             ))}
