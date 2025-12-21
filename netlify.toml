@@ -4,3 +4,8 @@
 
 [functions]
   directory = "netlify/functions"
+
+[[redirects]]
+  from = "/webhook-infinitepay"
+  to = "/.netlify/functions/webhook-infinitepay"
+  status = 200

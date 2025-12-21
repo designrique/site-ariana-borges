@@ -18,3 +18,13 @@ View your app in AI Studio: https://ai.studio/apps/drive/1GQAnway5-jMuvxqMn_3m5U
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Integração InfinitePay
+
+Informações para configuração e testes:
+
+*   **Identificador (Handle):** `institutoarianaborges`
+*   **NSU de Exemplo:** `order-nsu-123`
+*   **URL de Redirecionamento:** `https://mesa-salomao.netlify.app/obrigado`
+*   **Webhook URL:** `https://mesa-salomao.netlify.app/webhook-infinitepay`
+*   **Branch de Desenvolvimento:** `feat/infinitepay-integration`

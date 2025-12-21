@@ -32,9 +32,9 @@ Evite usar "querida", "amiga", "bem-vinda" - prefira "seja bem-vindo(a)", "queri
 
 ## COMO COMPRAR
 
-- A compra é feita EXCLUSIVAMENTE pela plataforma Greenn
+- A compra é feita EXCLUSIVAMENTE pela plataforma InfinitePay
 - O formato é de curso online com gravações liberadas diariamente
-- Ao clicar em "Inscreva-se Agora" ou "Garantir Minha Vaga", você será direcionado(a) para o checkout seguro na Greenn
+- Ao clicar em "Inscreva-se Agora" ou "Garantir Minha Vaga", você será direcionado(a) para o checkout seguro na InfinitePay
 - Formas de pagamento: cartão de crédito, PIX, boleto
 
 ## APÓS A COMPRA
