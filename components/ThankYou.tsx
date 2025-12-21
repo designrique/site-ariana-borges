@@ -11,10 +11,17 @@ interface PaymentStatus {
   capture_method: string;
 }
 
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
 const ThankYou: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'pending' | 'error' | 'none'>('none');
   const [paymentData, setPaymentData] = useState<PaymentStatus | null>(null);
+  const [pixelFired, setPixelFired] = useState(false);
 
   useEffect(() => {
     const slug = searchParams.get('slug');
@@ -25,6 +32,19 @@ const ThankYou: React.FC = () => {
       verifyPayment(slug, transactionNsu, orderNsu);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if ((status === 'success' || (status === 'none' && !searchParams.get('slug'))) && !pixelFired) {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Purchase', {
+          value: paymentData ? paymentData.paid_amount / 100 : 555.00,
+          currency: 'BRL',
+          content_name: 'Mesa de Salomão'
+        });
+        setPixelFired(true);
+      }
+    }
+  }, [status, paymentData, pixelFired, searchParams]);
 
   const verifyPayment = async (slug: string, transactionNsu: string, orderNsu: string) => {
     setStatus('loading');
