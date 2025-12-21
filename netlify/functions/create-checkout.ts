@@ -45,10 +45,14 @@ const handler: Handler = async (event: HandlerEvent) => {
         }
 
         const data = await response.json();
+        console.log("InfinitePay API Response:", JSON.stringify(data));
 
         return {
             statusCode: 200,
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                ...data,
+                checkout_url: data.url || data.checkout_url
+            }),
         };
     } catch (error) {
         console.error("Error in create-checkout function:", error);
