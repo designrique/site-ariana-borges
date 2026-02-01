@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { getHero } from '@/lib/cms';
 import { useScheduling } from './SchedulingContext';
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const { openScheduling } = useScheduling();
+
+  const { data: heroData } = useQuery({
+    queryKey: ['hero'],
+    queryFn: getHero
+  });
 
   useEffect(() => {
     setLoaded(true);
@@ -14,12 +21,20 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const title = heroData?.title || (
+    <>Terapia Individual, Formação de Terapeutas e <span className="text-brand-goldDark italic">Grupo de Autoconhecimento</span></>
+  );
+
+  const subtitle = heroData?.subtitle || "Liberte-se: Desperte, Cure e Transforme sua Vida. Sua jornada de expansão começa aqui.";
+  const ctaText = heroData?.ctaButtonText || "Marque um Atendimento";
+  const bgImage = heroData?.backgroundImage?.url || "https://picsum.photos/1920/1080?grayscale&blur=2";
+
   return (
     <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-brand-beige">
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="https://picsum.photos/1920/1080?grayscale&blur=2"
+          src={bgImage}
           alt="Natureza Espiritual"
           className="w-full h-[120%] object-cover opacity-30 transition-transform duration-75 ease-out"
           style={{ transform: `translateY(${scrollY * 0.4}px)` }}
@@ -35,12 +50,11 @@ const Hero: React.FC = () => {
         </div>
 
         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
-          Terapia Individual, Formação de Terapeutas e <span className="text-brand-goldDark italic">Grupo de Autoconhecimento</span>
+          {typeof title === 'string' ? title : title}
         </h1>
 
-        <p className="font-sans text-base md:text-lg lg:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Liberte-se: Desperte, Cure e Transforme sua Vida.
-          Sua jornada de expansão começa aqui.
+        <p className="font-sans text-base md:text-lg lg:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
+          {subtitle}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
@@ -48,7 +62,7 @@ const Hero: React.FC = () => {
             onClick={openScheduling}
             className="group bg-brand-lilac hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-brand-dark font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl flex items-center gap-2"
           >
-            Marque um Atendimento
+            {ctaText}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
           <a href="#estrutura" className="text-brand-dark hover:text-brand-gold font-sans font-semibold py-4 px-8 underline decoration-brand-gold/30 hover:decoration-brand-gold transition-all">

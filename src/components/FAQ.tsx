@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
-
-const faqs = [
-    {
-        question: "Como funcionam os atendimentos?",
-        answer: "Os atendimentos podem ser realizados de forma online ou presencial, com duração média de 50 minutos a 1h30, dependendo da técnica escolhida."
-    },
-    {
-        question: "Quais técnicas são utilizadas?",
-        answer: "Utilizamos uma abordagem integrativa que pode incluir Psicanálise, ThetaHealing®, Mesa de Salomão, Reiki, e outras ferramentas de cura vibracional."
-    },
-    {
-        question: "Como agendar uma consulta?",
-        answer: "Você pode agendar diretamente pelo botão de WhatsApp no site ou através da página de contato."
-    },
-    {
-        question: "Os cursos possuem certificado?",
-        answer: "Sim, todos os cursos de formação terapêutica oferecem certificação reconhecida para atuação profissional."
-    }
-];
+import { useQuery } from '@tanstack/react-query';
+import { getFAQs } from '@/lib/cms';
 
 const FAQ: React.FC = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    const { data: faqData } = useQuery({
+        queryKey: ['faqs'],
+        queryFn: getFAQs
+    });
+
+    const faqs = faqData && faqData.length > 0 ? faqData : [
+        {
+            question: "Como funcionam os atendimentos?",
+            answer: "Os atendimentos podem ser realizados de forma online ou presencial, com duração média de 50 minutos a 1h30, dependendo da técnica escolhida."
+        },
+        {
+            question: "Quais técnicas são utilizadas?",
+            answer: "Utilizamos uma abordagem integrativa que pode incluir Psicanálise, ThetaHealing®, Mesa de Salomão, Reiki, e outras ferramentas de cura vibracional."
+        },
+        {
+            question: "Como agendar uma consulta?",
+            answer: "Você pode agendar diretamente pelo botão de WhatsApp no site ou através da página de contato."
+        },
+        {
+            question: "Os cursos possuem certificado?",
+            answer: "Sim, todos os cursos de formação terapêutica oferecem certificação reconhecida para atuação profissional."
+        }
+    ];
 
     return (
         <section className="py-20 bg-brand-beige">
@@ -49,7 +56,7 @@ const FAQ: React.FC = () => {
                                 className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
                                     }`}
                             >
-                                <div className="p-6 pt-0 font-sans text-gray-600 bg-white border-t border-gray-100">
+                                <div className="p-6 pt-0 font-sans text-gray-600 bg-white border-t border-gray-100 whitespace-pre-wrap">
                                     {faq.answer}
                                 </div>
                             </div>

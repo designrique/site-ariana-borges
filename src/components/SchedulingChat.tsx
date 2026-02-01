@@ -10,6 +10,8 @@ import {
     SERVICE_TYPES
 } from '../services/schedulingService';
 import { createCheckoutLink } from '../services/infinityPayService';
+import { useQuery } from '@tanstack/react-query';
+import { getSiteSettings } from '@/lib/cms';
 
 type Step = 'name' | 'phone' | 'email' | 'service' | 'service_variant' | 'payment' | 'timeframe' | 'checking' | 'confirming' | 'success' | 'error' | 'recovery';
 
@@ -21,6 +23,7 @@ interface Message {
 
 const SchedulingChat: React.FC = () => {
     const { isOpen, closeScheduling, initialState } = useScheduling();
+    const { data: siteSettings } = useQuery({ queryKey: ['siteSettings'], queryFn: getSiteSettings });
     // ... preexisting code ...
 
     // Clear storage on close or success?
@@ -682,7 +685,7 @@ const SchedulingChat: React.FC = () => {
                             Recomeçar
                         </button>
                         <a
-                            href="https://wa.me/5511999999999"
+                            href={`https://wa.me/${siteSettings?.contact?.whatsappRequest || '5511999999999'}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-sans font-bold py-3 px-4 rounded-xl hover:bg-green-600 transition-all"

@@ -1,31 +1,55 @@
 import React from 'react';
-import { UserCheck, GraduationCap, Users } from 'lucide-react';
+import { UserCheck, GraduationCap, Users, ShieldCheck, Lightbulb, FileText, Search, Clock } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { getServices } from '@/lib/cms';
 
-const pillars = [
-    {
-        icon: <UserCheck size={32} />,
-        title: 'Terapia Individual',
-        description: 'Liberte-se: Desperte, Cure e Transforme sua Vida com sessões de Terapia Personalizada.',
-        link: '/terapia-individual',
-        cta: 'Saiba mais'
-    },
-    {
-        icon: <GraduationCap size={32} />,
-        title: 'Formação de Terapeutas',
-        description: 'Seja um Agente de Mudança: Diversas Formações de Terapeuta de Excelência.',
-        link: '/formacao-de-terapeutas',
-        cta: 'Saiba mais'
-    },
-    {
-        icon: <Users size={32} />,
-        title: 'Autoconhecimento em Grupo',
-        description: 'Junte-se a uma Jornada de Descoberta: Turmas de Autoconhecimento para Transformação Interior.',
-        link: '/autoconhecimento-em-grupo',
-        cta: 'Saiba mais'
-    }
-];
+const iconMap: Record<string, React.ReactNode> = {
+    'UserCheck': <UserCheck size={32} />,
+    'GraduationCap': <GraduationCap size={32} />,
+    'Users': <Users size={32} />,
+    'ShieldCheck': <ShieldCheck size={32} />,
+    'Lightbulb': <Lightbulb size={32} />,
+    'FileText': <FileText size={32} />,
+    'Search': <Search size={32} />,
+    'Clock': <Clock size={32} />,
+};
 
 const Pillars: React.FC = () => {
+    const { data: services } = useQuery({
+        queryKey: ['services'],
+        queryFn: getServices
+    });
+
+    const pillars = services && services.length > 0 ? services.map(s => ({
+        icon: s.icon ? iconMap[s.icon] : <UserCheck size={32} />,
+        title: s.title,
+        description: s.description,
+        link: s.link || '#',
+        cta: s.cta || 'Saiba mais'
+    })) : [
+        {
+            icon: <UserCheck size={32} />,
+            title: 'Terapia Individual',
+            description: 'Liberte-se: Desperte, Cure e Transforme sua Vida com sessões de Terapia Personalizada.',
+            link: '/terapia-individual',
+            cta: 'Saiba mais'
+        },
+        {
+            icon: <GraduationCap size={32} />,
+            title: 'Formação de Terapeutas',
+            description: 'Seja um Agente de Mudança: Diversas Formações de Terapeuta de Excelência.',
+            link: '/formacao-de-terapeutas',
+            cta: 'Saiba mais'
+        },
+        {
+            icon: <Users size={32} />,
+            title: 'Autoconhecimento em Grupo',
+            description: 'Junte-se a uma Jornada de Descoberta: Turmas de Autoconhecimento para Transformação Interior.',
+            link: '/autoconhecimento-em-grupo',
+            cta: 'Saiba mais'
+        }
+    ];
+
     return (
         <section className="py-16 bg-brand-beige">
             <div className="max-w-6xl mx-auto px-6">

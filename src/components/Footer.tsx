@@ -1,8 +1,16 @@
 import React from 'react';
-import { Instagram } from 'lucide-react';
+import { Instagram, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getSiteSettings } from '@/lib/cms';
 
 const Footer: React.FC = () => {
+  const { data: settings } = useQuery({ queryKey: ['siteSettings'], queryFn: getSiteSettings });
+
+  const copyright = settings?.footer?.copyrightText || `© ${new Date().getFullYear()} Instituto Ariana Borges. Todos os direitos reservados.`;
+  const instagramUrl = settings?.social?.instagram || "https://instagram.com/institutoarianaborges";
+  const youtubeUrl = settings?.social?.youtube;
+
   return (
     <footer className="bg-brand-beige py-12 md:py-16 border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -40,16 +48,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-serif text-lg text-brand-dark mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
-              <a href="https://instagram.com/institutoarianaborges" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors">
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors">
                 <Instagram size={24} />
               </a>
+              {youtubeUrl && (
+                <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors">
+                  <Youtube size={24} />
+                </a>
+              )}
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-200 pt-8 text-center">
           <p className="font-sans text-gray-500 text-xs md:text-sm">
-            © {new Date().getFullYear()} Instituto Ariana Borges. Todos os direitos reservados.
+            {copyright}
           </p>
         </div>
       </div>
