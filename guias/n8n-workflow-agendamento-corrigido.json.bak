@@ -1,0 +1,450 @@
+{
+    "name": "Agendamento Instituto Ariana Borges - Corrigido",
+    "nodes": [
+        {
+            "parameters": {
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                7648,
+                5792
+            ],
+            "id": "056cd582-4b49-4ae2-b1c5-03c1f732272a",
+            "name": "Google Gemini Chat Model1",
+            "credentials": {
+                "googlePalmApi": {
+                    "id": "3iXf3snuZWVzNS92",
+                    "name": "Google Gemini(PaLM) Api account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify({ available: $json.available, message: $json.message, suggestedTimes: $json.suggestedTimes }) }}",
+                "options": {
+                    "responseCode": 200,
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.2,
+            "position": [
+                8368,
+                6016
+            ],
+            "id": "7cbff091-0c1c-4062-b6aa-3557dfd82174",
+            "name": "Responder - Disponibilidade1"
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify({ success: false, message: 'Não foi possível completar o agendamento. Por favor, tente novamente ou entre em contato via WhatsApp.', error: $json.message || 'Erro desconhecido' }) }}",
+                "options": {
+                    "responseCode": 500,
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.2,
+            "position": [
+                8368,
+                5776
+            ],
+            "id": "60124c6a-20ae-4503-9f48-4f00f2988982",
+            "name": "Responder - Erro1"
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify({ success: true, message: 'Tudo certo! Você está agendado(a) para ' + $('Processar Resposta da IA1').item.json.interpretedDate + '. 🎉', booking: { customer: $('Processar Resposta da IA1').item.json.customerName, service: $('Processar Resposta da IA1').item.json.serviceType, dateTime: $('Processar Resposta da IA1').item.json.interpretedDate, calendarEventId: $json.id } }) }}",
+                "options": {
+                    "responseCode": 200,
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.2,
+            "position": [
+                8368,
+                5584
+            ],
+            "id": "1579ba20-6257-4fcc-a1ac-e34e93225905",
+            "name": "Responder - Agendamento Confirmado1"
+        },
+        {
+            "parameters": {
+                "jsCode": "const aiResponse = $input.first().json.output;\nconst preferredTimeframe = $input.all().find(item => item.json.preferredTimeframe)?.json.preferredTimeframe || '';\nlet availabilityCheck;\n\ntry {\n  // Check if aiResponse is already an object or a string\n  if (typeof aiResponse === 'object') {\n    availabilityCheck = aiResponse;\n  } else if (typeof aiResponse === 'string') {\n    const cleanJson = aiResponse.replace(/```json\\n?|```/g, '').trim();\n    availabilityCheck = JSON.parse(cleanJson);\n  } else {\n    throw new Error('Formato de resposta inesperado');\n  }\n} catch (error) {\n  availabilityCheck = {\n    available: true,\n    requestedDateTime: new Date().toISOString(),\n    message: \"Estamos verificando a disponibilidade.\",\n    suggestedTimes: []\n  };\n}\n\n// Formatar o horário solicitado de forma legível\nlet requestedTimeFormatted = preferredTimeframe;\nif (availabilityCheck.requestedDateTime) {\n  try {\n    const dt = new Date(availabilityCheck.requestedDateTime);\n    const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];\n    const day = daysOfWeek[dt.getDay()];\n    const date = dt.getDate();\n    const month = dt.getMonth() + 1;\n    const hour = dt.getHours();\n    requestedTimeFormatted = `${day}, ${date}/${month} às ${hour}h`;\n  } catch (e) {\n    // Manter o formato original se falhar\n  }\n}\n\n// Gerar horários de fallback se IA não retornou\nif (!availabilityCheck.suggestedTimes || availabilityCheck.suggestedTimes.length === 0) {\n  const now = new Date();\n  const tomorrow = new Date(now);\n  tomorrow.setDate(tomorrow.getDate() + 1);\n  \n  const dayAfter = new Date(now);\n  dayAfter.setDate(dayAfter.getDate() + 2);\n  \n  const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];\n  \n  availabilityCheck.suggestedTimes = [\n    `${daysOfWeek[tomorrow.getDay()]}, ${tomorrow.getDate()}/${tomorrow.getMonth() + 1} às 9h`,\n    `${daysOfWeek[tomorrow.getDay()]}, ${tomorrow.getDate()}/${tomorrow.getMonth() + 1} às 14h`,\n    `${daysOfWeek[dayAfter.getDay()]}, ${dayAfter.getDate()}/${dayAfter.getMonth() + 1} às 10h`\n  ];\n}\n\nconst calendarEvents = $input.all().filter(item => item.json.id).map(item => ({\n  start: item.json.start?.dateTime,\n  end: item.json.end?.dateTime,\n  summary: item.json.summary\n}));\n\nconst requestedDateTime = availabilityCheck.requestedDateTime;\nconst hasConflict = calendarEvents.some(event => {\n  if (!event.start || !requestedDateTime) return false;\n  return new Date(event.start).toISOString() === new Date(requestedDateTime).toISOString();\n});\n\nlet finalMessage;\nif (hasConflict) {\n  finalMessage = `😔 Infelizmente ${requestedTimeFormatted} já está ocupado.`;\n  if (availabilityCheck.suggestedTimes?.length > 0) {\n    finalMessage += `\\n\\nHorários disponíveis:\\n${availabilityCheck.suggestedTimes.map(t => `• ${t}`).join('\\n')}`;\n  }\n} else {\n  finalMessage = `✅ ✨ Ótima notícia! ${requestedTimeFormatted} está disponível!`;\n  if (availabilityCheck.suggestedTimes?.length > 0) {\n    finalMessage += `\\n\\nOutros horários disponíveis:\\n${availabilityCheck.suggestedTimes.map(t => `• ${t}`).join('\\n')}`;\n  }\n}\n\nreturn {\n  json: {\n    available: !hasConflict,\n    message: finalMessage,\n    requestedDateTime: requestedDateTime,\n    suggestedTimes: availabilityCheck.suggestedTimes || []\n  }\n};"
+            },
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                8144,
+                6016
+            ],
+            "id": "bdff1360-b42c-4340-8485-70231f9a1e31",
+            "name": "Processar Disponibilidade1"
+        },
+        {
+            "parameters": {
+                "operation": "getAll",
+                "calendar": {
+                    "__rl": true,
+                    "value": "24ce01fc2a4267089544e584a637f9c021ad6c10ba81a0d8eaa44f66f6767d83@group.calendar.google.com",
+                    "mode": "list",
+                    "cachedResultName": "Site 2026"
+                },
+                "options": {
+                    "timeZone": "America/Sao_Paulo"
+                }
+            },
+            "type": "n8n-nodes-base.googleCalendar",
+            "typeVersion": 1.3,
+            "position": [
+                7920,
+                6016
+            ],
+            "id": "56556c14-ae2b-430d-b3b4-d531219d70cc",
+            "name": "Google Calendar - Listar Eventos1",
+            "credentials": {
+                "googleCalendarOAuth2Api": {
+                    "id": "W12hVmE5hQ0ME6B2",
+                    "name": "Google Calendar account 3"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "calendar": {
+                    "__rl": true,
+                    "value": "24ce01fc2a4267089544e584a637f9c021ad6c10ba81a0d8eaa44f66f6767d83@group.calendar.google.com",
+                    "mode": "list",
+                    "cachedResultName": "Site 2026"
+                },
+                "start": "={{$json.startDateTime}}",
+                "end": "={{$json.endDateTime}}",
+                "options": {
+                    "description": "={{$json.eventDescription}}",
+                    "summary": "={{$json.eventSummary}}",
+                    "attendees": [
+                        "={{$json.customerEmail}}"
+                    ],
+                    "sendUpdates": "all",
+                    "timeZone": "America/Sao_Paulo"
+                }
+            },
+            "type": "n8n-nodes-base.googleCalendar",
+            "typeVersion": 1.3,
+            "position": [
+                8144,
+                5680
+            ],
+            "id": "7d661366-eda9-4961-9fe7-6a851f9bd160",
+            "name": "Google Calendar - Criar Evento1",
+            "credentials": {
+                "googleCalendarOAuth2Api": {
+                    "id": "W12hVmE5hQ0ME6B2",
+                    "name": "Google Calendar account 3"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "jsCode": "const aiResponse = $input.item.json.output;\n\nlet parsedDate;\ntry {\n  // Check if aiResponse is already an object or a string\n  if (typeof aiResponse === 'object') {\n    parsedDate = aiResponse;\n  } else if (typeof aiResponse === 'string') {\n    const cleanJson = aiResponse.replace(/```json\\n?|```/g, '').trim();\n    parsedDate = JSON.parse(cleanJson);\n  } else {\n    throw new Error('Formato de resposta inesperado');\n  }\n} catch (error) {\n  throw new Error('Erro ao parsear resposta da IA: ' + error.message);\n}\n\nif (!parsedDate.startDateTime || !parsedDate.endDateTime) {\n  throw new Error('IA não retornou datas válidas');\n}\n\nreturn {\n  json: {\n    customerName: $input.item.json.customerName,\n    customerPhone: $input.item.json.customerPhone,\n    customerEmail: $input.item.json.customerEmail,\n    serviceType: $input.item.json.serviceType,\n    description: $input.item.json.description,\n    startDateTime: parsedDate.startDateTime,\n    endDateTime: parsedDate.endDateTime,\n    interpretedDate: parsedDate.interpretedDate,\n    eventSummary: `${$input.item.json.serviceType} - ${$input.item.json.customerName}`,\n    eventDescription: `📋 Agendamento\\n\\n👤 Cliente: ${$input.item.json.customerName}\\n📧 Email: ${$input.item.json.customerEmail}\\n📱 Telefone: ${$input.item.json.customerPhone}\\n\\n🌟 Serviço: ${$input.item.json.serviceType}\\n📝 ${$input.item.json.description}`\n  }\n};"
+            },
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                7920,
+                5680
+            ],
+            "id": "f14f0ca3-edb5-42e7-8653-f82e37612337",
+            "name": "Processar Resposta da IA1"
+        },
+        {
+            "parameters": {
+                "text": "={{ $json.preferredTimeframe }}",
+                "schemaType": "fromJson",
+                "jsonSchemaExample": "{\n  \"available\": true,\n  \"requestedDateTime\": \"YYYY-MM-DDTHH:mm:00-03:00\",\n  \"message\": \"mensagem amigável sobre disponibilidade\",\n  \"suggestedTimes\": [\"horário1\", \"horário2\", \"horário3\"]\n}",
+                "options": {
+                    "systemPromptTemplate": "Você é um assistente que verifica disponibilidade de agenda.\n\nDATA ATUAL: {{$json.currentDate}}\nTIMEZONE: America/Sao_Paulo\nHORÁRIO COMERCIAL: 9h às 19h (Segunda à Quarta)\nFECHADO: Quinta, Sexta, Sábado e Domingo\n\nSua tarefa:\n1. Interpretar o horário solicitado\n2. Converter para data ISO 8601 com timezone -03:00\n3. Verificar se está dentro do horário comercial (Segunda à Quarta, 9h às 19h)\n4. OBRIGATÓRIO: Sugerir SEMPRE pelo menos 3 horários alternativos disponíveis\n\nFormato de resposta (JSON):\n- available: boolean (true se o horário está dentro do horário comercial E é Segunda/Terça/Quarta, false caso contrário)\n- requestedDateTime: string ISO 8601 (exemplo: 2026-01-30T14:00:00-03:00)\n- message: string com mensagem amigável sobre a disponibilidade\n- suggestedTimes: array de strings - OBRIGATÓRIO incluir pelo menos 3 horários (exemplos: Segunda-feira às 9h, Terça-feira às 14h, Quarta-feira às 10h)\n\nIMPORTANTE: \n- O campo suggestedTimes NUNCA pode estar vazio. Sempre sugira horários próximos ao solicitado.\n- Só aceite horários de Segunda à Quarta, das 9h às 19h\n- Rejeite qualquer horário fora deste período\n\nRetorne APENAS o JSON sem markdown."
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+            "typeVersion": 1,
+            "position": [
+                7648,
+                6016
+            ],
+            "id": "d1a33f5c-1bb9-46b5-9d3a-ee2a4795c57c",
+            "name": "IA - Verificar Disponibilidade1"
+        },
+        {
+            "parameters": {
+                "text": "={{ $json.preferredTimeframe }}",
+                "schemaType": "fromJson",
+                "jsonSchemaExample": "{\n  \"startDateTime\": \"YYYY-MM-DDTHH:mm:00-03:00\",\n  \"endDateTime\": \"YYYY-MM-DDTHH:mm:00-03:00\",\n  \"interpretedDate\": \"descrição legível\"\n}",
+                "options": {
+                    "systemPromptTemplate": "Você é um assistente que converte texto em datas no formato ISO 8601.\n\nDATA ATUAL DE REFERÊNCIA: {{$json.currentDate}}\nTIMEZONE: America/Sao_Paulo (UTC-03:00)\nHORÁRIO COMERCIAL: 9h às 19h (Segunda à Quarta)\nFECHADO: Quinta, Sexta, Sábado e Domingo\n\nSua tarefa:\n1. Interpretar o texto de horário preferido\n2. Converter para formato ISO 8601 com timezone -03:00\n3. Duração padrão: 1 hora\n4. Se for \"manhã\": 9h, \"tarde\": 14h, \"qualquer horário\": 14h\n\nFormato de resposta (JSON):\n- startDateTime: string ISO 8601 (exemplo: 2026-01-30T14:00:00-03:00)\n- endDateTime: string ISO 8601 (1 hora depois do start)\n- interpretedDate: string legível (exemplo: Terça-feira, 30 de janeiro às 14h)\n\nRetorne APENAS o JSON sem markdown."
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+            "typeVersion": 1,
+            "position": [
+                7648,
+                5568
+            ],
+            "id": "aac6e532-5ebb-487e-ac12-ed72d8f17c4a",
+            "name": "IA - Converter Texto para Data1"
+        },
+        {
+            "parameters": {
+                "jsCode": "const preferredTimeframe = $input.item.json.preferred_timeframe;\nconst currentDate = new Date().toISOString();\n\nreturn {\n  json: {\n    preferredTimeframe,\n    currentDate\n  }\n};"
+            },
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                7344,
+                6016
+            ],
+            "id": "23e66ba8-85c8-4a22-a842-b1db88564e26",
+            "name": "Extrair Dados de Disponibilidade1"
+        },
+        {
+            "parameters": {
+                "jsCode": "const customerName = $input.item.json.customer_name;\nconst customerPhone = $input.item.json.customer_phone;\nconst customerEmail = $input.item.json.customer_email;\nconst serviceType = $input.item.json.service_type;\nconst description = $input.item.json.description;\nconst preferredTimeframe = $input.item.json.preferred_timeframe;\n\nreturn {\n  json: {\n    customerName,\n    customerPhone,\n    customerEmail,\n    serviceType,\n    description,\n    preferredTimeframe,\n    currentDate: new Date().toISOString()\n  }\n};"
+            },
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                7344,
+                5680
+            ],
+            "id": "d0c753bf-8322-4088-8291-de445f49b4b2",
+            "name": "Extrair Dados do Booking1"
+        },
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "book_appointment",
+                "responseMode": "responseNode",
+                "options": {
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                7120,
+                5680
+            ],
+            "id": "82829b5d-965c-4d3e-a51f-a1bd2f991833",
+            "name": "Webhook - Agendar1",
+            "webhookId": "book_appointment"
+        },
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "get_availability",
+                "responseMode": "responseNode",
+                "options": {
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                7120,
+                6016
+            ],
+            "id": "1e27ebc3-c6cd-46d4-8896-df2c434efd3b",
+            "name": "Webhook - Verificar Disponibilidade1",
+            "webhookId": "get_availability"
+        }
+    ],
+    "connections": {
+        "Google Gemini Chat Model1": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "IA - Verificar Disponibilidade1",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    },
+                    {
+                        "node": "IA - Converter Texto para Data1",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Processar Disponibilidade1": {
+            "main": [
+                [
+                    {
+                        "node": "Responder - Disponibilidade1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Calendar - Listar Eventos1": {
+            "main": [
+                [
+                    {
+                        "node": "Processar Disponibilidade1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Calendar - Criar Evento1": {
+            "main": [
+                [
+                    {
+                        "node": "Responder - Agendamento Confirmado1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ],
+            "error": [
+                [
+                    {
+                        "node": "Responder - Erro1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Processar Resposta da IA1": {
+            "main": [
+                [
+                    {
+                        "node": "Google Calendar - Criar Evento1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "IA - Verificar Disponibilidade1": {
+            "main": [
+                [
+                    {
+                        "node": "Google Calendar - Listar Eventos1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "IA - Converter Texto para Data1": {
+            "main": [
+                [
+                    {
+                        "node": "Processar Resposta da IA1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extrair Dados de Disponibilidade1": {
+            "main": [
+                [
+                    {
+                        "node": "IA - Verificar Disponibilidade1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extrair Dados do Booking1": {
+            "main": [
+                [
+                    {
+                        "node": "IA - Converter Texto para Data1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Webhook - Agendar1": {
+            "main": [
+                [
+                    {
+                        "node": "Extrair Dados do Booking1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Webhook - Verificar Disponibilidade1": {
+            "main": [
+                [
+                    {
+                        "node": "Extrair Dados de Disponibilidade1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "pinData": {},
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "staticData": null,
+    "tags": [],
+    "triggerCount": 0,
+    "meta": {
+        "templateCredsSetupCompleted": true,
+        "instanceId": "7268c893765d84335e68353defa53d7ef9fb6ad229be318f242b34716d06b862"
+    }
+}

@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -10,6 +10,7 @@ export default {
         brand: {
           beige: '#F9F7F2',
           gold: '#D4AF37',
+          goldDark: '#B89628', // Darkened for text contrast
           goldLight: '#F3E5AB',
           lilac: '#E6E6FA',
           lilacDark: '#9370DB',

@@ -1,0 +1,415 @@
+{
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "create_payment_link",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "id": "0c6abcdd-4e46-4d9f-b869-5b5e48aec69a",
+            "name": "Webhook - Gerar Link",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                3536,
+                2176
+            ],
+            "webhookId": "create_payment_link"
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.infinitepay.io/invoices/public/checkout/links",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "handle",
+                            "value": "institutoarianaborges"
+                        },
+                        {
+                            "name": "items",
+                            "value": "={{ $json.body.items }}"
+                        },
+                        {
+                            "name": "customer",
+                            "value": "={{ $json.body.customer }}"
+                        },
+                        {
+                            "name": "redirect_url",
+                            "value": "={{ $json.body.redirectUrl }}"
+                        },
+                        {
+                            "name": "webhook_url",
+                            "value": "={{ $json.body.webhookUrl }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "729fb6af-0a41-42f1-89a3-3f7af9429cfd",
+            "name": "API - Criar Link",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                3760,
+                2176
+            ]
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify($json) }}",
+                "options": {
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "id": "17e5487f-3c04-4822-bd03-d33de95e50fc",
+            "name": "Responder Frontend",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                4160,
+                2176
+            ]
+        },
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "check_payment",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "id": "ef19a2cd-6999-4737-99fc-d72557499af5",
+            "name": "Webhook - Verificar Pagamento",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                3536,
+                2432
+            ],
+            "webhookId": "check_payment"
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.infinitepay.io/invoices/public/checkout/payment_check",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "handle",
+                            "value": "institutoarianaborges"
+                        },
+                        {
+                            "name": "order_nsu",
+                            "value": "={{ $json.body.order_nsu }}"
+                        },
+                        {
+                            "name": "transaction_nsu",
+                            "value": "={{ $json.body.transaction_nsu }}"
+                        },
+                        {
+                            "name": "slug",
+                            "value": "={{ $json.body.slug }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "e171c52e-838b-44ad-ab54-083dcea6eb1f",
+            "name": "API - Verificar Status",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                3760,
+                2432
+            ]
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify($json) }}",
+                "options": {
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "id": "99e29a03-3bbc-4a19-98dd-0acfba7728ee",
+            "name": "Responder Status",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                4192,
+                2432
+            ]
+        },
+        {
+            "parameters": {
+                "dataTableId": {
+                    "__rl": true,
+                    "value": "lePNJZq7oAWARsVG",
+                    "mode": "list",
+                    "cachedResultName": "payments",
+                    "cachedResultUrl": "/projects/61irr69C5Mk59WvT/datatables/lePNJZq7oAWARsVG"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "amount": 0
+                    },
+                    "matchingColumns": [],
+                    "schema": [
+                        {
+                            "id": "order_nsu",
+                            "displayName": "order_nsu",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "customer_name",
+                            "displayName": "customer_name",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "status",
+                            "displayName": "status",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "amount",
+                            "displayName": "amount",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "number",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "url",
+                            "displayName": "url",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "paid_at",
+                            "displayName": "paid_at",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        }
+                    ],
+                    "attemptToConvertTypes": false,
+                    "convertFieldsToString": false
+                },
+                "options": {}
+            },
+            "type": "n8n-nodes-base.dataTable",
+            "typeVersion": 1.1,
+            "position": [
+                3968,
+                2176
+            ],
+            "id": "1e7469be-423e-48d5-968f-ccdb0057c79b",
+            "name": "Insert row"
+        },
+        {
+            "parameters": {
+                "operation": "update",
+                "dataTableId": {
+                    "__rl": true,
+                    "value": "lePNJZq7oAWARsVG",
+                    "mode": "list",
+                    "cachedResultName": "payments",
+                    "cachedResultUrl": "/projects/61irr69C5Mk59WvT/datatables/lePNJZq7oAWARsVG"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {},
+                    "matchingColumns": [],
+                    "schema": [
+                        {
+                            "id": "order_nsu",
+                            "displayName": "order_nsu",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "customer_name",
+                            "displayName": "customer_name",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "status",
+                            "displayName": "status",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "amount",
+                            "displayName": "amount",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "number",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "url",
+                            "displayName": "url",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        },
+                        {
+                            "id": "paid_at",
+                            "displayName": "paid_at",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "readOnly": false,
+                            "removed": false
+                        }
+                    ],
+                    "attemptToConvertTypes": false,
+                    "convertFieldsToString": false
+                },
+                "options": {}
+            },
+            "type": "n8n-nodes-base.dataTable",
+            "typeVersion": 1.1,
+            "position": [
+                3968,
+                2432
+            ],
+            "id": "3ceb898c-0bad-4a3f-be61-39ae28808061",
+            "name": "Update row(s)"
+        }
+    ],
+    "connections": {
+        "Webhook - Gerar Link": {
+            "main": [
+                [
+                    {
+                        "node": "API - Criar Link",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "API - Criar Link": {
+            "main": [
+                [
+                    {
+                        "node": "Insert row",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Webhook - Verificar Pagamento": {
+            "main": [
+                [
+                    {
+                        "node": "API - Verificar Status",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "API - Verificar Status": {
+            "main": [
+                [
+                    {
+                        "node": "Update row(s)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Insert row": {
+            "main": [
+                [
+                    {
+                        "node": "Responder Frontend",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Update row(s)": {
+            "main": [
+                [
+                    {
+                        "node": "Responder Status",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "pinData": {},
+    "meta": {
+        "instanceId": "7268c893765d84335e68353defa53d7ef9fb6ad229be318f242b34716d06b862"
+    }
+}

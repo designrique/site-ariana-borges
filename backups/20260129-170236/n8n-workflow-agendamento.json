@@ -1,0 +1,353 @@
+{
+  "name": "Instituto Ariana Borges - Agendamento",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "get_availability",
+        "responseMode": "responseNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1248, 48],
+      "id": "1ce93280-a3a2-4eaa-839d-c1c4ff4adec0",
+      "name": "Webhook - Verificar Disponibilidade",
+      "webhookId": "get_availability"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ message: \"Ótima notícia! \" + $('Merge').first().json.body.preferred_timeframe + \" está disponível.\" }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [272, 128],
+      "id": "d22be742-073d-4f05-b889-e55232c5815f",
+      "name": "Responder - Horário Disponível"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "list",
+          "cachedResultName": "Calendário Principal"
+        },
+        "timeMin": "={{ $json.output.start_time }}",
+        "timeMax": "={{ $json.output.end_time }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [-448, 128],
+      "id": "8f0adaf0-5ef0-4ee0-8996-a048e9653818",
+      "name": "Google Calendar - Buscar Eventos",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "CONFIGURE_SUAS_CREDENCIAIS",
+          "name": "Google Calendar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pegar o horário solicitado do Information Extractor\nconst requestedTime = $('Extrator de Informações').first().json.output.requested_time;\n\n// Pegar eventos do calendário\nconst calendarEvents = $input.all();\n\n// Configuração de horário comercial\nconst BUSINESS_START = 9; // 9h\nconst BUSINESS_END = 19;   // 19h\nconst APPOINTMENT_DURATION = 60; // 60 minutos\n\n// Dias de funcionamento: Segunda (1), Terça (2), Quarta (3)\nconst WORKING_DAYS = [1, 2, 3];\n\n// Função para converter string de horário para número\nfunction timeToHour(timeStr) {\n  if (!timeStr) return null;\n  if (timeStr.includes('T')) {\n    return parseInt(timeStr.split('T')[1].split(':')[0]);\n  } else if (timeStr.includes(':')) {\n    return parseInt(timeStr.split(':')[0]);\n  }\n  const parsed = parseInt(timeStr);\n  return isNaN(parsed) ? null : parsed;\n}\n\n// Função para formatar hora como string HH:MM\nfunction formatTime(hour) {\n  return hour.toString().padStart(2, '0') + ':00';\n}\n\n// Extrair horas ocupadas dos eventos do calendário\nconst busyHours = [];\ncalendarEvents.forEach(event => {\n  if (event.json && event.json.start && event.json.start.dateTime) {\n    const startHour = timeToHour(event.json.start.dateTime);\n    if (startHour !== null) busyHours.push(startHour);\n  }\n});\n\n// Criar array de todas as horas comerciais\nconst allBusinessHours = [];\nfor (let hour = BUSINESS_START; hour < BUSINESS_END; hour++) {\n  allBusinessHours.push(hour);\n}\n\n// Calcular horas disponíveis\nconst availableHours = allBusinessHours.filter(hour => !busyHours.includes(hour));\n\n// Função para obter o primeiro horário disponível baseado no período\nfunction getFirstAvailableHour(requestedTime, availableHours) {\n  if (availableHours.length === 0) return null;\n  \n  if (requestedTime === 'any' || requestedTime === 'qualquer') {\n    return availableHours[0];\n  }\n  \n  if (requestedTime === 'morning' || requestedTime === 'manhã') {\n    const morningHours = availableHours.filter(hour => hour >= 9 && hour < 12);\n    return morningHours.length > 0 ? morningHours[0] : null;\n  }\n  \n  if (requestedTime === 'afternoon' || requestedTime === 'tarde') {\n    const afternoonHours = availableHours.filter(hour => hour >= 12 && hour < 19);\n    return afternoonHours.length > 0 ? afternoonHours[0] : null;\n  }\n  \n  // É um horário específico\n  const requestedHour = timeToHour(requestedTime);\n  return availableHours.includes(requestedHour) ? requestedHour : null;\n}\n\n// Função para verificar se o horário solicitado está disponível\nfunction isRequestedTimeAvailable(requestedTime, availableHours) {\n  return getFirstAvailableHour(requestedTime, availableHours) !== null;\n}\n\n// Função para agrupar horas consecutivas\nfunction groupConsecutiveHours(hours) {\n  if (hours.length === 0) return [];\n  \n  const sorted = hours.sort((a, b) => a - b);\n  const groups = [];\n  let currentGroup = [sorted[0]];\n  \n  for (let i = 1; i < sorted.length; i++) {\n    if (sorted[i] === sorted[i-1] + 1) {\n      currentGroup.push(sorted[i]);\n    } else {\n      groups.push(currentGroup);\n      currentGroup = [sorted[i]];\n    }\n  }\n  groups.push(currentGroup);\n  \n  return groups;\n}\n\n// Função para formatar horários disponíveis\nfunction formatAvailableSlots(availableHours) {\n  if (availableHours.length === 0) {\n    return \"nenhum horário disponível\";\n  }\n  \n  const groups = groupConsecutiveHours(availableHours);\n  const formattedGroups = groups.map(group => {\n    if (group.length === 1) {\n      return `${group[0]}h`;\n    } else {\n      return `das ${group[0]}h às ${group[group.length - 1] + 1}h`;\n    }\n  });\n  \n  if (formattedGroups.length === 1) {\n    return formattedGroups[0];\n  } else if (formattedGroups.length === 2) {\n    return formattedGroups.join(' e ');\n  } else {\n    const lastGroup = formattedGroups.pop();\n    return formattedGroups.join(', ') + ' e ' + lastGroup;\n  }\n}\n\n// Função para pegar a data alvo\nfunction getTargetDate() {\n  const extractorOutput = $('Extrator de Informações').first().json.output;\n  if (extractorOutput.start_time) {\n    return extractorOutput.start_time.split('T')[0];\n  }\n  return 'a data solicitada';\n}\n\n// Função para criar datetime ISO com horário específico\nfunction createISODateTime(hour, baseDateTimeISO) {\n  const baseDate = baseDateTimeISO.split('T')[0];\n  let timezone = '-03:00';\n  if (baseDateTimeISO.includes('+')) {\n    timezone = '+' + baseDateTimeISO.split('+')[1];\n  } else if (baseDateTimeISO.lastIndexOf('-') > 7) {\n    timezone = '-' + baseDateTimeISO.split('-').slice(-1)[0];\n  }\n  const hourStr = hour.toString().padStart(2, '0');\n  return `${baseDate}T${hourStr}:00:00${timezone}`;\n}\n\n// Função para adicionar horas ao datetime ISO\nfunction addHoursToISODateTime(isoDateTime, hours) {\n  const [datePart, timePart] = isoDateTime.split('T');\n  const timeOnly = timePart.split(/[+-]/)[0];\n  let timezone = '-03:00';\n  if (isoDateTime.includes('+')) {\n    timezone = '+' + isoDateTime.split('+')[1];\n  } else if (isoDateTime.lastIndexOf('-') > 7) {\n    timezone = '-' + isoDateTime.split('-').slice(-1)[0];\n  }\n  const [hour, minute, second] = timeOnly.split(':');\n  \n  const newHour = parseInt(hour) + hours;\n  const formattedHour = newHour.toString().padStart(2, '0');\n  \n  return `${datePart}T${formattedHour}:${minute}:${second}${timezone}`;\n}\n\n// Função para verificar se o dia da semana é válido\nfunction isDayOfWeekValid(dateStr) {\n  const date = new Date(dateStr + 'T12:00:00');\n  const dayOfWeek = date.getDay();\n  return WORKING_DAYS.includes(dayOfWeek);\n}\n\n// Função para obter nome do dia da semana\nfunction getDayName(dateStr) {\n  const date = new Date(dateStr + 'T12:00:00');\n  const days = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];\n  return days[date.getDay()];\n}\n\n// Lógica principal\nconst isAvailable = isRequestedTimeAvailable(requestedTime, availableHours);\nconst targetDate = getTargetDate();\nconst isValidDay = isDayOfWeekValid(targetDate);\n\nlet response;\n\n// Verificar se o dia é válido (Segunda a Quarta)\nif (!isValidDay) {\n  const dayName = getDayName(targetDate);\n  response = {\n    available: false,\n    message: `Desculpe, não atendemos em ${dayName}. Nosso horário de atendimento é de segunda a quarta-feira, das 9h às 19h.`\n  };\n  return [response];\n}\n\nif (isAvailable) {\n  const baseStartTime = $('Extrator de Informações').first().json.output.start_time;\n  const selectedHour = getFirstAvailableHour(requestedTime, availableHours);\n  const startTime = createISODateTime(selectedHour, baseStartTime);\n  const endTime = addHoursToISODateTime(startTime, 1);\n  \n  const isPeriod = ['any', 'qualquer', 'morning', 'manhã', 'afternoon', 'tarde'].includes(requestedTime);\n  const displayTime = formatTime(selectedHour);\n  \n  response = {\n    available: true,\n    message: isPeriod ? `Temos horário disponível às ${displayTime}.` : `Sim, ${displayTime} está disponível.`,\n    start_time: startTime,\n    end_time: endTime\n  };\n} else {\n  const availableSlots = formatAvailableSlots(availableHours);\n  \n  const formatDate = (dateStr) => {\n    const date = new Date(dateStr + 'T00:00:00');\n    const options = { weekday: 'long', day: 'numeric', month: 'long' };\n    return date.toLocaleDateString('pt-BR', options);\n  };\n  \n  const formattedDate = formatDate(targetDate);\n  \n  response = {\n    available: false,\n    message: `Para ${formattedDate}, temos disponível ${availableSlots}.`\n  };\n}\n\nreturn [response];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-224, 128],
+      "id": "2dc4c061-e9b7-49f3-94a3-ec3e5f901b47",
+      "name": "Verificar Disponibilidade"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.body.preferred_timeframe }}",
+        "schemaType": "fromJson",
+        "jsonSchemaExample": "{\n  \"start_time\": \"2025-07-14T09:00:00-03:00\",\n  \"end_time\": \"2025-07-14T19:00:00-03:00\", \n  \"requested_time\": \"15:00\"\n}",
+        "options": {
+          "systemPromptTemplate": "Você é um especialista em análise de datas e horários para um sistema de agendamento.\n\n**Data e hora atual:** {{ $now }}\n**Hoje é:** {{ $now.format('dddd, D [de] MMMM [de] YYYY', 'pt-BR') }}\n**Dia da semana atual:** {{ $now.format('dddd', 'pt-BR') }}\n**Fuso horário:** America/Sao_Paulo (BRT/BRST)\n\n**Horário de funcionamento:** 9:00 às 19:00, Segunda a Quarta\n\n## Sua Tarefa\nAnalisar a preferência de horário do cliente e extrair exatamente três campos.\n\n## REGRA CRÍTICA - SEMPRE DATAS FUTURAS\n**NUNCA retorne datas no passado!** A data calculada DEVE ser maior ou igual à data atual.\n\n## Regras de Cálculo de Data\n\n### Referência:\n- Use a data atual do contexto acima\n- Calcule a data exata (ex: 2026-02-03)\n\n### Lógica de análise (SEMPRE FUTURO):\n- **\"amanhã\"** = data atual + 1 dia\n- **\"hoje\"** = data atual (se ainda houver horário disponível)\n- **\"segunda\", \"terça\", \"quarta\", etc.** = PRÓXIMA ocorrência desse dia (se hoje é quarta e pediram \"terça\", será a terça da PRÓXIMA semana)\n- **\"próxima [dia]\"** = próxima ocorrência após hoje\n- **\"semana que vem\"** = semana após a atual\n- **\"[dia] da semana que vem\"** = dia específico na próxima semana\n\n### Cálculo do próximo dia da semana:\n- Se o dia solicitado é DEPOIS de hoje na semana → use esta semana\n- Se o dia solicitado é HOJE ou ANTES de hoje na semana → use a PRÓXIMA semana\n- Exemplo: Se hoje é QUARTA e pedem \"terça\" → próxima terça (semana que vem)\n- Exemplo: Se hoje é SEGUNDA e pedem \"quarta\" → esta quarta (mesma semana)\n\n### Análise de horário:\n- \"15h\", \"3 da tarde\", \"três horas\" → \"15:00\"\n- \"10h\", \"10 da manhã\" → \"10:00\"  \n- \"manhã\" → \"morning\"\n- \"tarde\" → \"afternoon\"\n- Sem horário especificado → \"any\"\n\n## Formato de Saída:\n\n**start_time**: Data alvo às 09:00:00-03:00 (formato: YYYY-MM-DDT09:00:00-03:00)\n\n**end_time**: Data alvo às 19:00:00-03:00 (formato: YYYY-MM-DDT19:00:00-03:00)\n  \n**requested_time**: Horário específico em formato 24h (HH:MM) ou período (morning/afternoon/any)\n\n## Exemplo 1 - \"terça às 10h\" (se hoje é quarta 29 de janeiro):\n- Hoje é quarta (dia 4 da semana)\n- Terça é dia 2 da semana (ANTES de hoje)\n- Portanto: próxima terça = 4 de fevereiro\n\nSaída:\nstart_time: 2026-02-03T09:00:00-03:00\nend_time: 2026-02-03T19:00:00-03:00\nrequested_time: 10:00\n\n## Exemplo 2 - \"segunda às 15h\" (se hoje é domingo 12 de janeiro):\n- Segunda é dia 1 da semana (DEPOIS de domingo)\n- Portanto: esta segunda = 13 de janeiro\n\nSaída:\nstart_time: 2026-01-13T09:00:00-03:00\nend_time: 2026-01-13T19:00:00-03:00\nrequested_time: 15:00\n\n## IMPORTANTE:\n- SEMPRE verifique se a data é FUTURA (>= hoje)\n- Calcule datas reais, não placeholders\n- Verifique se a data calculada corresponde ao dia da semana correto\n- Use a mesma data para start_time e end_time\n- Formato de hora em 24h (15:00 não 3pm)\n- Sempre use fuso horário -03:00 (Brasília)"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1,
+      "position": [-816, 128],
+      "id": "94690f2a-4e80-4cfb-8d03-98a066040e15",
+      "name": "Extrator de Informações"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ message: \"Infelizmente esse horário não está disponível. \" + $json.message }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [272, 304],
+      "id": "f565dc0c-18b3-46f8-b32c-59b15e2a4a44",
+      "name": "Responder - Horário Indisponível"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "list",
+          "cachedResultName": "Calendário Principal"
+        },
+        "start": "={{ $json.start_time }}",
+        "end": "={{ $json.end_time }}",
+        "additionalFields": {
+          "description": "=📋 AGENDAMENTO INSTITUTO ARIANA BORGES\n\n👤 Nome: {{ $('Webhook - Agendar').first().json.body.customer_name }}\n📱 Telefone: {{ $('Webhook - Agendar').first().json.body.customer_phone }}\n📧 Email: {{ $('Webhook - Agendar').first().json.body.customer_email }}\n🌟 Serviço: {{ $('Webhook - Agendar').first().json.body.service_type }}\n📝 Descrição: {{ $('Webhook - Agendar').first().json.body.description }}\n\n---\nAgendado via site Instituto Ariana Borges",
+          "summary": "={{ $('Webhook - Agendar').first().json.body.service_type }} - {{ $('Webhook - Agendar').first().json.body.customer_name }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [272, -32],
+      "id": "0304c02e-6062-473f-a46f-18e49b5beba6",
+      "name": "Google Calendar - Criar Evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "CONFIGURE_SUAS_CREDENCIAIS",
+          "name": "Google Calendar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 3,
+        "output": "={{\n  $json.available === false ? 2 :\n  (function() {\n    try {\n      if ($json.available === true && $('Webhook - Agendar').first()?.json?.body?.service_type && $('Webhook - Agendar').first().json.body.service_type !== \"\") {\n        return 0;\n      }\n    } catch (e) {}\n    \n    try {\n      if ($json.available === true && $('Webhook - Verificar Disponibilidade').first()?.json?.body?.preferred_timeframe && $('Webhook - Verificar Disponibilidade').first().json.body.preferred_timeframe !== \"\") {\n        return 1;\n      }\n    } catch (e) {}\n    \n    return 2;\n  })()\n}}"
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [-16, 128],
+      "id": "0e2ac568-3d26-47c6-bcfe-3cba327f7643",
+      "name": "Verificar Tipo de Requisição"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ message: \"Perfeito! Seu agendamento foi confirmado para \" + $('Merge').first().json.body.preferred_timeframe + \". Você receberá um e-mail de confirmação em breve.\" }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [480, -32],
+      "id": "800d13f6-93d9-497a-9468-d12293248f8c",
+      "name": "Responder - Agendamento Confirmado"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "book_appointment",
+        "responseMode": "responseNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1248, 240],
+      "id": "cec700b0-5b50-49e3-9147-b5bc45e1fecb",
+      "name": "Webhook - Agendar",
+      "webhookId": "book_appointment"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [-1024, 128],
+      "id": "303d55f2-0507-4ac7-911c-54730184fccd",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [-848, 336],
+      "id": "f4b4d256-d273-41ac-891e-1c5383bddc5d",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googleGeminiApi": {
+          "id": "CONFIGURE_SUAS_CREDENCIAIS",
+          "name": "Google Gemini"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook - Verificar Disponibilidade": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar - Buscar Eventos": {
+      "main": [
+        [
+          {
+            "node": "Verificar Disponibilidade",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar Disponibilidade": {
+      "main": [
+        [
+          {
+            "node": "Verificar Tipo de Requisição",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrator de Informações": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar - Buscar Eventos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar - Criar Evento": {
+      "main": [
+        [
+          {
+            "node": "Responder - Agendamento Confirmado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar Tipo de Requisição": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar - Criar Evento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Responder - Horário Disponível",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Responder - Horário Indisponível",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Agendar": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Extrator de Informações",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Extrator de Informações",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

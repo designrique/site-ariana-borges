@@ -1,0 +1,10 @@
+{
+    "available": true,
+    "requestedDateTime": "YYYY-MM-DDTHH:mm:00-03:00",
+    "message": "mensagem amigável sobre disponibilidade",
+    "suggestedTimes": [
+        "horário1",
+        "horário2",
+        "horário3"
+    ]
+}

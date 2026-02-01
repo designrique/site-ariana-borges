@@ -1,0 +1,2 @@
+order_nsu,customer_name,status,amount,url,paid_at
+test_order_123,Cliente Teste,PENDING,100,https://pay.infinitepay.io/test,
