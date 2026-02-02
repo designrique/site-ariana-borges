@@ -57,7 +57,8 @@ const start = async () => {
                         const module = await import('./seed.js');
                         seedContent = module.seedContent;
                     }
-                    await seedContent(payload);
+                    // await seedContent(payload);
+                    payload.logger.info('Auto-seed disabled for stability.');
                     payload.logger.info('Auto-seed completed!');
                 } else {
                     payload.logger.info('Uploads directory has files, skipping auto-seed');
