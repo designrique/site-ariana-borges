@@ -2,7 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "npm run start"
+startCommand = "npm run serve"
 
 # Volume configuration for persistent uploads
 [[volumes]]
