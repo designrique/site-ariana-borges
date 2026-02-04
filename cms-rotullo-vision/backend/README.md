@@ -1,6 +1,6 @@
 # CMS Backend - Payload CMS
 
-Backend do CMS para gerenciamento de conteúdo do site MAPC.
+Backend do CMS para gerenciamento de conteúdo do site Instituto Ariana Borges.
 
 ## Arquitetura
 

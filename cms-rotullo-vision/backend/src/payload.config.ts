@@ -69,10 +69,7 @@ export default buildConfig({
             },
         }),
     },
-    // CSRF protection: Allow the Netlify domain
     csrf: [
-        'https://mapc.com.br',
-        'https://www.mapc.com.br',
     ],
     collections: [
         Users,
@@ -104,9 +101,6 @@ export default buildConfig({
         'http://localhost:3000',
         'http://localhost:3002',
         'http://localhost:8080',
-        'https://registrese.mapc.com.br',
-        'https://mapc.com.br',
-        'https://www.mapc.com.br',
     ],
     i18n: {
         fallbackLng: 'pt',

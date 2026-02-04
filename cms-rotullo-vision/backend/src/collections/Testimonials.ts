@@ -4,7 +4,7 @@ export const Testimonials: CollectionConfig = {
     slug: 'testimonials',
     admin: {
         useAsTitle: 'name',
-        description: 'Depoimentos de clientes da MAPC',
+        description: 'Depoimentos de clientes do Instituto Ariana Borges',
         defaultColumns: ['name', 'company', 'rating', 'isActive'],
     },
     labels: {

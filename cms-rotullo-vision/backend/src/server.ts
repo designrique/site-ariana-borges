@@ -21,9 +21,6 @@ app.use(cors({
         'http://localhost:5173',
         'http://localhost:3000',
         'http://localhost:8080',
-        'https://registrese.mapc.com.br',
-        'https://mapc.com.br',
-        'https://www.mapc.com.br'
     ],
     credentials: true,
 }))

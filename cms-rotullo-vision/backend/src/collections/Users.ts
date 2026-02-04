@@ -6,7 +6,6 @@ export const Users: CollectionConfig = {
         cookies: {
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
-            domain: process.env.NODE_ENV === 'production' ? '.mapc.com.br' : undefined,
         },
     },
     admin: {

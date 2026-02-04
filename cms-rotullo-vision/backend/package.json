@@ -1,7 +1,7 @@
 {
-  "name": "cms-mapc-backend",
+  "name": "cms-ariana-borges-backend",
   "version": "1.0.0",
-  "description": "Payload CMS backend for MAPC website content management",
+  "description": "Payload CMS backend for Instituto Ariana Borges website content management",
   "main": "dist/server.js",
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",

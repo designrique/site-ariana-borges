@@ -4,7 +4,7 @@ export const Services: CollectionConfig = {
     slug: 'services',
     admin: {
         useAsTitle: 'title',
-        description: 'Serviços oferecidos pela MAPC',
+        description: 'Serviços oferecidos pelo Instituto Ariana Borges',
         defaultColumns: ['title', 'cta', 'isActive'],
     },
     labels: {
