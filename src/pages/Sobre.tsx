@@ -40,11 +40,11 @@ const Sobre: React.FC = () => {
                                 <img
                                     src="/Ariana-Borges-profile-photo.jpeg"
                                     alt="Ariana Borges"
-                                    className="w-full h-full object-cover object-top"
+                                    className="w-full h-full object-cover object-top sepia-[0.1] brightness-[1.05] contrast-[0.95]"
                                 />
                             </div>
-                            <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-brand-gold/20 rounded-full blur-2xl -z-10"></div>
-                            <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-lilac/30 rounded-full blur-2xl -z-10"></div>
+                            <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-brand-gold/20 rounded-full blur-3xl -z-10"></div>
+                            <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-lilac/30 rounded-full blur-3xl -z-10"></div>
                         </div>
 
                         <div className="md:w-1/2">

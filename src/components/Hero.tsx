@@ -36,10 +36,10 @@ const Hero: React.FC = () => {
         <img
           src={bgImage}
           alt="Natureza Espiritual"
-          className="w-full h-[120%] object-cover opacity-30 transition-transform duration-75 ease-out"
+          className="w-full h-[120%] object-cover opacity-40 sepia-[0.2] brightness-[1.1] contrast-[0.9] hue-rotate-[15deg] transition-transform duration-75 ease-out"
           style={{ transform: `translateY(${scrollY * 0.4}px)` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-beige/80 via-brand-beige/50 to-brand-beige"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-beige/60 via-brand-greenLight/30 to-brand-beige"></div>
       </div>
 
       <div className={`relative z-10 max-w-5xl mx-auto px-4 md:px-6 text-center transition-all duration-1000 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

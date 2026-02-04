@@ -9,7 +9,7 @@ const AboutIntro: React.FC = () => {
                         <img
                             src="/Ariana-Borges-profile-photo.jpeg"
                             alt="Ariana Borges"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top sepia-[0.1] brightness-[1.05] contrast-[0.95]"
                         />
                     </div>
                     {/* Decorative element */}
