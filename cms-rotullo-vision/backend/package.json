@@ -13,6 +13,7 @@
     "seed": "ts-node src/seed.ts"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^3.0.1",
     "@payloadcms/bundler-webpack": "^1.0.0",
     "@payloadcms/db-postgres": "^0.8.0",
     "@payloadcms/richtext-slate": "^1.5.0",
