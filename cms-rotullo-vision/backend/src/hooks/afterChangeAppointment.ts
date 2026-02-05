@@ -1,5 +1,4 @@
 import { CollectionAfterChangeHook } from 'payload/types';
-import * as brevo from '@getbrevo/brevo';
 
 export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, operation, req }) => {
     // Só envia email quando um novo agendamento é criado
@@ -13,12 +12,11 @@ export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, o
     }
 
     try {
-        // Configurar API do Brevo
-        const apiInstance = new brevo.TransactionalEmailsApi();
-        apiInstance.setApiKey(
-            brevo.TransactionalEmailsApiApiKeys.apiKey,
-            process.env.BREVO_API_KEY || ''
-        );
+        const apiKey = process.env.BREVO_API_KEY;
+        if (!apiKey) {
+            req.payload.logger.error('BREVO_API_KEY não configurada');
+            return doc;
+        }
 
         const clientName = doc.clientName || 'Cliente';
         const serviceName = doc.serviceName || 'Serviço';
@@ -28,6 +26,34 @@ export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, o
             timeStyle: 'short',
             timeZone: 'America/Sao_Paulo'
         }) : 'Data a confirmar';
+
+        // Função auxiliar para enviar email via Brevo API (fetch nativo)
+        const sendEmail = async (to: { email: string; name?: string }[], subject: string, htmlContent: string) => {
+            const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'api-key': apiKey,
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sender: {
+                        name: 'Instituto Ariana Borges',
+                        email: 'nao-responda@arianaborges.com'
+                    },
+                    to: to,
+                    subject: subject,
+                    htmlContent: htmlContent
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(`Erro API Brevo (${response.status}): ${errorData}`);
+            }
+
+            return await response.json();
+        };
 
         // HTML do email para Ariana
         const htmlToAriana = `
@@ -129,18 +155,12 @@ export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, o
             </html>
         `;
 
-        // Email para Ariana Borges
-        const emailToAriana = new brevo.SendSmtpEmail();
-        emailToAriana.sender = {
-            email: 'nao-responda@arianaborges.com',
-            name: 'Instituto Ariana Borges'
-        };
-        emailToAriana.to = [{ email: 'institutoarianaborges@gmail.com', name: 'Ariana Borges' }];
-        emailToAriana.subject = `🎉 Novo Agendamento: ${serviceName}`;
-        emailToAriana.htmlContent = htmlToAriana;
-
         // Enviar email para Ariana
-        await apiInstance.sendTransacEmail(emailToAriana);
+        await sendEmail(
+            [{ email: 'institutoarianaborges@gmail.com', name: 'Ariana Borges' }],
+            `🎉 Novo Agendamento: ${serviceName}`,
+            htmlToAriana
+        );
         req.payload.logger.info(`Email de notificação enviado para Ariana sobre agendamento de ${clientName}`);
 
         // Enviar email de confirmação para o cliente (se tiver email)
@@ -260,16 +280,12 @@ export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, o
                 </html>
             `;
 
-            const emailToClient = new brevo.SendSmtpEmail();
-            emailToClient.sender = {
-                email: 'nao-responda@arianaborges.com',
-                name: 'Instituto Ariana Borges'
-            };
-            emailToClient.to = [{ email: doc.clientEmail, name: clientName }];
-            emailToClient.subject = `✨ Confirmação de Agendamento - ${serviceName}`;
-            emailToClient.htmlContent = htmlToClient;
-
-            await apiInstance.sendTransacEmail(emailToClient);
+            // Enviar email para o cliente
+            await sendEmail(
+                [{ email: doc.clientEmail, name: clientName }],
+                `✨ Confirmação de Agendamento - ${serviceName}`,
+                htmlToClient
+            );
             req.payload.logger.info(`Email de confirmação enviado para ${doc.clientEmail}`);
         }
 
