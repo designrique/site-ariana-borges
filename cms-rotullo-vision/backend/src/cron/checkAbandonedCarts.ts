@@ -71,9 +71,9 @@ export const checkAbandonedCarts = async () => {
 
             // Enviar email
             const html = getAbandonedCartHtml({
-                clientName: doc.clientName || 'Cliente',
-                serviceName: doc.serviceName || 'Atendimento',
-                checkoutUrl: doc.paymentLink || 'https://institutoarianaborges.com.br/agendamento'
+                clientName: (doc.clientName as string) || 'Cliente',
+                serviceName: (doc.serviceName as string) || 'Atendimento',
+                checkoutUrl: (doc.paymentLink as string) || 'https://institutoarianaborges.com.br/agendamento'
             });
 
             try {

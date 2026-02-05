@@ -1,18 +1,13 @@
-FROM node:18-alpine as builder
+FROM node:18-alpine
 
-WORKDIR /home/node/app
+WORKDIR /app
+
 COPY package*.json ./
 RUN npm install
+
 COPY . .
 RUN npm run build
 
-FROM node:18-alpine as runtime
-WORKDIR /home/node/app
-ENV NODE_ENV=production
-COPY package*.json ./
-RUN npm install --production
-COPY --from=builder /home/node/app/dist ./dist
-COPY --from=builder /home/node/app/build ./build
+EXPOSE 8080
 
-EXPOSE 3000
-CMD ["npm", "run", "serve"]
+CMD ["node", "dist/server.js"]

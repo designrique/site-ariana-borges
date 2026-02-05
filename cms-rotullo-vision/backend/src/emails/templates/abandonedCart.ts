@@ -16,6 +16,13 @@ export const getAbandonedCartHtml = (data: {
                 <td align="center">
                     <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                         <!-- Header -->
+                        <!-- Logo Section -->
+                        <tr>
+                            <td style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 1px solid #f0f0f0;">
+                                <img src="${process.env.PAYLOAD_PUBLIC_SERVER_URL}/assets/ariana-borges-logo.png" alt="Instituto Ariana Borges" width="220" style="display: block; margin: 0 auto; max-width: 220px;">
+                            </td>
+                        </tr>
+                        <!-- Title Header -->
                         <tr>
                             <td style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); padding: 40px; text-align: center;">
                                 <h1 style="color: #fff; margin: 0; font-size: 24px;">Psiu, você esqueceu algo... 👀</h1>

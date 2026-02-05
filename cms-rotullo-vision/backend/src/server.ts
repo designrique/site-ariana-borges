@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 import 'ignore-styles'
 console.log('Ignore styles loaded - patching require extensions');
+console.log('🚀 STARTING NEW SERVER VERSION 2.1 - DIAGNOSTICS ENABLED');
 import express from 'express'
 import payload from 'payload'
 import cors from 'cors'
@@ -129,9 +130,9 @@ const start = async () => {
             timeout: 10000 // 10s
         };
 
-        const request = https.request(options, (response) => {
+        const request = https.request(options, (response: any) => {
             let data = '';
-            response.on('data', (chunk) => { data += chunk; });
+            response.on('data', (chunk: any) => { data += chunk; });
             response.on('end', () => {
                 try {
                     const json = JSON.parse(data || '{}');
@@ -146,7 +147,7 @@ const start = async () => {
             });
         });
 
-        request.on('error', (e) => {
+        request.on('error', (e: any) => {
             res.status(500).json({ error: e.message });
         });
 
