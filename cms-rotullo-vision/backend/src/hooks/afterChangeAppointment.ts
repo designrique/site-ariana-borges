@@ -132,7 +132,7 @@ export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, o
         // Email para Ariana Borges
         const emailToAriana = new brevo.SendSmtpEmail();
         emailToAriana.sender = {
-            email: process.env.SMTP_FROM_ADDRESS || 'contato@institutoarianaborges.com.br',
+            email: 'nao-responda@arianaborges.com',
             name: 'Instituto Ariana Borges'
         };
         emailToAriana.to = [{ email: 'institutoarianaborges@gmail.com', name: 'Ariana Borges' }];
@@ -262,7 +262,7 @@ export const afterChangeAppointment: CollectionAfterChangeHook = async ({ doc, o
 
             const emailToClient = new brevo.SendSmtpEmail();
             emailToClient.sender = {
-                email: process.env.SMTP_FROM_ADDRESS || 'contato@institutoarianaborges.com.br',
+                email: 'nao-responda@arianaborges.com',
                 name: 'Instituto Ariana Borges'
             };
             emailToClient.to = [{ email: doc.clientEmail, name: clientName }];
