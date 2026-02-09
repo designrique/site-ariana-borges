@@ -1,14 +1,16 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const TestimonialsSection: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
 
     // Auto-play functionality
-    React.useEffect(() => {
+    useEffect(() => {
         const interval = setInterval(() => {
-            if (scrollRef.current) {
+            // Only scroll if no video is playing
+            if (scrollRef.current && playingVideoId === null) {
                 const { current } = scrollRef;
                 const maxScrollLeft = current.scrollWidth - current.clientWidth;
 
@@ -22,7 +24,7 @@ const TestimonialsSection: React.FC = () => {
         }, 5000); // Scroll every 5 seconds
 
         return () => clearInterval(interval);
-    }, []);
+    }, [playingVideoId]);
 
     const testimonials = [
         {
@@ -156,16 +158,19 @@ const TestimonialsSection: React.FC = () => {
                             >
                                 <div className="group/card relative rounded-2xl overflow-hidden shadow-xl bg-white h-full flex flex-col">
                                     <div className="aspect-video w-full bg-gray-200 relative">
-                                        {t.videoUrl ? (
+                                        {playingVideoId === t.id ? (
                                             <iframe
-                                                src={t.videoUrl}
+                                                src={`${t.videoUrl}${t.videoUrl.includes('?') ? '&' : '?'}autoplay=1`}
                                                 className="w-full h-full"
-                                                allow="autoplay"
+                                                allow="autoplay; fullscreen"
                                                 title={`Depoimento de ${t.name}`}
                                                 loading="lazy"
                                             ></iframe>
                                         ) : (
-                                            <>
+                                            <div
+                                                className="relative w-full h-full cursor-pointer"
+                                                onClick={() => setPlayingVideoId(t.id)}
+                                            >
                                                 <img
                                                     src={t.thumbnail}
                                                     alt={`Depoimento de ${t.name}`}
@@ -174,12 +179,12 @@ const TestimonialsSection: React.FC = () => {
                                                         (e.target as HTMLImageElement).src = `https://picsum.photos/600/400?random=${t.id + 20}`;
                                                     }}
                                                 />
-                                                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/card:bg-black/10 transition-colors cursor-pointer">
+                                                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/card:bg-black/10 transition-colors">
                                                     <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 group-hover/card:scale-110 transition-transform duration-300">
                                                         <Play className="text-white fill-current ml-1" size={24} />
                                                     </div>
                                                 </div>
-                                            </>
+                                            </div>
                                         )}
                                     </div>
 
