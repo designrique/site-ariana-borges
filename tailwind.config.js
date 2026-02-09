@@ -10,10 +10,10 @@ export default {
         brand: {
           beige: '#F9F7F2',
           gold: '#D4AF37',
-          goldDark: '#B89628', // Darkened for text contrast
+          goldDark: '#8C6D1F', // Darkened for accessibility (prev: #B89628)
           goldLight: '#F3E5AB',
           lilac: '#E6E6FA',
-          lilacDark: '#9370DB',
+          lilacDark: '#6A4BB8', // Darkened for accessibility (prev: #9370DB)
           dark: '#2C2C2C',
           greenLight: '#E0F2F1'
         }

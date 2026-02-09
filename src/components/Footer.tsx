@@ -48,11 +48,11 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-serif text-lg text-brand-dark mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
-              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors">
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors" aria-label="Siga-nos no Instagram">
                 <Instagram size={24} />
               </a>
               {youtubeUrl && (
-                <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors">
+                <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors" aria-label="Inscreva-se no nosso canal do Youtube">
                   <Youtube size={24} />
                 </a>
               )}
