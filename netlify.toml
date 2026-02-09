@@ -9,3 +9,8 @@
   from = "/webhook-infinitepay"
   to = "/.netlify/functions/webhook-infinitepay"
   status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

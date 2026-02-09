@@ -23,6 +23,7 @@ const EncontroDeusas: React.FC = () => {
                 <meta property="og:image" content="/og-site-encontro-deusas.png" />
                 <meta property="og:image:type" content="image/png" />
                 <meta name="twitter:image" content="/og-site-encontro-deusas.png" />
+                <link rel="canonical" href="https://arianaborges.com/encontro-das-deusas" />
             </Helmet>
 
             <a href="#hero_section" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-gold text-brand-dark px-4 py-2 rounded-full font-bold z-50">
