@@ -12,6 +12,7 @@ import BlogIndex from '@/pages/Blog/BlogIndex';
 import BlogPost from '@/pages/Blog/BlogPost';
 import ThankYou from '@/components/ThankYou';
 import PaymentReturn from '@/pages/PaymentReturn';
+import EncontroDeusas from '@/pages/EncontroDeusas';
 import Footer from '@/components/Footer';
 
 import SchedulingChat from '@/components/SchedulingChat';
@@ -198,34 +199,43 @@ const NavBar = () => {
   );
 };
 
+const MainContent = () => {
+  const location = window.location;
+  const isLandingPage = location.pathname === '/encontro-das-deusas';
+
+  return (
+    <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
+      {!isLandingPage && <NavBar />}
+      <main className={isLandingPage ? "" : "pt-28"}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/quem-sou" element={<Sobre />} />
+          <Route path="/terapia-individual" element={<TerapiaIndividual />} />
+          <Route path="/formacao-de-terapeutas" element={<FormacaoTerapeutas />} />
+          <Route path="/autoconhecimento-em-grupo" element={<AutoconhecimentoGrupo />} />
+          <Route path="/thetahealing" element={<ThetaHealing />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/obrigado" element={<ThankYou />} />
+          <Route path="/payment-return" element={<PaymentReturn />} />
+          <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
+        </Routes>
+      </main>
+      <Footer />
+      <SchedulingChat />
+    </div>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <SchedulingProvider>
-          <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
-            <Router>
-              <NavBar />
-              <main className="pt-28">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/sobre" element={<Sobre />} />
-                  <Route path="/quem-sou" element={<Sobre />} />
-                  <Route path="/terapia-individual" element={<TerapiaIndividual />} />
-                  <Route path="/formacao-de-terapeutas" element={<FormacaoTerapeutas />} />
-                  <Route path="/autoconhecimento-em-grupo" element={<AutoconhecimentoGrupo />} />
-                  <Route path="/thetahealing" element={<ThetaHealing />} />
-                  <Route path="/blog" element={<BlogIndex />} />
-                  <Route path="/blog/:slug" element={<BlogPost />} />
-                  <Route path="/obrigado" element={<ThankYou />} />
-                  <Route path="/payment-return" element={<PaymentReturn />} />
-                </Routes>
-              </main>
-              <Footer />
-
-              <SchedulingChat />
-            </Router>
-          </div>
+          <Router>
+            <MainContent />
+          </Router>
         </SchedulingProvider>
       </HelmetProvider>
     </QueryClientProvider>
