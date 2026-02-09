@@ -201,14 +201,14 @@ const NavBar = () => {
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = location.pathname === '/encontro-das-deusas';
+  const isLandingPage = location.pathname === '/' || location.pathname === '/encontro-das-deusas';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
       {!isLandingPage && <NavBar />}
       <main className={isLandingPage ? "" : "pt-28"}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<EncontroDeusas />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/quem-sou" element={<Sobre />} />
           <Route path="/terapia-individual" element={<TerapiaIndividual />} />
