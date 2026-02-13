@@ -7,7 +7,7 @@ const HeroSection: React.FC = () => {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/fotos-encontro-deusas/fotos-encontro-deusas1.jpg"
+                    src="/fotos-encontro-deusas/fotos-encontro-deusas33.jpg"
                     alt="Retiro Encontro das Deusas em Bonito, Pernambuco"
                     className="w-full h-full object-cover opacity-60"
                     loading="eager"
@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
                 </span>
 
                 <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
-                    Você não precisa carregar o mundo sozinha.
+                    Encontro das Deusas: A consagração
                 </h1>
 
                 <p className="font-sans text-lg md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">

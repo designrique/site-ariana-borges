@@ -31,12 +31,6 @@ const AboutSection: React.FC = () => {
                     <p className="font-sans text-gray-600 leading-relaxed mb-8">
                         Terapeuta e mentora espiritual com mais de 12 mil atendimentos e 1.500 alunos impactados. Minha missão é guiar pessoas em jornadas de cura profunda e reconexão com sua essência, unindo espiritualidade, ciência e técnicas integrativas.
                     </p>
-                    <a
-                        href="/sobre"
-                        className="inline-block bg-brand-dark text-white font-sans px-8 py-3 rounded-full font-bold hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                    >
-                        Conheça minha história completa
-                    </a>
                 </div>
             </div>
         </section>
