@@ -23,11 +23,11 @@ const EncontroDeusas: React.FC = () => {
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://arianaborges.com/encontro-das-deusas" />
+                <meta property="og:url" content="https://encontrodeusas.arianaborges.com/" />
                 <meta property="og:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
                 <meta property="og:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força. 24 a 26 de Abril em Bonito/PE." />
-                <meta property="og:image" content="https://arianaborges.com/og-site-encontro-deusas.png" />
-                <meta property="og:image:secure_url" content="https://arianaborges.com/og-site-encontro-deusas.png" />
+                <meta property="og:image" content="https://encontrodeusas.arianaborges.com/og-site-encontro-deusas.png" />
+                <meta property="og:image:secure_url" content="https://encontrodeusas.arianaborges.com/og-site-encontro-deusas.png" />
                 <meta property="og:image:type" content="image/png" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -36,12 +36,12 @@ const EncontroDeusas: React.FC = () => {
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:url" content="https://arianaborges.com/encontro-das-deusas" />
+                <meta name="twitter:url" content="https://encontrodeusas.arianaborges.com/" />
                 <meta name="twitter:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
                 <meta name="twitter:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força." />
-                <meta name="twitter:image" content="https://arianaborges.com/og-site-encontro-deusas.png" />
+                <meta name="twitter:image" content="https://encontrodeusas.arianaborges.com/og-site-encontro-deusas.png" />
 
-                <link rel="canonical" href="https://arianaborges.com/encontro-das-deusas" />
+                <link rel="canonical" href="https://encontrodeusas.arianaborges.com/" />
             </Helmet>
 
             <a href="#hero_section" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-gold text-brand-dark px-4 py-2 rounded-full font-bold z-50">
