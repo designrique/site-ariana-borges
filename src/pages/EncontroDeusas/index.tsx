@@ -17,12 +17,27 @@ const EncontroDeusas: React.FC = () => {
     return (
         <div className="font-sans antialiased text-brand-dark">
             <Helmet>
-                <title>Encontro das Deusas | Retiro de Reconstrução e Soberania</title>
-                <meta name="description" content="Um retiro terapêutico em Bonito/PE (24-26 Abril) para mulheres que buscam força, autonomia e cura emocional em momentos de transição." />
+                <title>Encontro das Deusas: A consagração | Retiro Terapêutico</title>
+                <meta name="description" content="Participe do Encontro das Deusas: A consagração. Um retiro terapêutico exclusivo em Bonito/PE (24-26 de Abril) para mulheres que buscam força, autonomia e cura emocional." />
                 <meta name="robots" content="index, follow" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://arianaborges.com/encontro-das-deusas" />
+                <meta property="og:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
+                <meta property="og:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força. 24 a 26 de Abril em Bonito/PE." />
                 <meta property="og:image" content="/og-site-encontro-deusas.png" />
                 <meta property="og:image:type" content="image/png" />
+                <meta property="og:site_name" content="Ariana Borges" />
+                <meta property="og:locale" content="pt_BR" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:url" content="https://arianaborges.com/encontro-das-deusas" />
+                <meta name="twitter:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
+                <meta name="twitter:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força." />
                 <meta name="twitter:image" content="/og-site-encontro-deusas.png" />
+
                 <link rel="canonical" href="https://arianaborges.com/encontro-das-deusas" />
             </Helmet>
 
