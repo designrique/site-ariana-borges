@@ -8,7 +8,7 @@ const PricingSection: React.FC = () => {
             price: "2.598,00",
             period: "à vista ou parcelado",
             condition: "Melhor condição (até 28/02)",
-            features: ["Hospedagem Completa", "Alimentação Inclusa", "Kit da Deusa"],
+            features: ["Hospedagem Completa", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: true,
             url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G9MAYBwJdmzJ8FOGfT1AKGsPbHGog28fIHVN3SyyqRN8UOA_VmP-Agkogai0SyyuNw7Y12G4xmEadFlGeeBbbKgblmXA8IesIuYgSP3ApMzDmWWStXIGecssRc11m-613JFs0YTwLAVTB7Xu28-G3YOwfR3-Tpz0R_WsmVeJRC_2yonMk7aTIuUVzCikLlnNAIwc_vhN1FobDjA6lumMoyYQnQE.v1.ebb0e5665e2dceb2"
         },
@@ -17,7 +17,7 @@ const PricingSection: React.FC = () => {
             price: "2.898,00",
             period: "à vista ou parcelado",
             condition: "A partir de 01/03",
-            features: ["Hospedagem Completa", "Alimentação Inclusa", "Kit da Deusa"],
+            features: ["Hospedagem Completa", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: false,
             url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G8wAYBwJdgyyBh37EMTm_5oXJfjvecXM_lX_BtpAJhBFBTSfX4IUMXULUROZpwfsUVsQ1MIgagskD6WAT3w9WXoVERx7NXZ4OQRTBVcm3iJuMMgyP9n5wNQ0Pk-av5J8F3Qo1qJEtGvYibEf99e9iHxit_4lbbYeVP5s9og3oIL-LghaK7RyisAFAzaCFexJ2zigoPPm_Ic6F4bLi1lSD5XR6IoaAQ.v1.fc212b6eab273580"
         },
@@ -26,7 +26,7 @@ const PricingSection: React.FC = () => {
             price: "3.098,00",
             period: "à vista ou parcelado",
             condition: "Últimas vagas (a partir de 01/04)",
-            features: ["Hospedagem Completa", "Alimentação Inclusa", "Kit da Deusa"],
+            features: ["Hospedagem Completa", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: false,
             url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G8sAYGT-b9Yi-Nhcz8sC_-0JVCAJ3G0aU-C8pwfsUVsQ1MIgaguTPJQf-MDXkyVVRHDskbHlZhAMFayH6U6vASXDEDVTFNRV1X2n-UnJt9dnXu35TZ9Eww6xr_NxLoLu0B3_CPEjL1DaBpxmjLb3fzlg10FTj30DQm8AVjQN3nDtq7jAqS837j3UPS8cXky_FxrfG4kXNg.v1.7d9ab428bd3c79a6"
         }

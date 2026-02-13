@@ -3,7 +3,7 @@ import { MapPin } from 'lucide-react';
 
 const LocationSection: React.FC = () => {
     const locationImages = [
-        "/riobonito/image-bonito-pernambuco-refugio-do-rio-bonito-1.jpeg",
+        "/riobonito/refugio-rio-bonito-1.webp",
         "/riobonito/pousadarefugio-riobonito.webp",
         "/riobonito/pousadarefugio-riobonito2.webp"
     ];

@@ -11,7 +11,7 @@ const GallerySection: React.FC = () => {
     // Initialize state with a shuffled version of the image indices
     const [shuffledImages] = useState(() => {
         const baseImages = imageIndices.map((n, i) => ({
-            src: `/fotos-encontro-deusas/fotos-encontro-deusas${n}.jpg`,
+            src: `/fotos-encontro-deusas/fotos-encontro-deusas${n}.webp`,
             alt: `Encontro das Deusas - Momento ${i + 1}`,
             id: n
         }));

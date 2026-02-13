@@ -5,9 +5,9 @@ const HeroSection: React.FC = () => {
     return (
         <section id="hero_section" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-brand-dark text-brand-beige">
             {/* Background Image with Overlay */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 bg-brand-dark">
                 <img
-                    src="/fotos-encontro-deusas/fotos-encontro-deusas33.jpg"
+                    src="/fotos-encontro-deusas/hero-background.webp"
                     alt="Retiro Encontro das Deusas em Bonito, Pernambuco"
                     className="w-full h-full object-cover opacity-60"
                     loading="eager"

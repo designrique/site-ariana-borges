@@ -8,7 +8,7 @@ const AboutSection: React.FC = () => {
                 <div className="md:w-1/2 relative">
                     <div className="aspect-[4/5] rounded-2xl relative overflow-hidden shadow-xl">
                         <img
-                            src="/perfil-ariana-borges.jpg"
+                            src="/perfil-ariana-borges.webp"
                             alt="Ariana Borges"
                             className="w-full h-full object-cover object-top"
                         />
