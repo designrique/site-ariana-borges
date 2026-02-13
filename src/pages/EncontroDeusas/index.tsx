@@ -26,8 +26,11 @@ const EncontroDeusas: React.FC = () => {
                 <meta property="og:url" content="https://arianaborges.com/encontro-das-deusas" />
                 <meta property="og:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
                 <meta property="og:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força. 24 a 26 de Abril em Bonito/PE." />
-                <meta property="og:image" content="/og-site-encontro-deusas.png" />
+                <meta property="og:image" content="https://arianaborges.com/og-site-encontro-deusas.png" />
+                <meta property="og:image:secure_url" content="https://arianaborges.com/og-site-encontro-deusas.png" />
                 <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
                 <meta property="og:site_name" content="Ariana Borges" />
                 <meta property="og:locale" content="pt_BR" />
 
@@ -36,7 +39,7 @@ const EncontroDeusas: React.FC = () => {
                 <meta name="twitter:url" content="https://arianaborges.com/encontro-das-deusas" />
                 <meta name="twitter:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
                 <meta name="twitter:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força." />
-                <meta name="twitter:image" content="/og-site-encontro-deusas.png" />
+                <meta name="twitter:image" content="https://arianaborges.com/og-site-encontro-deusas.png" />
 
                 <link rel="canonical" href="https://arianaborges.com/encontro-das-deusas" />
             </Helmet>
