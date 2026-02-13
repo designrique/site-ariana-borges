@@ -8,9 +8,9 @@ const AboutSection: React.FC = () => {
                 <div className="md:w-1/2 relative">
                     <div className="aspect-[4/5] rounded-2xl relative overflow-hidden shadow-xl">
                         <img
-                            src="/perfil-ariana-borges.jpeg"
+                            src="/perfil-ariana-borges.jpg"
                             alt="Ariana Borges"
-                            className="w-full h-full object-cover object-top sepia-[0.1] brightness-[1.05] contrast-[0.95]"
+                            className="w-full h-full object-cover object-top"
                         />
                     </div>
                     {/* Decorative element */}
