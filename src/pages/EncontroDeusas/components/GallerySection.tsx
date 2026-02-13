@@ -3,17 +3,20 @@ import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 const GallerySection: React.FC = () => {
     // List of existing image indices in public/fotos-encontro-deusas
+    // Updated to reflect only the images currently present in the filesystem
     const imageIndices = [
-        1, 2, 4, 8, 9, 11, 15, 16, 20, 21, 22, 23, 25, 26, 27, 29, 30,
-        31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 43, 46, 48, 50, 51, 52,
-        54, 55, 56, 57, 58, 60, 62, 65, 67, 68, 70, 73, 74, 81, 82, 83, 84, 85, 86
+        2, 8, 11, 15, 16, 20, 23, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 43, 46, 48, 50, 51, 52, 54, 55, 56, 57, 58, 60, 62, 65, 67, 68, 70, 73, 74, 80, 81, 82, 83, 84, 86
     ];
 
-    const images = imageIndices.map((n, i) => ({
-        src: `/fotos-encontro-deusas/fotos-encontro-deusas${n}.jpg`,
-        alt: `Encontro das Deusas - Momento ${i + 1}`,
-        id: n
-    }));
+    // Initialize state with a shuffled version of the image indices
+    const [shuffledImages] = useState(() => {
+        const baseImages = imageIndices.map((n, i) => ({
+            src: `/fotos-encontro-deusas/fotos-encontro-deusas${n}.jpg`,
+            alt: `Encontro das Deusas - Momento ${i + 1}`,
+            id: n
+        }));
+        return [...baseImages].sort(() => Math.random() - 0.5);
+    });
 
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -31,14 +34,14 @@ const GallerySection: React.FC = () => {
     const nextImage = (e?: React.MouseEvent) => {
         e?.stopPropagation();
         if (selectedImageIndex !== null) {
-            setSelectedImageIndex((prev) => (prev === null || prev === images.length - 1 ? 0 : prev + 1));
+            setSelectedImageIndex((prev) => (prev === null || prev === shuffledImages.length - 1 ? 0 : prev + 1));
         }
     };
 
     const prevImage = (e?: React.MouseEvent) => {
         e?.stopPropagation();
         if (selectedImageIndex !== null) {
-            setSelectedImageIndex((prev) => (prev === null || prev === 0 ? images.length - 1 : prev - 1));
+            setSelectedImageIndex((prev) => (prev === null || prev === 0 ? shuffledImages.length - 1 : prev - 1));
         }
     };
 
@@ -103,7 +106,7 @@ const GallerySection: React.FC = () => {
                         className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-4 pb-8 px-2"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
-                        {images.map((img, index) => (
+                        {shuffledImages.map((img, index) => (
                             <div
                                 key={img.id}
                                 className="min-w-[80vw] md:min-w-[300px] h-[300px] md:h-[250px] snap-center flex-shrink-0 relative group/card cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
@@ -159,12 +162,12 @@ const GallerySection: React.FC = () => {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <img
-                            src={images[selectedImageIndex].src}
-                            alt={images[selectedImageIndex].alt}
+                            src={shuffledImages[selectedImageIndex].src}
+                            alt={shuffledImages[selectedImageIndex].alt}
                             className="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
                         />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-sans backdrop-blur-sm">
-                            {selectedImageIndex + 1} / {images.length}
+                            {selectedImageIndex + 1} / {shuffledImages.length}
                         </div>
                     </div>
                 </div>
