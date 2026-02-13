@@ -14,7 +14,7 @@ const ProgramSection: React.FC = () => {
         {
             day: "Sábado (Integral)",
             title: "MÓDULO II – CONSAGRAÇÃO: O Corpo que Lembra",
-            time: "08h às 21h00",
+            time: "09h às 21h00",
             description: "Trabalho corporal profundo para curar a autoimagem e a dissociação causada pelo trauma.",
             rituals: ["Práticas de 'O Corpo como Templo'", "Ritual de Resgate de Alma", "O Fogo Sagrado"],
             archetypes: "Deméter, Afrodite e Oxum Ancestral"
@@ -22,7 +22,7 @@ const ProgramSection: React.FC = () => {
         {
             day: "Domingo (Manhã)",
             title: "MÓDULO III – SOBERANIA: A Mulher que Reina",
-            time: "08h às 12h00",
+            time: "09h às 12h00",
             description: "O momento de levantar a cabeça e decidir para onde você vai.",
             rituals: ["Limites, Escolhas e Posicionamento", "Ritual da Coroação", "Selamento Final"],
             archetypes: "Ártemis, Iansã e Hécate"

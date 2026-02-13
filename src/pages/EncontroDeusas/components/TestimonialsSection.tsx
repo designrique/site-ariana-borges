@@ -74,7 +74,7 @@ const TestimonialsSection: React.FC = () => {
         },
         {
             id: 6,
-            name: "Sherrie",
+            name: "Chelly",
             age: "",
             context: "",
             quote: "...saio daqui hoje me sentindo mais mulher, preenchida, inteira. E o lugar incrível, a conexão que a gente tem com a natureza, com a terra, com o ar, com o fogo é incrível.",
