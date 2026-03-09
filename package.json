@@ -13,6 +13,7 @@
     "@tanstack/react-query": "^5.90.17",
     "@types/escape-html": "^1.0.4",
     "escape-html": "^1.0.3",
+    "framer-motion": "^12.35.0",
     "lucide-react": "^0.344.0",
     "openai": "^6.13.0",
     "react": "^18.2.0",
