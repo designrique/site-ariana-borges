@@ -9,7 +9,7 @@ const INTERVAL = 1000 / FPS;
 const FRAME_PATHS: string[] = Array.from({ length: 239 }, (_, i) => {
   const n = i + 1;
   if (n === 3) return null;
-  return `${BASE_PATH}/ezgif-frame-${String(n).padStart(3, '0')}.jpg`;
+  return `${BASE_PATH}/ezgif-frame-${String(n).padStart(3, '0')}.webp`;
 }).filter(Boolean) as string[];
 
 const DNASequenceBackground: React.FC = () => {

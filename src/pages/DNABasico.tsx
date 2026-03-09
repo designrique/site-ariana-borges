@@ -74,7 +74,7 @@ const DNABasico: React.FC = () => {
 
           <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full max-w-md aspect-[3/4]">
             <img
-              src="/dna-basico/ariana-meditando.jpg"
+              src="/dna-basico/ariana-meditando.webp"
               alt="Ariana Borges meditando — facilitadora do DNA Básico ThetaHealing®"
               className="w-full h-full object-cover object-center"
               loading="eager"
@@ -179,7 +179,7 @@ const DNABasico: React.FC = () => {
           playsInline
           className="w-full h-full object-cover opacity-40"
         >
-          <source src="/dna-basico/video-theta.mp4" type="video/mp4" />
+          <source src="/dna-basico/video-theta-opt.mp4" type="video/mp4" />
         </video>
         {/* Adicional overlay de gradiente para garantir leitura */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/40 to-brand-dark/80" />

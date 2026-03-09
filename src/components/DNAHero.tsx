@@ -53,7 +53,7 @@ const DNAHero: React.FC = () => {
 
   const subtitle = heroData?.subtitle || "Desperte seu potencial de cura, reprograme crenças limitantes e expanda sua consciência. Aprenda a técnica que transforma vidas em apenas 3 dias intensivos.";
   const ctaText = heroData?.ctaButtonText || "Garanta Minha Vaga Agora";
-  const bgImage = heroData?.backgroundImage?.url || "/dna-basico/ariana-meditando.jpg";
+  const bgImage = heroData?.backgroundImage?.url || "/dna-basico/ariana-meditando.webp";
 
   // Variantes de animação para o conteúdo
   const containerVariants = {
