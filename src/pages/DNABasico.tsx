@@ -97,8 +97,8 @@ const DNABasico: React.FC = () => {
 
           <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full max-w-md aspect-[3/4]">
             <img
-              src="/dna-basico/ariana-meditando.webp"
-              alt="Ariana Borges meditando — facilitadora do DNA Básico ThetaHealing®"
+              src="/perfil-ariana-borges.webp"
+              alt="Ariana Borges — facilitadora do DNA Básico ThetaHealing®"
               className="w-full h-full object-cover object-center"
               loading="eager"
             />
