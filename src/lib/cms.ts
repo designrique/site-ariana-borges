@@ -84,8 +84,10 @@ export interface SiteSettingsData {
 }
 
 const CMS_URL = import.meta.env.VITE_CMS_URL || 'http://localhost:3002';
+const CMS_AVAILABLE = !!import.meta.env.VITE_CMS_URL;
 
 export async function getPosts(): Promise<Post[]> {
+    if (!CMS_AVAILABLE) return [];
     try {
         const res = await fetch(`${CMS_URL}/api/posts?limit=100&sort=-publishedDate`);
         if (!res.ok) {
@@ -101,6 +103,7 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
+    if (!CMS_AVAILABLE) return null;
     try {
         const query = `where[slug][equals]=${encodeURIComponent(slug)}`;
         const url = `${CMS_URL}/api/posts?${query}`;
@@ -120,6 +123,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function getHero(): Promise<HeroData | null> {
+    if (!CMS_AVAILABLE) return null;
     try {
         const res = await fetch(`${CMS_URL}/api/hero-section?limit=1`);
         if (!res.ok) throw new Error('Failed to fetch hero');
@@ -132,6 +136,7 @@ export async function getHero(): Promise<HeroData | null> {
 }
 
 export async function getServices(): Promise<Service[]> {
+    if (!CMS_AVAILABLE) return [];
     try {
         const res = await fetch(`${CMS_URL}/api/services?limit=100&sort=order&where[isActive][equals]=true`);
         if (!res.ok) throw new Error('Failed to fetch services');
@@ -144,6 +149,7 @@ export async function getServices(): Promise<Service[]> {
 }
 
 export async function getFAQs(): Promise<FAQItem[]> {
+    if (!CMS_AVAILABLE) return [];
     try {
         const res = await fetch(`${CMS_URL}/api/faq?limit=100&sort=order`);
         if (!res.ok) throw new Error('Failed to fetch FAQs');
@@ -156,6 +162,7 @@ export async function getFAQs(): Promise<FAQItem[]> {
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {
+    if (!CMS_AVAILABLE) return [];
     try {
         const res = await fetch(`${CMS_URL}/api/testimonials?limit=100&sort=order&where[isActive][equals]=true`);
         if (!res.ok) throw new Error('Failed to fetch testimonials');
@@ -168,6 +175,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 }
 
 export async function getSiteSettings(): Promise<SiteSettingsData | null> {
+    if (!CMS_AVAILABLE) return null;
     try {
         const res = await fetch(`${CMS_URL}/api/globals/site-settings`);
         if (!res.ok) throw new Error('Failed to fetch site settings');
