@@ -13,6 +13,8 @@ import BlogPost from '@/pages/Blog/BlogPost';
 import ThankYou from '@/components/ThankYou';
 import PaymentReturn from '@/pages/PaymentReturn';
 import EncontroDeusas from '@/pages/EncontroDeusas';
+import DNABasico from '@/pages/DNABasico';
+import DNABasicoSimple from '@/pages/DNABasicoSimple';
 import Footer from '@/components/Footer';
 
 import SchedulingChat from '@/components/SchedulingChat';
@@ -201,27 +203,29 @@ const NavBar = () => {
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = location.pathname === '/' || location.pathname === '/encontro-das-deusas';
+  const isLandingPage = location.pathname === '/' || location.pathname === '/encontro-das-deusas' || location.pathname === '/dna-basico';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
       {!isLandingPage && <NavBar />}
-      <main className={isLandingPage ? "" : "pt-28"}>
+      <div className={isLandingPage ? "" : "pt-28"}>
         <Routes>
-          <Route path="/" element={<EncontroDeusas />} />
+          <Route path="/" element={<DNABasico />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/quem-sou" element={<Sobre />} />
           <Route path="/terapia-individual" element={<TerapiaIndividual />} />
           <Route path="/formacao-de-terapeutas" element={<FormacaoTerapeutas />} />
           <Route path="/autoconhecimento-em-grupo" element={<AutoconhecimentoGrupo />} />
           <Route path="/thetahealing" element={<ThetaHealing />} />
+          <Route path="/dna-basico" element={<DNABasico />} />
+          <Route path="/dna-basico-simple" element={<DNABasicoSimple />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/obrigado" element={<ThankYou />} />
           <Route path="/payment-return" element={<PaymentReturn />} />
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
         </Routes>
-      </main>
+      </div>
       <Footer />
       <SchedulingChat />
     </div>
