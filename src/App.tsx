@@ -201,16 +201,26 @@ const NavBar = () => {
   );
 };
 
+const hostname = window.location.hostname;
+const isDNASubdomain = hostname === 'dnabasico.arianaborges.com';
+const isDeusasSubdomain = hostname === 'encontrodeusas.arianaborges.com';
+
+function getRootPage() {
+  if (isDNASubdomain) return <DNABasico />;
+  if (isDeusasSubdomain) return <EncontroDeusas />;
+  return <Home />;
+}
+
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = location.pathname === '/' || location.pathname === '/encontro-das-deusas';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || location.pathname === '/encontro-das-deusas';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
       {!isLandingPage && <NavBar />}
       <div className={isLandingPage ? "" : "pt-28"}>
         <Routes>
-          <Route path="/" element={<DNABasico />} />
+          <Route path="/" element={getRootPage()} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/quem-sou" element={<Sobre />} />
           <Route path="/terapia-individual" element={<TerapiaIndividual />} />
