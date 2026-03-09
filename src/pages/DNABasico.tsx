@@ -108,7 +108,7 @@ const DNABasico: React.FC = () => {
             {/* Tag flutuante */}
             <div className="absolute bottom-6 left-6 right-6 bg-black/40 backdrop-blur-md border border-white/15 rounded-2xl px-5 py-4">
               <p className="text-white font-heading font-semibold text-lg leading-tight">Ariana Borges</p>
-              <p className="text-goddess-gold text-sm mt-0.5">Instrutora Certificada ThetaHealing®</p>
+              <p className="text-goddess-gold text-sm mt-0.5">Instrutora Master & Science de Thetahealing</p>
             </div>
           </div>
         </div>
