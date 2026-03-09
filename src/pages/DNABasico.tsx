@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Container, Row, Col, SectionHeader, Button, Card, CardGrid } from '@/components/DesignSystem';
 import DNASequenceBackground from '@/components/DNASequenceBackground';
 import DNABasicoGallerySection from './DNABasico/components/DNABasicoGallerySection';
-import { Brain, Heart, Users, Check, Star, Award, Clock, Shield, BookOpen, Users as UsersIcon, Target, Sparkles, Zap, ArrowRight, Infinity as InfinityIcon } from 'lucide-react';
+import { Brain, Heart, Users, Check, Star, Award, Clock, Shield, BookOpen, Users as UsersIcon, Target, Sparkles, Zap, ArrowRight, Infinity as InfinityIcon, CalendarDays } from 'lucide-react';
 
 const DNABasico: React.FC = () => {
   // === HERO SECTION ===
@@ -27,9 +27,18 @@ const DNABasico: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-white/85 mb-10 leading-relaxed font-bold">
+          <p className="text-lg md:text-xl text-white/85 mb-6 leading-relaxed font-bold">
             Aprenda a acessar o estado Theta e reprogramar padrões inconscientes em seus relacionamentos, finanças e autoestima.
           </p>
+
+          {/* Data do evento */}
+          <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-2 bg-goddess-gold/20 border border-goddess-gold/50 px-4 py-2.5 rounded-xl backdrop-blur-sm">
+              <CalendarDays className="w-4 h-4 text-goddess-gold flex-shrink-0" />
+              <span className="text-goddess-gold font-bold text-sm tracking-wide">27, 28 e 29 de Março</span>
+            </div>
+            <span className="text-white/55 text-sm font-medium">Próxima turma</span>
+          </div>
 
           {/* Course info pills */}
           <div className="flex flex-wrap gap-3 mb-10">
