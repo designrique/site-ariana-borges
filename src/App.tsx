@@ -201,8 +201,6 @@ const NavBar = () => {
   );
 };
 
-const isDNASubdomain = window.location.hostname === 'dnabasico.arianaborges.com';
-
 const MainContent = () => {
   const location = window.location;
   const isLandingPage = location.pathname === '/' || location.pathname === '/encontro-das-deusas';
@@ -212,7 +210,7 @@ const MainContent = () => {
       {!isLandingPage && <NavBar />}
       <div className={isLandingPage ? "" : "pt-28"}>
         <Routes>
-          <Route path="/" element={isDNASubdomain ? <DNABasico /> : <EncontroDeusas />} />
+          <Route path="/" element={<DNABasico />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/quem-sou" element={<Sobre />} />
           <Route path="/terapia-individual" element={<TerapiaIndividual />} />
