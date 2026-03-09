@@ -22,8 +22,22 @@ const DNABasico: React.FC = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-heading text-5xl md:text-6xl font-bold leading-tight mb-6 drop-shadow-md">
-            DNA Básico
+          <h1 className="font-heading font-bold leading-none mb-6">
+            <span className="block text-white text-6xl md:text-8xl tracking-tight drop-shadow-xl">
+              DNA
+            </span>
+            <span
+              className="block text-5xl md:text-6xl tracking-[0.18em] uppercase"
+              style={{
+                background: 'linear-gradient(135deg, #D4AF37 0%, #F3E5AB 45%, #D4AF37 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 2px 8px rgba(212,175,55,0.35))',
+              }}
+            >
+              BÁSICO
+            </span>
           </h1>
 
           {/* Subtitle */}
