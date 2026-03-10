@@ -13,6 +13,7 @@ import BlogPost from '@/pages/Blog/BlogPost';
 import ThankYou from '@/components/ThankYou';
 import PaymentReturn from '@/pages/PaymentReturn';
 import EncontroDeusas from '@/pages/EncontroDeusas';
+import ClubeDoLivroMulherMaravilha from '@/pages/ClubeDoLivroMulherMaravilha';
 import DNABasico from '@/pages/DNABasico';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
 import Footer from '@/components/Footer';
@@ -213,7 +214,7 @@ function getRootPage() {
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = isDNASubdomain || isDeusasSubdomain || location.pathname === '/encontro-das-deusas';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
@@ -234,6 +235,7 @@ const MainContent = () => {
           <Route path="/obrigado" element={<ThankYou />} />
           <Route path="/payment-return" element={<PaymentReturn />} />
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
+          <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
         </Routes>
       </div>
       <Footer />
