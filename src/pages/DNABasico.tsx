@@ -49,7 +49,7 @@ const DNABasico: React.FC = () => {
           <div className="flex items-center gap-3 mb-8">
             <div className="flex items-center gap-2 bg-goddess-gold/20 border border-goddess-gold/50 px-4 py-2.5 rounded-xl backdrop-blur-sm">
               <CalendarDays className="w-4 h-4 text-goddess-gold flex-shrink-0" />
-              <span className="text-goddess-gold font-bold text-sm tracking-wide">27, 28 e 29 de Março</span>
+              <span className="text-goddess-gold font-bold text-sm tracking-wide">12, 13 e 14 de Junho</span>
             </div>
             <span className="text-white/55 text-sm font-medium">Próxima turma</span>
           </div>
@@ -376,11 +376,10 @@ const DNABasico: React.FC = () => {
           </p>
           <ul className="space-y-4">
             {[
-              "Livro ThetaHealing® Básico (Físico ou Digital)",
-              "Apostila oficial completa",
+              "Livro ThetaHealing® Básico (Físico)",
+              "Apostila oficial (digital ou física)",
               "Certificado Internacional (praticante)",
               "Registro no site oficial ThetaHealing.com",
-              "Acesso ao grupo VIP de alunos para trocas"
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <Check className="w-6 h-6 text-goddess-gold flex-shrink-0" />
@@ -432,8 +431,8 @@ const DNABasico: React.FC = () => {
       <div className="max-w-md mx-auto">
         <Card variant="elevated" className="border-4 border-goddess-purple relative overflow-hidden flex flex-col h-full shadow-2xl p-0">
           <div className="bg-gradient-to-r from-goddess-purple to-goddess-purpleDark text-white text-center py-6">
-            <h3 className="font-heading text-4xl font-bold mb-2">Turma Online</h3>
-            <p className="text-white/80 text-lg">Ao vivo pelo Zoom</p>
+            <h3 className="font-heading text-4xl font-bold mb-2">Turma Presencial</h3>
+            <p className="text-white/80 text-lg">12, 13 e 14 de Junho</p>
           </div>
 
           <div className="p-8 text-center flex-grow bg-white">
@@ -445,11 +444,10 @@ const DNABasico: React.FC = () => {
 
             <ul className="text-left mb-10 space-y-5">
               {[
-                "3 dias de Formação Ao Vivo",
+                "3 dias de Formação Presencial",
                 "Certificado Oficial de Praticante",
-                "Apostila e Livro Oficial",
-                "Grupo VIP de acompanhamento",
-                "BÔNUS: Mentoria Pós-Curso"
+                "Livro Físico + Apostila Oficial",
+                "BÔNUS: Grupo VIP com aulas mensais e acesso a gravações",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
                   <Check className="w-6 h-6 text-goddess-green flex-shrink-0" />
@@ -498,12 +496,12 @@ const DNABasico: React.FC = () => {
             a: "O ThetaHealing® não é uma religião. É uma técnica de treinamento meditativo e filosofia espiritual. Pessoas de todas as religiões (ou sem religião) praticam e relatam que a técnica apenas fortaleceu sua própria fé pessoal."
           },
           {
-            q: "Como o curso online consegue ter práticas?",
-            a: "Utilizamos as salas simultâneas (breakout rooms) do Zoom. Em cada exercício, você é direcionado para uma sala privada com sua dupla, e os instrutores circulam pelas salas oferecendo suporte e orientação, exatamente como fariam na versão presencial."
+            q: "O certificado me permite trabalhar como terapeuta?",
+            a: "Sim. Ao final do DNA Básico, você assina o contrato com o THInK (ThetaHealing Institute of Knowledge) e se torna oficialmente um Praticante de ThetaHealing®, podendo atender a si mesmo, amigos ou clientes pagantes. Atenção: o aluno deverá realizar o cadastro no site oficial do THInK para receber o certificado internacional."
           },
           {
-            q: "O certificado me permite trabalhar como terapeuta?",
-            a: "Sim. Ao final do DNA Básico, você assina o contrato com o THInK (ThetaHealing Institute of Knowledge) e se torna oficialmente um Praticante de ThetaHealing®, podendo atender a si mesmo, amigos, ou clientes pagantes."
+            q: "O que é o Grupo VIP incluído na formação?",
+            a: "O Grupo VIP é o seu suporte contínuo após o curso. Nele você tira dúvidas com a instrutora, participa de aulas treino ao vivo uma vez por mês e tem acesso a aulas gravadas que ficam disponíveis para você assistir quando quiser — tudo online, no seu tempo."
           }
         ].map((item, idx) => (
           <div key={idx} className="p-8 rounded-3xl border border-gray-200 bg-white hover:border-goddess-purple/30 transition-colors shadow-sm">
