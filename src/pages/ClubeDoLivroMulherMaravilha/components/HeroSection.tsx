@@ -36,13 +36,21 @@ const HeroSection: React.FC = () => {
                     Baseado no livro <strong className="text-brand-gold not-italic">A Psicologia da Mulher‑Maravilha</strong>.
                 </p>
 
-                <div className="mb-10">
+                <div className="mb-10 flex flex-col items-center gap-3">
                     <img
                         src="/clube-mulher-maravilha/capa-livro-mulher-maravilha.webp"
                         alt="Capa do livro A Psicologia da Mulher-Maravilha"
                         className="w-32 md:w-40 rounded-xl shadow-2xl shadow-black/60 mx-auto"
                         loading="eager"
                     />
+                    <a
+                        href="https://amzn.to/4dho7Xd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-sans font-semibold text-brand-dark bg-brand-gold hover:bg-brand-goldDark transition-colors duration-200 px-4 py-1.5 rounded-full shadow"
+                    >
+                        📖 Comprar o livro
+                    </a>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-10 text-sm font-sans text-gray-200">
