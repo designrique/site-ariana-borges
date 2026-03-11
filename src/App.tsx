@@ -14,6 +14,7 @@ import ThankYou from '@/components/ThankYou';
 import PaymentReturn from '@/pages/PaymentReturn';
 import EncontroDeusas from '@/pages/EncontroDeusas';
 import ClubeDoLivroMulherMaravilha from '@/pages/ClubeDoLivroMulherMaravilha';
+import ThankYouClubeDoLivro from '@/pages/ClubeDoLivroMulherMaravilha/ThankYou';
 import DNABasico from '@/pages/DNABasico';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
 import Footer from '@/components/Footer';
@@ -234,7 +235,7 @@ const MainContent = () => {
           <Route path="/dna-basico-simple" element={<DNABasicoSimple />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/obrigado" element={<ThankYou />} />
+          <Route path="/obrigado" element={isClubeSubdomain ? <ThankYouClubeDoLivro /> : <ThankYou />} />
           <Route path="/payment-return" element={<PaymentReturn />} />
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
           <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
