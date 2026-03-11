@@ -8,6 +8,7 @@ const topics = [
     { icon: "🌑", title: "A integração da sombra emocional" },
     { icon: "🌿", title: "Autonomia e soberania feminina" },
     { icon: "🔥", title: "Coragem para ocupar seu lugar no mundo" },
+    { icon: "✨", title: "Prosperidade Magnética" },
 ];
 
 const TopicsSection: React.FC = () => {

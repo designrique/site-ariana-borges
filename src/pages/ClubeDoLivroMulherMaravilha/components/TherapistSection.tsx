@@ -13,7 +13,7 @@ const TherapistSection: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-10 items-center">
                     <div className="shrink-0">
                         <img
-                            src="/ariana-borges-foto.webp"
+                            src="/perfil-ariana-borges.jpeg"
                             alt="Ariana Borges – Terapeuta"
                             className="w-52 h-52 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-brand-gold"
                             loading="lazy"

@@ -26,7 +26,7 @@ const AboutGroupSection: React.FC = () => {
                     {[
                         { icon: "🔍", label: "reflexão profunda" },
                         { icon: "🌱", label: "autoconhecimento" },
-                        { icon: "👂", label: "escuta terapêutica" },
+                        { icon: "👂", label: "exercícios sistêmicos" },
                         { icon: "💪", label: "fortalecimento emocional" },
                     ].map((item, i) => (
                         <div key={i} className="flex items-center gap-4 bg-brand-beige rounded-xl px-6 py-4 border border-brand-lilac/20">
