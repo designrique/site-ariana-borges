@@ -6,7 +6,7 @@ const PricingSection: React.FC = () => {
         "8 encontros terapêuticos online ao vivo",
         "Leitura guiada do livro",
         "Exercícios terapêuticos",
-        "Grupo fechado com até 15 mulheres",
+        "Grupo Exclusivo Feminino",
         "Condução da terapeuta Ariana Borges",
     ];
 
