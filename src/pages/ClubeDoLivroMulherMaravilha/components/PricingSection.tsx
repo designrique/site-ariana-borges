@@ -49,7 +49,7 @@ const PricingSection: React.FC = () => {
                         </ul>
 
                         <a
-                            href="https://wa.me/558199999999"
+                            href="https://checkout.infinitepay.io/institutoarianaborges/3igXd4O5Sh"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block w-full py-4 rounded-xl font-bold text-center transition-all duration-300 bg-brand-dark text-white hover:bg-opacity-90 shadow-lg"
