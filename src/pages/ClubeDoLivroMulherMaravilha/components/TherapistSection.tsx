@@ -13,13 +13,10 @@ const TherapistSection: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-10 items-center">
                     <div className="shrink-0">
                         <img
-                            src="/ariana-borges-foto.webp"
+                            src="/Ariana-Borges-profile-photo.jpeg"
                             alt="Ariana Borges – Terapeuta"
                             className="w-52 h-52 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-brand-gold"
                             loading="lazy"
-                            onError={(e) => {
-                                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop";
-                            }}
                         />
                     </div>
 
