@@ -238,6 +238,7 @@ const MainContent = () => {
           <Route path="/payment-return" element={<PaymentReturn />} />
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
           <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
+          <Route path="/clubelivromulhermaravilha" element={<ClubeDoLivroMulherMaravilha />} />
         </Routes>
       </div>
       <Footer />
