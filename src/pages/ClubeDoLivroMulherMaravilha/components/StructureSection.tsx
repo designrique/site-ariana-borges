@@ -27,11 +27,6 @@ const StructureSection: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="bg-brand-gold/10 border border-brand-gold/30 rounded-2xl px-8 py-7 text-center">
-                    <p className="font-serif text-xl text-brand-dark mb-2">Participação ideal</p>
-                    <p className="font-sans text-3xl font-bold text-brand-goldDark mb-2">8 a 15 mulheres</p>
-                    <p className="font-sans text-gray-600 text-sm">para garantir profundidade nas trocas.</p>
-                </div>
             </div>
         </section>
     );

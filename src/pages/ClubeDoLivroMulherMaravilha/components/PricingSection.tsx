@@ -33,7 +33,7 @@ const PricingSection: React.FC = () => {
 
                         <div className="mb-8">
                             <span className="text-sm font-sans mr-1">R$</span>
-                            <span className="text-5xl font-bold font-sans text-brand-dark">444</span>
+                            <span className="text-5xl font-bold font-sans text-brand-dark">298</span>
                             <p className="text-xs mt-1 text-brand-dark/70">à vista ou parcelado</p>
                         </div>
 
