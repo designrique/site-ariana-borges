@@ -205,16 +205,18 @@ const NavBar = () => {
 const hostname = window.location.hostname;
 const isDNASubdomain = hostname === 'dnabasico.arianaborges.com';
 const isDeusasSubdomain = hostname === 'encontrodeusas.arianaborges.com';
+const isClubeSubdomain = hostname === 'clubelivromulhermaravilha.arianaborges.com';
 
 function getRootPage() {
   if (isDNASubdomain) return <DNABasico />;
   if (isDeusasSubdomain) return <EncontroDeusas />;
+  if (isClubeSubdomain) return <ClubeDoLivroMulherMaravilha />;
   return <Home />;
 }
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = isDNASubdomain || isDeusasSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">

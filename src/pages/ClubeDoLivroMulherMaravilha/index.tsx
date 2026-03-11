@@ -22,7 +22,7 @@ const ClubeDoLivroMulherMaravilha: React.FC = () => {
 
                 {/* Open Graph */}
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://arianaborges.com/clube-livro-mulher-maravilha" />
+                <meta property="og:url" content="https://clubelivromulhermaravilha.arianaborges.com/" />
                 <meta property="og:title" content="Clube do Livro: A Psicologia da Mulher-Maravilha | Grupo Terapêutico Online" />
                 <meta property="og:description" content="Um grupo terapêutico online para mulheres que desejam fortalecer sua identidade e resgatar sua força interior. 8 encontros ao vivo com Ariana Borges." />
                 <meta property="og:site_name" content="Instituto Ariana Borges" />
@@ -33,7 +33,7 @@ const ClubeDoLivroMulherMaravilha: React.FC = () => {
                 <meta name="twitter:title" content="Clube do Livro: A Psicologia da Mulher-Maravilha | Grupo Terapêutico Online" />
                 <meta name="twitter:description" content="Um grupo terapêutico online para mulheres que desejam fortalecer sua identidade e resgatar sua força interior." />
 
-                <link rel="canonical" href="https://arianaborges.com/clube-livro-mulher-maravilha" />
+                <link rel="canonical" href="https://clubelivromulhermaravilha.arianaborges.com/" />
             </Helmet>
 
             <a href="#hero_section" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-gold text-brand-dark px-4 py-2 rounded-full font-bold z-50">
