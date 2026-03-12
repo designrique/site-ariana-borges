@@ -4,26 +4,17 @@ import { Check } from 'lucide-react';
 const PricingSection: React.FC = () => {
     const plans = [
         {
-            title: "Lote Fevereiro",
-            price: "2.598,00",
+            title: "Lote Março",
+            price: "2.498,00",
             period: "à vista ou parcelado",
-            condition: "Melhor condição (até 28/02)",
+            condition: "Melhor condição (até 31/03)",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: true,
-            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G9MAYBwJdmzJ8FOGfT1AKGsPbHGog28fIHVN3SyyqRN8UOA_VmP-Agkogai0SyyuNw7Y12G4xmEadFlGeeBbbKgblmXA8IesIuYgSP3ApMzDmWWStXIGecssRc11m-613JFs0YTwLAVTB7Xu28-G3YOwfR3-Tpz0R_WsmVeJRC_2yonMk7aTIuUVzCikLlnNAIwc_vhN1FobDjA6lumMoyYQnQE.v1.ebb0e5665e2dceb2"
-        },
-        {
-            title: "Lote Março",
-            price: "2.898,00",
-            period: "à vista ou parcelado",
-            condition: "A partir de 01/03",
-            features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
-            highlight: false,
             url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G8wAYBwJdgyyBh37EMTm_5oXJfjvecXM_lX_BtpAJhBFBTSfX4IUMXULUROZpwfsUVsQ1MIgagskD6WAT3w9WXoVERx7NXZ4OQRTBVcm3iJuMMgyP9n5wNQ0Pk-av5J8F3Qo1qJEtGvYibEf99e9iHxit_4lbbYeVP5s9og3oIL-LghaK7RyisAFAzaCFexJ2zigoPPm_Ic6F4bLi1lSD5XR6IoaAQ.v1.fc212b6eab273580"
         },
         {
             title: "Lote Abril",
-            price: "3.098,00",
+            price: "2.698,00",
             period: "à vista ou parcelado",
             condition: "Últimas vagas (a partir de 01/04)",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
