@@ -43,14 +43,6 @@ const HeroSection: React.FC = () => {
                         className="w-32 md:w-40 rounded-xl shadow-2xl shadow-black/60 mx-auto"
                         loading="eager"
                     />
-                    <a
-                        href="https://amzn.to/4dho7Xd"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-sans font-semibold text-brand-dark bg-brand-gold hover:bg-brand-goldDark transition-colors duration-200 px-4 py-1.5 rounded-full shadow"
-                    >
-                        📖 Comprar o livro
-                    </a>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-10 text-sm font-sans text-gray-200">

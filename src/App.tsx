@@ -206,7 +206,8 @@ const NavBar = () => {
 const hostname = window.location.hostname;
 const isDNASubdomain = hostname === 'dnabasico.arianaborges.com';
 const isDeusasSubdomain = hostname === 'encontrodeusas.arianaborges.com';
-const isClubeSubdomain = hostname === 'clubelivromulhermaravilha.arianaborges.com';
+const isClubeSubdomain = hostname === 'clubelivromulhermaravilha.arianaborges.com'
+  || new URLSearchParams(window.location.search).get('_testClube') === '1';
 
 function getRootPage() {
   if (isDNASubdomain) return <DNABasico />;
