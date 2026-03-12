@@ -19,7 +19,7 @@ const FAQSection: React.FC = () => {
         },
         {
             question: "Como faço a inscrição?",
-            answer: "Clique no botão da página ou envie mensagem para o WhatsApp do Instituto Ariana Borges.",
+            answer: "Clique no botão da página.",
         },
     ];
 

@@ -6,7 +6,7 @@ const PricingSection: React.FC = () => {
         "8 encontros terapêuticos online ao vivo",
         "Leitura guiada do livro",
         "Exercícios terapêuticos",
-        "Grupo fechado com até 15 mulheres",
+        "Grupo Exclusivo Feminino",
         "Condução da terapeuta Ariana Borges",
     ];
 
@@ -33,7 +33,7 @@ const PricingSection: React.FC = () => {
 
                         <div className="mb-8">
                             <span className="text-sm font-sans mr-1">R$</span>
-                            <span className="text-5xl font-bold font-sans text-brand-dark">444</span>
+                            <span className="text-5xl font-bold font-sans text-brand-dark">298</span>
                             <p className="text-xs mt-1 text-brand-dark/70">à vista ou parcelado</p>
                         </div>
 
@@ -49,7 +49,7 @@ const PricingSection: React.FC = () => {
                         </ul>
 
                         <a
-                            href="https://wa.me/558199999999"
+                            href="https://checkout.infinitepay.io/institutoarianaborges/3igXd4O5Sh"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block w-full py-4 rounded-xl font-bold text-center transition-all duration-300 bg-brand-dark text-white hover:bg-opacity-90 shadow-lg"

@@ -32,9 +32,18 @@ const HeroSection: React.FC = () => {
                     Um grupo terapêutico online para mulheres que desejam fortalecer sua identidade, resgatar sua força interior e compreender o feminino com mais consciência.
                 </p>
 
-                <p className="font-sans text-base text-gray-300 italic mb-10">
+                <p className="font-sans text-base text-gray-300 italic mb-6">
                     Baseado no livro <strong className="text-brand-gold not-italic">A Psicologia da Mulher‑Maravilha</strong>.
                 </p>
+
+                <div className="mb-10">
+                    <img
+                        src="/clube-mulher-maravilha/capa-livro-mulher-maravilha.webp"
+                        alt="Capa do livro A Psicologia da Mulher-Maravilha"
+                        className="w-32 md:w-40 rounded-xl shadow-2xl shadow-black/60 mx-auto"
+                        loading="eager"
+                    />
+                </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-10 text-sm font-sans text-gray-200">
                     <span className="flex items-center gap-2">👩‍💻 Encontros ao vivo</span>
