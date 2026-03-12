@@ -35,7 +35,7 @@ const PricingSection: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-3xl mx-auto">
                     {plans.map((plan, index) => (
                         <div
                             key={index}
