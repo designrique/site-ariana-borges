@@ -10,7 +10,7 @@ const PricingSection: React.FC = () => {
             condition: "Melhor condição (até 31/03)",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: true,
-            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G8wAYBwJdgyyBh37EMTm_5oXJfjvecXM_lX_BtpAJhBFBTSfX4IUMXULUROZpwfsUVsQ1MIgagskD6WAT3w9WXoVERx7NXZ4OQRTBVcm3iJuMMgyP9n5wNQ0Pk-av5J8F3Qo1qJEtGvYibEf99e9iHxit_4lbbYeVP5s9og3oIL-LghaK7RyisAFAzaCFexJ2zigoPPm_Ic6F4bLi1lSD5XR6IoaAQ.v1.fc212b6eab273580"
+            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwBwJNk5zQYeoz47OfZAc21ctEuiBJlCa4KONl0VMq9lCRKaTE4B_PxQFicQSeECBcyxb0nTw_MyLP9-HdosuiErIunOmn3v0lDfbgWfm-iL6PQM-P6hUXQ1dDYseMmOfAaoH8w-cixrtYLB9VY8D.v1.c7bdfac1ddf63fbc"
         },
         {
             title: "Lote Abril",
@@ -19,7 +19,7 @@ const PricingSection: React.FC = () => {
             condition: "Últimas vagas (a partir de 01/04)",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: false,
-            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G8sAYGT-b9Yi-Nhcz8sC_-0JVCAJ3G0aU-C8pwfsUVsQ1MIgaguTPJQf-MDXkyVVRHDskbHlZhAMFayH6U6vASXDEDVTFNRV1X2n-UnJt9dnXu35TZ9Eww6xr_NxLoLu0B3_CPEjL1DaBpxmjLb3fzlg10FTj30DQm8AVjQN3nDtq7jAqS837j3UPS8cXky_FxrfG4kXNg.v1.7d9ab428bd3c79a6"
+            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwJwJdgxlxAjY11kTdAyie9tqPfcLA4mOgtpYjdUZRbfRuf2yiGk1W4jIdHIC8O9BUZBIlGlAgQe6sfySdgdWjZY_u4v2o1ZkzKKFbPao0bdtj5N5voAP2D7g8wMTRoOoWRpInD51c6nRASPNl9Ic.v1.b31228438f20d58f"
         }
     ];
 
