@@ -1,12 +1,35 @@
 {
-    "rewrites": [
+    "routes": [
         {
-            "source": "/(api|webhook-infinitepay)/:path*",
-            "destination": "/api/:path*"
+            "src": "^/$",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "encontrodeusas.arianaborges.com"
+                }
+            ],
+            "dest": "/encontrodeusas.html"
         },
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "^/$",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "clubelivromulhermaravilha.arianaborges.com"
+                }
+            ],
+            "dest": "/clubelivromulhermaravilha.html"
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "^/(api|webhook-infinitepay)/(.*)$",
+            "dest": "/api/$2"
+        },
+        {
+            "src": "^/(.*)$",
+            "dest": "/index.html"
         }
     ]
 }

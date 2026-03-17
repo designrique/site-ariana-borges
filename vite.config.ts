@@ -20,6 +20,8 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           main: './index.html',
+          encontrodeusas: './encontrodeusas.html',
+          clubelivromulhermaravilha: './clubelivromulhermaravilha.html',
         },
       },
     },

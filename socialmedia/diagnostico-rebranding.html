@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Rebranding: Instituto Ariana Borges</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chosen Palette: Warm Neutrals & Professional Sage. Backgrounds in soft cream/gray, accents in sophisticated sage green and muted terracotta to reflect the 'calm harmony' and authority of an Institute. -->
+
+    <!-- Application Structure Plan: Dashboard Layout with a persistent sidebar (or top nav on mobile) and dynamic content areas.
+    1. Visão Geral (Contextualizes the 2025 algorithm & 'Creator Energy').
+    2. Auditoria de Feed (Addresses the strict 'Archive vs Delete' rules from the docs).
+    3. Estratégia de Threads (Focuses on growth, hashtags, and Voice vs. Tone).
+    4. Roadmap de Rebranding (Actionable launch plan).
+    5. Clube do Livro (Practical Focus on Ads and organic funnels).
+    This structure was chosen to move the user logically from high-level algorithm understanding down to specific platform tactics and finally an execution roadmap. -->
+
+    <!-- Visualization & Content Choices:
+    - Radar Chart (Chart.js): Compares traditional metrics vs 2025 metrics (Creator Energy) to visually explain the paradigm shift.
+    - Doughnut Chart (Chart.js): Visualizes the feed cleanup strategy (Keep vs Archive).
+    - Bar/Line Chart (Chart.js): Visualizes the projected leads via Ads.
+    - Interactive 'Tone vs Voice' Toggle (JS/HTML): Demonstrates how the core voice remains the same while tone adapts to IG/Threads/LinkedIn, as detailed in Document 30.
+    - Interactive Checklist (JS/HTML): For organizing Highlights based on best practices.
+    - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. All visual elements are HTML/CSS or Canvas-based. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA; /* Light neutral background */
+            color: #333333;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Strict Chart Container Styling as per requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+
+        /* Sidebar active state */
+        .nav-active {
+            background-color: #E2E8F0;
+            border-left: 4px solid #475569;
+            font-weight: 600;
+        }
+
+        /* Interactive card hover */
+        .hover-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .hover-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hide sections by default */
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row h-screen overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+    <nav class="w-full md:w-64 bg-white shadow-lg z-10 flex flex-col md:h-full">
+        <div class="p-6 border-b border-gray-100 flex items-center justify-between md:justify-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800 tracking-tight">Instituto</h1>
+                <h2 class="text-sm font-medium text-slate-500 uppercase tracking-widest">Ariana Borges</h2>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-600 focus:outline-none">&#9776;</button>
+        </div>
+
+        <div id="nav-links" class="hidden md:flex flex-col py-4 overflow-y-auto w-full">
+            <button onclick="navigate('overview')" id="nav-overview" class="nav-item nav-active text-left px-6 py-3 text-slate-600 hover:bg-slate-50 transition-colors w-full">
+                <span class="mr-2">&#128269;</span> Visão Geral 2025
+            </button>
+            <button onclick="navigate('audit')" id="nav-audit" class="nav-item text-left px-6 py-3 text-slate-600 hover:bg-slate-50 transition-colors w-full">
+                <span class="mr-2">&#128248;</span> Auditoria de Feed & Destaques
+            </button>
+            <button onclick="navigate('threads')" id="nav-threads" class="nav-item text-left px-6 py-3 text-slate-600 hover:bg-slate-50 transition-colors w-full">
+                <span class="mr-2">&#128172;</span> Estratégia Threads & Voz
+            </button>
+            <button onclick="navigate('roadmap')" id="nav-roadmap" class="nav-item text-left px-6 py-3 text-slate-600 hover:bg-slate-50 transition-colors w-full">
+                <span class="mr-2">&#128640;</span> Lançamento do Rebranding
+            </button>
+            <button onclick="navigate('bookclub')" id="nav-bookclub" class="nav-item text-left px-6 py-3 text-slate-600 hover:bg-slate-50 transition-colors w-full">
+                <span class="mr-2">&#128218;</span> Clube do Livro (Março)
+            </button>
+            <button onclick="navigate('calendar')" id="nav-calendar" class="nav-item text-left px-6 py-3 text-slate-600 hover:bg-slate-50 transition-colors w-full">
+                <span class="mr-2">&#128197;</span> Calendário Editorial
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 bg-slate-50">
+
+        <!-- SECTION 1: Visão Geral -->
+        <section id="overview" class="content-section active max-w-5xl mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">A Mudança de Paradigma: 2025</h2>
+                <p class="text-slate-600 text-lg">O ecossistema transcendeu as métricas de vaidade. A transição de identidade digital do Instituto exige uma recalibração profunda baseada na <strong>"Energia do Criador"</strong> e na ressonância emocional.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover-card">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">O que é a "Energia do Criador"?</h3>
+                    <p class="text-slate-600 mb-4">Segundo os relatórios de 2025, o algoritmo não atua mais apenas como distribuidor, mas como <strong>curador de gostos e analista de emoções</strong>. Ele prioriza:</p>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2">&#10003;</span> <strong>Humanidade & Profundidade:</strong> Conteúdo que gera conversas reais e reflexões profundas.</li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2">&#10003;</span> <strong>Intencionalidade:</strong> Cada postagem deve ter um propósito claro e alinhado aos valores do Instituto.</li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2">&#10003;</span> <strong>Comunidade Real:</strong> Retenção e interações significativas em vez de apenas curtidas vazias.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover-card">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Evolução das Métricas do Instituto</h3>
+                    <p class="text-sm text-slate-500 mb-2">Comparativo entre o foco tradicional (passado) e o foco estratégico exigido pelo novo algoritmo para manter autoridade durante o rebranding.</p>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg">
+                <p class="text-indigo-800 text-sm"><strong>Insight Direcional:</strong> O reposicionamento da Ariana Borges não deve ser apenas uma troca de logo ou cores, mas uma evolução na forma como o Instituto transmite seu capital social e autoridade educacional/mentoral.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Auditoria de Feed & Destaques -->
+        <section id="audit" class="content-section max-w-5xl mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Auditoria e Curadoria de Conteúdo</h2>
+                <p class="text-slate-600 text-lg">Diretrizes estritas para gerenciamento de posts antigos e organização estrutural do perfil do Instituto.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Archive Strategy -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">A Regra de Ouro: Nunca Delete</h3>
+                    <p class="text-sm text-slate-600 mb-4">Deletar posts antigos apaga o histórico de engajamento, prejudica o SEO social e confunde o algoritmo. A estratégia correta é o <strong>Arquivamento Estratégico</strong>.</p>
+
+                    <div class="chart-container h-64">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+
+                    <div class="mt-4 bg-amber-50 p-3 rounded text-sm text-amber-800">
+                        <strong>Tática de Transição:</strong> Mantenha 3 posts neutros ou altamente relevantes como "quebra visual" (uma linha do grid) antes de iniciar a nova identidade visual.
+                    </div>
+                </div>
+
+                <!-- Highlights Checklist -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Otimização de Destaques (Highlights)</h3>
+                    <p class="text-sm text-slate-600 mb-4">Os destaques funcionam como um menu de navegação do site. Selecione os essenciais para o Instituto:</p>
+
+                    <div class="space-y-3" id="highlights-checklist">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-gray-100">
+                        <h4 class="font-medium text-slate-800 mb-2">Preview de Capas:</h4>
+                        <div class="flex space-x-4 justify-center">
+                            <div class="flex flex-col items-center"><div class="w-14 h-14 rounded-full bg-slate-200 border-2 border-slate-400 flex items-center justify-center text-xl">&#128100;</div><span class="text-xs mt-1 text-slate-500">Sobre</span></div>
+                            <div class="flex flex-col items-center"><div class="w-14 h-14 rounded-full bg-slate-200 border-2 border-slate-400 flex items-center justify-center text-xl">&#128218;</div><span class="text-xs mt-1 text-slate-500">Cursos</span></div>
+                            <div class="flex flex-col items-center"><div class="w-14 h-14 rounded-full bg-slate-200 border-2 border-slate-400 flex items-center justify-center text-xl">&#11088;</div><span class="text-xs mt-1 text-slate-500">Alunos</span></div>
+                            <div class="flex flex-col items-center"><div class="w-14 h-14 rounded-full bg-slate-200 border-2 border-slate-400 flex items-center justify-center text-xl">&#128222;</div><span class="text-xs mt-1 text-slate-500">Contato</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Estratégia Threads & Voz -->
+        <section id="threads" class="content-section max-w-5xl mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Expansão e Posicionamento: Threads & Tom de Voz</h2>
+                <p class="text-slate-600 text-lg">Como adaptar a mensagem da Ariana Borges para plataformas focadas em texto e conversas comunitárias, mantendo a coerência da marca.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+
+                <!-- Threads Strategy -->
+                <div class="lg:col-span-7 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Estratégia Oficial de Crescimento no Threads (2025)</h3>
+                    <div class="space-y-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg mr-4">&#10227;</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Recorrência e Algoritmo</h4>
+                                <p class="text-sm text-slate-600">O algoritmo mapeia interesses, não cronologia. Sumir penaliza o alcance. Utilize os novos recursos web: agendamento e rascunhos para manter constância.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg mr-4">&#35;</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Hashtags Estratégicas</h4>
+                                <p class="text-sm text-slate-600">A pesquisa por tópicos agora é vital. Use <strong>no máximo 3 hashtags</strong> hiper-relevantes por postagem para não poluir visualmente e categorizar perfeitamente o conteúdo.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg mr-4">&#129309;</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Interação e Autenticidade</h4>
+                                <p class="text-sm text-slate-600">Participe de discussões do nicho (educação, desenvolvimento pessoal). Assuma um ar informal natural sem perder a autoridade do Instituto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice vs Tone Interactive -->
+                <div class="lg:col-span-5 bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">Matriz: Voz vs. Tom da Marca</h3>
+                    <p class="text-xs text-slate-500 mb-6">A <strong>Voz</strong> do Instituto é imutável. O <strong>Tom</strong> se adapta à plataforma. Clique para simular:</p>
+
+                    <div class="flex space-x-2 mb-4 bg-slate-100 p-1 rounded-lg">
+                        <button onclick="updateTone('instagram')" id="btn-instagram" class="flex-1 py-1 px-2 rounded-md text-sm font-medium bg-white shadow-sm transition-all">Instagram</button>
+                        <button onclick="updateTone('threads')" id="btn-threads" class="flex-1 py-1 px-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-200 transition-all">Threads</button>
+                        <button onclick="updateTone('linkedin')" id="btn-linkedin" class="flex-1 py-1 px-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-200 transition-all">LinkedIn</button>
+                    </div>
+
+                    <div class="flex-1 border-2 border-dashed border-slate-200 rounded-lg p-4 flex flex-col justify-center relative">
+                        <div class="absolute top-0 left-0 w-full text-center -mt-3">
+                            <span class="bg-white px-2 text-xs font-bold text-slate-400 uppercase">Voz Principal (Imutável)</span>
+                        </div>
+                        <p class="text-center font-semibold text-emerald-700 mb-4">Educativa, Empática, Autoritária</p>
+
+                        <div class="mt-2 p-3 bg-slate-50 rounded border border-slate-100">
+                            <p class="text-xs text-slate-500 uppercase font-bold mb-1">Tom Aplicado:</p>
+                            <p id="tone-description" class="text-sm text-slate-700 italic">"Visual, inspirador e direto. Foco em estética e impacto rápido em carrosséis ou reels."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Roadmap -->
+        <section id="roadmap" class="content-section max-w-5xl mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Roadmap de Lançamento do Rebranding</h2>
+                <p class="text-slate-600 text-lg">Um rebrand de sucesso não é um post surpresa, é uma campanha antecipada que gera excitação e validação do público.</p>
+            </header>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="relative border-l-2 border-slate-200 ml-4 md:ml-6 space-y-8 py-2">
+
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] md:-left-[35px] bg-slate-800 h-6 w-6 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-slate-800">A Limpeza Silenciosa (Dias -14 a -7)</h3>
+                            <p class="text-sm text-slate-600 mt-1">Arquivar publicações que não representam mais os valores ou serviços atuais (mantendo métricas). Padronizar categorias de Destaques.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] md:-left-[35px] bg-indigo-500 h-6 w-6 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-slate-800">Teasers e Storytelling (Dias -6 a -1)</h3>
+                            <p class="text-sm text-slate-600 mt-1">Iniciar narrativa nos Stories sobre "evolução", "novos ciclos" e bastidores de mudanças. Mostrar rascunhos embaçados ou paletas de cores. Gerar <em>"Energia do Criador"</em> mostrando vulnerabilidade e progresso.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] md:-left-[35px] bg-emerald-500 h-6 w-6 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-slate-800">O Marco do Lançamento (Dia 0)</h3>
+                            <p class="text-sm text-slate-600 mt-1">Alteração simultânea de Foto de Perfil, Bio e Capas de Destaques. Publicação de um Vídeo/Reel principal explicando o *Porquê* da mudança (focando nos benefícios para a comunidade e alunos).</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] md:-left-[35px] bg-slate-400 h-6 w-6 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">4</div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-slate-800">Consolidação Omnichannel (Dias +1 em diante)</h3>
+                            <p class="text-sm text-slate-600 mt-1">Levar a nova identidade para o Threads (com tom mais conversacional detalhando os bastidores do rebrand) e LinkedIn (com foco em expansão corporativa/metodológica).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Clube do Livro (Foco Prático) -->
+        <section id="bookclub" class="content-section max-w-5xl mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Foco Prático: Clube do Livro (Março)</h2>
+                <p class="text-slate-600 text-lg">Estratégia híbrida (Orgânico + Ads), com foco total de divulgação no <strong>Instagram</strong>. Com o orçamento reduzido, os Ads atuarão estritamente como "fecho" (Retargeting) para a audiência aquecida organicamente.</p>
+            </header>
+
+            <!-- KPIs Tráfego Pago -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-100 border-l-4 border-l-purple-500">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Valor de Inscrição</p>
+                    <p class="text-2xl font-bold text-slate-800">R$ 298</p>
+                    <p class="text-xs text-purple-600 mt-1">Ticket por participante</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-emerald-100 border-l-4 border-l-emerald-500">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Orçamento (Ads)</p>
+                    <p class="text-2xl font-bold text-slate-800">R$ 300</p>
+                    <p class="text-xs text-emerald-600 mt-1">&#8593; 100% focado em Retargeting</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-blue-100 border-l-4 border-l-blue-500">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Leads Estimadas (Ads)</p>
+                    <p class="text-2xl font-bold text-slate-800">~55</p>
+                    <p class="text-xs text-blue-600 mt-1">Custo por Lead: R$ 5,50</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-indigo-100 border-l-4 border-l-indigo-500">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Meta de Alunos</p>
+                    <p class="text-2xl font-bold text-slate-800">150</p>
+                    <p class="text-xs text-indigo-600 mt-1">Maioria via esforço Orgânico</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Funil de Ads -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Funil de Divulgação (Instagram)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-slate-100 p-3 rounded-lg border border-slate-200 text-center relative w-full mx-auto">
+                            <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Topo de Funil (100% Orgânico)</span>
+                            <span class="text-sm text-slate-700"><strong>Vídeo Reels Frios:</strong> O problema da falta de foco na leitura. Distribuição pelo algoritmo para novos seguidores.</span>
+                        </div>
+                        <div class="bg-slate-200 p-3 rounded-lg border border-slate-300 text-center relative w-5/6 mx-auto">
+                            <span class="text-xs font-bold text-slate-600 uppercase block mb-1">Meio de Funil (100% Orgânico)</span>
+                            <span class="text-sm text-slate-800"><strong>Carrosséis e Stories:</strong> Aprofundamento nos 3 livros de Março. Interação via enquetes e caixas de perguntas.</span>
+                        </div>
+                        <div class="bg-emerald-100 p-3 rounded-lg border border-emerald-200 text-center relative w-4/6 mx-auto">
+                            <span class="text-xs font-bold text-emerald-700 uppercase block mb-1">Fundo (Tráfego Pago - R$ 300)</span>
+                            <span class="text-sm text-emerald-900"><strong>Ads de Retargeting:</strong> "Últimas vagas!" apenas para quem interagiu com o Instagram nos últimos 30 dias.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Projeção -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Projeção de Leads (Março)</h3>
+                    <p class="text-sm text-slate-500 mb-2">Acompanhamento semanal do volume de leads via tráfego pago.</p>
+                    <div class="chart-container">
+                        <canvas id="bookClubChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Calendário Editorial -->
+        <section id="calendar" class="content-section max-w-5xl mx-auto">
+            <header class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Calendário Editorial — Semana 17–21 Mar</h2>
+                <p class="text-slate-600">Baseado nos achados do NotebookLM. Foco nos eventos da semana + mídias de performance.</p>
+            </header>
+
+            <!-- Eventos da Semana -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+                    <p class="text-xs font-bold text-amber-600 uppercase mb-1">18–21 Mar · Online</p>
+                    <p class="font-bold text-slate-800">Aprofundando no Digging Thetahealing</p>
+                    <p class="text-sm text-slate-600 mt-1">Qua–Sex 19h–21h30 · Sáb 13h–16h<br>Pré-req: DNA Básico + DNA Avançado</p>
+                </div>
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r-lg">
+                    <p class="text-xs font-bold text-purple-600 uppercase mb-1">21 Mar · Presencial · 50% OFF</p>
+                    <p class="font-bold text-slate-800">Ativação da Kundalini</p>
+                    <p class="text-sm text-slate-600 mt-1">9h · Local presencial<br>Oferta especial para alunos</p>
+                </div>
+            </div>
+
+            <!-- Regras do algoritmo (resumo) -->
+            <div class="bg-slate-800 text-white p-4 rounded-xl mb-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs">
+                <div><p class="text-2xl font-bold text-emerald-400">Saves</p><p class="text-slate-400">Métrica #1 do algoritmo</p></div>
+                <div><p class="text-2xl font-bold text-blue-400">Watch Time</p><p class="text-slate-400">Reter até o fim do Reel</p></div>
+                <div><p class="text-2xl font-bold text-yellow-400">3–4x/sem</p><p class="text-slate-400">Frequência ideal IG</p></div>
+                <div><p class="text-2xl font-bold text-pink-400">80/20</p><p class="text-slate-400">Valor vs. Promoção</p></div>
+            </div>
+
+            <!-- Tabs de plataforma -->
+            <div class="flex space-x-2 mb-6 bg-slate-100 p-1 rounded-lg w-fit">
+                <button onclick="showPlatform('instagram')" id="tab-instagram" class="platform-tab px-4 py-2 rounded-md text-sm font-semibold bg-white shadow-sm">Instagram</button>
+                <button onclick="showPlatform('threads')" id="tab-threads" class="platform-tab px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-200">Threads</button>
+                <button onclick="showPlatform('linkedin')" id="tab-linkedin" class="platform-tab px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-200">LinkedIn</button>
+                <button onclick="showPlatform('ads')" id="tab-ads" class="platform-tab px-4 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-200">Mídias de Performance</button>
+            </div>
+
+            <!-- Instagram -->
+            <div id="platform-instagram" class="platform-content">
+                <div class="space-y-3">
+                    <!-- Seg 17 -->
+                    <div class="bg-white rounded-xl border border-gray-100 overflow-hidden">
+                        <div class="bg-slate-700 px-4 py-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Segunda · 17 Mar</span>
+                            <span class="text-slate-300 text-xs">Aquecimento</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Stories</span>
+                                <p class="text-sm text-slate-700">Caixa de perguntas: <em>"O que você sabe sobre Thetahealing?"</em> — gera engajamento e mapeia o público</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Ação</span>
+                                <p class="text-sm text-slate-700">15 min interagindo em contas do nicho antes de publicar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ter 18 -->
+                    <div class="bg-white rounded-xl border border-amber-200 overflow-hidden">
+                        <div class="bg-amber-500 px-4 py-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Terça · 18 Mar · 🔥 Início do Digging</span>
+                            <span class="text-amber-100 text-xs">Alcance</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Reel</span>
+                                <p class="text-sm text-slate-700"><strong>Hook:</strong> "Você saberia responder sem pensar: o que mais te limita?" — introduz o conceito de Digging. 30–45s. CTA: "Salva para lembrar"</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Stories</span>
+                                <p class="text-sm text-slate-700">Bastidores da aula ao vivo — mostra a turma, a energia. Enquete: "Você já trabalhou crenças hoje?"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Qua 19 -->
+                    <div class="bg-white rounded-xl border border-gray-100 overflow-hidden">
+                        <div class="bg-slate-600 px-4 py-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Quarta · 19 Mar</span>
+                            <span class="text-slate-300 text-xs">Educação + Saves</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Carrossel</span>
+                                <p class="text-sm text-slate-700"><strong>"3 crenças que o Digging dissolve"</strong> — conteúdo educativo de alto valor. Última página: CTA para o Clube do Livro</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Stories</span>
+                                <p class="text-sm text-slate-700">Depoimento espontâneo de aluno (texto ou voz)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Qui 20 -->
+                    <div class="bg-white rounded-xl border border-gray-100 overflow-hidden">
+                        <div class="bg-slate-600 px-4 py-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Quinta · 20 Mar</span>
+                            <span class="text-slate-300 text-xs">Antecipação Kundalini</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Stories</span>
+                                <p class="text-sm text-slate-700">Tease da Ativação de Kundalini: <em>"Amanhã vai ter algo muito especial aqui"</em> — gera expectativa. Enquete: "Você sabe o que é Kundalini?"</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Stories</span>
+                                <p class="text-sm text-slate-700">Lembrete: <strong>50% OFF</strong> na Ativação da Kundalini presencial — link na bio</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sex 21 -->
+                    <div class="bg-white rounded-xl border border-purple-200 overflow-hidden">
+                        <div class="bg-purple-600 px-4 py-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Sábado · 21 Mar · ⚡ Kundalini + Encerramento Digging</span>
+                            <span class="text-purple-200 text-xs">Performance máxima</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Reel</span>
+                                <p class="text-sm text-slate-700">Clip da ativação (se autorizado) ou Ariana falando sobre a experiência. Hook: <em>"Quando o corpo responde antes da mente..."</em></p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Stories</span>
+                                <p class="text-sm text-slate-700">Ao vivo ou bastidores da Kundalini presencial — humanização máxima</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Carrossel</span>
+                                <p class="text-sm text-slate-700">Encerramento: <strong>"4 dias de Digging: o que a turma transformou"</strong> — prova social + saves</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-sm text-emerald-800">
+                    <strong>Legenda de performance:</strong> Reels → alcance · Carrosséis → saves e educação · Stories → conversão e bastidores · 15 min de interação no nicho antes de cada post principal
+                </div>
+            </div>
+
+            <!-- Threads -->
+            <div id="platform-threads" class="platform-content hidden">
+                <div class="bg-white p-4 rounded-xl border border-gray-100 mb-4 text-xs text-slate-500">
+                    <strong>Regras:</strong> Tom conversacional · Máx. 1 hashtag oficial por post · Compartilhar nos Stories do IG · Banco de rascunhos (até 100)
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                        <p class="text-xs text-slate-400 mb-1">Seg · 17 Mar</p>
+                        <p class="text-sm text-slate-800">"Quantas vezes você achou que já superou algo, mas ele voltou de um jeito diferente? O Thetahealing chama isso de crença de nível mais fundo. Me conta nos comentários." <span class="text-blue-500">#thetahealing</span></p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-amber-100 p-4">
+                        <p class="text-xs text-amber-500 mb-1">Ter · 18 Mar · Início do Digging</p>
+                        <p class="text-sm text-slate-800">"Começou hoje o Aprofundamento em Digging. Sabe o que mais me impressiona? A velocidade com que as pessoas mudam quando encontram a crença certa. Alguém aqui já fez Thetahealing?"</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                        <p class="text-xs text-slate-400 mb-1">Qua · 19 Mar</p>
+                        <p class="text-sm text-slate-800">"Insight do dia 2: a maioria das pessoas não resiste à mudança, resiste ao desconhecido do que vem depois da mudança. Você já sentiu isso?"</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                        <p class="text-xs text-slate-400 mb-1">Qui · 20 Mar</p>
+                        <p class="text-sm text-slate-800">"Amanhã tem algo presencial aqui. Ativação da Kundalini com 50% OFF. Vale a pena vir do outro lado da cidade pra isso? Na minha opinião, sim — mas me perguntem nos comentários e explico o porquê."</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-purple-100 p-4">
+                        <p class="text-xs text-purple-500 mb-1">Sáb · 21 Mar · Kundalini + Encerramento</p>
+                        <p class="text-sm text-slate-800">"4 dias de Digging. Turma que chegou cheia de perguntas, saiu cheia de respostas que nunca esperavam encontrar. Isso é o que acontece quando você para de correr da sua própria história." <span class="text-blue-500">#thetahealing</span></p>
+                    </div>
+                </div>
+                <div class="mt-4 bg-blue-50 border border-blue-100 p-3 rounded-lg text-sm text-blue-800">
+                    <strong>Ação diária:</strong> Responder todos os comentários + interagir em 5 posts do nicho (desenvolvimento pessoal, terapias, autoconhecimento)
+                </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div id="platform-linkedin" class="platform-content hidden">
+                <div class="bg-white p-4 rounded-xl border border-gray-100 mb-4 text-xs text-slate-500">
+                    <strong>Tom:</strong> Profissional, reflexivo, foco em autoridade metodológica · 1–2 posts/semana · Textos longos bem estruturados
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                        <p class="text-xs text-slate-400 mb-2">Ter · 18 Mar · Post de Autoridade</p>
+                        <p class="text-sm font-semibold text-slate-800 mb-1">"O que a neurociência tem a ver com Thetahealing"</p>
+                        <p class="text-sm text-slate-600">Artigo curto conectando os princípios do Digging com pesquisas sobre reprogramação de crenças. Posiciona o Instituto como referência metodológica. CTA: "Conheça nossa formação."</p>
+                        <div class="mt-2 flex gap-2 flex-wrap">
+                            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">#thetahealing</span>
+                            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">#desenvolvimento pessoal</span>
+                            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">#saúde mental</span>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                        <p class="text-xs text-slate-400 mb-2">Sáb · 21 Mar · Post de Resultado</p>
+                        <p class="text-sm font-semibold text-slate-800 mb-1">"4 dias, 1 grupo, múltiplas transformações"</p>
+                        <p class="text-sm text-slate-600">Reflexão sobre os resultados observados na turma do Digging. Menciona a metodologia, não os alunos individualmente. Encerra com pergunta de discussão para gerar comentários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mídias de Performance -->
+            <div id="platform-ads" class="platform-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-gray-100">
+                        <h3 class="font-bold text-slate-800 mb-3">Meta Ads — Retargeting Clube do Livro</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Público:</strong> engajados no Instagram nos últimos 30 dias (não fãs frios)</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Criativo Stories:</strong> Ariana falando direto para câmera — "Últimas vagas para o Clube do Livro. R$ 298. Link na bio." (máx. 15s)</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Criativo Feed (Carrossel):</strong> "O que você vai aprender nos 3 livros de Março" — educação + CTA no último slide</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Orçamento:</strong> R$ 300 total · R$ 15/dia · Agendar + impulsionar simultaneamente via Meta Ads Manager</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Início:</strong> 18 Mar (orgânico já aquecido) · <strong>Fim:</strong> 31 Mar</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-gray-100">
+                        <h3 class="font-bold text-slate-800 mb-3">Google Ads — Intenção de Busca</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Palavras-chave:</strong> "curso thetahealing online", "digging thetahealing", "clube do livro psicologia feminina"</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Destino:</strong> Landing page do produto específico (não home)</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Optimização:</strong> 20 min/dia de análise — pausar palavras com CPC alto e zero conversão</div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold mt-0.5">▶</span>
+                                <div><strong>Métrica de sucesso:</strong> CTR acima de 3% e custo por lead abaixo de R$ 8</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-gray-100 md:col-span-2">
+                        <h3 class="font-bold text-slate-800 mb-3">KPIs de Monitoramento Semanal</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                <p class="font-bold text-slate-800">Taxa de engajamento</p>
+                                <p class="text-emerald-600 font-bold text-lg">1–3%</p>
+                                <p class="text-xs text-slate-500">Padrão saudável IG</p>
+                            </div>
+                            <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                <p class="font-bold text-slate-800">Saves / post</p>
+                                <p class="text-blue-600 font-bold text-lg">≥ 20</p>
+                                <p class="text-xs text-slate-500">Carrosséis e Reels</p>
+                            </div>
+                            <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                <p class="font-bold text-slate-800">CPL Ads</p>
+                                <p class="text-purple-600 font-bold text-lg">≤ R$8</p>
+                                <p class="text-xs text-slate-500">Meta por lead</p>
+                            </div>
+                            <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                <p class="font-bold text-slate-800">Watch Time Reels</p>
+                                <p class="text-amber-600 font-bold text-lg">> 50%</p>
+                                <p class="text-xs text-slate-500">Retenção mínima</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- App Logic -->
+    <script>
+        // Data Storage
+        const appState = {
+            currentSection: 'overview',
+            highlights: [
+                { id: 1, label: 'Quem Sou (About)', desc: 'Sua jornada e autoridade.', checked: true },
+                { id: 2, label: 'Serviços/Cursos', desc: 'Portfólio claro de atuação.', checked: true },
+                { id: 3, label: 'Alunos/Depoimentos', desc: 'Prova social vital.', checked: true },
+                { id: 4, label: 'FAQ', desc: 'Dúvidas frequentes reduzidas.', checked: false },
+                { id: 5, label: 'Bastidores', desc: 'Humanização e conexão.', checked: false }
+            ],
+            tones: {
+                instagram: "Visual, inspirador e direto. Foco em estética, retenção visual e impacto rápido em carrosséis ou reels educacionais.",
+                threads: "Conversacional, ágil e informal. Tópicos curtos, perguntas abertas à comunidade, comentários perspicazes em discussões de nicho.",
+                linkedin: "Profissional, reflexivo e focado em networking. Textos mais longos sobre metodologias, conquistas do instituto e liderança de pensamento."
+            }
+        };
+
+        // Navigation Logic
+        function navigate(sectionId) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('nav-active'));
+            document.getElementById('nav-' + sectionId).classList.add('nav-active');
+            const navLinks = document.getElementById('nav-links');
+            if (window.innerWidth < 768) {
+                navLinks.classList.add('hidden');
+            }
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const nav = document.getElementById('nav-links');
+            nav.classList.toggle('hidden');
+        });
+
+        // Render Highlights Checklist
+        function renderHighlights() {
+            const container = document.getElementById('highlights-checklist');
+            if (!container) return;
+            container.innerHTML = '';
+            appState.highlights.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "flex items-center p-2 hover:bg-slate-50 rounded transition-colors";
+                div.innerHTML = `
+                    <input type="checkbox" id="hl-${item.id}" ${item.checked ? 'checked' : ''} class="w-4 h-4 text-slate-600 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
+                    <label for="hl-${item.id}" class="ml-3 cursor-pointer">
+                        <span class="block text-sm font-medium text-slate-800">${item.label}</span>
+                        <span class="block text-xs text-slate-500">${item.desc}</span>
+                    </label>
+                `;
+                const checkbox = div.querySelector('input');
+                checkbox.addEventListener('change', (e) => { item.checked = e.target.checked; });
+                container.appendChild(div);
+            });
+        }
+
+        // Voice vs Tone Logic
+        function updateTone(platform) {
+            const desc = document.getElementById('tone-description');
+            if (desc) desc.innerText = `"${appState.tones[platform]}"`;
+            ['instagram', 'threads', 'linkedin'].forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if (!el) return;
+                if (btn === platform) {
+                    el.classList.remove('text-slate-600', 'hover:bg-slate-200');
+                    el.classList.add('bg-white', 'shadow-sm');
+                } else {
+                    el.classList.add('text-slate-600', 'hover:bg-slate-200');
+                    el.classList.remove('bg-white', 'shadow-sm');
+                }
+            });
+        }
+
+        // Initialize Charts
+        function initCharts() {
+            const radarCanvas = document.getElementById('radarChart');
+            if (radarCanvas) {
+                new Chart(radarCanvas.getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: ['Estética Perfeita', 'Volume de Posts', 'Ressonância Emocional', 'Retenção de Atenção', 'Autenticidade (Falhas)'],
+                        datasets: [{
+                            label: 'Foco Antigo (2022-2023)',
+                            data: [90, 85, 40, 50, 20],
+                            fill: true,
+                            backgroundColor: 'rgba(203, 213, 225, 0.2)',
+                            borderColor: 'rgb(148, 163, 184)',
+                            pointBackgroundColor: 'rgb(148, 163, 184)',
+                        }, {
+                            label: 'Novo Foco (Algoritmo 2025)',
+                            data: [60, 50, 95, 90, 85],
+                            fill: true,
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                            borderColor: 'rgb(16, 185, 129)',
+                            pointBackgroundColor: 'rgb(16, 185, 129)',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { r: { angleLines: { display: false }, suggestedMin: 0, suggestedMax: 100 } },
+                        plugins: {
+                            legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11 } } },
+                            tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)' }
+                        }
+                    }
+                });
+            }
+
+            const doughnutCanvas = document.getElementById('doughnutChart');
+            if (doughnutCanvas) {
+                new Chart(doughnutCanvas.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Manter no Feed (Histórico de Valor)', 'Arquivar (Fora da nova identidade)', 'Deletar (Estritamente Proibido)'],
+                        datasets: [{
+                            data: [65, 35, 0],
+                            backgroundColor: ['rgb(16, 185, 129)', 'rgb(245, 158, 11)', 'rgb(239, 68, 68)'],
+                            borderWidth: 0,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 12 }, padding: 15 } },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        if (context.label.includes('Deletar')) return context.label + ': Punição no algoritmo.';
+                                        return context.label + ': ' + context.parsed + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const bookClubCanvas = document.getElementById('bookClubChart');
+            if (bookClubCanvas) {
+                new Chart(bookClubCanvas.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                        datasets: [{
+                            label: 'Leads Captadas via Ads (Acumulado)',
+                            data: [10, 25, 40, 55],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgb(37, 99, 235)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }, {
+                            label: 'Meta Acumulada (Ads)',
+                            data: [15, 30, 45, 60],
+                            type: 'line',
+                            borderColor: 'rgb(245, 158, 11)',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointBackgroundColor: 'rgb(245, 158, 11)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+                            x: { grid: { display: false } }
+                        },
+                        plugins: {
+                            legend: { position: 'top', labels: { font: { family: 'Inter', size: 12 } } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Platform tabs
+        function showPlatform(platform) {
+            document.querySelectorAll('.platform-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('platform-' + platform).classList.remove('hidden');
+            document.querySelectorAll('.platform-tab').forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-200');
+            });
+            const active = document.getElementById('tab-' + platform);
+            if (active) {
+                active.classList.add('bg-white', 'shadow-sm');
+                active.classList.remove('text-slate-600', 'hover:bg-slate-200');
+            }
+        }
+
+        // Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            renderHighlights();
+            initCharts();
+        });
+    </script>
+</body>
+</html>

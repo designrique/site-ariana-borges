@@ -11,6 +11,18 @@
   status = 200
 
 [[redirects]]
+  from = "https://encontrodeusas.arianaborges.com/"
+  to = "/encontrodeusas.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://clubelivromulhermaravilha.arianaborges.com/"
+  to = "/clubelivromulhermaravilha.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
