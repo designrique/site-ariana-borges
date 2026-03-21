@@ -17,6 +17,8 @@ import ClubeDoLivroMulherMaravilha from '@/pages/ClubeDoLivroMulherMaravilha';
 import ThankYouClubeDoLivro from '@/pages/ClubeDoLivroMulherMaravilha/ThankYou';
 import DNABasico from '@/pages/DNABasico';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
+import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
+import TermosDeUso from '@/pages/TermosDeUso';
 import Footer from '@/components/Footer';
 
 import SchedulingChat from '@/components/SchedulingChat';
@@ -241,6 +243,8 @@ const MainContent = () => {
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
           <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
           <Route path="/clubelivromulhermaravilha" element={<ClubeDoLivroMulherMaravilha />} />
+          <Route path="/privacidade" element={<PoliticaPrivacidade />} />
+          <Route path="/termos" element={<TermosDeUso />} />
         </Routes>
       </div>
       <Footer />
