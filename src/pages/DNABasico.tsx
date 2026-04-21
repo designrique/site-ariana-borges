@@ -6,6 +6,8 @@ import DNABasicoGallerySection from './DNABasico/components/DNABasicoGallerySect
 import { Health, Heart, People, TickSquare, Star1, Medal, Clock, Shield, Book1, Gps, MagicStar, Flash, ArrowRight, Repeat as InfinityIcon, Calendar as CalendarDays } from 'iconsax-react';
 const UsersIcon = People;
 
+const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0MBYByH6cZZloxzwgv936kJ2XmyQaoVu_cva_xmLOz0Au4J0ng9pE0hIqoKclp3YAeV4_cd_kUtuLe8oC3LrIDLsqBOjWURIefprGH2dIiGWhpnxduMQYK5ohRibmmSqmpbqeXzJs-QehADw9Sxsg1ymo_3g1F-g7f8cfx_fWKpO72IdlH9TXatHPoWhF7sfK9Eus1d2l27wrvgFm51lQcpipOxyM9pxxtapGEnfCU1mjHQTzIjjugDWeo5YOKuspiLGAxXqdAbJ_RybOWhZzeKiqyYS15s76VbA2gA.v1.c44a32f6add0634b";
+
 const DNABasico: React.FC = () => {
   // === HERO SECTION ===
   const HeroSection = () => (
@@ -69,9 +71,11 @@ const DNABasico: React.FC = () => {
 
           {/* CTA */}
           <div className="mb-10">
-            <Button variant="urgent" size="xl" pulse className="px-10 shadow-goddess-hover">
-              QUERO GARANTIR MINHA VAGA
-            </Button>
+            <a href="#investimento">
+              <Button variant="urgent" size="xl" pulse className="px-10 shadow-goddess-hover">
+                QUERO GARANTIR MINHA VAGA
+              </Button>
+            </a>
           </div>
 
           {/* Trust badges */}
@@ -422,7 +426,7 @@ const DNABasico: React.FC = () => {
 
   // === PRICING SECTION ===
   const PricingSection = () => (
-    <Container type="content" background="white">
+    <Container type="content" background="white" id="investimento">
       <SectionHeader
         title="Sua Formação Oficial"
         subtitle="O investimento na ferramenta que você usará pelo resto da vida"
@@ -457,9 +461,11 @@ const DNABasico: React.FC = () => {
               ))}
             </ul>
 
-            <Button variant="urgent" pulse fullWidth size="xl" className="py-5 text-lg shadow-goddess">
-              GARANTIR MINHA VAGA
-            </Button>
+            <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="block w-full">
+              <Button variant="urgent" pulse fullWidth size="xl" className="py-5 text-lg shadow-goddess">
+                GARANTIR MINHA VAGA
+              </Button>
+            </a>
             <p className="mt-4 text-sm text-gray-500 font-medium">
               Compra 100% segura e certificada.
             </p>
@@ -540,9 +546,11 @@ const DNABasico: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button variant="urgent" size="xl" pulse className="px-12 py-6 text-xl shadow-2xl">
-              <span className="flex items-center gap-3">GARANTIR MINHA VAGA <ArrowRight size={24} variant="Linear" color="currentColor" /></span>
-            </Button>
+            <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+              <Button variant="urgent" size="xl" pulse className="px-12 py-6 text-xl shadow-2xl">
+                <span className="flex items-center gap-3">GARANTIR MINHA VAGA <ArrowRight size={24} variant="Linear" color="currentColor" /></span>
+              </Button>
+            </a>
           </div>
         </div>
       </Row>
