@@ -548,7 +548,6 @@ const DNABasico: React.FC = () => {
           </div>
 
           <div className="p-8 text-center flex-grow bg-white">
-            <div className="text-gray-500 line-through text-xl mb-1">De R$ 1.997</div>
             <div className="text-6xl font-bold text-gray-900 mb-2">
               <span className="text-3xl align-top mr-1">R$</span>1.298
             </div>
