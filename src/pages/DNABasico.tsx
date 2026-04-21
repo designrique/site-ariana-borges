@@ -88,7 +88,7 @@ const DNABasico: React.FC = () => {
               couponValid ? 'border-green-200 text-green-700 text-xl' : 'border-gray-200 text-gray-800 text-lg'
             }`}>
               <span>Total</span>
-              <span>{couponValid ? 'R$ 997' : 'R$ 1.298'}</span>
+              <span>{couponValid ? 'R$ 998' : 'R$ 1.298'}</span>
             </div>
             {couponValid && (
               <p className="text-xs text-green-600 mt-2 text-center font-medium">
@@ -102,7 +102,7 @@ const DNABasico: React.FC = () => {
             onClick={proceed}
             className="w-full py-4 rounded-xl font-bold text-base bg-gradient-to-r from-goddess-earth to-goddess-gold text-brand-dark hover:brightness-105 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
           >
-            {couponValid ? 'Ir para pagamento — R$ 997' : 'Ir para pagamento'}
+            {couponValid ? 'Ir para pagamento — R$ 998' : 'Ir para pagamento'}
           </button>
 
           <button
