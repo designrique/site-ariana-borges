@@ -10,7 +10,7 @@ const PricingSection: React.FC = () => {
             condition: "Melhor condição (até maio)",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: true,
-            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwBwJNk5zQYeoz47OfZAc21ctEuiBJlCa4KONl0VMq9lCRKaTE4B_PxQFicQSeECBcyxb0nTw_MyLP9-HdosuiErIunOmn3v0lDfbgWfm-iL6PQM-P6hUXQ1dDYseMmOfAaoH8w-cixrtYLB9VY8D.v1.c7bdfac1ddf63fbc"
+            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0YBYIyUqO14_zc3JBXLZ6FD4xHqyUw-E4toJ2SXUukLVHVbCO21HA5n4Yhg02BWzCazrWmoV6i5hcRo4GTnoxnT6h2ALw0eJtl7CN8XkA-pwRClbC-0_V7kW8aODKWC2DKSHXBZz9sSmzu447_Rnl5Ict0flp47ukw6AyNLHGiWtTrpNoLU2MtoLzDWokOWXuMDXngW-zX9OarQQi-3YTJuSwBlvtThUBjKBvCmm_0k4xWHRuo7ZkWEdElhKBvAQ05oXs1qTGQF.v1.98cb4faa59bc7132"
         },
         {
             title: "Segundo Lote",
@@ -19,7 +19,7 @@ const PricingSection: React.FC = () => {
             condition: "A partir de junho",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: false,
-            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwJwJdgxlxAjY11kTdAyie9tqPfcLA4mOgtpYjdUZRbfRuf2yiGk1W4jIdHIC8O9BUZBIlGlAgQe6sfySdgdWjZY_u4v2o1ZkzKKFbPao0bdtj5N5voAP2D7g8wMTRoOoWRpInD51c6nRASPNl9Ic.v1.b31228438f20d58f"
+            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0UBYKyPu-28AcF8iq2mcG3IkfxN0QhJZnvAUPZZwxShrvJ5blZkvXwTBDrXb0zsBRTwmDcm-NF53ULERCbdxOQqxrTL3sLmFl3d2zbG8x7BIyIi9Gq0i3ar3Xs1rhUPqBsum0TnMZPMYNk15OjF6wjfF0xQboqAQut3I99q6qqRqiG1zWwCLn1XW5yc4I5_gn-T5JM29Uy9jNJM-DKgFXNWUZ9cKEVHkV_S-i5ycXDyj6MSLBvZNhYMu2IoVg0sFc0B_HaIB5FWljxwrYbTMeQqmgP4jMuazGrGagM.v1.a4cb8f6d2930c29c"
         },
         {
             title: "Terceiro Lote",
@@ -28,7 +28,7 @@ const PricingSection: React.FC = () => {
             condition: "A partir de agosto",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: false,
-            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwJwJdgxlxAjY11kTdAyie9tqPfcLA4mOgtpYjdUZRbfRuf2yiGk1W4jIdHIC8O9BUZBIlGlAgQe6sfySdgdWjZY_u4v2o1ZkzKKFbPao0bdtj5N5voAP2D7g8wMTRoOoWRpInD51c6nRASPNl9Ic.v1.b31228438f20d58f"
+            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0YBQBRKezG3IaXieR4qNI5En_7EfqIR7YTsUip9obHuAOwq3y6H7_t2e5C3OIozK9AXBnXDZZL6zmOmGg9fviIWcl3wouR1he-JpIMx8CTDsDun5buSdyk0JU-SMdQh2hKX1ezQF6ts6bY_ot74n1Gi7A20x7YqRe0-JNEv2R5DqIAZYnuIMex8lCcZmtEwiS9hhQchCZ2SeR2VcFnVWyg07IuiLJdU3GcgG4j2ZC0AMpopD2LH1ArayZTOQDYQbdL0tNms4EsF.v1.5fe0990a099a147d"
         }
     ];
 
