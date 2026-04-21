@@ -7,8 +7,115 @@ import { Health, Heart, People, TickSquare, Star1, Medal, Clock, Shield, Book1, 
 const UsersIcon = People;
 
 const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0MBYByH6cZZloxzwgv936kJ2XmyQaoVu_cva_xmLOz0Au4J0ng9pE0hIqoKclp3YAeV4_cd_kUtuLe8oC3LrIDLsqBOjWURIefprGH2dIiGWhpnxduMQYK5ohRibmmSqmpbqeXzJs-QehADw9Sxsg1ymo_3g1F-g7f8cfx_fWKpO72IdlH9TXatHPoWhF7sfK9Eus1d2l27wrvgFm51lQcpipOxyM9pxxtapGEnfCU1mjHQTzIjjugDWeo5YOKuspiLGAxXqdAbJ_RybOWhZzeKiqyYS15s76VbA2gA.v1.c44a32f6add0634b";
+const COUPON_URL = "https://loja.infinitepay.io/institutoarianaborges/kkt5516-dna-basico---cupom-albabany";
 
 const DNABasico: React.FC = () => {
+  const [showModal, setShowModal] = React.useState(false);
+  const [couponInput, setCouponInput] = React.useState('');
+
+  const couponValid = couponInput.trim().toUpperCase() === 'ALBANY';
+
+  const openModal = () => {
+    setCouponInput('');
+    setShowModal(true);
+  };
+
+  const proceed = () => {
+    window.open(couponValid ? COUPON_URL : CHECKOUT_URL, '_blank', 'noopener,noreferrer');
+    setShowModal(false);
+  };
+
+  // === COUPON MODAL ===
+  const CouponModal = () => (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={() => setShowModal(false)}
+      />
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-goddess-purple to-goddess-purpleDark px-8 py-6 text-white">
+          <button
+            onClick={() => setShowModal(false)}
+            className="absolute top-4 right-5 text-white/70 hover:text-white text-2xl leading-none"
+            aria-label="Fechar"
+          >
+            ×
+          </button>
+          <h2 className="font-heading text-2xl font-bold">Você tem um cupom?</h2>
+          <p className="text-white/75 text-sm mt-1">Digite abaixo para aplicar seu desconto</p>
+        </div>
+
+        {/* Body */}
+        <div className="px-8 py-6 space-y-5">
+          {/* Input */}
+          <div className="relative">
+            <input
+              type="text"
+              value={couponInput}
+              onChange={e => setCouponInput(e.target.value)}
+              placeholder="Ex: ALBANY"
+              className={`w-full px-4 py-3 rounded-xl border-2 text-base font-mono uppercase tracking-widest outline-none transition-colors ${
+                couponInput === ''
+                  ? 'border-gray-200 focus:border-goddess-purple'
+                  : couponValid
+                  ? 'border-green-400 bg-green-50 text-green-700'
+                  : 'border-red-300 bg-red-50 text-red-600'
+              }`}
+              autoFocus
+              onKeyDown={e => e.key === 'Enter' && proceed()}
+            />
+            {couponValid && (
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 text-xl">✓</span>
+            )}
+          </div>
+
+          {/* Price breakdown */}
+          <div className={`rounded-2xl border px-6 py-5 transition-all duration-300 ${
+            couponValid ? 'border-green-200 bg-green-50' : 'border-gray-100 bg-gray-50'
+          }`}>
+            <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
+              <span>Valor original</span>
+              <span className={couponValid ? 'line-through' : ''}>R$ 1.297</span>
+            </div>
+            {couponValid && (
+              <div className="flex items-center justify-between text-sm text-green-600 font-semibold mb-2 animate-fade-in">
+                <span>Desconto (cupom ALBANY)</span>
+                <span>- R$ 300</span>
+              </div>
+            )}
+            <div className={`flex items-center justify-between font-bold border-t pt-3 mt-1 transition-colors ${
+              couponValid ? 'border-green-200 text-green-700 text-xl' : 'border-gray-200 text-gray-800 text-lg'
+            }`}>
+              <span>Total</span>
+              <span>{couponValid ? 'R$ 997' : 'R$ 1.297'}</span>
+            </div>
+            {couponValid && (
+              <p className="text-xs text-green-600 mt-2 text-center font-medium">
+                🎉 Cupom aplicado com sucesso!
+              </p>
+            )}
+          </div>
+
+          {/* CTA */}
+          <button
+            onClick={proceed}
+            className="w-full py-4 rounded-xl font-bold text-base bg-gradient-to-r from-goddess-earth to-goddess-gold text-brand-dark hover:brightness-105 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+          >
+            {couponValid ? 'Ir para pagamento — R$ 997' : 'Ir para pagamento'}
+          </button>
+
+          <button
+            onClick={() => setShowModal(false)}
+            className="w-full text-sm text-gray-400 hover:text-gray-600 py-1 transition-colors"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   // === HERO SECTION ===
   const HeroSection = () => (
     <section className="relative w-full min-h-screen flex items-center overflow-hidden">
@@ -461,11 +568,11 @@ const DNABasico: React.FC = () => {
               ))}
             </ul>
 
-            <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="block w-full">
+            <button onClick={openModal} className="block w-full">
               <Button variant="urgent" pulse fullWidth size="xl" className="py-5 text-lg shadow-goddess">
                 GARANTIR MINHA VAGA
               </Button>
-            </a>
+            </button>
             <p className="mt-4 text-sm text-gray-500 font-medium">
               Compra 100% segura e certificada.
             </p>
@@ -546,11 +653,11 @@ const DNABasico: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+            <button onClick={openModal}>
               <Button variant="urgent" size="xl" pulse className="px-12 py-6 text-xl shadow-2xl">
                 <span className="flex items-center gap-3">GARANTIR MINHA VAGA <ArrowRight size={24} variant="Linear" color="currentColor" /></span>
               </Button>
-            </a>
+            </button>
           </div>
         </div>
       </Row>
@@ -594,6 +701,7 @@ const DNABasico: React.FC = () => {
         <PricingSection />
         <FAQSection />
         <FinalCTASection />
+        {showModal && <CouponModal />}
       </>
     </>
   );
