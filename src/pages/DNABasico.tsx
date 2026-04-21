@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { Container, Row, Col, SectionHeader, Button, Card, CardGrid } from '@/components/DesignSystem';
 import DNASequenceBackground from '@/components/DNASequenceBackground';
 import DNABasicoGallerySection from './DNABasico/components/DNABasicoGallerySection';
-import { Brain, Heart, Users, Check, Star, Award, Clock, Shield, BookOpen, Users as UsersIcon, Target, Sparkles, Zap, ArrowRight, Infinity as InfinityIcon, CalendarDays } from 'lucide-react';
+import { Health, Heart, People, TickSquare, Star1, Medal, Clock, Shield, Book1, Gps, MagicStar, Flash, ArrowRight, Repeat as InfinityIcon, Calendar as CalendarDays } from 'iconsax-react';
+const UsersIcon = People;
 
 const DNABasico: React.FC = () => {
   // === HERO SECTION ===
@@ -17,7 +18,7 @@ const DNABasico: React.FC = () => {
         <div className="text-white">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-            <Sparkles className="w-4 h-4 text-goddess-gold flex-shrink-0" />
+            <MagicStar size={16} variant="Linear" color="currentColor" className="text-goddess-gold flex-shrink-0" />
             <span className="text-sm font-semibold tracking-widest uppercase">Formação Oficial ThetaHealing®</span>
           </div>
 
@@ -48,8 +49,8 @@ const DNABasico: React.FC = () => {
           {/* Data do evento */}
           <div className="flex items-center gap-3 mb-8">
             <div className="flex items-center gap-2 bg-goddess-gold/20 border border-goddess-gold/50 px-4 py-2.5 rounded-xl backdrop-blur-sm">
-              <CalendarDays className="w-4 h-4 text-goddess-gold flex-shrink-0" />
-              <span className="text-goddess-gold font-bold text-sm tracking-wide">12, 13 e 14 de Junho</span>
+              <CalendarDays size={16} variant="Linear" color="currentColor" className="text-goddess-gold flex-shrink-0" />
+              <span className="text-goddess-gold font-bold text-sm tracking-wide">15, 16 e 17 de Maio</span>
             </div>
             <span className="text-white/55 text-sm font-medium">Próxima turma</span>
           </div>
@@ -57,11 +58,11 @@ const DNABasico: React.FC = () => {
           {/* Course info pills */}
           <div className="flex flex-wrap gap-3 mb-10">
             <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/25 px-4 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
-              <Clock className="w-4 h-4 text-goddess-gold" />
+              <Clock size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
               <span>3 dias de imersão</span>
             </div>
             <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/25 px-4 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
-              <Award className="w-4 h-4 text-goddess-gold" />
+              <Medal size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
               <span>Certificação THInK®</span>
             </div>
           </div>
@@ -76,15 +77,15 @@ const DNABasico: React.FC = () => {
           {/* Trust badges */}
           <div className="flex flex-wrap items-center gap-6 text-sm text-white/70 font-medium">
             <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-goddess-gold" />
+              <Shield size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
               <span>Pagamento Seguro</span>
             </div>
             <div className="flex items-center gap-2">
-              <UsersIcon className="w-4 h-4 text-goddess-gold" />
+              <UsersIcon size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
               <span>Vagas Limitadas</span>
             </div>
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-goddess-gold" />
+              <Star1 size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
               <span>Garantia de 7 dias</span>
             </div>
           </div>
@@ -136,13 +137,13 @@ const DNABasico: React.FC = () => {
             <div className="space-y-4 mt-8">
               {[
                 { icon: Heart, text: "Relacionamentos que sempre terminam do mesmo jeito" },
-                { icon: Target, text: "Trabalhar muito e o dinheiro nunca ser suficiente" },
+                { icon: Gps, text: "Trabalhar muito e o dinheiro nunca ser suficiente" },
                 { icon: Shield, text: "Síndrome do impostor e medos paralisantes" },
-                { icon: Brain, text: "Sensação constante de estar travado na vida" }
+                { icon: Health, text: "Sensação constante de estar travado na vida" }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-5 items-center bg-goddess-moonlight/30 p-5 rounded-2xl border border-goddess-purple/10 hover:border-goddess-purple/30 transition-colors">
                   <div className="bg-white p-3 rounded-full text-goddess-purple shadow-sm">
-                    <item.icon className="w-6 h-6" />
+                    <item.icon size={24} variant="Linear" color="currentColor" />
                   </div>
                   <span className="text-gray-800 font-medium text-lg">{item.text}</span>
                 </div>
@@ -151,7 +152,7 @@ const DNABasico: React.FC = () => {
 
             <div className="mt-10 p-8 bg-goddess-purple text-white rounded-3xl shadow-goddess relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Brain className="w-32 h-32" />
+                <Health size={128} variant="Linear" color="currentColor" />
               </div>
               <p className="relative z-10 italic text-xl leading-relaxed font-light">
                 "Cerca de 95% das nossas decisões diárias são tomadas pelo subconsciente. Se não mudarmos a raiz da crença, continuaremos no piloto automático."
@@ -221,7 +222,7 @@ const DNABasico: React.FC = () => {
 
                 <div className="text-center p-8 relative z-10">
                   <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto mb-4 border border-white/20">
-                    <Brain className="w-10 h-10 text-goddess-gold" />
+                    <Health size={40} variant="Linear" color="currentColor" className="text-goddess-gold" />
                   </div>
                   <h3 className="font-heading text-4xl font-bold text-white mb-2">Estado Theta</h3>
                   <p className="text-white/80 text-lg">
@@ -233,7 +234,7 @@ const DNABasico: React.FC = () => {
               <div className="absolute bottom-0 right-0 bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/10 max-w-[250px]">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="bg-goddess-gold/20 p-2 rounded-full">
-                    <Zap className="w-6 h-6 text-goddess-gold" />
+                    <Flash size={24} variant="Linear" color="currentColor" className="text-goddess-gold" />
                   </div>
                   <span className="font-bold text-white">Acesso Direto</span>
                 </div>
@@ -265,7 +266,7 @@ const DNABasico: React.FC = () => {
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-4 items-start">
                     <div className="mt-1 bg-goddess-purple/20 p-2 rounded-full border border-white/10">
-                      <Check className="w-5 h-5 text-goddess-gold font-bold" />
+                      <TickSquare size={20} variant="Linear" color="currentColor" className="text-goddess-gold" />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-white">{item.title}</h4>
@@ -294,7 +295,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="text-center h-full hover:-translate-y-2 transition-transform duration-300">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-goddess-purple/10 rounded-2xl flex items-center justify-center rotate-3">
-              <Shield className="w-8 h-8 text-goddess-purple -rotate-3" />
+              <Shield size={32} variant="Linear" color="currentColor" className="text-goddess-purple -rotate-3" />
             </div>
           </div>
           <h3 className="font-bold text-2xl mb-3 text-goddess-purpleDark">Fim da Autossabotagem</h3>
@@ -304,7 +305,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="text-center h-full hover:-translate-y-2 transition-transform duration-300">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-goddess-gold/20 rounded-2xl flex items-center justify-center -rotate-3">
-              <Award className="w-8 h-8 text-goddess-earth rotate-3" />
+              <Medal size={32} variant="Linear" color="currentColor" className="text-goddess-earth rotate-3" />
             </div>
           </div>
           <h3 className="font-bold text-2xl mb-3 text-goddess-purpleDark">Prosperidade Real</h3>
@@ -314,7 +315,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="text-center h-full hover:-translate-y-2 transition-transform duration-300">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-goddess-pink/30 rounded-2xl flex items-center justify-center rotate-3">
-              <Heart className="w-8 h-8 text-goddess-purpleDark -rotate-3" />
+              <Heart size={32} variant="Linear" color="currentColor" className="text-goddess-purpleDark -rotate-3" />
             </div>
           </div>
           <h3 className="font-bold text-2xl mb-3 text-goddess-purpleDark">Relações Saudáveis</h3>
@@ -324,7 +325,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="text-center h-full hover:-translate-y-2 transition-transform duration-300">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-goddess-green/20 rounded-2xl flex items-center justify-center -rotate-3">
-              <Users className="w-8 h-8 text-goddess-forest rotate-3" />
+              <People size={32} variant="Linear" color="currentColor" className="text-goddess-forest rotate-3" />
             </div>
           </div>
           <h3 className="font-bold text-2xl mb-3 text-goddess-purpleDark">Atuar como Terapeuta</h3>
@@ -334,7 +335,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="text-center h-full hover:-translate-y-2 transition-transform duration-300">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center rotate-3">
-              <Star className="w-8 h-8 text-blue-600 -rotate-3" />
+              <Star1 size={32} variant="Linear" color="currentColor" className="text-blue-600 -rotate-3" />
             </div>
           </div>
           <h3 className="font-bold text-2xl mb-3 text-goddess-purpleDark">Intuição Aguçada</h3>
@@ -344,7 +345,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="text-center h-full hover:-translate-y-2 transition-transform duration-300">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center -rotate-3">
-              <Target className="w-8 h-8 text-orange-600 rotate-3" />
+              <Gps size={32} variant="Linear" color="currentColor" className="text-orange-600 rotate-3" />
             </div>
           </div>
           <h3 className="font-bold text-2xl mb-3 text-goddess-purpleDark">Manifestação</h3>
@@ -367,7 +368,7 @@ const DNABasico: React.FC = () => {
         <Card variant="default" className="bg-white border-none shadow-card h-full p-8">
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-goddess-moonlight p-4 rounded-2xl">
-              <BookOpen className="w-8 h-8 text-goddess-purple" />
+              <Book1 size={32} variant="Linear" color="currentColor" className="text-goddess-purple" />
             </div>
             <h3 className="font-heading text-3xl font-bold text-goddess-purpleDark">Material Oficial</h3>
           </div>
@@ -382,7 +383,7 @@ const DNABasico: React.FC = () => {
               "Registro no site oficial ThetaHealing.com",
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-goddess-gold flex-shrink-0" />
+                <TickSquare size={24} variant="Linear" color="currentColor" className="text-goddess-gold flex-shrink-0" />
                 <span className="text-gray-800 font-medium text-lg">{item}</span>
               </li>
             ))}
@@ -392,7 +393,7 @@ const DNABasico: React.FC = () => {
         <Card variant="default" className="bg-white border-none shadow-card h-full p-8">
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-goddess-moonlight p-4 rounded-2xl">
-              <Clock className="w-8 h-8 text-goddess-purple" />
+              <Clock size={32} variant="Linear" color="currentColor" className="text-goddess-purple" />
             </div>
             <h3 className="font-heading text-3xl font-bold text-goddess-purpleDark">O Treinamento</h3>
           </div>
@@ -408,7 +409,7 @@ const DNABasico: React.FC = () => {
               "Devolução de fragmentos de alma"
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-goddess-purple flex-shrink-0" />
+                <TickSquare size={24} variant="Linear" color="currentColor" className="text-goddess-purple flex-shrink-0" />
                 <span className="text-gray-800 font-medium text-lg">{item}</span>
               </li>
             ))}
@@ -432,7 +433,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="border-4 border-goddess-purple relative overflow-hidden flex flex-col h-full shadow-2xl p-0">
           <div className="bg-gradient-to-r from-goddess-purple to-goddess-purpleDark text-white text-center py-6">
             <h3 className="font-heading text-4xl font-bold mb-2">Turma Presencial</h3>
-            <p className="text-white/80 text-lg">12, 13 e 14 de Junho</p>
+            <p className="text-white/80 text-lg">15, 16 e 17 de Maio</p>
           </div>
 
           <div className="p-8 text-center flex-grow bg-white">
@@ -450,7 +451,7 @@ const DNABasico: React.FC = () => {
                 "BÔNUS: Grupo VIP com aulas mensais e acesso a gravações",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
-                  <Check className="w-6 h-6 text-goddess-green flex-shrink-0" />
+                  <TickSquare size={24} variant="Linear" color="currentColor" className="text-goddess-green flex-shrink-0" />
                   <span className="text-gray-700 text-lg">{item}</span>
                 </li>
               ))}
@@ -467,7 +468,7 @@ const DNABasico: React.FC = () => {
       </div>
 
       <div className="mt-16 max-w-3xl mx-auto p-8 bg-goddess-moonlight rounded-3xl border border-gray-200 text-center">
-        <Shield className="w-16 h-16 text-goddess-gold mx-auto mb-6" />
+        <Shield size={64} variant="Linear" color="currentColor" className="text-goddess-gold mx-auto mb-6" />
         <h4 className="font-heading text-3xl font-bold text-gray-900 mb-4">Garantia Incondicional de 7 dias</h4>
         <p className="text-xl text-gray-700 leading-relaxed">
           Se até o final do primeiro dia de curso você não sentir que esta técnica é transformadora, basta solicitar e devolveremos 100% do seu dinheiro. Sem perguntas.
@@ -507,7 +508,7 @@ const DNABasico: React.FC = () => {
           <div key={idx} className="p-8 rounded-3xl border border-gray-200 bg-white hover:border-goddess-purple/30 transition-colors shadow-sm">
             <div className="flex gap-5">
               <div className="text-goddess-purple bg-goddess-purple/10 p-3 rounded-xl flex-shrink-0 self-start">
-                <InfinityIcon className="w-6 h-6" />
+                <InfinityIcon size={24} variant="Linear" color="currentColor" />
               </div>
               <div>
                 <h4 className="font-bold text-gray-900 text-xl mb-3">{item.q}</h4>
@@ -527,7 +528,7 @@ const DNABasico: React.FC = () => {
       <Row columns={1} className="justify-center relative z-10">
         <div className="w-full max-w-4xl mx-auto px-4">
           <div className="mb-10 inline-flex items-center justify-center p-5 bg-white/10 rounded-full backdrop-blur-md border border-white/20">
-            <Sparkles className="w-12 h-12 text-goddess-gold" />
+            <MagicStar size={48} variant="Linear" color="currentColor" className="text-goddess-gold" />
           </div>
 
           <h2 className="font-heading text-4xl md:text-6xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
@@ -540,7 +541,7 @@ const DNABasico: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button variant="urgent" size="xl" pulse className="px-12 py-6 text-xl shadow-2xl">
-              <span className="flex items-center gap-3">GARANTIR MINHA VAGA <ArrowRight className="w-6 h-6" /></span>
+              <span className="flex items-center gap-3">GARANTIR MINHA VAGA <ArrowRight size={24} variant="Linear" color="currentColor" /></span>
             </Button>
           </div>
         </div>
