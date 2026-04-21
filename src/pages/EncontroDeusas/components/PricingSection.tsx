@@ -1,22 +1,31 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { TickSquare } from 'iconsax-react';
 
 const PricingSection: React.FC = () => {
     const plans = [
         {
-            title: "Lote Março",
-            price: "2.498,00",
+            title: "Primeiro Lote",
+            price: "2.298,00",
             period: "à vista ou parcelado",
-            condition: "Melhor condição (até 31/03)",
+            condition: "Melhor condição (até maio)",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: true,
             url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwBwJNk5zQYeoz47OfZAc21ctEuiBJlCa4KONl0VMq9lCRKaTE4B_PxQFicQSeECBcyxb0nTw_MyLP9-HdosuiErIunOmn3v0lDfbgWfm-iL6PQM-P6hUXQ1dDYseMmOfAaoH8w-cixrtYLB9VY8D.v1.c7bdfac1ddf63fbc"
         },
         {
-            title: "Lote Abril",
+            title: "Segundo Lote",
+            price: "2.498,00",
+            period: "à vista ou parcelado",
+            condition: "A partir de junho",
+            features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
+            highlight: false,
+            url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwJwJdgxlxAjY11kTdAyie9tqPfcLA4mOgtpYjdUZRbfRuf2yiGk1W4jIdHIC8O9BUZBIlGlAgQe6sfySdgdWjZY_u4v2o1ZkzKKFbPao0bdtj5N5voAP2D7g8wMTRoOoWRpInD51c6nRASPNl9Ic.v1.b31228438f20d58f"
+        },
+        {
+            title: "Terceiro Lote",
             price: "2.698,00",
             period: "à vista ou parcelado",
-            condition: "Últimas vagas (a partir de 01/04)",
+            condition: "A partir de agosto",
             features: ["Hospedagem em Quarto Duplo", "Alimentação Inclusa", "Translado Incluso", "Kit da Deusa"],
             highlight: false,
             url: "https://checkout.infinitepay.io/institutoarianaborges?lenc=G4EAwJwJdgxlxAjY11kTdAyie9tqPfcLA4mOgtpYjdUZRbfRuf2yiGk1W4jIdHIC8O9BUZBIlGlAgQe6sfySdgdWjZY_u4v2o1ZkzKKFbPao0bdtj5N5voAP2D7g8wMTRoOoWRpInD51c6nRASPNl9Ic.v1.b31228438f20d58f"
@@ -35,7 +44,7 @@ const PricingSection: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-3xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start max-w-5xl mx-auto">
                     {plans.map((plan, index) => (
                         <div
                             key={index}
@@ -60,7 +69,7 @@ const PricingSection: React.FC = () => {
                                 {plan.features.map((feature, i) => (
                                     <li key={i} className="flex items-center gap-3">
                                         <div className={`p-1 rounded-full ${plan.highlight ? 'bg-brand-dark/10 text-brand-dark' : 'bg-brand-gold/20 text-brand-gold'}`}>
-                                            <Check size={14} strokeWidth={3} />
+                                            <TickSquare size={14} variant="Linear" color="currentColor" />
                                         </div>
                                         <span className="text-sm font-sans">{feature}</span>
                                     </li>

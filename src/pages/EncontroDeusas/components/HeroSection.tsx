@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown2 } from 'iconsax-react';
 
 const HeroSection: React.FC = () => {
     return (
@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
 
             <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
                 <span className="inline-block py-1 px-3 rounded-full bg-purple-950/80 text-white border border-purple-500/30 text-sm font-sans tracking-widest uppercase mb-6 backdrop-blur-sm">
-                    24 a 26 de Abril • Bonito/PE
+                    11 a 13 de Setembro • Bonito/PE
                 </span>
 
                 <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
                     className="group bg-brand-gold hover:bg-brand-goldDark text-brand-dark font-sans font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-brand-gold/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
                 >
                     Quero resgatar minha força
-                    <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                    <ArrowDown2 size={20} variant="Linear" color="currentColor" className="group-hover:translate-y-1 transition-transform" />
                 </a>
             </div>
         </section>
