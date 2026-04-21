@@ -76,7 +76,7 @@ const DNABasico: React.FC = () => {
           }`}>
             <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
               <span>Valor original</span>
-              <span className={couponValid ? 'line-through' : ''}>R$ 1.297</span>
+              <span className={couponValid ? 'line-through' : ''}>R$ 1.298</span>
             </div>
             {couponValid && (
               <div className="flex items-center justify-between text-sm text-green-600 font-semibold mb-2 animate-fade-in">
@@ -88,7 +88,7 @@ const DNABasico: React.FC = () => {
               couponValid ? 'border-green-200 text-green-700 text-xl' : 'border-gray-200 text-gray-800 text-lg'
             }`}>
               <span>Total</span>
-              <span>{couponValid ? 'R$ 997' : 'R$ 1.297'}</span>
+              <span>{couponValid ? 'R$ 997' : 'R$ 1.298'}</span>
             </div>
             {couponValid && (
               <p className="text-xs text-green-600 mt-2 text-center font-medium">
@@ -550,7 +550,7 @@ const DNABasico: React.FC = () => {
           <div className="p-8 text-center flex-grow bg-white">
             <div className="text-gray-500 line-through text-xl mb-1">De R$ 1.997</div>
             <div className="text-6xl font-bold text-gray-900 mb-2">
-              <span className="text-3xl align-top mr-1">R$</span>1.297
+              <span className="text-3xl align-top mr-1">R$</span>1.298
             </div>
             <p className="text-goddess-purple font-semibold mb-8 text-lg">ou até 12x no cartão</p>
 
