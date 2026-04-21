@@ -54,7 +54,7 @@ const DNABasico: React.FC = () => {
               type="text"
               value={couponInput}
               onChange={e => setCouponInput(e.target.value)}
-              placeholder="Ex: ALBANY"
+              placeholder="Digite seu cupom"
               className={`w-full px-4 py-3 rounded-xl border-2 text-base font-mono uppercase tracking-widest outline-none transition-colors ${
                 couponInput === ''
                   ? 'border-gray-200 focus:border-goddess-purple'
