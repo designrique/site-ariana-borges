@@ -7,7 +7,7 @@ const Authority: React.FC = () => {
         <div className="relative order-2 md:order-1">
           <div className="absolute -inset-4 bg-brand-gold/20 rounded-full blur-xl"></div>
           <img
-            src="/Ariana-Borges-profile-photo.jpeg"
+            src="/perfil-ariana-borges.webp"
             alt="Ariana Borges"
             className="relative rounded-t-[100px] rounded-b-2xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto grayscale hover:grayscale-0 transition-all duration-700"
           />
