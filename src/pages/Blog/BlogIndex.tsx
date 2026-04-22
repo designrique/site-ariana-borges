@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getPosts, Post } from '@/lib/cms';
 import { Link } from 'react-router-dom';
-import { Calendar, User } from 'lucide-react';
+import { Calendar, User } from 'iconsax-react';
 import { Helmet } from 'react-helmet-async';
 
 const Blog: React.FC = () => {
@@ -65,11 +65,11 @@ const Blog: React.FC = () => {
 
                                             <div className="flex items-center text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
                                                 <div className="flex items-center gap-1 mr-4">
-                                                    <Calendar size={14} />
+                                                    <Calendar size={14} variant="Linear" color="currentColor" />
                                                     {new Date(post.publishedDate).toLocaleDateString()}
                                                 </div>
                                                 <div className="flex items-center gap-1">
-                                                    <User size={14} />
+                                                    <User size={14} variant="Linear" color="currentColor" />
                                                     Instituto Ariana Borges
                                                 </div>
                                             </div>

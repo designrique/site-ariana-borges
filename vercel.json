@@ -1,4 +1,6 @@
 {
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
     "routes": [
         {
             "src": "^/$",
@@ -21,11 +23,11 @@
             "dest": "/clubelivromulhermaravilha.html"
         },
         {
-            "handle": "filesystem"
+            "src": "^/webhook-infinitepay$",
+            "dest": "/api/webhook-infinitepay"
         },
         {
-            "src": "^/(api|webhook-infinitepay)/(.*)$",
-            "dest": "/api/$2"
+            "handle": "filesystem"
         },
         {
             "src": "^/(.*)$",

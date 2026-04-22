@@ -1,17 +1,17 @@
 import React from 'react';
-import { UserCheck, GraduationCap, Users, ShieldCheck, Lightbulb, FileText, Search, Clock } from 'lucide-react';
+import { UserTick, Teacher, People, ShieldTick, Lamp, DocumentText, SearchNormal1, Clock } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getServices } from '@/lib/cms';
 
 const iconMap: Record<string, React.ReactNode> = {
-    'UserCheck': <UserCheck size={32} />,
-    'GraduationCap': <GraduationCap size={32} />,
-    'Users': <Users size={32} />,
-    'ShieldCheck': <ShieldCheck size={32} />,
-    'Lightbulb': <Lightbulb size={32} />,
-    'FileText': <FileText size={32} />,
-    'Search': <Search size={32} />,
-    'Clock': <Clock size={32} />,
+    'UserCheck': <UserTick size={32} variant="Linear" color="currentColor" />,
+    'GraduationCap': <Teacher size={32} variant="Linear" color="currentColor" />,
+    'Users': <People size={32} variant="Linear" color="currentColor" />,
+    'ShieldCheck': <ShieldTick size={32} variant="Linear" color="currentColor" />,
+    'Lightbulb': <Lamp size={32} variant="Linear" color="currentColor" />,
+    'FileText': <DocumentText size={32} variant="Linear" color="currentColor" />,
+    'Search': <SearchNormal1 size={32} variant="Linear" color="currentColor" />,
+    'Clock': <Clock size={32} variant="Linear" color="currentColor" />,
 };
 
 const Pillars: React.FC = () => {
@@ -21,28 +21,28 @@ const Pillars: React.FC = () => {
     });
 
     const pillars = services && services.length > 0 ? services.map(s => ({
-        icon: s.icon ? iconMap[s.icon] : <UserCheck size={32} />,
+        icon: s.icon ? iconMap[s.icon] : <UserTick size={32} variant="Linear" color="currentColor" />,
         title: s.title,
         description: s.description,
         link: s.link || '#',
         cta: s.cta || 'Saiba mais'
     })) : [
         {
-            icon: <UserCheck size={32} />,
+            icon: <UserTick size={32} variant="Linear" color="currentColor" />,
             title: 'Terapia Individual',
             description: 'Liberte-se: Desperte, Cure e Transforme sua Vida com sessões de Terapia Personalizada.',
             link: '/terapia-individual',
             cta: 'Saiba mais'
         },
         {
-            icon: <GraduationCap size={32} />,
+            icon: <Teacher size={32} variant="Linear" color="currentColor" />,
             title: 'Formação de Terapeutas',
             description: 'Seja um Agente de Mudança: Diversas Formações de Terapeuta de Excelência.',
             link: '/formacao-de-terapeutas',
             cta: 'Saiba mais'
         },
         {
-            icon: <Users size={32} />,
+            icon: <People size={32} variant="Linear" color="currentColor" />,
             title: 'Autoconhecimento em Grupo',
             description: 'Junte-se a uma Jornada de Descoberta: Turmas de Autoconhecimento para Transformação Interior.',
             link: '/autoconhecimento-em-grupo',

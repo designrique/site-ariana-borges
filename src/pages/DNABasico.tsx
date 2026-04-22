@@ -195,10 +195,6 @@ const DNABasico: React.FC = () => {
               <UsersIcon size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
               <span>Vagas Limitadas</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Star1 size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
-              <span>Garantia de 7 dias</span>
-            </div>
           </div>
         </div>
 
@@ -558,7 +554,7 @@ const DNABasico: React.FC = () => {
                 "3 dias de Formação Presencial",
                 "Certificado Oficial de Praticante",
                 "Livro Físico + Apostila Oficial",
-                "BÔNUS: Grupo VIP com aulas mensais e acesso a gravações",
+                "BÔNUS: Grupo VIP com aulas mensais ao vivo",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
                   <TickSquare size={24} variant="Linear" color="currentColor" className="text-goddess-green flex-shrink-0" />
@@ -579,13 +575,6 @@ const DNABasico: React.FC = () => {
         </Card>
       </div>
 
-      <div className="mt-16 max-w-3xl mx-auto p-8 bg-goddess-moonlight rounded-3xl border border-gray-200 text-center">
-        <Shield size={64} variant="Linear" color="currentColor" className="text-goddess-gold mx-auto mb-6" />
-        <h4 className="font-heading text-3xl font-bold text-gray-900 mb-4">Garantia Incondicional de 7 dias</h4>
-        <p className="text-xl text-gray-700 leading-relaxed">
-          Se até o final do primeiro dia de curso você não sentir que esta técnica é transformadora, basta solicitar e devolveremos 100% do seu dinheiro. Sem perguntas.
-        </p>
-      </div>
     </Container>
   );
 
@@ -614,7 +603,7 @@ const DNABasico: React.FC = () => {
           },
           {
             q: "O que é o Grupo VIP incluído na formação?",
-            a: "O Grupo VIP é o seu suporte contínuo após o curso. Nele você tira dúvidas com a instrutora, participa de aulas treino ao vivo uma vez por mês e tem acesso a aulas gravadas que ficam disponíveis para você assistir quando quiser — tudo online, no seu tempo."
+            a: "O Grupo VIP é o seu suporte contínuo após o curso. Nele você tira dúvidas com a instrutora e participa de aulas ao vivo uma vez por mês. Atenção: por enquanto, as aulas mensais não ficam gravadas."
           }
         ].map((item, idx) => (
           <div key={idx} className="p-8 rounded-3xl border border-gray-200 bg-white hover:border-goddess-purple/30 transition-colors shadow-sm">

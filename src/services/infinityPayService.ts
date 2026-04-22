@@ -30,8 +30,8 @@ interface PaymentStatusResponse {
     message?: string;
 }
 
-const N8N_PROXY_URL = 'https://webhook.digitalfisher.com.br/webhook/create_payment_link';
-const N8N_CHECK_URL = 'https://webhook.digitalfisher.com.br/webhook/check_payment';
+const N8N_PROXY_URL = 'https://n8n.mapc.com.br/webhook/create_payment_link';
+const N8N_CHECK_URL = 'https://n8n.mapc.com.br/webhook/check_payment';
 
 export const createCheckoutLink = async (payload: CreateLinkPayload): Promise<CheckoutResponse> => {
     try {

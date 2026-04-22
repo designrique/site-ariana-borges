@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft2, ArrowRight2 } from 'iconsax-react';
 
 const TestimonialsSection: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -132,7 +132,7 @@ const TestimonialsSection: React.FC = () => {
                         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white/80 hover:bg-brand-gold hover:text-white text-brand-dark p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0"
                         aria-label="Anterior"
                     >
-                        <ChevronLeft size={24} />
+                        <ArrowLeft2 size={24} variant="Linear" color="currentColor" />
                     </button>
 
                     <button
@@ -140,7 +140,7 @@ const TestimonialsSection: React.FC = () => {
                         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white/80 hover:bg-brand-gold hover:text-white text-brand-dark p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0"
                         aria-label="Próximo"
                     >
-                        <ChevronRight size={24} />
+                        <ArrowRight2 size={24} variant="Linear" color="currentColor" />
                     </button>
 
                     {/* Carousel Container */}

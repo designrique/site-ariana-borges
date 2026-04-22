@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Calendar, CheckCircle, User, Phone, Mail, ArrowLeft, Sparkles, Clock } from 'lucide-react';
+import { CloseSquare, Send2, Calendar, TickCircle, User, Mobile, Sms, ArrowLeft, MagicStar, Clock } from 'iconsax-react';
 import { useScheduling } from './SchedulingContext';
 import {
     checkAvailability,
@@ -45,6 +45,7 @@ const SchedulingChat: React.FC = () => {
     const [preferredTimeframe, setPreferredTimeframe] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [lastAvailabilityMessage, setLastAvailabilityMessage] = useState('');
+    const [paymentUrl, setPaymentUrl] = useState('');
     const [paymentOrderNsu, setPaymentOrderNsu] = useState<string | undefined>(undefined);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -99,6 +100,7 @@ const SchedulingChat: React.FC = () => {
                 setPreferredTimeframe('');
                 setInput('');
                 setLastAvailabilityMessage('');
+                setPaymentUrl('');
             } else {
                 // Check for saved state in localStorage
                 const savedState = localStorage.getItem('scheduling_chat_state');
@@ -141,6 +143,7 @@ const SchedulingChat: React.FC = () => {
                 setPreferredTimeframe('');
                 setInput('');
                 setLastAvailabilityMessage('');
+                setPaymentUrl('');
                 setPaymentOrderNsu(undefined);
             }
         }
@@ -297,7 +300,7 @@ const SchedulingChat: React.FC = () => {
                     phone_number: clientData.phone
                 },
                 redirectUrl: `${window.location.origin}/payment-return`,
-                webhookUrl: 'https://webhook.digitalfisher.com.br/webhook/infinitypay_webhook'
+                webhookUrl: 'https://n8n.mapc.com.br/webhook/infinitypay_webhook'
             });
 
             // Persist data for return
@@ -309,11 +312,7 @@ const SchedulingChat: React.FC = () => {
                 setIsLoading(false);
             }, 500);
 
-            // Store the payment URL in a state if needed, or just let the button handle it.
-            // For now, we rely on the button we will add in the render part.
-            // Using a hack to store the url in the message (not ideal) or state. 
-            // Better: Add a state for `paymentUrl`.
-            setLastAvailabilityMessage(checkoutData.url); // Reusing this state to store URL temporarily to avoid new state 
+            setPaymentUrl(checkoutData.url);
 
         } catch (error) {
             setIsLoading(false);
@@ -447,10 +446,10 @@ const SchedulingChat: React.FC = () => {
 
     const getInputIcon = () => {
         switch (step) {
-            case 'name': return <User size={16} className="text-gray-400" />;
-            case 'phone': return <Phone size={16} className="text-gray-400" />;
-            case 'email': return <Mail size={16} className="text-gray-400" />;
-            case 'timeframe': return <Clock size={16} className="text-gray-400" />;
+            case 'name': return <User size={16} variant="Linear" color="currentColor" className="text-gray-400" />;
+            case 'phone': return <Mobile size={16} variant="Linear" color="currentColor" className="text-gray-400" />;
+            case 'email': return <Sms size={16} variant="Linear" color="currentColor" className="text-gray-400" />;
+            case 'timeframe': return <Clock size={16} variant="Linear" color="currentColor" className="text-gray-400" />;
             default: return null;
         }
     };
@@ -468,7 +467,7 @@ const SchedulingChat: React.FC = () => {
                 <div className="bg-gradient-to-r from-brand-lilac to-brand-lilac/80 p-4 flex justify-between items-center flex-shrink-0">
                     <div className="flex items-center gap-3">
                         <div className="bg-white/20 p-2 rounded-full">
-                            <Calendar size={20} className="text-brand-dark" />
+                            <Calendar size={20} variant="Linear" color="currentColor" className="text-brand-dark" />
                         </div>
                         <div>
                             <h3 className="font-serif font-bold text-brand-dark">Agendar Atendimento</h3>
@@ -479,7 +478,7 @@ const SchedulingChat: React.FC = () => {
                         onClick={closeScheduling}
                         className="text-brand-dark/70 hover:text-brand-dark transition-colors p-1"
                     >
-                        <X size={24} />
+                        <CloseSquare size={24} variant="Linear" color="currentColor" />
                     </button>
                 </div>
 
@@ -532,7 +531,7 @@ const SchedulingChat: React.FC = () => {
                                     className="w-full p-3 bg-white rounded-xl border border-brand-lilac/30 hover:border-brand-gold hover:shadow-md transition-all duration-200 flex items-center gap-3 group text-left"
                                 >
                                     <div className="bg-brand-lilac/20 p-2 rounded-lg group-hover:bg-brand-gold/20 transition-colors flex-shrink-0">
-                                        <Sparkles size={18} className="text-brand-lilacDark group-hover:text-brand-gold" />
+                                        <MagicStar size={18} variant="Linear" color="currentColor" className="text-brand-lilacDark group-hover:text-brand-gold" />
                                     </div>
                                     <div>
                                         <span className="font-sans text-sm text-brand-dark font-medium block">{service.name}</span>
@@ -558,7 +557,7 @@ const SchedulingChat: React.FC = () => {
                                     className="w-full p-3 bg-white rounded-xl border border-brand-lilac/30 hover:border-brand-gold hover:shadow-md transition-all duration-200 flex items-center gap-3 group text-left"
                                 >
                                     <div className="bg-brand-lilac/20 p-2 rounded-lg group-hover:bg-brand-gold/20 transition-colors flex-shrink-0">
-                                        <Sparkles size={18} className="text-brand-lilacDark group-hover:text-brand-gold" />
+                                        <MagicStar size={18} variant="Linear" color="currentColor" className="text-brand-lilacDark group-hover:text-brand-gold" />
                                     </div>
                                     <div>
                                         <span className="font-sans text-sm text-brand-dark font-medium block">{variant.name}</span>
@@ -572,10 +571,10 @@ const SchedulingChat: React.FC = () => {
                     )}
 
                     {/* Payment Link Button */}
-                    {step === 'payment' && !isLoading && lastAvailabilityMessage && (
+                    {step === 'payment' && !isLoading && paymentUrl && (
                         <div className="flex flex-col gap-2">
                             <a
-                                href={lastAvailabilityMessage}
+                                href={paymentUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-full bg-green-500 hover:bg-green-600 text-white font-sans font-bold py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 animate-pulse"
@@ -595,7 +594,7 @@ const SchedulingChat: React.FC = () => {
                                 onClick={handleConfirmBooking}
                                 className="flex-1 bg-brand-gold hover:bg-brand-goldDark text-white font-sans font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
                             >
-                                <CheckCircle size={18} />
+                                <TickCircle size={18} variant="Linear" color="currentColor" />
                                 Confirmar
                             </button>
                             <button
@@ -657,7 +656,7 @@ const SchedulingChat: React.FC = () => {
                                 disabled={isLoading || !input.trim()}
                                 className="bg-brand-gold text-white p-3 rounded-xl hover:bg-brand-goldDark disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-md hover:shadow-lg"
                             >
-                                <Send size={18} />
+                                <Send2 size={18} variant="Linear" color="currentColor" />
                             </button>
                         </div>
                     </div>
@@ -681,7 +680,7 @@ const SchedulingChat: React.FC = () => {
                             }}
                             className="flex-1 flex items-center justify-center gap-2 bg-brand-lilac text-brand-dark font-sans font-bold py-3 px-4 rounded-xl hover:bg-brand-lilacDark hover:text-white transition-all"
                         >
-                            <ArrowLeft size={18} />
+                            <ArrowLeft size={18} variant="Linear" color="currentColor" />
                             Recomeçar
                         </button>
                         <a
@@ -702,14 +701,14 @@ const SchedulingChat: React.FC = () => {
                             onClick={handleResumeState}
                             className="flex-1 bg-brand-gold text-white font-sans font-bold py-3 px-4 rounded-xl hover:bg-brand-goldDark transition-all shadow-md flex items-center justify-center gap-2"
                         >
-                            <CheckCircle size={18} />
+                            <TickCircle size={18} variant="Linear" color="currentColor" />
                             Retomar (Continuar)
                         </button>
                         <button
                             onClick={handleResetState}
                             className="flex-1 bg-gray-100 text-gray-600 font-sans font-medium py-3 px-4 rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
                         >
-                            <ArrowLeft size={18} />
+                            <ArrowLeft size={18} variant="Linear" color="currentColor" />
                             Começar do Zero
                         </button>
                     </div>

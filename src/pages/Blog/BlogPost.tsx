@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getPostBySlug } from '@/lib/cms';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, ArrowLeft } from 'lucide-react';
+import { Calendar, ArrowLeft } from 'iconsax-react';
 import { Helmet } from 'react-helmet-async';
 import escapeHTML from 'escape-html';
 import { Text } from 'slate';
@@ -179,11 +179,11 @@ const BlogPost: React.FC = () => {
                         </h1>
                         <div className="flex flex-wrap items-center text-white/90 text-sm md:text-base gap-6">
                             <div className="flex items-center gap-2">
-                                <Calendar size={18} />
+                                <Calendar size={18} variant="Linear" color="currentColor" />
                                 <span>Publicado: {new Date(post.publishedDate).toLocaleDateString()}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Calendar size={18} />
+                                <Calendar size={18} variant="Linear" color="currentColor" />
                                 <span>Atualizado: {new Date().toLocaleDateString()}</span>
                             </div>
                             <div className="flex items-center gap-2 font-bold">
@@ -198,7 +198,7 @@ const BlogPost: React.FC = () => {
             <div className="max-w-3xl mx-auto px-6 -mt-10 relative z-10">
                 <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl">
                     <Link to="/blog" className="inline-flex items-center text-gray-500 hover:text-brand-lilacDark mb-8 transition-colors group">
-                        <ArrowLeft size={18} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+                        <ArrowLeft size={18} variant="Linear" color="currentColor" className="mr-2 group-hover:-translate-x-1 transition-transform" />
                         Voltar para o Blog
                     </Link>
 

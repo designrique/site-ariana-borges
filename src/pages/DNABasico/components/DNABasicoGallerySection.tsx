@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { CloseSquare, ArrowLeft2, ArrowRight2, Maximize1 } from 'iconsax-react';
 
 const DNABasicoGallerySection: React.FC = () => {
     const images = [
@@ -98,7 +98,7 @@ const DNABasicoGallerySection: React.FC = () => {
                         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white/80 hover:bg-goddess-purple hover:text-white text-goddess-purple p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 hidden md:block"
                         aria-label="Anterior"
                     >
-                        <ChevronLeft size={24} />
+                        <ArrowLeft2 size={24} variant="Linear" color="currentColor" />
                     </button>
 
                     <button
@@ -106,7 +106,7 @@ const DNABasicoGallerySection: React.FC = () => {
                         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white/80 hover:bg-goddess-purple hover:text-white text-goddess-purple p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 hidden md:block"
                         aria-label="Próximo"
                     >
-                        <ChevronRight size={24} />
+                        <ArrowRight2 size={24} variant="Linear" color="currentColor" />
                     </button>
 
                     <div
@@ -127,7 +127,7 @@ const DNABasicoGallerySection: React.FC = () => {
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-goddess-purple/20 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <Maximize2 className="text-white drop-shadow-md" size={32} />
+                                    <Maximize1 size={32} variant="Linear" color="currentColor" className="text-white drop-shadow-md" />
                                 </div>
                             </div>
                         ))}
@@ -142,7 +142,7 @@ const DNABasicoGallerySection: React.FC = () => {
                         className="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2 rounded-full hover:bg-white/10 transition-colors"
                         aria-label="Fechar galeria"
                     >
-                        <X size={32} />
+                        <CloseSquare size={32} variant="Linear" color="currentColor" />
                     </button>
 
                     <button
@@ -150,7 +150,7 @@ const DNABasicoGallerySection: React.FC = () => {
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-3 rounded-full hover:bg-white/10 transition-colors hidden md:block"
                         aria-label="Imagem anterior"
                     >
-                        <ChevronLeft size={48} />
+                        <ArrowLeft2 size={48} variant="Linear" color="currentColor" />
                     </button>
 
                     <button
@@ -158,7 +158,7 @@ const DNABasicoGallerySection: React.FC = () => {
                         className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-3 rounded-full hover:bg-white/10 transition-colors hidden md:block"
                         aria-label="Próxima imagem"
                     >
-                        <ChevronRight size={48} />
+                        <ArrowRight2 size={48} variant="Linear" color="currentColor" />
                     </button>
 
                     <div

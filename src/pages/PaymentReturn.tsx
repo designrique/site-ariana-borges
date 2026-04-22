@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { CheckCircle, Calendar, Home, Loader2, AlertCircle } from 'lucide-react';
+import { TickCircle, Calendar, Home2, RefreshCircle, InfoCircle } from 'iconsax-react';
 import { useScheduling } from '../components/SchedulingContext';
 import { checkPaymentStatus } from '../services/infinityPayService';
 
@@ -49,7 +49,7 @@ const PaymentReturn: React.FC = () => {
 
                 {status === 'loading' && (
                     <div className="flex flex-col items-center justify-center py-12">
-                        <Loader2 size={48} className="text-brand-lilac animate-spin mb-4" />
+                        <RefreshCircle size={48} variant="Linear" color="currentColor" className="text-brand-lilac animate-spin mb-4" />
                         <h2 className="font-serif text-xl text-brand-dark">Verificando pagamento...</h2>
                     </div>
                 )}
@@ -57,7 +57,7 @@ const PaymentReturn: React.FC = () => {
                 {status === 'error' && (
                     <div className="flex flex-col items-center justify-center">
                         <div className="bg-red-100 p-4 rounded-full mb-6">
-                            <AlertCircle size={48} className="text-red-600" />
+                            <InfoCircle size={48} variant="Linear" color="currentColor" className="text-red-600" />
                         </div>
                         <h1 className="font-serif text-2xl font-bold text-brand-dark mb-4">
                             Pagamento não confirmado
@@ -78,7 +78,7 @@ const PaymentReturn: React.FC = () => {
                     <>
                         <div className="flex justify-center mb-6">
                             <div className="bg-green-100 p-4 rounded-full">
-                                <CheckCircle size={48} className="text-green-600" />
+                                <TickCircle size={48} variant="Linear" color="currentColor" className="text-green-600" />
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@ const PaymentReturn: React.FC = () => {
                                 onClick={handleScheduleNow}
                                 className="w-full bg-brand-gold hover:bg-brand-goldDark text-white font-sans font-bold py-4 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
                             >
-                                <Calendar size={20} />
+                                <Calendar size={20} variant="Linear" color="currentColor" />
                                 Agendar Agora
                             </button>
 
@@ -106,7 +106,7 @@ const PaymentReturn: React.FC = () => {
                                 onClick={() => navigate('/')}
                                 className="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-sans font-medium py-4 px-6 rounded-xl transition-all flex items-center justify-center gap-2"
                             >
-                                <Home size={20} />
+                                <Home2 size={20} variant="Linear" color="currentColor" />
                                 Voltar para o Início
                             </button>
                         </div>

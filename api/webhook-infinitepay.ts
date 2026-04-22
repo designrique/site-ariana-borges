@@ -8,6 +8,16 @@ const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/EAEoS3N7tCWKMO81NY9Uv8';
 const hashData = (data: string) =>
     crypto.createHash('sha256').update(data.trim().toLowerCase()).digest('hex');
 
+const getFirstString = (...values: Array<unknown>): string | undefined => {
+  for (const value of values) {
+    if (typeof value === 'string' && value.trim().length > 0) {
+      return value;
+    }
+  }
+
+  return undefined;
+};
+
 const buildEmailHtml = (firstName: string): string => `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -86,6 +96,20 @@ export default async function handler(req: any, res: any) {
             const phone = data.customer?.phone_number || '';
             const name = data.customer?.name || 'cliente';
             const value = data.amount ? data.amount / 100 : 298.00;
+          const orderNsu = getFirstString(data.order_nsu, data.orderNsu, data.invoice?.order_nsu, data.invoice?.orderNsu);
+          const transactionNsu = getFirstString(
+            data.transaction_nsu,
+            data.transactionNsu,
+            data.transaction?.nsu,
+            data.payment?.transaction_nsu,
+          );
+          const eventId = orderNsu && transactionNsu
+            ? `clube-purchase-${orderNsu}-${transactionNsu}`
+            : orderNsu
+              ? `clube-purchase-${orderNsu}`
+              : transactionNsu
+                ? `clube-purchase-${transactionNsu}`
+                : undefined;
 
             // Meta CAPI
             if (META_ACCESS_TOKEN) {
@@ -95,12 +119,20 @@ export default async function handler(req: any, res: any) {
                         event_name: 'Purchase',
                         event_time: eventTime,
                         action_source: 'website',
+                ...(eventId ? { event_id: eventId } : {}),
+                event_source_url: 'https://clubelivromulhermaravilha.arianaborges.com/obrigado',
                         user_data: {
                             em: email ? [hashData(email)] : [],
-                            ph: phone ? [hashData(phone)] : [null],
+                  ph: phone ? [hashData(phone)] : [],
                         },
                         attribution_data: { attribution_share: '1.0' },
-                        custom_data: { currency: 'BRL', value: value.toString() },
+                custom_data: {
+                  currency: 'BRL',
+                  value: value.toString(),
+                  content_name: 'Clube do Livro - A Psicologia da Mulher-Maravilha',
+                  content_category: 'book_club',
+                  source: 'webhook_infinitepay',
+                },
                         original_event_data: { event_name: 'Purchase', event_time: eventTime },
                     }],
                 };

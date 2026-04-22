@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown2 } from 'iconsax-react';
 
 const FinalCTASection: React.FC = () => {
     return (
@@ -17,7 +17,7 @@ const FinalCTASection: React.FC = () => {
                     className="inline-flex items-center gap-2 bg-brand-dark text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-transform duration-300"
                 >
                     Inscrever-se Agora
-                    <ArrowDown size={20} />
+                    <ArrowDown2 size={20} variant="Linear" color="currentColor" />
                 </a>
             </div>
         </section>

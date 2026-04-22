@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { AddSquare, MinusCirlce } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getFAQs } from '@/lib/cms';
 
@@ -48,7 +48,7 @@ const FAQ: React.FC = () => {
                             >
                                 <span className="font-serif text-lg text-brand-dark font-medium">{faq.question}</span>
                                 <span className="text-brand-gold ml-4">
-                                    {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
+                                    {openIndex === index ? <MinusCirlce size={20} variant="Linear" color="currentColor" /> : <AddSquare size={20} variant="Linear" color="currentColor" />}
                                 </span>
                             </button>
 

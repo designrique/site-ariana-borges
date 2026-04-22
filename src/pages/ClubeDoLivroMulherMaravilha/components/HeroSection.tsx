@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown2 } from 'iconsax-react';
 
 const HeroSection: React.FC = () => {
     return (
@@ -56,7 +56,7 @@ const HeroSection: React.FC = () => {
                     className="group bg-brand-gold hover:bg-brand-goldDark text-brand-dark font-sans font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-brand-gold/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
                 >
                     👉 Quero participar do grupo
-                    <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                    <ArrowDown2 size={20} variant="Linear" color="currentColor" className="group-hover:translate-y-1 transition-transform" />
                 </a>
             </div>
         </section>

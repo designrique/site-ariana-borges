@@ -1,15 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Award, Heart, BookOpen, Users, Star, Sparkles } from 'lucide-react';
+import { Medal, Heart, Book1, People, Star1, MagicStar } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
 import { Link } from 'react-router-dom';
 
 const credentials = [
-    { icon: <BookOpen size={24} />, title: 'Psicanálise Integrativa', description: 'Formação aprofundada em técnicas psicanalíticas' },
-    { icon: <Star size={24} />, title: 'ThetaHealing®', description: 'Instrutora certificada internacionalmente' },
-    { icon: <Heart size={24} />, title: 'Neurociência', description: 'Estudos em neurociência aplicada à cura' },
-    { icon: <Award size={24} />, title: 'Mindfulness', description: 'Especialização em práticas meditativas' },
+    { icon: <Book1 size={24} variant="Linear" color="currentColor" />, title: 'Psicanálise Integrativa', description: 'Formação aprofundada em técnicas psicanalíticas' },
+    { icon: <Star1 size={24} variant="Linear" color="currentColor" />, title: 'ThetaHealing®', description: 'Instrutora certificada internacionalmente' },
+    { icon: <Heart size={24} variant="Linear" color="currentColor" />, title: 'Neurociência', description: 'Estudos em neurociência aplicada à cura' },
+    { icon: <Medal size={24} variant="Linear" color="currentColor" />, title: 'Mindfulness', description: 'Especialização em práticas meditativas' },
 ];
 
 const stats = [
@@ -49,7 +49,7 @@ const Sobre: React.FC = () => {
 
                         <div className="md:w-1/2">
                             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
-                                <Sparkles size={14} /> Sobre Mim
+                                <MagicStar size={14} variant="Linear" color="currentColor" /> Sobre Mim
                             </div>
                             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
                                 Olá, sou <span className="text-brand-goldDark italic">Ariana Borges</span>
@@ -150,7 +150,7 @@ const Sobre: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <Link to="/terapia-individual" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div className="text-brand-gold mb-4">
-                                    <Heart size={32} />
+                                    <Heart size={32} variant="Linear" color="currentColor" />
                                 </div>
                                 <h3 className="font-serif text-xl text-brand-dark mb-3">Terapia Individual</h3>
                                 <p className="font-sans text-gray-600 text-sm mb-4">
@@ -163,7 +163,7 @@ const Sobre: React.FC = () => {
 
                             <Link to="/formacao-de-terapeutas" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div className="text-brand-gold mb-4">
-                                    <Award size={32} />
+                                    <Medal size={32} variant="Linear" color="currentColor" />
                                 </div>
                                 <h3 className="font-serif text-xl text-brand-dark mb-3">Formação de Terapeutas</h3>
                                 <p className="font-sans text-gray-600 text-sm mb-4">
@@ -176,7 +176,7 @@ const Sobre: React.FC = () => {
 
                             <Link to="/autoconhecimento-em-grupo" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div className="text-brand-gold mb-4">
-                                    <Users size={32} />
+                                    <People size={32} variant="Linear" color="currentColor" />
                                 </div>
                                 <h3 className="font-serif text-xl text-brand-dark mb-3">Autoconhecimento em Grupo</h3>
                                 <p className="font-sans text-gray-600 text-sm mb-4">

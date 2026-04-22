@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mountain } from 'lucide-react'; // Using Mountain as proxy for Earth element
+import { Tree } from 'iconsax-react';
 
 const AstrologySection: React.FC = () => {
     return (
@@ -8,7 +8,7 @@ const AstrologySection: React.FC = () => {
                 <div className="bg-brand-lilac/10 rounded-3xl p-8 md:p-12 border border-brand-lilac/20 flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
                     <div className="flex-shrink-0 bg-brand-gold/10 p-6 rounded-full">
-                        <Mountain size={48} className="text-brand-goldDark" strokeWidth={1.5} />
+                        <Tree size={48} variant="Linear" color="currentColor" className="text-brand-goldDark" />
                     </div>
 
                     <div className="flex-1 text-center md:text-left">

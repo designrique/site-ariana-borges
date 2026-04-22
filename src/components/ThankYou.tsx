@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { CheckCircle, MessageCircle, Loader2, XCircle, AlertCircle } from 'lucide-react';
+import { TickCircle, Message, RefreshCircle, CloseCircle, InfoCircle } from 'iconsax-react';
 
 interface PaymentStatus {
   success: boolean;
@@ -13,7 +13,7 @@ interface PaymentStatus {
 
 declare global {
   interface Window {
-    fbq: any;
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -49,7 +49,7 @@ const ThankYou: React.FC = () => {
   const verifyPayment = async (slug: string, transactionNsu: string, orderNsu: string) => {
     setStatus('loading');
     try {
-      const response = await fetch('/.netlify/functions/verify-payment', {
+      const response = await fetch('/api/verify-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug, transaction_nsu: transactionNsu, order_nsu: orderNsu })
@@ -77,7 +77,7 @@ const ThankYou: React.FC = () => {
 
         {status === 'loading' && (
           <div className="py-12">
-            <Loader2 className="mx-auto text-brand-gold h-16 w-16 mb-6 animate-spin" />
+            <RefreshCircle size={64} variant="Linear" color="currentColor" className="mx-auto text-brand-gold mb-6 animate-spin" />
             <h1 className="font-serif text-3xl text-brand-dark mb-4">Verificando seu pagamento...</h1>
             <p className="text-gray-500">Aguarde um momento enquanto confirmamos sua inscrição.</p>
           </div>
@@ -85,7 +85,7 @@ const ThankYou: React.FC = () => {
 
         {(status === 'success' || (status === 'none' && !searchParams.get('slug'))) && (
           <>
-            <CheckCircle className="mx-auto text-brand-gold h-16 w-16 mb-6 animate-pulse" />
+            <TickCircle size={64} variant="Linear" color="currentColor" className="mx-auto text-brand-gold mb-6 animate-pulse" />
             <h1 className="font-serif text-3xl sm:text-5xl text-brand-dark mb-4">
               {status === 'success' ? 'Pagamento Confirmado!' : 'Inscrição Realizada!'}
             </h1>
@@ -99,7 +99,7 @@ const ThankYou: React.FC = () => {
 
         {status === 'pending' && (
           <>
-            <AlertCircle className="mx-auto text-yellow-500 h-16 w-16 mb-6" />
+            <InfoCircle size={64} variant="Linear" color="currentColor" className="mx-auto text-yellow-500 mb-6" />
             <h1 className="font-serif text-3xl text-brand-dark mb-4">Pagamento em Processamento</h1>
             <p className="font-sans text-gray-600 text-lg mb-8 leading-relaxed">
               Recebemos seu pedido, mas o pagamento ainda está sendo processado pela InfinitePay.
@@ -110,7 +110,7 @@ const ThankYou: React.FC = () => {
 
         {status === 'error' && (
           <>
-            <XCircle className="mx-auto text-red-500 h-16 w-16 mb-6" />
+            <CloseCircle size={64} variant="Linear" color="currentColor" className="mx-auto text-red-500 mb-6" />
             <h1 className="font-serif text-3xl text-brand-dark mb-4">Ops! Algo deu errado</h1>
             <p className="font-sans text-gray-600 text-lg mb-8 leading-relaxed">
               Não conseguimos verificar o status do seu pagamento automaticamente.
@@ -123,15 +123,15 @@ const ThankYou: React.FC = () => {
           <h2 className="font-sans font-bold text-xl text-brand-dark mb-3">Próximos Passos</h2>
           <ul className="text-left space-y-3 text-gray-700 text-sm sm:text-base">
             <li className="flex items-start">
-              <CheckCircle className="text-brand-lilac h-5 w-5 mr-3 mt-1 flex-shrink-0" />
+              <TickCircle size={20} variant="Linear" color="currentColor" className="text-brand-lilac mr-3 mt-1 flex-shrink-0" />
               <span><strong>Verifique seu e-mail:</strong> Procure por uma mensagem com o assunto "Seu Acesso à Mesa de Salomão".</span>
             </li>
             <li className="flex items-start">
-              <CheckCircle className="text-brand-lilac h-5 w-5 mr-3 mt-1 flex-shrink-0" />
+              <TickCircle size={20} variant="Linear" color="currentColor" className="text-brand-lilac mr-3 mt-1 flex-shrink-0" />
               <span><strong>Acesse nosso grupo:</strong> O link para o grupo exclusivo estará no seu e-mail.</span>
             </li>
             <li className="flex items-start">
-              <CheckCircle className="text-brand-lilac h-5 w-5 mr-3 mt-1 flex-shrink-0" />
+              <TickCircle size={20} variant="Linear" color="currentColor" className="text-brand-lilac mr-3 mt-1 flex-shrink-0" />
               <span><strong>Marque na agenda:</strong> O primeiro ciclo começa em <strong>23 de Dezembro</strong>.</span>
             </li>
           </ul>
@@ -143,7 +143,7 @@ const ThankYou: React.FC = () => {
           rel="noopener noreferrer"
           className="group inline-flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] hover:scale-101 transition-all duration-300 text-white font-sans font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl"
         >
-          <MessageCircle className="w-6 h-6 group-hover:animate-bounce" />
+          <Message size={24} variant="Linear" color="currentColor" className="group-hover:animate-bounce" />
           Ficou com alguma dúvida? Fale conosco
         </a>
       </div>

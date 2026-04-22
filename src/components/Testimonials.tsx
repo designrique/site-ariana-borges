@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { MessageText, ArrowLeft2, ArrowRight2, Star1 } from 'iconsax-react';
 
 interface Testimonial {
   id: number;
@@ -81,7 +81,7 @@ const Testimonials: React.FC = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 shadow-2xl">
-            <Quote className="absolute top-4 md:top-8 left-4 md:left-8 text-brand-gold opacity-30 w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16" />
+            <MessageText size={64} variant="Linear" color="currentColor" className="absolute top-4 md:top-8 left-4 md:left-8 text-brand-gold opacity-30" />
 
             <div className="relative overflow-hidden min-h-[250px] md:min-h-[300px] flex items-center">
               {testimonials.map((testimonial, index) => (
@@ -107,7 +107,7 @@ const Testimonials: React.FC = () => {
                           className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-brand-gold object-cover shadow-lg"
                         />
                         <div className="absolute -bottom-1 -right-1 md:-bottom-2 md:-right-2 bg-brand-gold rounded-full p-0.5 md:p-1">
-                          <Star size={10} className="md:w-3 md:h-3 text-white fill-white" />
+                          <Star1 size={12} variant="Linear" color="currentColor" className="text-white" />
                         </div>
                       </div>
                       <div>
@@ -126,14 +126,14 @@ const Testimonials: React.FC = () => {
               className="absolute top-1/2 left-1 md:left-2 lg:-left-12 transform -translate-y-1/2 bg-white/10 hover:bg-brand-gold hover:text-white text-gray-300 p-2 md:p-3 rounded-full backdrop-blur-md transition-all duration-300 group"
               aria-label="Anterior"
             >
-              <ChevronLeft className="w-4 h-4 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft2 size={20} variant="Linear" color="currentColor" className="group-hover:-translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => { handleNext(); setIsAutoPlaying(false); }}
               className="absolute top-1/2 right-1 md:right-2 lg:-right-12 transform -translate-y-1/2 bg-white/10 hover:bg-brand-gold hover:text-white text-gray-300 p-2 md:p-3 rounded-full backdrop-blur-md transition-all duration-300 group"
               aria-label="Próximo"
             >
-              <ChevronRight className="w-4 h-4 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight2 size={20} variant="Linear" color="currentColor" className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 

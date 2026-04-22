@@ -8,6 +8,14 @@ const hashData = (data: string) => {
     return crypto.createHash('sha256').update(data.trim().toLowerCase()).digest('hex');
 };
 
+const buildHashedArray = (value?: string) => {
+    if (!value) {
+        return [];
+    }
+
+    return [hashData(value)];
+};
+
 const handler: Handler = async (event: HandlerEvent) => {
     if (event.httpMethod !== "POST") {
         return {
@@ -18,7 +26,17 @@ const handler: Handler = async (event: HandlerEvent) => {
 
     try {
         const body = JSON.parse(event.body || "{}");
-        const { email, phone, value, currency, event_name = "Purchase" } = body;
+        const {
+            email,
+            phone,
+            value,
+            currency,
+            event_name = "Purchase",
+            event_id,
+            event_source_url,
+            custom_data = {},
+            user_data = {},
+        } = body;
 
         if (!ACCESS_TOKEN) {
             console.error("META_ACCESS_TOKEN not set");
@@ -29,23 +47,48 @@ const handler: Handler = async (event: HandlerEvent) => {
         }
 
         const eventTime = Math.floor(Date.now() / 1000);
+        const normalizedUserData = {
+            em: buildHashedArray(user_data.email || email),
+            ph: buildHashedArray(user_data.phone || phone),
+            fbp: user_data.fbp,
+            fbc: user_data.fbc,
+            client_user_agent: user_data.client_user_agent,
+        };
+
+        const filteredUserData = Object.fromEntries(
+            Object.entries(normalizedUserData).filter(([, fieldValue]) => {
+                if (Array.isArray(fieldValue)) {
+                    return fieldValue.length > 0;
+                }
+
+                return typeof fieldValue === 'string' && fieldValue.length > 0;
+            }),
+        );
+
+        const mergedCustomData = Object.fromEntries(
+            Object.entries({
+                currency: currency || custom_data.currency || "BRL",
+                value: value ?? custom_data.value,
+                content_name: custom_data.content_name,
+                content_category: custom_data.content_category,
+                content_ids: custom_data.content_ids,
+                source: custom_data.source,
+            }).filter(([, fieldValue]) => fieldValue !== undefined),
+        );
+
         const capiPayload = {
             data: [
                 {
                     event_name: event_name,
                     event_time: eventTime,
                     action_source: "website",
-                    user_data: {
-                        em: email ? [hashData(email)] : [],
-                        ph: phone ? [hashData(phone)] : [null]
-                    },
+                    ...(event_id ? { event_id } : {}),
+                    ...(event_source_url ? { event_source_url } : {}),
+                    user_data: filteredUserData,
                     attribution_data: {
                         attribution_share: "1.0"
                     },
-                    custom_data: {
-                        currency: currency || "BRL",
-                        value: value ? value.toString() : "555.00"
-                    },
+                    custom_data: mergedCustomData,
                     original_event_data: {
                         event_name: event_name,
                         event_time: eventTime

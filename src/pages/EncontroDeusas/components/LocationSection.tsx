@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin } from 'lucide-react';
+import { Location } from 'iconsax-react';
 
 const LocationSection: React.FC = () => {
     const locationImages = [
@@ -54,7 +54,7 @@ const LocationSection: React.FC = () => {
 
                     <div className="w-full md:w-1/2 space-y-6">
                         <div className="flex items-center gap-2 text-brand-gold mb-2">
-                            <MapPin size={20} />
+                            <Location size={20} variant="Linear" color="currentColor" />
                             <span className="uppercase tracking-widest text-sm font-bold">Bonito / PE</span>
                         </div>
 

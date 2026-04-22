@@ -1,5 +1,8 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { TickSquare } from 'iconsax-react';
+import { trackClubeInitiateCheckout, trackClubeLead } from '@/lib/metaTracking';
+
+const CLUB_CHECKOUT_URL = 'https://checkout.infinitepay.io/institutoarianaborges/3igXd4O5Sh';
 
 const PricingSection: React.FC = () => {
     const features = [
@@ -9,6 +12,11 @@ const PricingSection: React.FC = () => {
         "Grupo Exclusivo Feminino",
         "Condução da terapeuta Ariana Borges",
     ];
+
+    const handleCheckoutClick = () => {
+        trackClubeLead('pricing_cta');
+        trackClubeInitiateCheckout('pricing_cta');
+    };
 
     return (
         <section id="investimento" className="py-20 bg-brand-dark text-brand-beige">
@@ -41,7 +49,7 @@ const PricingSection: React.FC = () => {
                             {features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-3">
                                     <div className="p-1 rounded-full bg-brand-dark/10 text-brand-dark shrink-0">
-                                        <Check size={14} strokeWidth={3} />
+                                        <TickSquare size={14} variant="Linear" color="currentColor" />
                                     </div>
                                     <span className="text-sm font-sans">{feature}</span>
                                 </li>
@@ -49,9 +57,10 @@ const PricingSection: React.FC = () => {
                         </ul>
 
                         <a
-                            href="https://checkout.infinitepay.io/institutoarianaborges/3igXd4O5Sh"
+                            href={CLUB_CHECKOUT_URL}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={handleCheckoutClick}
                             className="block w-full py-4 rounded-xl font-bold text-center transition-all duration-300 bg-brand-dark text-white hover:bg-opacity-90 shadow-lg"
                         >
                             👉 Quero participar do grupo

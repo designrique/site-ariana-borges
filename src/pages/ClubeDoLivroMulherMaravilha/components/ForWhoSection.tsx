@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { TickSquare } from 'iconsax-react';
 
 const ForWhoSection: React.FC = () => {
     return (
@@ -21,7 +21,7 @@ const ForWhoSection: React.FC = () => {
                             className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-6 py-4 hover:bg-white/10 transition-colors"
                         >
                             <div className="p-1 rounded-full bg-brand-gold/20 text-brand-gold shrink-0">
-                                <Check size={16} strokeWidth={3} />
+                                <TickSquare size={16} variant="Linear" color="currentColor" />
                             </div>
                             <span className="font-sans text-gray-200">{item}</span>
                         </div>

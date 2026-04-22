@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar, Clock } from 'iconsax-react';
 
 const ProgramSection: React.FC = () => {
     const schedule = [
@@ -54,7 +54,7 @@ const ProgramSection: React.FC = () => {
                                     <div className={`inline-flex flex-col md:items-end ${index % 2 !== 0 ? 'md:items-start' : ''}`}>
                                         <span className="font-serif text-2xl text-brand-goldDark block mb-1">{item.day}</span>
                                         <span className="font-sans text-sm text-gray-500 uppercase tracking-wider flex items-center gap-1">
-                                            <Clock size={14} /> {item.time}
+                                            <Clock size={14} variant="Linear" color="currentColor" /> {item.time}
                                         </span>
                                     </div>
                                 </div>

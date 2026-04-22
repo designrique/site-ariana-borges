@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { TickCircle } from 'iconsax-react';
 
 const Experience: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ const Experience: React.FC = () => {
               "Acesso vitalício ao conteúdo dos ciclos"
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-2 md:gap-3">
-                <CheckCircle2 className="text-brand-gold shrink-0 mt-1 w-4 h-4 md:w-5 md:h-5" />
+                <TickCircle size={18} variant="Linear" color="currentColor" className="text-brand-gold shrink-0 mt-1" />
                 <span className="font-sans text-gray-700 text-sm md:text-base">{item}</span>
               </li>
             ))}

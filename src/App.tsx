@@ -23,7 +23,7 @@ import Footer from '@/components/Footer';
 
 import SchedulingChat from '@/components/SchedulingChat';
 import { SchedulingProvider, useScheduling } from '@/components/SchedulingContext';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { HambergerMenu, CloseSquare, ArrowDown2 } from 'iconsax-react';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,7 +60,7 @@ const NavBar = () => {
           className="md:hidden text-brand-dark"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X /> : <Menu />}
+          {isOpen ? <CloseSquare variant="Linear" color="currentColor" /> : <HambergerMenu variant="Linear" color="currentColor" />}
         </button>
 
         {/* Desktop Menu */}
@@ -69,7 +69,7 @@ const NavBar = () => {
           <div className="relative group">
             <button className="font-sans text-brand-dark hover:text-brand-gold transition-colors font-medium flex items-center gap-1">
               Serviços
-              <ChevronDown size={16} className="group-hover:rotate-180 transition-transform duration-200" />
+              <ArrowDown2 size={16} variant="Linear" color="currentColor" className="group-hover:rotate-180 transition-transform duration-200" />
             </button>
             <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[220px]">
@@ -118,7 +118,7 @@ const NavBar = () => {
               onClick={() => setIsOpen(false)}
               className="text-gray-500 hover:text-brand-gold transition-colors"
             >
-              <X size={24} />
+              <CloseSquare size={24} variant="Linear" color="currentColor" />
             </button>
           </div>
 
@@ -138,7 +138,7 @@ const NavBar = () => {
                 className="font-sans text-brand-dark hover:text-brand-gold font-medium text-lg flex items-center justify-between w-full"
               >
                 Serviços
-                <ChevronDown size={18} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
+                <ArrowDown2 size={18} variant="Linear" color="currentColor" className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${servicesOpen ? 'max-h-60 mt-3' : 'max-h-0'}`}>
                 <div className="flex flex-col gap-2 pl-4">

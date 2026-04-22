@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles, Brain, Heart, Zap } from 'lucide-react';
+import { ArrowRight, MagicStar, Health, Heart, Flash } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getHero } from '@/lib/cms';
 import { useScheduling } from './SchedulingContext';
@@ -152,7 +152,7 @@ const DNAHero: React.FC = () => {
             variants={itemVariants}
           >
             <span className="inline-flex items-center gap-2 px-4 md:px-5 py-2 rounded-full bg-gradient-to-r from-brand-blue/30 via-brand-green/30 to-brand-gold/30 text-brand-beige text-sm md:text-base font-sans tracking-widest uppercase border border-brand-gold/30 backdrop-blur-sm">
-              <Sparkles size={16} className="text-brand-gold" /> 
+              <MagicStar size={16} variant="Linear" color="currentColor" className="text-brand-gold" />
               Instituto Ariana Borges • Formação Certificada
             </span>
           </motion.div>
@@ -179,15 +179,15 @@ const DNAHero: React.FC = () => {
             variants={itemVariants}
           >
             <div className="flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-brand-blue/20 backdrop-blur-sm border border-brand-blue/30">
-              <Brain className="w-8 h-8 text-brand-gold" />
+              <Health size={32} variant="Linear" color="currentColor" className="text-brand-gold" />
               <span className="font-sans text-sm text-brand-beige">Reprogramação Mental</span>
             </div>
             <div className="flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-brand-green/20 backdrop-blur-sm border border-brand-green/30">
-              <Heart className="w-8 h-8 text-brand-gold" />
+              <Heart size={32} variant="Linear" color="currentColor" className="text-brand-gold" />
               <span className="font-sans text-sm text-brand-beige">Cura Emocional</span>
             </div>
             <div className="flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-brand-gold/20 backdrop-blur-sm border border-brand-gold/30">
-              <Zap className="w-8 h-8 text-brand-beige" />
+              <Flash size={32} variant="Linear" color="currentColor" className="text-brand-beige" />
               <span className="font-sans text-sm text-brand-beige">Expansão Energética</span>
             </div>
           </motion.div>
@@ -202,7 +202,7 @@ const DNAHero: React.FC = () => {
               className="group relative bg-gradient-to-r from-brand-blue via-brand-green to-brand-gold hover:from-brand-gold hover:via-brand-green hover:to-brand-blue hover:scale-105 transition-all duration-500 text-brand-dark font-sans font-bold py-4 px-8 md:py-5 md:px-10 rounded-full shadow-2xl hover:shadow-brand-gold/30 flex items-center gap-3 overflow-hidden"
             >
               <span className="relative z-10">{ctaText}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight size={20} variant="Linear" color="currentColor" className="group-hover:translate-x-2 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
             </button>
             
@@ -211,7 +211,7 @@ const DNAHero: React.FC = () => {
               className="group text-brand-beige hover:text-brand-gold font-sans font-semibold py-4 px-8 underline decoration-brand-gold/50 hover:decoration-brand-gold transition-all flex items-center gap-2"
             >
               <span>Conheça a metodologia completa</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} variant="Linear" color="currentColor" className="group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
 

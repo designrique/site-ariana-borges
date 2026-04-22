@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import HeroSection from './components/HeroSection';
@@ -11,8 +11,13 @@ import ForWhoSection from './components/ForWhoSection';
 import PricingSection from './components/PricingSection';
 import FAQSection from './components/FAQSection';
 import FinalCTASection from './components/FinalCTASection';
+import { trackClubeViewContent } from '@/lib/metaTracking';
 
 const ClubeDoLivroMulherMaravilha: React.FC = () => {
+    useEffect(() => {
+        trackClubeViewContent();
+    }, []);
+
     return (
         <div className="font-sans antialiased text-brand-dark">
             <Helmet>

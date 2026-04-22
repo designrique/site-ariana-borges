@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { MagicStar } from 'iconsax-react';
 
 const AboutSection: React.FC = () => {
     return (
@@ -19,7 +19,7 @@ const AboutSection: React.FC = () => {
 
                 <div className="md:w-1/2">
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/50 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
-                        <Sparkles size={14} /> Facilitadora
+                        <MagicStar size={14} variant="Linear" color="currentColor" /> Facilitadora
                     </div>
                     <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 leading-tight">
                         Quem irá conduzir o encontro
