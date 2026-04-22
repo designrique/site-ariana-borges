@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Sun1, Calendar } from 'iconsax-react';
+import { Calendar } from 'iconsax-react';
 import { Cycle } from '../types';
 
 const cycles: Cycle[] = [
@@ -19,6 +19,11 @@ const cycles: Cycle[] = [
   }
 ];
 
+const iconSrc: Record<string, string> = {
+    shield: '/icons/site/quebra-maldicao.png',
+    sun: '/icons/site/abre-caminho.png',
+};
+
 const Cycles: React.FC = () => {
   return (
     <section id="estrutura" className="py-16 md:py-24 bg-brand-beige">
@@ -36,13 +41,13 @@ const Cycles: React.FC = () => {
               key={index}
               className={`relative bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-lg border-t-4 transition-transform hover:-translate-y-2 ${index === 0 ? 'border-gray-400' : 'border-brand-gold'}`}
             >
-              <div className="absolute top-4 md:top-6 right-4 md:right-6 text-brand-gold/20">
-                {cycle.icon === 'shield' ? <Shield size={60} variant="Linear" color="currentColor" /> : <Sun1 size={60} variant="Linear" color="currentColor" />}
+              <div className="absolute top-4 md:top-6 right-4 md:right-6 opacity-10">
+                <img src={iconSrc[cycle.icon]} alt={cycle.name} className="w-16 h-16 object-contain" />
               </div>
 
               <div className="relative z-10">
-                <div className="inline-block p-2 md:p-3 rounded-full bg-brand-beige mb-4 md:mb-6 text-brand-dark">
-                  {cycle.icon === 'shield' ? <Shield size={20} variant="Linear" color="currentColor" /> : <Sun1 size={20} variant="Linear" color="currentColor" />}
+                <div className="inline-block p-2 md:p-3 rounded-full bg-brand-beige mb-4 md:mb-6">
+                  <img src={iconSrc[cycle.icon]} alt={cycle.name} className="w-5 h-5 object-contain" />
                 </div>
 
                 <h3 className="font-serif text-2xl md:text-3xl mb-2 text-brand-dark">{cycle.name}</h3>

@@ -1,17 +1,16 @@
 import React from 'react';
-import { UserTick, Teacher, People, ShieldTick, Lamp, DocumentText, SearchNormal1, Clock } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getServices } from '@/lib/cms';
 
-const iconMap: Record<string, React.ReactNode> = {
-    'UserCheck': <UserTick size={32} variant="Linear" color="currentColor" />,
-    'GraduationCap': <Teacher size={32} variant="Linear" color="currentColor" />,
-    'Users': <People size={32} variant="Linear" color="currentColor" />,
-    'ShieldCheck': <ShieldTick size={32} variant="Linear" color="currentColor" />,
-    'Lightbulb': <Lamp size={32} variant="Linear" color="currentColor" />,
-    'FileText': <DocumentText size={32} variant="Linear" color="currentColor" />,
-    'Search': <SearchNormal1 size={32} variant="Linear" color="currentColor" />,
-    'Clock': <Clock size={32} variant="Linear" color="currentColor" />,
+const iconMap: Record<string, string> = {
+    'UserCheck': '/icons/site/terapia-individual.png',
+    'GraduationCap': '/icons/site/formacao-terapeutas.png',
+    'Users': '/icons/site/autoconhecimento-grupo.png',
+    'ShieldCheck': '/icons/site/quebra-maldicao.png',
+    'Lightbulb': '/icons/site/transformacao-pessoal.png',
+    'FileText': '/icons/site/registros-akashicos.png',
+    'Search': '/icons/site/leitura-aura.png',
+    'Clock': '/icons/site/mindfulness.png',
 };
 
 const Pillars: React.FC = () => {
@@ -21,28 +20,28 @@ const Pillars: React.FC = () => {
     });
 
     const pillars = services && services.length > 0 ? services.map(s => ({
-        icon: s.icon ? iconMap[s.icon] : <UserTick size={32} variant="Linear" color="currentColor" />,
+        img: s.icon ? (iconMap[s.icon] ?? '/icons/site/terapia-individual.png') : '/icons/site/terapia-individual.png',
         title: s.title,
         description: s.description,
         link: s.link || '#',
         cta: s.cta || 'Saiba mais'
     })) : [
         {
-            icon: <UserTick size={32} variant="Linear" color="currentColor" />,
+            img: '/icons/site/terapia-individual.png',
             title: 'Terapia Individual',
             description: 'Liberte-se: Desperte, Cure e Transforme sua Vida com sessões de Terapia Personalizada.',
             link: '/terapia-individual',
             cta: 'Saiba mais'
         },
         {
-            icon: <Teacher size={32} variant="Linear" color="currentColor" />,
+            img: '/icons/site/formacao-terapeutas.png',
             title: 'Formação de Terapeutas',
             description: 'Seja um Agente de Mudança: Diversas Formações de Terapeuta de Excelência.',
             link: '/formacao-de-terapeutas',
             cta: 'Saiba mais'
         },
         {
-            icon: <People size={32} variant="Linear" color="currentColor" />,
+            img: '/icons/site/autoconhecimento-grupo.png',
             title: 'Autoconhecimento em Grupo',
             description: 'Junte-se a uma Jornada de Descoberta: Turmas de Autoconhecimento para Transformação Interior.',
             link: '/autoconhecimento-em-grupo',
@@ -62,8 +61,8 @@ const Pillars: React.FC = () => {
                             key={index}
                             className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/20"
                         >
-                            <div className="text-brand-gold mb-6 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center">
-                                {pillar.icon}
+                            <div className="mb-6 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center">
+                                <img src={pillar.img} alt={pillar.title} className="w-8 h-8 object-contain" />
                             </div>
                             <h3 className="font-serif text-2xl text-brand-dark mb-4">{pillar.title}</h3>
                             <p className="font-sans text-gray-600 mb-6 leading-relaxed">

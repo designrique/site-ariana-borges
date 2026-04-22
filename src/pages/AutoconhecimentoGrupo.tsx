@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MagicStar, People, Calendar, Location, Clock, Wifi, UserTick, Teacher } from 'iconsax-react';
+import { People, Calendar, Location, Clock, Wifi } from 'iconsax-react';
 
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
@@ -183,8 +183,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 to="/terapia-individual"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <UserTick size={24} variant="Linear" color="currentColor" />
+                                <div className="bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/terapia-individual.png" alt="Terapia Individual" className="w-6 h-6 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Terapia Individual</h3>
@@ -195,8 +195,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 to="/formacao-de-terapeutas"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-gold bg-brand-gold/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <Teacher size={24} variant="Linear" color="currentColor" />
+                                <div className="bg-brand-gold/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-6 h-6 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Formação de Terapeutas</h3>

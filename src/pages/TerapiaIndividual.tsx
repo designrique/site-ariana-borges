@@ -1,15 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MagicStar, Clock, Location, Video, Teacher, People, Star1, Eye, Book1, Element4, Health, Flash, Hierarchy2, Electricity, Heart, Cpu } from 'iconsax-react';
+import { MagicStar, Clock, Location, Video } from 'iconsax-react';
+
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
 import { Link } from 'react-router-dom';
 
-import type { IconProps } from 'iconsax-react';
-
 type TerapiaColor = 'gold' | 'lilac';
 interface Terapia {
-    Icon: React.ComponentType<IconProps>;
+    img: string;
     title: string;
     description: string;
     duration: string;
@@ -18,77 +17,77 @@ interface Terapia {
 
 const terapiasOnline: Terapia[] = [
     {
-        Icon: Star1,
+        img: '/icons/site/taro-salomao.png',
         title: 'Tarô de Salomão',
         description: 'Uma leitura oracular precisa e profunda, que revela padrões ocultos, orientações do campo espiritual e decisões práticas alinhadas à sua verdade. Canaliza a sabedoria ancestral de Salomão com foco em clareza e direcionamento.',
         duration: '45 min',
         color: 'gold'
     },
     {
-        Icon: MagicStar,
+        img: '/icons/site/mesa-salomao.png',
         title: 'Mesa de Salomão',
         description: 'Ferramenta de cura vibracional e reequilíbrio energético que atua à distância sobre bloqueios mentais, emocionais e espirituais. Trabalha com a remoção de energias densas e padrões nocivos.',
         duration: '1h',
         color: 'lilac'
     },
     {
-        Icon: Eye,
+        img: '/icons/site/leitura-aura.png',
         title: 'Leitura de Aura – Método Essence',
         description: 'Um mergulho profundo no seu campo energético para identificar padrões, bloqueios e potenciais. A leitura revela aspectos ocultos do seu ser e oferece direcionamentos precisos.',
         duration: '1h',
         color: 'gold'
     },
     {
-        Icon: Book1,
+        img: '/icons/site/registros-akashicos.png',
         title: 'Leitura de Registros Akáshicos',
         description: 'Acesse o campo quântico de memórias da sua alma. Descubra padrões kármicos, conexões de vidas passadas e receba orientações para sua evolução espiritual.',
         duration: '1h',
         color: 'lilac'
     },
     {
-        Icon: Element4,
+        img: '/icons/site/mesa-metatronica.png',
         title: 'Mesa Metatrônica',
         description: 'Técnica avançada de cura dimensional que trabalha com geometria sagrada e frequências elevadas. Atua em múltiplos níveis de consciência promovendo transformações profundas.',
         duration: '1h',
         color: 'gold'
     },
     {
-        Icon: Health,
+        img: '/icons/site/psicanalise-integrativa.png',
         title: 'Psicanálise Integrativa',
         description: 'Abordagem que une a psicanálise tradicional com técnicas integrativas, oferecendo uma compreensão profunda dos padrões inconscientes enquanto trabalha aspectos energéticos.',
         duration: '1h',
         color: 'lilac'
     },
     {
-        Icon: Flash,
+        img: '/icons/theta/dna-basico.png',
         title: 'ThetaHealing®',
         description: 'Técnica de meditação e cura que acessa a onda cerebral Theta para identificar e transformar crenças limitantes. Promove mudanças rápidas e profundas em todos os níveis.',
         duration: '1h',
         color: 'gold'
     },
     {
-        Icon: Hierarchy2,
+        img: '/icons/site/constelacao-sistemica.png',
         title: 'Constelação Sistêmica',
         description: 'Metodologia que revela dinâmicas ocultas nos sistemas familiares e relacionais. Permite identificar e harmonizar padrões transgeracionais que afetam sua vida atual.',
         duration: '1h',
         color: 'lilac'
     },
     {
-        Icon: Electricity,
+        img: '/icons/site/cura-reconectiva.png',
         title: 'Cura Reconectiva',
         description: 'Técnica que trabalha com frequências de cura para reconectar você com a plenitude do universo. Promove equilíbrio físico, mental e espiritual.',
         duration: '1h',
         color: 'gold'
     },
     {
-        Icon: Heart,
+        img: '/icons/site/reiki.png',
         title: 'Reiki',
         description: 'Terapia energética japonesa que utiliza a imposição das mãos para canalizar energia vital universal. Promove relaxamento profundo e equilíbrio energético.',
         duration: '1h',
         color: 'lilac'
     },
     {
-        Icon: People,
+        img: '/icons/site/autoconhecimento-grupo.png',
         title: 'Autoconhecimento em Grupo',
         description: 'Vivências coletivas de expansão da consciência e cura emocional. Grupos de estudo, ativações energéticas e retiros presenciais para potencializar sua jornada de transformação junto a outras mulheres.',
         duration: '2h a 3 dias',
@@ -98,7 +97,7 @@ const terapiasOnline: Terapia[] = [
 
 const terapiasPresenciais: Terapia[] = [
     {
-        Icon: Cpu,
+        img: '/icons/site/barras-access.png',
         title: 'Barras de Access®',
         description: 'Técnica que trabalha 32 pontos na cabeça que armazenam pensamentos, crenças e emoções limitantes. O toque suave libera cargas eletromagnéticas, promovendo mais clareza e leveza.',
         duration: '1h',
@@ -165,8 +164,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10 text-brand-goldDark' : 'bg-brand-lilac/20 text-brand-lilacDark'}`}>
-                                            <terapia.Icon size={24} variant="Linear" color="currentColor" />
+                                        <div className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                            <img src={terapia.img} alt={terapia.title} className="w-6 h-6 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-xl text-brand-dark mb-2">{terapia.title}</h3>
@@ -210,8 +209,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10 text-brand-goldDark' : 'bg-brand-lilac/20 text-brand-lilacDark'}`}>
-                                            <terapia.Icon size={24} variant="Linear" color="currentColor" />
+                                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                            <img src={terapia.img} alt={terapia.title} className="w-6 h-6 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-2xl text-brand-dark mb-3">{terapia.title}</h3>
@@ -257,8 +256,8 @@ const TerapiaIndividual: React.FC = () => {
                                 to="/formacao-de-terapeutas"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-gold bg-brand-gold/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <Teacher size={24} variant="Linear" color="currentColor" />
+                                <div className="bg-brand-gold/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-6 h-6 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Formação de Terapeutas</h3>
@@ -269,8 +268,8 @@ const TerapiaIndividual: React.FC = () => {
                                 to="/autoconhecimento-em-grupo"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <People size={24} variant="Linear" color="currentColor" />
+                                <div className="bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/autoconhecimento-grupo.png" alt="Autoconhecimento em Grupo" className="w-6 h-6 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Autoconhecimento em Grupo</h3>

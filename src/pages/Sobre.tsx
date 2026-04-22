@@ -1,15 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Medal, Heart, Book1, People, Star1, MagicStar } from 'iconsax-react';
+import { MagicStar } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
 import { Link } from 'react-router-dom';
 
 const credentials = [
-    { icon: <Book1 size={24} variant="Linear" color="currentColor" />, title: 'Psicanálise Integrativa', description: 'Formação aprofundada em técnicas psicanalíticas' },
-    { icon: <Star1 size={24} variant="Linear" color="currentColor" />, title: 'ThetaHealing®', description: 'Instrutora certificada internacionalmente' },
-    { icon: <Heart size={24} variant="Linear" color="currentColor" />, title: 'Neurociência', description: 'Estudos em neurociência aplicada à cura' },
-    { icon: <Medal size={24} variant="Linear" color="currentColor" />, title: 'Mindfulness', description: 'Especialização em práticas meditativas' },
+    { img: '/icons/site/psicanalise-integrativa.png', title: 'Psicanálise Integrativa', description: 'Formação aprofundada em técnicas psicanalíticas' },
+    { img: '/icons/theta/dna-basico.png', title: 'ThetaHealing®', description: 'Instrutora certificada internacionalmente' },
+    { img: '/icons/site/neurociencia.png', title: 'Neurociência', description: 'Estudos em neurociência aplicada à cura' },
+    { img: '/icons/site/mindfulness.png', title: 'Mindfulness', description: 'Especialização em práticas meditativas' },
 ];
 
 const stats = [
@@ -122,8 +122,8 @@ const Sobre: React.FC = () => {
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
-                                    <div className="text-brand-gold mb-4 bg-white w-14 h-14 rounded-full flex items-center justify-center mx-auto shadow-sm">
-                                        {cred.icon}
+                                    <div className="mb-4 bg-white w-14 h-14 rounded-full flex items-center justify-center mx-auto shadow-sm">
+                                        <img src={cred.img} alt={cred.title} className="w-7 h-7 object-contain" />
                                     </div>
                                     <h3 className="font-serif text-lg text-brand-dark mb-2">{cred.title}</h3>
                                     <p className="font-sans text-gray-600 text-sm">{cred.description}</p>
@@ -149,8 +149,8 @@ const Sobre: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <Link to="/terapia-individual" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                                <div className="text-brand-gold mb-4">
-                                    <Heart size={32} variant="Linear" color="currentColor" />
+                                <div className="mb-4 w-10 h-10">
+                                    <img src="/icons/site/terapia-individual.png" alt="Terapia Individual" className="w-8 h-8 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-xl text-brand-dark mb-3">Terapia Individual</h3>
                                 <p className="font-sans text-gray-600 text-sm mb-4">
@@ -162,8 +162,8 @@ const Sobre: React.FC = () => {
                             </Link>
 
                             <Link to="/formacao-de-terapeutas" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                                <div className="text-brand-gold mb-4">
-                                    <Medal size={32} variant="Linear" color="currentColor" />
+                                <div className="mb-4 w-10 h-10">
+                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-8 h-8 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-xl text-brand-dark mb-3">Formação de Terapeutas</h3>
                                 <p className="font-sans text-gray-600 text-sm mb-4">
@@ -175,8 +175,8 @@ const Sobre: React.FC = () => {
                             </Link>
 
                             <Link to="/autoconhecimento-em-grupo" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                                <div className="text-brand-gold mb-4">
-                                    <People size={32} variant="Linear" color="currentColor" />
+                                <div className="mb-4 w-10 h-10">
+                                    <img src="/icons/site/autoconhecimento-grupo.png" alt="Autoconhecimento em Grupo" className="w-8 h-8 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-xl text-brand-dark mb-3">Autoconhecimento em Grupo</h3>
                                 <p className="font-sans text-gray-600 text-sm mb-4">

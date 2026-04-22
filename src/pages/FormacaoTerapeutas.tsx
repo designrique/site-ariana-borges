@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MagicStar, Teacher, Medal, Heart, UserTick, People } from 'iconsax-react';
+import { Teacher } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
 import { Link } from 'react-router-dom';
@@ -75,21 +75,21 @@ const FormacaoTerapeutas: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div className="text-center">
                                 <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                                    <Heart size={28} variant="Linear" color="currentColor" />
+                                    <img src="/icons/site/abordagem-humanizada.png" alt="Abordagem Humanizada" className="w-7 h-7 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-lg text-brand-dark mb-2">Abordagem Humanizada</h3>
                                 <p className="font-sans text-gray-600 text-sm">Formação com acolhimento e respeito ao seu ritmo</p>
                             </div>
                             <div className="text-center">
                                 <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                                    <Medal size={28} variant="Linear" color="currentColor" />
+                                    <img src="/icons/site/certificacao-profissional.png" alt="Certificação Profissional" className="w-7 h-7 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-lg text-brand-dark mb-2">Certificação Profissional</h3>
                                 <p className="font-sans text-gray-600 text-sm">Certificados reconhecidos para atuação profissional</p>
                             </div>
                             <div className="text-center">
                                 <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                                    <MagicStar size={28} variant="Linear" color="currentColor" />
+                                    <img src="/icons/site/transformacao-pessoal.png" alt="Transformação Pessoal" className="w-7 h-7 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-lg text-brand-dark mb-2">Transformação Pessoal</h3>
                                 <p className="font-sans text-gray-600 text-sm">Você se cura enquanto aprende a curar</p>
@@ -180,7 +180,7 @@ const FormacaoTerapeutas: React.FC = () => {
                                 </div>
                                 <div className="md:w-1/3 text-center">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg">
-                                        <Medal size={48} variant="Linear" color="currentColor" className="text-brand-gold mx-auto mb-3" />
+                                        <img src="/icons/site/certificacao-profissional.png" alt="Certificação Internacional" className="w-12 h-12 object-contain mx-auto mb-3" />
                                         <h4 className="font-serif text-lg text-brand-dark mb-2">Certificação Internacional</h4>
                                         <p className="font-sans text-gray-600 text-sm mb-3">Reconhecida pelo THInK® - ThetaHealing Institute of Knowledge</p>
                                         <div className="flex flex-wrap gap-2 justify-center">
@@ -207,8 +207,8 @@ const FormacaoTerapeutas: React.FC = () => {
                                 to="/terapia-individual"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <UserTick size={24} variant="Linear" color="currentColor" />
+                                <div className="bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/terapia-individual.png" alt="Terapia Individual" className="w-6 h-6 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Terapia Individual</h3>
@@ -219,8 +219,8 @@ const FormacaoTerapeutas: React.FC = () => {
                                 to="/autoconhecimento-em-grupo"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <People size={24} variant="Linear" color="currentColor" />
+                                <div className="bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/autoconhecimento-grupo.png" alt="Autoconhecimento em Grupo" className="w-6 h-6 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Autoconhecimento em Grupo</h3>
