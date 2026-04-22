@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Sparkles, Users, Calendar, MapPin, Clock, Wifi } from 'lucide-react';
+import { MagicStar, People, Calendar, Location, Clock, Wifi, UserTick, Teacher } from 'iconsax-react';
+
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
 import { Link } from 'react-router-dom';
@@ -12,31 +13,31 @@ const vivencias = [
         description: 'Um curso completo que une espiritualidade e neurociência para ativar a abundância em todas as áreas da vida. Descubra como mente e energia criam realidade.',
         duration: '2 dias',
         format: 'Presencial',
-        icon: <MapPin size={14} />,
+        icon: <Location size={14} variant="Linear" color="currentColor" />,
     },
     {
         emoji: '🔥',
         title: 'Ativação da Kundalini em grupo',
         description: 'Vivência poderosa de despertar da energia vital que habita sua base da coluna. Através de práticas específicas, essa ativação libera bloqueios, expande a consciência e desperta seu potencial criativo.',
-        duration: '1 dia',
-        format: 'Presencial',
-        icon: <MapPin size={14} />,
+        duration: '1h',
+        format: 'Online ou Presencial',
+        icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
         emoji: '❤️',
         title: 'Dedo Magnético® – Atraindo Relacionamentos Saudáveis',
         description: 'Workshop focado em libertar padrões inconscientes que atraem relacionamentos tóxicos. Aprenda a elevar sua frequência para magnetizar conexões baseadas em amor, respeito e crescimento mútuo.',
-        duration: '1 dia',
-        format: 'Online ou Presencial',
-        icon: <Wifi size={14} />,
+        duration: 'Curso gravado ou 2 dias',
+        format: 'Apenas Online',
+        icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
         emoji: '🌀',
         title: 'Meditação dos Espirais',
         description: 'Prática meditativa profunda que utiliza o movimento espiral como portal de expansão da consciência. Conecte-se com dimensões elevadas e receba insights para sua jornada.',
-        duration: '3 horas',
+        duration: '2 dias',
         format: 'Online ou Presencial',
-        icon: <Wifi size={14} />,
+        icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
         emoji: '🌸',
@@ -44,15 +45,15 @@ const vivencias = [
         description: 'Retiro exclusivo para mulheres que desejam reconectar-se com o sagrado feminino. Dias de imersão com rituais, práticas de cura e conexão profunda entre mulheres.',
         duration: '3 dias',
         format: 'Presencial',
-        icon: <MapPin size={14} />,
+        icon: <Location size={14} variant="Linear" color="currentColor" />,
     },
     {
         emoji: '🌕',
         title: 'Confraria da Lua – Grupo de Leitura para Mulheres',
         description: 'Círculo mensal online onde mulheres se reúnem para estudar, compartilhar e crescer juntas. Leituras selecionadas sobre espiritualidade, autoconhecimento e empoderamento feminino.',
-        duration: 'Mensal',
+        duration: 'Semestral',
         format: 'Online',
-        icon: <Wifi size={14} />,
+        icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
 ];
 
@@ -74,7 +75,7 @@ const AutoconhecimentoGrupo: React.FC = () => {
 
                 <div className="max-w-6xl mx-auto px-6 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
-                        <Users size={14} /> Autoconhecimento em Grupo
+                        <People size={14} variant="Linear" color="currentColor" /> Autoconhecimento em Grupo
                     </div>
                     <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
                         Espiritualidade, sabedoria e <span className="text-brand-goldDark italic">cura emocional</span> em jornadas coletivas
@@ -115,7 +116,7 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                     </p>
                                     <div className="flex items-center gap-4 text-sm">
                                         <div className="flex items-center gap-1 text-brand-lilacDark">
-                                            <Clock size={14} />
+                                            <Clock size={14} variant="Linear" color="currentColor" />
                                             <span className="font-sans font-medium">{vivencia.duration}</span>
                                         </div>
                                         <div className="flex items-center gap-1 text-brand-goldDark">
@@ -152,7 +153,7 @@ const AutoconhecimentoGrupo: React.FC = () => {
                 <section className="py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="bg-gradient-to-r from-brand-lilac/30 to-brand-gold/20 p-8 md:p-12 rounded-3xl text-center">
-                            <Calendar className="text-brand-lilacDark mx-auto mb-4" size={48} />
+                            <Calendar size={48} variant="Linear" color="currentColor" className="text-brand-lilacDark mx-auto mb-4" />
                             <h2 className="font-serif text-3xl md:text-4xl text-brand-dark mb-4">
                                 Quer saber das próximas turmas?
                             </h2>
@@ -182,7 +183,9 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 to="/terapia-individual"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-2xl">💜</div>
+                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <UserTick size={24} variant="Linear" color="currentColor" />
+                                </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Terapia Individual</h3>
                                     <p className="font-sans text-gray-600 text-sm">Sessões personalizadas de cura</p>
@@ -192,7 +195,9 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 to="/formacao-de-terapeutas"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-2xl">🎓</div>
+                                <div className="text-brand-gold bg-brand-gold/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                                    <Teacher size={24} variant="Linear" color="currentColor" />
+                                </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Formação de Terapeutas</h3>
                                     <p className="font-sans text-gray-600 text-sm">Torne-se um agente de transformação</p>
