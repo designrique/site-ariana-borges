@@ -21,8 +21,7 @@ import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
 import TermosDeUso from '@/pages/TermosDeUso';
 import Footer from '@/components/Footer';
 
-import SchedulingChat from '@/components/SchedulingChat';
-import { SchedulingProvider, useScheduling } from '@/components/SchedulingContext';
+import { WhatsAppProvider, WhatsAppFloatingWidget, useWhatsApp } from '@/components/WhatsAppButton';
 import { HambergerMenu, CloseSquare, ArrowDown2 } from 'iconsax-react';
 
 const queryClient = new QueryClient({
@@ -35,7 +34,7 @@ const queryClient = new QueryClient({
 });
 
 const NavBar = () => {
-  const { openScheduling } = useScheduling();
+  const { openPopup } = useWhatsApp();
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [servicesOpen, setServicesOpen] = React.useState(false);
@@ -91,7 +90,7 @@ const NavBar = () => {
           <Link to="/sobre" className="font-sans text-brand-dark hover:text-brand-gold transition-colors font-medium">Sobre</Link>
           <Link to="/blog" className="font-sans text-brand-dark hover:text-brand-gold transition-colors font-medium">Blog</Link>
           <button
-            onClick={openScheduling}
+            onClick={openPopup}
             className="bg-brand-dark text-white font-sans px-5 py-2 rounded-full text-xs font-bold hover:bg-brand-gold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
           >
             Marque um Atendimento
@@ -191,7 +190,7 @@ const NavBar = () => {
 
             <button
               onClick={() => {
-                openScheduling();
+                openPopup();
                 setIsOpen(false);
               }}
               className="mt-4 bg-brand-dark text-white font-sans px-5 py-3 rounded-full font-bold hover:bg-brand-gold transition-all duration-300 shadow-md text-center"
@@ -248,7 +247,7 @@ const MainContent = () => {
         </Routes>
       </div>
       <Footer />
-      <SchedulingChat />
+      {!isLandingPage && <WhatsAppFloatingWidget />}
     </div>
   );
 };
@@ -257,11 +256,11 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
-        <SchedulingProvider>
+        <WhatsAppProvider>
           <Router>
             <MainContent />
           </Router>
-        </SchedulingProvider>
+        </WhatsAppProvider>
       </HelmetProvider>
     </QueryClientProvider>
   );
