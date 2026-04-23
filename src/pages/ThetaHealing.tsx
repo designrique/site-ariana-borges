@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MagicStar, Medal, Book1, Heart, Star1, People, Flash, UserTick, Teacher } from 'iconsax-react';
+import { MagicStar, Medal, Book1, Heart, People, Flash, UserTick, Teacher } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useScheduling } from '@/components/SchedulingContext';
 import { Link } from 'react-router-dom';
@@ -180,7 +180,7 @@ const ThetaHealing: React.FC = () => {
                         </div>
                         <div className="w-px h-6 bg-gray-300"></div>
                         <div className="flex items-center gap-2 text-brand-goldDark">
-                            <Star1 size={20} variant="Linear" color="currentColor" />
+                            <img src="/icons/theta/dna-instrutora-certificada.png" alt="Instrutora Certificada" className="w-5 h-5 object-contain" />
                             <span className="font-sans text-sm font-medium">Instrutora Certificada</span>
                         </div>
                     </div>
@@ -491,7 +491,7 @@ const ThetaHealing: React.FC = () => {
                                 </div>
                                 <div className="md:w-1/3 text-center">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg">
-                                        <Star1 size={40} variant="Linear" color="currentColor" className="text-brand-gold mx-auto mb-3" />
+                                        <img src="/icons/theta/dna-instrutora-certificada.png" alt="Instrutora Certificada" className="w-10 h-10 object-contain mx-auto mb-3" />
                                         <h4 className="font-serif text-lg text-brand-dark mb-2">Instrutora Certificada</h4>
                                         <p className="font-sans text-gray-600 text-sm mb-3">Ariana Borges é instrutora certificada e reconhecida internacionalmente</p>
                                         <div className="flex flex-wrap gap-2 justify-center">
