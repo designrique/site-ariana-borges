@@ -73,7 +73,8 @@ export const WhatsAppFloatingWidget: React.FC = () => {
 
         setStatus('success');
 
-        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`;
+        const waMessage = `${WA_MESSAGE}\nNome: ${name}\nEmail: ${email}`;
+        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
         window.open(url, '_blank');
 
         setTimeout(() => handleClose(), 1800);
