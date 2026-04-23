@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { TickCircle, Calendar, Home2, RefreshCircle, InfoCircle } from 'iconsax-react';
-import { useScheduling } from '../components/SchedulingContext';
+import { useWhatsApp } from '../components/WhatsAppButton';
 import { checkPaymentStatus } from '../services/infinityPayService';
 
 const PaymentReturn: React.FC = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     const [status, setStatus] = React.useState<'loading' | 'success' | 'error'>('loading');
 
@@ -33,13 +33,7 @@ const PaymentReturn: React.FC = () => {
         const orderNsu = searchParams.get('order_nsu');
         navigate('/');
         setTimeout(() => {
-            openScheduling({
-                skipTo: 'timeframe',
-                paymentData: {
-                    orderNsu: orderNsu,
-                    status: 'paid'
-                }
-            });
+            openPopup();
         }, 100);
     };
 

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, MagicStar } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getHero } from '@/lib/cms';
-import { useScheduling } from './SchedulingContext';
+import { useWhatsApp } from './WhatsAppButton';
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const { openScheduling } = useScheduling();
+  const { openPopup } = useWhatsApp();
 
   const { data: heroData } = useQuery({
     queryKey: ['hero'],
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
           <button
-            onClick={openScheduling}
+            onClick={openPopup}
             className="group bg-brand-lilac hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-brand-dark font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl flex items-center gap-2"
           >
             {ctaText}

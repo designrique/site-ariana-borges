@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, MagicStar, Health, Heart, Flash } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getHero } from '@/lib/cms';
-import { useScheduling } from './SchedulingContext';
+import { useWhatsApp } from './WhatsAppButton';
 import ImageSequencePreloader from './ImageSequencePreloader';
 import { motion } from 'framer-motion';
 
@@ -11,7 +11,7 @@ const DNAHero: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
   const [showPreloader, setShowPreloader] = useState(true);
   const [showContent, setShowContent] = useState(false);
-  const { openScheduling } = useScheduling();
+  const { openPopup } = useWhatsApp();
 
   const { data: heroData } = useQuery({
     queryKey: ['hero'],
@@ -198,7 +198,7 @@ const DNAHero: React.FC = () => {
             variants={itemVariants}
           >
             <button
-              onClick={openScheduling}
+              onClick={openPopup}
               className="group relative bg-gradient-to-r from-brand-blue via-brand-green to-brand-gold hover:from-brand-gold hover:via-brand-green hover:to-brand-blue hover:scale-105 transition-all duration-500 text-brand-dark font-sans font-bold py-4 px-8 md:py-5 md:px-10 rounded-full shadow-2xl hover:shadow-brand-gold/30 flex items-center gap-3 overflow-hidden"
             >
               <span className="relative z-10">{ctaText}</span>

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { People, Calendar, Location, Clock, Wifi } from 'iconsax-react';
 
 import ScrollReveal from '@/components/ScrollReveal';
-import { useScheduling } from '@/components/SchedulingContext';
+import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 const vivencias = [
@@ -58,7 +58,7 @@ const vivencias = [
 ];
 
 const AutoconhecimentoGrupo: React.FC = () => {
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     return (
         <>
@@ -84,7 +84,7 @@ const AutoconhecimentoGrupo: React.FC = () => {
                         A energia do grupo potencializa a transformação individual. Junte-se a nós em vivências que expandem consciência, curam feridas e despertam seu potencial mais elevado.
                     </p>
                     <button
-                        onClick={openScheduling}
+                        onClick={openPopup}
                         className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1"
                     >
                         Marque um Atendimento
@@ -161,7 +161,7 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 Entre em contato para saber sobre as próximas datas e garantir sua vaga nas vivências que ressoam com você.
                             </p>
                             <button
-                                onClick={openScheduling}
+                                onClick={openPopup}
                                 className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1"
                             >
                                 Entrar em Contato
@@ -220,7 +220,7 @@ const AutoconhecimentoGrupo: React.FC = () => {
                             Escolha sua jornada e venha florescer com a gente.
                         </p>
                         <button
-                            onClick={openScheduling}
+                            onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
                             Agendar Atendimento

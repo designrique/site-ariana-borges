@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { MagicStar, Medal, Book1, Heart, People, Flash, UserTick, Teacher } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
-import { useScheduling } from '@/components/SchedulingContext';
+import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 const modulosEssencial = [
@@ -148,7 +148,7 @@ const modulosEspecializacoes = [
 ];
 
 const ThetaHealing: React.FC = () => {
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     return (
         <>
@@ -185,7 +185,7 @@ const ThetaHealing: React.FC = () => {
                         </div>
                     </div>
                     <button
-                        onClick={openScheduling}
+                        onClick={openPopup}
                         className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1"
                     >
                         Quero Começar Minha Formação
@@ -567,7 +567,7 @@ const ThetaHealing: React.FC = () => {
                             Entre em contato para saber sobre as próximas turmas e começar sua formação em ThetaHealing®.
                         </p>
                         <button
-                            onClick={openScheduling}
+                            onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
                             Quero Começar

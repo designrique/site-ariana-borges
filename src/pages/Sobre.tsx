@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { MagicStar } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
-import { useScheduling } from '@/components/SchedulingContext';
+import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 const credentials = [
@@ -20,7 +20,7 @@ const stats = [
 ];
 
 const Sobre: React.FC = () => {
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     return (
         <>
@@ -61,7 +61,7 @@ const Sobre: React.FC = () => {
                                 Sou terapeuta e mentora espiritual com mais de 12 mil atendimentos e 1.500 alunos impactados. Minha missão é guiar pessoas em jornadas de cura profunda e reconexão com sua essência, unindo espiritualidade, ciência e técnicas integrativas.
                             </p>
                             <button
-                                onClick={openScheduling}
+                                onClick={openPopup}
                                 className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                             >
                                 Marque um Atendimento
@@ -203,7 +203,7 @@ const Sobre: React.FC = () => {
                             Sua jornada de transformação começa com um primeiro passo. Estou aqui para guiá-lo nessa caminhada de cura e autoconhecimento.
                         </p>
                         <button
-                            onClick={openScheduling}
+                            onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
                             Agendar Atendimento

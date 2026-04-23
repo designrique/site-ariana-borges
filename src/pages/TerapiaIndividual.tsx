@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { MagicStar, Clock, Location, Video } from 'iconsax-react';
 
 import ScrollReveal from '@/components/ScrollReveal';
-import { useScheduling } from '@/components/SchedulingContext';
+import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 type TerapiaColor = 'gold' | 'lilac';
@@ -106,7 +106,7 @@ const terapiasPresenciais: Terapia[] = [
 ];
 
 const TerapiaIndividual: React.FC = () => {
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     return (
         <>
@@ -132,7 +132,7 @@ const TerapiaIndividual: React.FC = () => {
                         Cada sessão é um encontro sagrado com seu eu mais profundo. Utilizamos técnicas integrativas que atuam em múltiplas dimensões do seu ser.
                     </p>
                     <button
-                        onClick={openScheduling}
+                        onClick={openPopup}
                         className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1"
                     >
                         Marque um Atendimento
@@ -293,7 +293,7 @@ const TerapiaIndividual: React.FC = () => {
                             Escolha sua jornada e venha florescer com a gente.
                         </p>
                         <button
-                            onClick={openScheduling}
+                            onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
                             Agendar Atendimento

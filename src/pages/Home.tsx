@@ -5,10 +5,10 @@ import Pillars from '@/components/Pillars';
 import AboutIntro from '@/components/AboutIntro';
 import FAQ from '@/components/FAQ';
 import ScrollReveal from '@/components/ScrollReveal';
-import { useScheduling } from '@/components/SchedulingContext';
+import { useWhatsApp } from '@/components/WhatsAppButton';
 
 const Home: React.FC = () => {
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     return (
         <>
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
                             Sua jornada de transformação começa com um primeiro passo. Estamos aqui para guiá-lo.
                         </p>
                         <button
-                            onClick={openScheduling}
+                            onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
                             Agendar Atendimento

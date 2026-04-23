@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Teacher } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
-import { useScheduling } from '@/components/SchedulingContext';
+import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 const formacoes = [
@@ -34,7 +34,7 @@ const formacoes = [
 ];
 
 const FormacaoTerapeutas: React.FC = () => {
-    const { openScheduling } = useScheduling();
+    const { openPopup } = useWhatsApp();
 
     return (
         <>
@@ -60,7 +60,7 @@ const FormacaoTerapeutas: React.FC = () => {
                         Cada curso de formação terapêutica é mais do que uma capacitação técnica — é um portal de transformação pessoal profunda. Com uma abordagem humanizada, segura e fundamentada na escuta da alma, você é guiada por um caminho de autoconhecimento, cura e preparo profissional.
                     </p>
                     <button
-                        onClick={openScheduling}
+                        onClick={openPopup}
                         className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1"
                     >
                         Marque um Atendimento
@@ -143,7 +143,7 @@ const FormacaoTerapeutas: React.FC = () => {
                                         </Link>
                                     ) : (
                                         <button
-                                            onClick={openScheduling}
+                                            onClick={openPopup}
                                             className="text-brand-lilacDark font-bold text-sm hover:text-brand-gold transition-colors inline-flex items-center gap-2"
                                         >
                                             Saber mais
@@ -244,7 +244,7 @@ const FormacaoTerapeutas: React.FC = () => {
                             Escolha sua jornada e venha florescer com a gente.
                         </p>
                         <button
-                            onClick={openScheduling}
+                            onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
                             Agendar Atendimento
