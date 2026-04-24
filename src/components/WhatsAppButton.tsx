@@ -40,6 +40,7 @@ export const WhatsAppFloatingWidget: React.FC = () => {
     const [selfOpen, setSelfOpen] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [status, setStatus] = useState<FormStatus>('idle');
 
     const isOpen = selfOpen || isPopupOpen;
@@ -52,6 +53,7 @@ export const WhatsAppFloatingWidget: React.FC = () => {
         if (status !== 'submitting') {
             setName('');
             setEmail('');
+            setPhone('');
             setStatus('idle');
         }
     };
@@ -60,12 +62,12 @@ export const WhatsAppFloatingWidget: React.FC = () => {
         e.preventDefault();
         setStatus('submitting');
 
-        // Salva no Brevo — nunca bloqueia o redirect se falhar
+        // Salva no Brevo + bot DB — nunca bloqueia o redirect se falhar
         try {
             await fetch('/api/brevo-optin', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, source: 'whatsapp-button' }),
+                body: JSON.stringify({ name, email, phone, source: 'whatsapp-button' }),
             });
         } catch {
             // Ignora silenciosamente — o fluxo do usuário não deve ser interrompido
@@ -162,6 +164,16 @@ export const WhatsAppFloatingWidget: React.FC = () => {
                             placeholder="Seu melhor e-mail"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
+                            disabled={status === 'submitting'}
+                            className="border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-sans text-brand-dark placeholder-gray-400 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 transition-colors disabled:opacity-60"
+                        />
+
+                        <input
+                            type="tel"
+                            placeholder="Seu WhatsApp (DDD + número)"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             required
                             disabled={status === 'submitting'}
                             className="border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-sans text-brand-dark placeholder-gray-400 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 transition-colors disabled:opacity-60"
