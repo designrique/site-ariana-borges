@@ -157,7 +157,7 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className={`w-20 h-20 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                        <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
                                             <img src={terapia.img} alt={terapia.title} className="w-12 h-12 object-contain" />
                                         </div>
                                         <div className="flex-1">
@@ -202,7 +202,7 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className={`w-20 h-20 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                        <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
                                             <img src={terapia.img} alt={terapia.title} className="w-12 h-12 object-contain" />
                                         </div>
                                         <div className="flex-1">
