@@ -259,7 +259,7 @@ const ThetaHealing: React.FC = () => {
             {/* Trilha Completa - Flowchart */}
             <ScrollReveal>
                 <section className="py-20 bg-brand-beige overflow-hidden">
-                    <div className="max-w-6xl mx-auto px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-4">
                             Trilha Completa de Formação
                         </h2>
@@ -267,106 +267,192 @@ const ThetaHealing: React.FC = () => {
                             Cada módulo constrói sobre o anterior em uma jornada progressiva de evolução e especialização.
                         </p>
 
-                        {/* === Desktop tree (md+) === */}
-                        <div className="hidden md:flex flex-col items-center">
+                        {/* === Desktop tree (lg+) === */}
+                        <div className="hidden lg:flex flex-col items-center">
 
-                            {/* Node 1: DNA Básico */}
+                            {/* TRUNK: DNA Básico */}
                             <div className="flex flex-col items-center">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-lilacDark overflow-hidden">
+                                <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-lilacDark overflow-hidden shadow-md">
                                     <img src="/icons/theta/dna-basico.png" alt="DNA Básico" className="w-full h-full object-cover" />
                                 </div>
                                 <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-brand-lilacDark mt-2">DNA Básico</p>
                             </div>
-                            <div className="w-[2px] h-8 bg-brand-lilacDark/60"></div>
+                            <div className="w-[2px] h-8 bg-brand-lilacDark/60" />
 
-                            {/* Node 2: DNA Avançado */}
+                            {/* TRUNK: DNA Avançado */}
                             <div className="flex flex-col items-center">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-lilacDark overflow-hidden">
+                                <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-lilacDark overflow-hidden shadow-md">
                                     <img src="/icons/theta/dna-avancado.png" alt="DNA Avançado" className="w-full h-full object-cover" />
                                 </div>
                                 <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-brand-lilacDark mt-2">DNA Avançado</p>
                             </div>
-                            <div className="w-[2px] h-8 bg-brand-lilacDark/60"></div>
+                            <div className="w-[2px] h-8 bg-brand-lilacDark/60" />
 
-                            {/* Node 3: Aprofunde-se */}
+                            {/* TRUNK: Aprofunde-se */}
                             <div className="flex flex-col items-center">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-lilacDark overflow-hidden">
+                                <div className="w-24 h-24 rounded-full bg-white border-[3px] border-brand-goldDark overflow-hidden shadow-lg ring-4 ring-brand-gold/20">
                                     <img src="/icons/theta/aprofundando-digging.png" alt="Aprofunde-se" className="w-full h-full object-cover" />
                                 </div>
-                                <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-brand-lilacDark mt-2 text-center">Aprofunde-se</p>
+                                <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-brand-goldDark mt-2">Aprofunde-se</p>
                             </div>
+                            <div className="w-[2px] h-10 bg-brand-lilacDark/60" />
 
-                            {/* Vertical drop to horizontal bar */}
-                            <div className="w-[2px] h-10 bg-brand-lilacDark/60"></div>
+                            {/* SPLIT: Left branches + Right sub-tree */}
+                            <div className="w-full flex items-start">
 
-                            {/* Horizontal bar + module drops */}
-                            <div className="w-full relative">
-                                <div className="absolute top-0 left-0 right-0 h-[2px] bg-brand-lilacDark/50"></div>
-                                <div className="flex justify-between w-full">
-                                    {modulosEspecializacoes.map((modulo, index) => (
-                                            <div key={index} className="flex flex-col items-center" style={{ width: `${100 / modulosEspecializacoes.length}%` }}>
-                                                <div className="w-3 h-3 rounded-full bg-brand-lilacDark/70 -mt-[5px] z-10 relative"></div>
-                                                <div className="w-[2px] h-5 bg-brand-lilacDark/50"></div>
-                                                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-brand-lilacDark/70 bg-white overflow-hidden flex items-center justify-center">
-                                                    <img
-                                                        src={modulo.img}
-                                                        alt={modulo.title}
-                                                        className="w-full h-full object-cover"
-                                                    />
+                                {/* LEFT GROUP (66%) — 7 branches from Aprofunde-se */}
+                                <div className="w-[66%] flex flex-col items-stretch">
+                                    <div className="h-[2px] bg-brand-lilacDark/50" />
+                                    <div className="flex justify-around">
+                                        {[
+                                            { img: 'relacoes-mundiais.png', label: 'Relações Mundiais', child: null },
+                                            { img: 'manifestacao-abundancia.png', label: 'Manifestação e Abundância', child: { img: 'planta.png', label: 'Planta' } },
+                                            { img: 'jogo-da-vida.png', label: 'Jogo da Vida', child: { img: 'crianca-arco-iris.png', label: 'Criança Intuitiva Adulto' } },
+                                            { img: 'alma-gemea.png', label: 'Alma Gêmea', child: null },
+                                            { img: 'voce-terra.png', label: 'Você e a Terra', child: { img: 'animal.png', label: 'Animal' } },
+                                            { img: 'voce-parceiro.png', label: 'Você e Seu Parceiro', child: null },
+                                            { img: 'voce-circulo-intimo.png', label: 'Você e Seu Círculo Íntimo', child: null },
+                                        ].map((branch, i) => (
+                                            <div key={i} className="flex flex-col items-center flex-1">
+                                                <div className="w-[2px] h-6 bg-brand-lilacDark/50" />
+                                                <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-white border-2 border-brand-lilacDark/70 overflow-hidden shadow-sm">
+                                                    <img src={`/icons/theta/${branch.img}`} alt={branch.label} className="w-full h-full object-cover" />
                                                 </div>
-                                                <p className="font-sans text-[9px] lg:text-[10px] text-center text-brand-dark font-semibold mt-2 uppercase leading-tight px-0.5">
-                                                    {modulo.title}
-                                                </p>
+                                                <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[70px]">{branch.label}</p>
+                                                {branch.child && (
+                                                    <>
+                                                        <div className="w-[2px] h-3 bg-brand-lilacDark/30 mt-1" />
+                                                        <div className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-brand-lilac/20 border border-brand-lilacDark/50 overflow-hidden">
+                                                            <img src={`/icons/theta/${branch.child.img}`} alt={branch.child.label} className="w-full h-full object-cover" />
+                                                        </div>
+                                                        <p className="font-sans text-[7px] xl:text-[8px] text-center text-gray-500 mt-1 leading-tight px-0.5 max-w-[50px]">{branch.child.label}</p>
+                                                    </>
+                                                )}
                                             </div>
                                         ))}
+                                    </div>
+                                </div>
+
+                                {/* RIGHT: Você e o Criador sub-tree (34%) */}
+                                <div className="w-[34%] flex flex-col items-center">
+                                    <div className="h-[2px] bg-brand-lilacDark/50 w-full" />
+                                    <div className="w-[2px] h-6 bg-brand-lilacDark/60" />
+
+                                    {/* Você e o Criador */}
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-20 h-20 rounded-full bg-white border-2 border-brand-lilacDark overflow-hidden shadow-md ring-4 ring-brand-lilac/20">
+                                            <img src="/icons/theta/voce-criador.png" alt="Você e o Criador" className="w-full h-full object-cover" />
+                                        </div>
+                                        <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-brand-lilacDark mt-2 text-center">Você e o Criador</p>
+                                    </div>
+                                    <div className="w-[2px] h-6 bg-brand-lilacDark/60" />
+
+                                    {/* 3 children */}
+                                    <div className="w-full flex flex-col items-stretch">
+                                        <div className="h-[2px] bg-brand-lilacDark/50 w-3/4 mx-auto" />
+                                        <div className="flex justify-around w-full">
+
+                                            {/* Amor pela Família */}
+                                            <div className="flex flex-col items-center flex-1">
+                                                <div className="w-[2px] h-5 bg-brand-lilacDark/50" />
+                                                <div className="w-12 h-12 rounded-full bg-white border-2 border-brand-lilacDark/70 overflow-hidden shadow-sm">
+                                                    <img src="/icons/theta/amor-pela-familia.png" alt="Amor pela Família" className="w-full h-full object-cover" />
+                                                </div>
+                                                <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[60px]">Amor pela Família</p>
+                                            </div>
+
+                                            {/* Amor Próprio */}
+                                            <div className="flex flex-col items-center flex-1">
+                                                <div className="w-[2px] h-5 bg-brand-lilacDark/50" />
+                                                <div className="w-12 h-12 rounded-full bg-white border-2 border-brand-lilacDark/70 overflow-hidden shadow-sm">
+                                                    <img src="/icons/theta/amor-proprio.png" alt="Amor Próprio" className="w-full h-full object-cover" />
+                                                </div>
+                                                <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[60px]">Amor Próprio</p>
+                                            </div>
+
+                                            {/* Anatomia Intuitiva + sub-children */}
+                                            <div className="flex flex-col items-center flex-1">
+                                                <div className="w-[2px] h-5 bg-brand-lilacDark/50" />
+                                                <div className="w-12 h-12 rounded-full bg-white border-2 border-brand-lilacDark/70 overflow-hidden shadow-sm">
+                                                    <img src="/icons/theta/anatomia-intuitiva.png" alt="Anatomia Intuitiva" className="w-full h-full object-cover" />
+                                                </div>
+                                                <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[60px]">Anatomia Intuitiva</p>
+                                                <div className="w-[2px] h-4 bg-brand-lilacDark/40 mt-1" />
+                                                <div className="h-[2px] bg-brand-lilacDark/40 w-full" />
+                                                <div className="flex w-full justify-around">
+                                                    {[
+                                                        { img: 'planos-existencia.png', label: 'Planos de Existência' },
+                                                        { img: 'doencas-desordens.png', label: 'Doenças e Desordens' },
+                                                        { img: 'dna-avancado.png', label: 'DNA 3' },
+                                                    ].map((sub, j) => (
+                                                        <div key={j} className="flex flex-col items-center" style={{ width: '33%' }}>
+                                                            <div className="w-[2px] h-4 bg-brand-lilacDark/40" />
+                                                            <div className="w-8 h-8 rounded-full bg-white border border-brand-lilacDark/50 overflow-hidden">
+                                                                <img src={`/icons/theta/${sub.img}`} alt={sub.label} className="w-full h-full object-cover" />
+                                                            </div>
+                                                            <p className="font-sans text-[6px] xl:text-[7px] text-center text-gray-600 mt-1 leading-tight">{sub.label}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                            {/* STANDALONE: Criança Intuitiva em Mim (Infantil) — lilac bubble */}
+                            <div className="mt-10 self-start ml-[3%] flex flex-col items-center">
+                                <div className="w-24 h-24 rounded-full bg-brand-lilac/30 border-2 border-brand-lilacDark overflow-hidden shadow-md">
+                                    <img src="/icons/theta/crianca-intuitiva-infantil.png" alt="Criança Intuitiva Infantil" className="w-full h-full object-cover" />
+                                </div>
+                                <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-brand-lilacDark mt-2 text-center">Criança Intuitiva<br />em Mim (Infantil)</p>
+                                <span className="mt-1 text-[9px] bg-brand-lilac/40 text-brand-lilacDark rounded-full px-2 py-0.5 font-medium">Sem pré-requisitos</span>
+                            </div>
+
                         </div>
 
-                        {/* === Mobile simplified (< md) === */}
-                        <div className="md:hidden flex flex-col items-center">
-                            <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-brand-lilac/20 w-full max-w-xs">
-                                <div className="w-12 h-12 rounded-full border-2 border-brand-lilacDark overflow-hidden shrink-0">
-                                    <img src="/icons/theta/dna-basico.png" alt="DNA Básico" className="w-full h-full object-cover" />
-                                </div>
-                                <div>
-                                    <p className="font-sans text-xs text-brand-lilacDark font-bold uppercase tracking-wide">Nível 1</p>
-                                    <p className="font-serif text-base text-brand-dark">DNA Básico</p>
-                                </div>
-                            </div>
-                            <div className="w-[2px] h-5 bg-brand-lilacDark/50"></div>
-                            <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-brand-lilac/20 w-full max-w-xs">
-                                <div className="w-12 h-12 rounded-full border-2 border-brand-lilacDark overflow-hidden shrink-0">
-                                    <img src="/icons/theta/dna-avancado.png" alt="DNA Avançado" className="w-full h-full object-cover" />
-                                </div>
-                                <div>
-                                    <p className="font-sans text-xs text-brand-lilacDark font-bold uppercase tracking-wide">Nível 2</p>
-                                    <p className="font-serif text-base text-brand-dark">DNA Avançado</p>
-                                </div>
-                            </div>
-                            <div className="w-[2px] h-5 bg-brand-lilacDark/50"></div>
-                            <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-brand-gold/30 w-full max-w-xs">
-                                <div className="w-12 h-12 rounded-full border-2 border-brand-lilacDark overflow-hidden shrink-0">
-                                    <img src="/icons/theta/aprofundando-digging.png" alt="Aprofunde-se" className="w-full h-full object-cover" />
-                                </div>
-                                <div>
-                                    <p className="font-sans text-xs text-brand-goldDark font-bold uppercase tracking-wide">Nível 3</p>
-                                    <p className="font-serif text-base text-brand-dark">Aprofunde-se</p>
-                                </div>
-                            </div>
-                            <div className="w-full h-[2px] bg-brand-lilacDark/30 my-6"></div>
+                        {/* === Mobile/Tablet simplified (< lg) === */}
+                        <div className="lg:hidden flex flex-col items-center">
+                            {[
+                                { img: '/icons/theta/dna-basico.png', label: 'DNA Básico', level: 'Nível 1', color: 'lilac' as const },
+                                { img: '/icons/theta/dna-avancado.png', label: 'DNA Avançado', level: 'Nível 2', color: 'lilac' as const },
+                                { img: '/icons/theta/aprofundando-digging.png', label: 'Aprofunde-se', level: 'Nível 3', color: 'gold' as const },
+                            ].map((node, i) => (
+                                <React.Fragment key={node.label}>
+                                    <div className={`flex items-center gap-3 bg-white px-4 py-3 rounded-xl border w-full max-w-sm ${node.color === 'gold' ? 'border-brand-gold/30' : 'border-brand-lilac/20'}`}>
+                                        <div className={`w-12 h-12 rounded-full border-2 overflow-hidden shrink-0 ${node.color === 'gold' ? 'border-brand-goldDark' : 'border-brand-lilacDark'}`}>
+                                            <img src={node.img} alt={node.label} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div>
+                                            <p className={`font-sans text-xs font-bold uppercase tracking-wide ${node.color === 'gold' ? 'text-brand-goldDark' : 'text-brand-lilacDark'}`}>{node.level}</p>
+                                            <p className="font-serif text-base text-brand-dark">{node.label}</p>
+                                        </div>
+                                    </div>
+                                    {i < 2 && <div className="w-[2px] h-5 bg-brand-lilacDark/50" />}
+                                </React.Fragment>
+                            ))}
+
+                            <div className="w-full h-[2px] bg-brand-lilacDark/30 my-6" />
                             <p className="font-serif text-lg text-brand-dark text-center mb-6">Especializações</p>
                             <div className="grid grid-cols-3 gap-4 gap-y-6 w-full">
                                 {modulosEspecializacoes.map((modulo, index) => (
-                                        <div key={index} className="flex flex-col items-center text-center">
-                                            <div className={`w-14 h-14 rounded-full overflow-hidden mb-2 border ${
-                                                modulo.variant === 'gold' ? 'border-brand-gold/40' : 'border-brand-lilac/40'
-                                            }`}>
-                                                <img src={modulo.img} alt={modulo.title} className="w-full h-full object-cover" />
-                                            </div>
-                                            <p className="font-sans text-xs text-brand-dark font-medium leading-tight">{modulo.title}</p>
+                                    <div key={index} className="flex flex-col items-center text-center">
+                                        <div className={`w-14 h-14 rounded-full overflow-hidden mb-2 border ${modulo.variant === 'gold' ? 'border-brand-gold/40' : 'border-brand-lilac/40'}`}>
+                                            <img src={modulo.img} alt={modulo.title} className="w-full h-full object-cover" />
                                         </div>
-                                    ))}
+                                        <p className="font-sans text-xs text-brand-dark font-medium leading-tight">{modulo.title}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Standalone lilac bubble mobile */}
+                            <div className="mt-8 flex flex-col items-center">
+                                <div className="w-16 h-16 rounded-full bg-brand-lilac/30 border-2 border-brand-lilacDark overflow-hidden">
+                                    <img src="/icons/theta/crianca-intuitiva-infantil.png" alt="Criança Intuitiva Infantil" className="w-full h-full object-cover" />
+                                </div>
+                                <p className="font-sans text-xs text-brand-lilacDark font-bold uppercase mt-2 text-center">Criança Intuitiva<br />em Mim (Infantil)</p>
+                                <span className="mt-1 text-[10px] bg-brand-lilac/40 text-brand-lilacDark rounded-full px-2 py-0.5">Sem pré-requisitos</span>
                             </div>
                         </div>
 
