@@ -115,8 +115,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10 flex flex-col"
                                 >
-                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 shrink-0 ${vivencia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
-                                        <img src={vivencia.img} alt={vivencia.title} className="w-8 h-8 object-contain" />
+                                    <div className="w-20 h-20 rounded-full flex items-center justify-center mb-4 shrink-0 bg-white shadow-sm">
+                                        <img src={vivencia.img} alt={vivencia.title} className="w-12 h-12 object-contain" />
                                     </div>
                                     <h3 className="font-serif text-xl text-brand-dark mb-3">{vivencia.title}</h3>
                                     <p className="font-sans text-gray-600 text-sm leading-relaxed mb-4 flex-1">
