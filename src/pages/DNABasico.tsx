@@ -161,7 +161,10 @@ const DNABasico: React.FC = () => {
               <CalendarDays size={16} variant="Linear" color="currentColor" className="text-goddess-gold flex-shrink-0" />
               <span className="text-goddess-gold font-bold text-sm tracking-wide">15, 16 e 17 de Maio</span>
             </div>
-            <span className="text-white/55 text-sm font-medium">Próxima turma</span>
+            <div className="flex items-center gap-1.5 text-white/60 text-sm font-medium">
+              <Gps size={14} variant="Linear" color="currentColor" />
+              <span>Recife</span>
+            </div>
           </div>
 
           {/* Course info pills */}
