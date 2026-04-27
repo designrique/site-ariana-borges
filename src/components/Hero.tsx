@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           {subtitle}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
+        <div className="flex justify-center items-center">
           <button
             onClick={openPopup}
             className="group bg-brand-lilac hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-brand-dark font-sans font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl flex items-center gap-2"
@@ -65,9 +65,6 @@ const Hero: React.FC = () => {
             {ctaText}
             <ArrowRight size={16} variant="Linear" color="currentColor" className="group-hover:translate-x-1 transition-transform" />
           </button>
-          <a href="#estrutura" className="text-brand-dark hover:text-brand-gold font-sans font-semibold py-4 px-8 underline decoration-brand-gold/30 hover:decoration-brand-gold transition-all">
-            Saiba mais sobre a jornada
-          </a>
         </div>
       </div>
     </section>
