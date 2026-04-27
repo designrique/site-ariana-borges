@@ -122,8 +122,8 @@ const Sobre: React.FC = () => {
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
-                                    <div className="mb-4 bg-white w-14 h-14 rounded-full flex items-center justify-center mx-auto shadow-sm">
-                                        <img src={cred.img} alt={cred.title} className="w-7 h-7 object-contain" />
+                                    <div className="mb-4 bg-white w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center mx-auto shadow-sm">
+                                        <img src={cred.img} alt={cred.title} className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                                     </div>
                                     <h3 className="font-serif text-lg text-brand-dark mb-2">{cred.title}</h3>
                                     <p className="font-sans text-gray-600 text-sm">{cred.description}</p>

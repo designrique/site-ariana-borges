@@ -154,22 +154,18 @@ const TerapiaIndividual: React.FC = () => {
                             {terapiasOnline.map((terapia, index) => (
                                 <div
                                     key={index}
-                                    className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10"
+                                    className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10 flex flex-col"
                                 >
-                                    <div className="flex items-start gap-4">
-                                        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
-                                            <img src={terapia.img} alt={terapia.title} className="w-12 h-12 md:w-16 md:h-16 object-contain" />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className="font-serif text-xl text-brand-dark mb-2">{terapia.title}</h3>
-                                            <p className="font-sans text-gray-600 text-sm leading-relaxed mb-3">
-                                                {terapia.description}
-                                            </p>
-                                            <div className="flex items-center gap-2 text-brand-lilacDark">
-                                                <Clock size={14} variant="Linear" color="currentColor" />
-                                                <span className="font-sans text-sm font-medium">Duração: {terapia.duration}</span>
-                                            </div>
-                                        </div>
+                                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm mb-4">
+                                        <img src={terapia.img} alt={terapia.title} className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+                                    </div>
+                                    <h3 className="font-serif text-xl text-brand-dark mb-2">{terapia.title}</h3>
+                                    <p className="font-sans text-gray-600 text-sm leading-relaxed mb-3 flex-1">
+                                        {terapia.description}
+                                    </p>
+                                    <div className="flex items-center gap-2 text-brand-lilacDark">
+                                        <Clock size={14} variant="Linear" color="currentColor" />
+                                        <span className="font-sans text-sm font-medium">Duração: {terapia.duration}</span>
                                     </div>
                                 </div>
                             ))}
@@ -199,22 +195,18 @@ const TerapiaIndividual: React.FC = () => {
                             {terapiasPresenciais.map((terapia, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                                    className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col"
                                 >
-                                    <div className="flex items-start gap-4">
-                                        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
-                                            <img src={terapia.img} alt={terapia.title} className="w-12 h-12 md:w-16 md:h-16 object-contain" />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className="font-serif text-2xl text-brand-dark mb-3">{terapia.title}</h3>
-                                            <p className="font-sans text-gray-600 leading-relaxed mb-4">
-                                                {terapia.description}
-                                            </p>
-                                            <div className="flex items-center gap-2 text-brand-goldDark">
-                                                <Clock size={16} variant="Linear" color="currentColor" />
-                                                <span className="font-sans font-medium">Duração: {terapia.duration}</span>
-                                            </div>
-                                        </div>
+                                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm mb-4">
+                                        <img src={terapia.img} alt={terapia.title} className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+                                    </div>
+                                    <h3 className="font-serif text-2xl text-brand-dark mb-3">{terapia.title}</h3>
+                                    <p className="font-sans text-gray-600 leading-relaxed mb-4">
+                                        {terapia.description}
+                                    </p>
+                                    <div className="flex items-center gap-2 text-brand-goldDark">
+                                        <Clock size={16} variant="Linear" color="currentColor" />
+                                        <span className="font-sans font-medium">Duração: {terapia.duration}</span>
                                     </div>
                                 </div>
                             ))}

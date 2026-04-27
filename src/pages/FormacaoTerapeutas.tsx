@@ -78,22 +78,22 @@ const FormacaoTerapeutas: React.FC = () => {
                     <div className="max-w-4xl mx-auto px-6 text-center">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                             <div className="text-center">
-                                <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                                    <img src="/icons/site/abordagem-humanizada.png" alt="Abordagem Humanizada" className="w-7 h-7 object-contain" />
+                                <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center mx-auto">
+                                    <img src="/icons/site/abordagem-humanizada.png" alt="Abordagem Humanizada" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-lg text-brand-dark mb-2">Abordagem Humanizada</h3>
                                 <p className="font-sans text-gray-600 text-sm">Formação com acolhimento e respeito ao seu ritmo</p>
                             </div>
                             <div className="text-center">
-                                <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                                    <img src="/icons/site/certificacao-profissional.png" alt="Certificação Profissional" className="w-7 h-7 object-contain" />
+                                <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center mx-auto">
+                                    <img src="/icons/site/certificacao-profissional.png" alt="Certificação Profissional" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-lg text-brand-dark mb-2">Certificação Profissional</h3>
                                 <p className="font-sans text-gray-600 text-sm">Certificados reconhecidos para atuação profissional</p>
                             </div>
                             <div className="text-center">
-                                <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                                    <img src="/icons/site/transformacao-pessoal.png" alt="Transformação Pessoal" className="w-7 h-7 object-contain" />
+                                <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center mx-auto">
+                                    <img src="/icons/site/transformacao-pessoal.png" alt="Transformação Pessoal" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                                 </div>
                                 <h3 className="font-serif text-lg text-brand-dark mb-2">Transformação Pessoal</h3>
                                 <p className="font-sans text-gray-600 text-sm">Você se cura enquanto aprende a curar</p>
@@ -120,12 +120,10 @@ const FormacaoTerapeutas: React.FC = () => {
                                     key={index}
                                     className="bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
-                                    <div className="flex items-start gap-4 mb-4">
-                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 ${formacao.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
-                                            <img src={formacao.img} alt={formacao.title} className="w-8 h-8 object-contain" />
-                                        </div>
-                                        <h3 className="font-serif text-2xl text-brand-dark">{formacao.title}</h3>
+                                    <div className={`w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center shrink-0 mb-4 ${formacao.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                        <img src={formacao.img} alt={formacao.title} className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                                     </div>
+                                    <h3 className="font-serif text-2xl text-brand-dark mb-4">{formacao.title}</h3>
                                     <p className="font-sans text-gray-600 leading-relaxed mb-6">
                                         {formacao.description}
                                     </p>

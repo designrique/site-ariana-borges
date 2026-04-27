@@ -61,8 +61,8 @@ const Pillars: React.FC = () => {
                             key={index}
                             className="bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/20"
                         >
-                            <div className="mb-6 bg-brand-lilac/10 w-20 h-20 rounded-full flex items-center justify-center">
-                                <img src={pillar.img} alt={pillar.title} className="w-14 h-14 object-contain" />
+                            <div className="mb-6 bg-brand-lilac/10 w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center">
+                                <img src={pillar.img} alt={pillar.title} className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                             </div>
                             <h3 className="font-serif text-2xl text-brand-dark mb-4">{pillar.title}</h3>
                             <p className="font-sans text-gray-600 mb-6 leading-relaxed">
