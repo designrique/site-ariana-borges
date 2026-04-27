@@ -625,6 +625,29 @@ const DNABasico: React.FC = () => {
     </Container>
   );
 
+  // === LOCALIZAÇÃO ===
+  const LocationSection = () => (
+    <>
+      <div className="bg-white py-10 text-center border-t border-gray-100">
+        <p className="font-sans text-gray-500 text-sm font-semibold uppercase tracking-widest mb-1">Local do Curso</p>
+        <p className="font-serif text-xl text-gray-800">Av. Rui Barbosa, 715, sala 403</p>
+        <p className="font-sans text-gray-500 text-sm">Empresaria Rui Barbosa · Recife – PE</p>
+      </div>
+      <div className="w-full h-72 md:h-96">
+        <iframe
+          title="Localização DNA Básico ThetaHealing®"
+          src="https://maps.google.com/maps?q=Av.+Rui+Barbosa,+715,+Recife,+PE,+Brasil&output=embed&hl=pt-BR&z=17"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    </>
+  );
+
   // === FINAL CTA ===
   const FinalCTASection = () => (
     <Container type="hero" background="gradient" className="text-center relative">
@@ -691,6 +714,7 @@ const DNABasico: React.FC = () => {
         <DNABasicoGallerySection />
         <PricingSection />
         <FAQSection />
+        <LocationSection />
         <FinalCTASection />
         {showModal && <CouponModal />}
       </>

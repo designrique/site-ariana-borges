@@ -27,21 +27,28 @@ const Footer: React.FC = () => {
 
   const copyright = settings?.footer?.copyrightText || `© ${new Date().getFullYear()} Instituto Ariana Borges. Todos os direitos reservados.`;
   const instagramUrl = settings?.social?.instagram || "https://instagram.com/institutoarianaborges";
-  const youtubeUrl = settings?.social?.youtube || "https://youtube.com/@institutoarianaborges";
-  const tiktokUrl = settings?.social?.tiktok || "https://tiktok.com/@institutoarianaborges";
+  const youtubeUrl = settings?.social?.youtube || "https://youtube.com/@institutoarianaborges520";
+  const tiktokUrl = settings?.social?.tiktok || "https://tiktok.com/@instituto.ariana";
   const threadsUrl = settings?.social?.threads || "https://threads.net/@institutoarianaborges";
   const substackUrl = settings?.social?.substack || "https://arianaborges.substack.com";
 
   return (
+    <>
     <footer className="bg-brand-beige py-12 md:py-16 border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="font-serif text-xl md:text-2xl text-brand-dark mb-2">Instituto Ariana Borges</h3>
-            <p className="font-sans text-gray-500 text-sm">
+            <p className="font-sans text-gray-500 text-sm mb-3">
               Cura, transformação e despertar espiritual.
             </p>
+            <div className="font-sans text-gray-500 text-xs leading-relaxed">
+              <p className="font-semibold text-gray-600 mb-1">Localização</p>
+              <p>Av. Rui Barbosa, 715, sala 403</p>
+              <p>Empresaria Rui Barbosa</p>
+              <p>Recife – PE</p>
+            </div>
           </div>
 
           {/* Services */}
@@ -97,6 +104,21 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+
+    {/* Mapa full-width */}
+    <div className="w-full h-72 md:h-96">
+      <iframe
+        title="Localização Instituto Ariana Borges"
+        src="https://maps.google.com/maps?q=Av.+Rui+Barbosa,+715,+Recife,+PE,+Brasil&output=embed&hl=pt-BR&z=17"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </div>
+    </>
   );
 };
 
