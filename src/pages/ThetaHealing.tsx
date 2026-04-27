@@ -554,7 +554,7 @@ const ThetaHealing: React.FC = () => {
                             Expansões do Campo
                         </h2>
                         <p className="font-sans text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                            Módulos especiais que expandem sua prática para o mundo natural e o potencial intuitivo infantil.
+                            Módulos especiais que expandem sua prática para o mundo natural e o potencial intuitivo.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
