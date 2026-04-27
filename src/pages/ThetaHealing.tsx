@@ -679,8 +679,8 @@ const ThetaHealing: React.FC = () => {
                                 to="/terapia-individual"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <UserTick size={24} variant="Linear" color="currentColor" />
+                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
+                                    <UserTick size={28} variant="Linear" color="currentColor" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Terapia Individual</h3>
@@ -691,8 +691,8 @@ const ThetaHealing: React.FC = () => {
                                 to="/formacao-de-terapeutas"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-gold bg-brand-gold/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <Teacher size={24} variant="Linear" color="currentColor" />
+                                <div className="text-brand-gold bg-brand-gold/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
+                                    <Teacher size={28} variant="Linear" color="currentColor" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Outras Formações</h3>
@@ -703,8 +703,8 @@ const ThetaHealing: React.FC = () => {
                                 to="/autoconhecimento-em-grupo"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                                    <People size={24} variant="Linear" color="currentColor" />
+                                <div className="text-brand-lilacDark bg-brand-lilac/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
+                                    <People size={28} variant="Linear" color="currentColor" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Grupos</h3>
