@@ -146,10 +146,10 @@ const AutoconhecimentoGrupo: React.FC = () => {
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark mb-6">
                             ✦ A Cura Começa com a Escolha
                         </h2>
-                        <p className="font-sans text-gray-600 text-lg leading-relaxed mb-4">
+                        <p className="font-sans text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto mb-4">
                             O trabalho em grupo oferece uma dimensão única de cura. Quando nos reunimos com intenção compartilhada, criamos um campo energético poderoso que amplifica a transformação de cada participante.
                         </p>
-                        <p className="font-sans text-gray-600 text-lg leading-relaxed">
+                        <p className="font-sans text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
                             Seja em vivências intensivas de um dia ou em grupos contínuos, cada encontro é uma oportunidade de se ver refletida no outro, de ser testemunhada em sua vulnerabilidade e de celebrar suas conquistas em comunidade.
                         </p>
                     </div>
