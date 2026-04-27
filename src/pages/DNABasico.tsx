@@ -338,7 +338,7 @@ const DNABasico: React.FC = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-0 right-0 bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/10 max-w-[250px]" style={{ transform: 'translateY(10px)' }}>
+              <div className="absolute bottom-0 right-0 bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/10 max-w-[250px]" style={{ transform: 'translateY(20px)' }}>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="bg-goddess-gold/20 p-2 rounded-full">
                     <Flash size={24} variant="Linear" color="currentColor" className="text-goddess-gold" />
