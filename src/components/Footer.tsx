@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
   const youtubeUrl = settings?.social?.youtube || "https://youtube.com/@institutoarianaborges520";
   const tiktokUrl = settings?.social?.tiktok || "https://tiktok.com/@instituto.ariana";
   const threadsUrl = settings?.social?.threads || "https://threads.net/@institutoarianaborges";
-  const substackUrl = settings?.social?.substack || "https://arianaborges.substack.com";
+  const substackUrl = settings?.social?.substack || "https://institutoarianaborges.substack.com";
 
   return (
     <>
