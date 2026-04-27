@@ -157,8 +157,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className="w-16 h-16 md:w-24 md:h-24 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
-                                            <img src={terapia.img} alt={terapia.title} className="w-9 h-9 md:w-14 md:h-14 object-contain" />
+                                        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
+                                            <img src={terapia.img} alt={terapia.title} className="w-12 h-12 md:w-16 md:h-16 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-xl text-brand-dark mb-2">{terapia.title}</h3>
@@ -202,8 +202,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className="w-16 h-16 md:w-24 md:h-24 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
-                                            <img src={terapia.img} alt={terapia.title} className="w-9 h-9 md:w-14 md:h-14 object-contain" />
+                                        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
+                                            <img src={terapia.img} alt={terapia.title} className="w-12 h-12 md:w-16 md:h-16 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-2xl text-brand-dark mb-3">{terapia.title}</h3>
@@ -249,8 +249,8 @@ const TerapiaIndividual: React.FC = () => {
                                 to="/formacao-de-terapeutas"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="bg-brand-gold/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
-                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-7 h-7 object-contain" />
+                                <div className="bg-brand-gold/10 w-16 h-16 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-9 h-9 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Formação de Terapeutas</h3>
@@ -261,8 +261,8 @@ const TerapiaIndividual: React.FC = () => {
                                 to="/autoconhecimento-em-grupo"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="bg-brand-lilac/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
-                                    <img src="/icons/site/autoconhecimento-grupo.png" alt="Autoconhecimento em Grupo" className="w-7 h-7 object-contain" />
+                                <div className="bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/autoconhecimento-grupo.png" alt="Autoconhecimento em Grupo" className="w-9 h-9 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Autoconhecimento em Grupo</h3>
