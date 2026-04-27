@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, MagicStar } from 'iconsax-react';
 import { useQuery } from '@tanstack/react-query';
 import { getHero } from '@/lib/cms';
 import { useWhatsApp } from './WhatsAppButton';
 
+const LOCAL_PHOTOS = Array.from({ length: 51 }, (_, i) => `/fotos-ariana/ariana-${String(i + 1).padStart(2, '0')}.webp`);
+
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const { openPopup } = useWhatsApp();
+
+  const randomPhoto = useMemo(() => LOCAL_PHOTOS[Math.floor(Math.random() * LOCAL_PHOTOS.length)], []);
 
   const { data: heroData } = useQuery({
     queryKey: ['hero'],
@@ -27,7 +31,7 @@ const Hero: React.FC = () => {
 
   const subtitle = heroData?.subtitle || "Liberte-se: Desperte, Cure e Transforme sua Vida. Sua jornada de expansão começa aqui.";
   const ctaText = heroData?.ctaButtonText || "Marque um Atendimento";
-  const bgImage = heroData?.backgroundImage?.url || "https://picsum.photos/1920/1080?grayscale&blur=2";
+  const bgImage = heroData?.backgroundImage?.url || randomPhoto;
 
   return (
     <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-brand-beige">
