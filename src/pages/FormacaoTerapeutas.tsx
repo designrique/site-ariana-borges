@@ -1,35 +1,35 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Teacher, Book1, Heart, MagicStar, Flash } from 'iconsax-react';
+import { Teacher, MagicStar } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 const formacoes = [
     {
-        icon: <Book1 size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
+        img: '/icons/site/registros-akashicos.png',
+        color: 'lilac' as const,
         title: 'Leitura de Registros Akáshicos',
         description: 'Aprenda a acessar o campo quântico de memórias da alma. Desenvolva a habilidade de realizar leituras precisas para si e para outros, revelando padrões kármicos e orientações espirituais.',
         highlights: ['Acesso ao campo akáshico', 'Leitura para terceiros', 'Certificação profissional'],
     },
     {
-        icon: <Heart size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
+        img: '/icons/site/reiki.png',
+        color: 'gold' as const,
         title: 'Reiki Essencial',
         description: 'Formação completa em Reiki, desde o nível básico até o mestrado. Aprenda a canalizar a energia vital universal para promover cura e equilíbrio em todos os níveis do ser.',
         highlights: ['Níveis I, II e Mestrado', 'Símbolos sagrados', 'Atendimento profissional'],
     },
     {
-        icon: <MagicStar size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
+        img: '/icons/site/leitura-aura.png',
+        color: 'lilac' as const,
         title: 'Leitura de Aura – Método Essence',
         description: 'Desenvolva a percepção extrassensorial para ler campos energéticos. Um método exclusivo que permite identificar bloqueios, padrões e potenciais através da leitura da aura.',
         highlights: ['Método exclusivo', 'Percepção extrassensorial', 'Interpretação energética'],
     },
     {
-        icon: <Flash size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
+        img: '/icons/theta/dna-basico.png',
+        color: 'gold' as const,
         title: 'ThetaHealing® – Formação Oficial',
         description: 'Formação certificada internacionalmente em ThetaHealing®. Aprenda a acessar a onda cerebral Theta para realizar curas profundas e transformar crenças limitantes.',
         highlights: ['Certificação internacional', 'DNA Básico e Avançado', 'Prática supervisionada'],
@@ -121,8 +121,8 @@ const FormacaoTerapeutas: React.FC = () => {
                                     className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4 mb-4">
-                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${formacao.iconBg}`}>
-                                            {formacao.icon}
+                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 ${formacao.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                            <img src={formacao.img} alt={formacao.title} className="w-8 h-8 object-contain" />
                                         </div>
                                         <h3 className="font-serif text-2xl text-brand-dark">{formacao.title}</h3>
                                     </div>

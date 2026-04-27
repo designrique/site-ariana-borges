@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { People, Calendar, Location, Clock, Wifi, Flash, Heart, MagicStar, Book1 } from 'iconsax-react';
+import { People, Calendar, Location, Clock, Wifi } from 'iconsax-react';
 
 import ScrollReveal from '@/components/ScrollReveal';
 import { useWhatsApp } from '@/components/WhatsAppButton';
@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 const vivencias = [
     {
-        sectionIcon: <Flash size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
+        img: '/icons/site/neurociencia.png',
+        color: 'gold' as const,
         title: 'Prosperare® – Ciência, Fé e Vibração',
         description: 'Um curso completo que une espiritualidade e neurociência para ativar a abundância em todas as áreas da vida. Descubra como mente e energia criam realidade.',
         duration: '2 dias',
@@ -17,8 +17,8 @@ const vivencias = [
         icon: <Location size={14} variant="Linear" color="currentColor" />,
     },
     {
-        sectionIcon: <MagicStar size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
+        img: '/icons/site/abre-caminho.png',
+        color: 'lilac' as const,
         title: 'Ativação da Kundalini em grupo',
         description: 'Vivência poderosa de despertar da energia vital que habita sua base da coluna. Através de práticas específicas, essa ativação libera bloqueios, expande a consciência e desperta seu potencial criativo.',
         duration: '1h',
@@ -26,8 +26,8 @@ const vivencias = [
         icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
-        sectionIcon: <Heart size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
+        img: '/icons/site/constelacao-sistemica.png',
+        color: 'gold' as const,
         title: 'Dedo Magnético® – Atraindo Relacionamentos Saudáveis',
         description: 'Workshop focado em libertar padrões inconscientes que atraem relacionamentos tóxicos. Aprenda a elevar sua frequência para magnetizar conexões baseadas em amor, respeito e crescimento mútuo.',
         duration: 'Curso gravado ou 2 dias',
@@ -35,8 +35,8 @@ const vivencias = [
         icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
-        sectionIcon: <MagicStar size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
+        img: '/icons/site/mindfulness.png',
+        color: 'lilac' as const,
         title: 'Meditação dos Espirais',
         description: 'Prática meditativa profunda que utiliza o movimento espiral como portal de expansão da consciência. Conecte-se com dimensões elevadas e receba insights para sua jornada.',
         duration: '2 dias',
@@ -44,8 +44,8 @@ const vivencias = [
         icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
-        sectionIcon: <People size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
+        img: '/icons/site/autoconhecimento-grupo.png',
+        color: 'gold' as const,
         title: 'Encontro das Deusas – Retiro Presencial',
         description: 'Retiro exclusivo para mulheres que desejam reconectar-se com o sagrado feminino. Dias de imersão com rituais, práticas de cura e conexão profunda entre mulheres.',
         duration: '3 dias',
@@ -53,8 +53,8 @@ const vivencias = [
         icon: <Location size={14} variant="Linear" color="currentColor" />,
     },
     {
-        sectionIcon: <Book1 size={28} variant="Linear" color="currentColor" />,
-        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
+        img: '/icons/site/registros-akashicos.png',
+        color: 'lilac' as const,
         title: 'Confraria da Lua – Grupo de Leitura para Mulheres',
         description: 'Círculo mensal online onde mulheres se reúnem para estudar, compartilhar e crescer juntas. Leituras selecionadas sobre espiritualidade, autoconhecimento e empoderamento feminino.',
         duration: 'Semestral',
@@ -115,8 +115,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10 flex flex-col"
                                 >
-                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0 ${vivencia.iconBg}`}>
-                                        {vivencia.sectionIcon}
+                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 shrink-0 ${vivencia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                        <img src={vivencia.img} alt={vivencia.title} className="w-8 h-8 object-contain" />
                                     </div>
                                     <h3 className="font-serif text-xl text-brand-dark mb-3">{vivencia.title}</h3>
                                     <p className="font-sans text-gray-600 text-sm leading-relaxed mb-4 flex-1">
