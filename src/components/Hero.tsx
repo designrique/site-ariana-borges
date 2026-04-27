@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getHero } from '@/lib/cms';
 import { useWhatsApp } from './WhatsAppButton';
 
-const LOCAL_PHOTOS = Array.from({ length: 51 }, (_, i) => `/fotos-ariana/ariana-${String(i + 1).padStart(2, '0')}.webp`);
+const LOCAL_PHOTOS = Array.from({ length: 8 }, (_, i) => `/fotos-ariana/terapia-${String(i + 1).padStart(2, '0')}.webp`);
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
