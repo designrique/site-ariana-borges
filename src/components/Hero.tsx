@@ -4,7 +4,20 @@ import { useQuery } from '@tanstack/react-query';
 import { getHero } from '@/lib/cms';
 import { useWhatsApp } from './WhatsAppButton';
 
-const LOCAL_PHOTOS = Array.from({ length: 18 }, (_, i) => `/fotos-ariana/auto-${String(i + 1).padStart(2, '0')}.webp`);
+const LOCAL_PHOTOS = [
+  '/fotos-hero/hero-ariana-borges-anjo.webp',
+  '/fotos-hero/hero-ariana-borges-consultorio.webp',
+  '/fotos-hero/hero-ariana-borges-retrato-profissional.webp',
+  '/fotos-hero/hero-ariana-borges-espiritualidade.webp',
+  '/fotos-hero/hero-ariana-borges-meditacao.webp',
+  '/fotos-hero/hero-cristal-cura-ariana-borges.webp',
+  '/fotos-hero/hero-ariana-borges-sessao-terapia.webp',
+  '/fotos-hero/hero-ariana-borges-terapeuta-holistica.webp',
+  '/fotos-hero/hero-encontro-deusas-ariana-borges.webp',
+  '/fotos-hero/hero-ariana-borges-fotografia.webp',
+  '/fotos-hero/hero-maos-cura-energetica-ariana-borges.webp',
+  '/fotos-hero/hero-ariana-borges-terapeuta-espiritual.webp',
+];
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
