@@ -297,21 +297,21 @@ const ThetaHealing: React.FC = () => {
                             </div>
                             <div className="w-[2px] h-10 bg-brand-lilacDark/60" />
 
-                            {/* SPLIT: Left branches + Right sub-tree */}
+                            {/* SPLIT: Left branches + Você e o Criador + Planta/Criança/Animal */}
                             <div className="w-full flex items-start">
 
-                                {/* LEFT GROUP (66%) — 7 branches from Aprofunde-se */}
-                                <div className="w-[66%] flex flex-col items-stretch">
+                                {/* LEFT GROUP (55%) — 7 branches diretos do Aprofunde-se */}
+                                <div className="w-[55%] flex flex-col items-stretch">
                                     <div className="h-[2px] bg-brand-lilacDark/50" />
                                     <div className="flex justify-around">
                                         {[
-                                            { img: 'relacoes-mundiais.png', label: 'Relações Mundiais', child: null },
-                                            { img: 'manifestacao-abundancia.png', label: 'Manifestação e Abundância', child: { img: 'planta.png', label: 'Planta' } },
-                                            { img: 'jogo-da-vida.png', label: 'Jogo da Vida', child: { img: 'crianca-arco-iris.png', label: 'Criança Intuitiva Adulto' } },
-                                            { img: 'alma-gemea.png', label: 'Alma Gêmea', child: null },
-                                            { img: 'voce-terra.png', label: 'Você e a Terra', child: { img: 'animal.png', label: 'Animal' } },
-                                            { img: 'voce-parceiro.png', label: 'Você e Seu Parceiro', child: null },
-                                            { img: 'voce-circulo-intimo.png', label: 'Você e Seu Círculo Íntimo', child: null },
+                                            { img: 'relacoes-mundiais.png', label: 'Relações Mundiais' },
+                                            { img: 'manifestacao-abundancia.png', label: 'Manifestação e Abundância' },
+                                            { img: 'jogo-da-vida.png', label: 'Jogo da Vida' },
+                                            { img: 'alma-gemea.png', label: 'Alma Gêmea' },
+                                            { img: 'voce-terra.png', label: 'Você e a Terra' },
+                                            { img: 'voce-parceiro.png', label: 'Você e Seu Parceiro' },
+                                            { img: 'voce-circulo-intimo.png', label: 'Você e Seu Círculo Íntimo' },
                                         ].map((branch, i) => (
                                             <div key={i} className="flex flex-col items-center flex-1">
                                                 <div className="w-[2px] h-6 bg-brand-lilacDark/50" />
@@ -319,22 +319,13 @@ const ThetaHealing: React.FC = () => {
                                                     <img src={`/icons/theta/${branch.img}`} alt={branch.label} className="w-full h-full object-cover" />
                                                 </div>
                                                 <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[70px]">{branch.label}</p>
-                                                {branch.child && (
-                                                    <>
-                                                        <div className="w-[2px] h-3 bg-brand-lilacDark/30 mt-1" />
-                                                        <div className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-brand-lilac/20 border border-brand-lilacDark/50 overflow-hidden">
-                                                            <img src={`/icons/theta/${branch.child.img}`} alt={branch.child.label} className="w-full h-full object-cover" />
-                                                        </div>
-                                                        <p className="font-sans text-[7px] xl:text-[8px] text-center text-gray-500 mt-1 leading-tight px-0.5 max-w-[50px]">{branch.child.label}</p>
-                                                    </>
-                                                )}
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
-                                {/* RIGHT: Você e o Criador sub-tree (34%) */}
-                                <div className="w-[34%] flex flex-col items-center">
+                                {/* MIDDLE: Você e o Criador sub-tree (25%) */}
+                                <div className="w-[25%] flex flex-col items-center">
                                     <div className="h-[2px] bg-brand-lilacDark/50 w-full" />
                                     <div className="w-[2px] h-6 bg-brand-lilacDark/60" />
 
@@ -347,7 +338,7 @@ const ThetaHealing: React.FC = () => {
                                     </div>
                                     <div className="w-[2px] h-6 bg-brand-lilacDark/60" />
 
-                                    {/* 3 children */}
+                                    {/* 3 children: Amor Família, Amor Próprio, Anatomia */}
                                     <div className="w-full flex flex-col items-stretch">
                                         <div className="h-[2px] bg-brand-lilacDark/50 w-3/4 mx-auto" />
                                         <div className="flex justify-around w-full">
@@ -370,7 +361,7 @@ const ThetaHealing: React.FC = () => {
                                                 <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[60px]">Amor Próprio</p>
                                             </div>
 
-                                            {/* Anatomia Intuitiva + sub-children */}
+                                            {/* Anatomia Intuitiva + sub-children (mesmo tamanho) */}
                                             <div className="flex flex-col items-center flex-1">
                                                 <div className="w-[2px] h-5 bg-brand-lilacDark/50" />
                                                 <div className="w-12 h-12 rounded-full bg-white border-2 border-brand-lilacDark/70 overflow-hidden shadow-sm">
@@ -387,10 +378,10 @@ const ThetaHealing: React.FC = () => {
                                                     ].map((sub, j) => (
                                                         <div key={j} className="flex flex-col items-center" style={{ width: '33%' }}>
                                                             <div className="w-[2px] h-4 bg-brand-lilacDark/40" />
-                                                            <div className="w-8 h-8 rounded-full bg-white border border-brand-lilacDark/50 overflow-hidden">
+                                                            <div className="w-12 h-12 rounded-full bg-white border-2 border-brand-lilacDark/50 overflow-hidden shadow-sm">
                                                                 <img src={`/icons/theta/${sub.img}`} alt={sub.label} className="w-full h-full object-cover" />
                                                             </div>
-                                                            <p className="font-sans text-[6px] xl:text-[7px] text-center text-gray-600 mt-1 leading-tight">{sub.label}</p>
+                                                            <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1 leading-tight">{sub.label}</p>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -399,6 +390,27 @@ const ThetaHealing: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* RIGHT (20%) — Planta, Criança Intuitiva Adulto, Animal diretos do Aprofunde-se */}
+                                <div className="w-[20%] flex flex-col items-stretch">
+                                    <div className="h-[2px] bg-brand-lilacDark/50 w-full" />
+                                    <div className="flex justify-around">
+                                        {[
+                                            { img: 'planta.png', label: 'Planta' },
+                                            { img: 'crianca-arco-iris.png', label: 'Criança Intuitiva Adulto' },
+                                            { img: 'animal.png', label: 'Animal' },
+                                        ].map((branch, i) => (
+                                            <div key={i} className="flex flex-col items-center flex-1">
+                                                <div className="w-[2px] h-6 bg-brand-lilacDark/50" />
+                                                <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-white border-2 border-brand-lilacDark/70 overflow-hidden shadow-sm">
+                                                    <img src={`/icons/theta/${branch.img}`} alt={branch.label} className="w-full h-full object-cover" />
+                                                </div>
+                                                <p className="font-sans text-[8px] xl:text-[9px] text-center text-brand-dark font-semibold mt-1.5 uppercase leading-tight px-1 max-w-[70px]">{branch.label}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
                             </div>
 
                             {/* STANDALONE: Criança Intuitiva em Mim (Infantil) — lilac bubble */}
