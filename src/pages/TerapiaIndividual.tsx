@@ -157,8 +157,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
-                                            <img src={terapia.img} alt={terapia.title} className="w-12 h-12 object-contain" />
+                                        <div className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
+                                            <img src={terapia.img} alt={terapia.title} className="w-8 h-8 md:w-12 md:h-12 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-xl text-brand-dark mb-2">{terapia.title}</h3>
@@ -202,8 +202,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
-                                            <img src={terapia.img} alt={terapia.title} className="w-12 h-12 object-contain" />
+                                        <div className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center shrink-0 bg-white shadow-sm">
+                                            <img src={terapia.img} alt={terapia.title} className="w-8 h-8 md:w-12 md:h-12 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-2xl text-brand-dark mb-3">{terapia.title}</h3>

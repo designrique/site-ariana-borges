@@ -46,8 +46,8 @@ const Footer: React.FC = () => {
             <div className="font-sans text-gray-500 text-xs leading-relaxed">
               <p className="font-semibold text-gray-600 mb-1">Localização</p>
               <p>Av. Rui Barbosa, 715, sala 403</p>
-              <p>Empresaria Rui Barbosa</p>
-              <p>Recife – PE</p>
+              <p>Empresarial Rui Barbosa</p>
+              <p>Graças – Recife – PE</p>
             </div>
           </div>
 
