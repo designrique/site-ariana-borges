@@ -6,7 +6,7 @@ import DNABasicoGallerySection from './DNABasico/components/DNABasicoGallerySect
 import { Health, Heart, People, TickSquare, Star1, Medal, Clock, Shield, Book1, Gps, MagicStar, Flash, ArrowRight, Repeat as InfinityIcon, Calendar as CalendarDays } from 'iconsax-react';
 const UsersIcon = People;
 
-const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0MBYByH6cZZloxzwgv936kJ2XmyQaoVu_cva_xmLOz0Au4J0ng9pE0hIqoKclp3YAeV4_cd_kUtuLe8oC3LrIDLsqBOjWURIefprGH2dIiGWhpnxduMQYK5ohRibmmSqmpbqeXzJs-QehADw9Sxsg1ymo_3g1F-g7f8cfx_fWKpO72IdlH9TXatHPoWhF7sfK9Eus1d2l27wrvgFm51lQcpipOxyM9pxxtapGEnfCU1mjHQTzIjjugDWeo5YOKuspiLGAxXqdAbJ_RybOWhZzeKiqyYS15s76VbA2gA.v1.c44a32f6add0634b";
+const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G58AYJwHts3mjNLb9NmrDBdb0R67skwrqLBYm2Q4HHYdHHKksYZJcpW2soyKaOrmPdkbPj3onE2CBLZNkPI8nRw4HN92aAuCFmCMgSca6MbiDUksY2I01mtIRpOUfmOrlnCNjWDdl3izxrHMeGmMakfQGnrrcHCg1g_w0wn4f_R_wql6NxEFbnUMcXTZPHfcaaeBgCx9Bw.v1.8896b32e6a7fb79c";
 const COUPON_URL = "https://loja.infinitepay.io/institutoarianaborges/kkt5516-dna-basico---cupom-albabany";
 
 const DNABasico: React.FC = () => {
