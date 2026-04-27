@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { People, Calendar, Location, Clock, Wifi } from 'iconsax-react';
+import { People, Calendar, Location, Clock, Wifi, Flash, Heart, MagicStar, Book1 } from 'iconsax-react';
 
 import ScrollReveal from '@/components/ScrollReveal';
 import { useWhatsApp } from '@/components/WhatsAppButton';
@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 
 const vivencias = [
     {
-        emoji: '🌟',
+        sectionIcon: <Flash size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
         title: 'Prosperare® – Ciência, Fé e Vibração',
         description: 'Um curso completo que une espiritualidade e neurociência para ativar a abundância em todas as áreas da vida. Descubra como mente e energia criam realidade.',
         duration: '2 dias',
@@ -16,7 +17,8 @@ const vivencias = [
         icon: <Location size={14} variant="Linear" color="currentColor" />,
     },
     {
-        emoji: '🔥',
+        sectionIcon: <MagicStar size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
         title: 'Ativação da Kundalini em grupo',
         description: 'Vivência poderosa de despertar da energia vital que habita sua base da coluna. Através de práticas específicas, essa ativação libera bloqueios, expande a consciência e desperta seu potencial criativo.',
         duration: '1h',
@@ -24,7 +26,8 @@ const vivencias = [
         icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
-        emoji: '❤️',
+        sectionIcon: <Heart size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
         title: 'Dedo Magnético® – Atraindo Relacionamentos Saudáveis',
         description: 'Workshop focado em libertar padrões inconscientes que atraem relacionamentos tóxicos. Aprenda a elevar sua frequência para magnetizar conexões baseadas em amor, respeito e crescimento mútuo.',
         duration: 'Curso gravado ou 2 dias',
@@ -32,7 +35,8 @@ const vivencias = [
         icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
-        emoji: '🌀',
+        sectionIcon: <MagicStar size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
         title: 'Meditação dos Espirais',
         description: 'Prática meditativa profunda que utiliza o movimento espiral como portal de expansão da consciência. Conecte-se com dimensões elevadas e receba insights para sua jornada.',
         duration: '2 dias',
@@ -40,7 +44,8 @@ const vivencias = [
         icon: <Wifi size={14} variant="Linear" color="currentColor" />,
     },
     {
-        emoji: '🌸',
+        sectionIcon: <People size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
         title: 'Encontro das Deusas – Retiro Presencial',
         description: 'Retiro exclusivo para mulheres que desejam reconectar-se com o sagrado feminino. Dias de imersão com rituais, práticas de cura e conexão profunda entre mulheres.',
         duration: '3 dias',
@@ -48,7 +53,8 @@ const vivencias = [
         icon: <Location size={14} variant="Linear" color="currentColor" />,
     },
     {
-        emoji: '🌕',
+        sectionIcon: <Book1 size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
         title: 'Confraria da Lua – Grupo de Leitura para Mulheres',
         description: 'Círculo mensal online onde mulheres se reúnem para estudar, compartilhar e crescer juntas. Leituras selecionadas sobre espiritualidade, autoconhecimento e empoderamento feminino.',
         duration: 'Semestral',
@@ -109,7 +115,9 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10 flex flex-col"
                                 >
-                                    <span className="text-4xl mb-4">{vivencia.emoji}</span>
+                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0 ${vivencia.iconBg}`}>
+                                        {vivencia.sectionIcon}
+                                    </div>
                                     <h3 className="font-serif text-xl text-brand-dark mb-3">{vivencia.title}</h3>
                                     <p className="font-sans text-gray-600 text-sm leading-relaxed mb-4 flex-1">
                                         {vivencia.description}
@@ -138,10 +146,10 @@ const AutoconhecimentoGrupo: React.FC = () => {
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark mb-6">
                             ✦ A Cura Começa com a Escolha
                         </h2>
-                        <p className="font-sans text-gray-600 text-lg leading-relaxed mb-4">
+                        <p className="font-sans text-brand-dark text-xl font-medium leading-relaxed mb-4">
                             O trabalho em grupo oferece uma dimensão única de cura. Quando nos reunimos com intenção compartilhada, criamos um campo energético poderoso que amplifica a transformação de cada participante.
                         </p>
-                        <p className="font-sans text-gray-600 leading-relaxed">
+                        <p className="font-sans text-gray-500 text-base leading-relaxed">
                             Seja em vivências intensivas de um dia ou em grupos contínuos, cada encontro é uma oportunidade de se ver refletida no outro, de ser testemunhada em sua vulnerabilidade e de celebrar suas conquistas em comunidade.
                         </p>
                     </div>
@@ -214,16 +222,16 @@ const AutoconhecimentoGrupo: React.FC = () => {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
                         <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
-                            ✨ Você está pronta para se transformar?
+                            Venha se transformar em grupo
                         </h2>
                         <p className="font-sans text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
-                            Escolha sua jornada e venha florescer com a gente.
+                            Cada vivência é uma porta para uma versão mais plena de você. Escolha a que ressoa com seu momento e garanta sua vaga.
                         </p>
                         <button
                             onClick={openPopup}
                             className="bg-brand-lilacDark hover:bg-brand-gold text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 hover:scale-105"
                         >
-                            Agendar Atendimento
+                            Quero Participar
                         </button>
                     </div>
                 </section>

@@ -79,20 +79,6 @@ const terapiasOnline: Terapia[] = [
         duration: '1h',
         color: 'gold'
     },
-    {
-        img: '/icons/site/reiki.png',
-        title: 'Reiki',
-        description: 'Terapia energética japonesa que utiliza a imposição das mãos para canalizar energia vital universal. Promove relaxamento profundo e equilíbrio energético.',
-        duration: '1h',
-        color: 'lilac'
-    },
-    {
-        img: '/icons/site/autoconhecimento-grupo.png',
-        title: 'Autoconhecimento em Grupo',
-        description: 'Vivências coletivas de expansão da consciência e cura emocional. Grupos de estudo, ativações energéticas e retiros presenciais para potencializar sua jornada de transformação junto a outras mulheres.',
-        duration: '2h a 3 dias',
-        color: 'gold'
-    },
 ];
 
 const terapiasPresenciais: Terapia[] = [
@@ -102,6 +88,13 @@ const terapiasPresenciais: Terapia[] = [
         description: 'Técnica que trabalha 32 pontos na cabeça que armazenam pensamentos, crenças e emoções limitantes. O toque suave libera cargas eletromagnéticas, promovendo mais clareza e leveza.',
         duration: '1h',
         color: 'gold'
+    },
+    {
+        img: '/icons/site/reiki.png',
+        title: 'Reiki',
+        description: 'Terapia energética japonesa que utiliza a imposição das mãos para canalizar energia vital universal. Promove relaxamento profundo e equilíbrio energético.',
+        duration: '1h',
+        color: 'lilac'
     },
 ];
 
@@ -151,7 +144,7 @@ const TerapiaIndividual: React.FC = () => {
                             </span>
                         </div>
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-4">
-                            Terapias que podem ser realizadas Online ou Presencialmente
+                            Terapias que podem ser realizadas Online ou Presencial
                         </h2>
                         <p className="font-sans text-gray-600 text-center max-w-2xl mx-auto mb-12">
                             Flexibilidade para você escolher o formato que melhor se adapta à sua rotina.
@@ -164,8 +157,8 @@ const TerapiaIndividual: React.FC = () => {
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10"
                                 >
                                     <div className="flex items-start gap-4">
-                                        <div className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
-                                            <img src={terapia.img} alt={terapia.title} className="w-6 h-6 object-contain" />
+                                        <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
+                                            <img src={terapia.img} alt={terapia.title} className="w-8 h-8 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-xl text-brand-dark mb-2">{terapia.title}</h3>
@@ -196,7 +189,7 @@ const TerapiaIndividual: React.FC = () => {
                             </span>
                         </div>
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-4">
-                            Terapias que podem ser realizadas somente Presencialmente
+                            Terapias que podem ser realizadas somente Presencial
                         </h2>
                         <p className="font-sans text-gray-600 text-center max-w-2xl mx-auto mb-12">
                             Experiências que requerem o encontro presencial para sua plena realização.
@@ -210,7 +203,7 @@ const TerapiaIndividual: React.FC = () => {
                                 >
                                     <div className="flex items-start gap-4">
                                         <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${terapia.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
-                                            <img src={terapia.img} alt={terapia.title} className="w-6 h-6 object-contain" />
+                                            <img src={terapia.img} alt={terapia.title} className="w-8 h-8 object-contain" />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="font-serif text-2xl text-brand-dark mb-3">{terapia.title}</h3>
@@ -286,8 +279,9 @@ const TerapiaIndividual: React.FC = () => {
                 <section className="py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
-                            ✨ Você está pronta para se transformar?
+                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 flex items-center justify-center gap-3">
+                            <MagicStar size={36} variant="Linear" color="currentColor" className="text-brand-gold shrink-0" />
+                            Você está pronta para se transformar?
                         </h2>
                         <p className="font-sans text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
                             Escolha sua jornada e venha florescer com a gente.

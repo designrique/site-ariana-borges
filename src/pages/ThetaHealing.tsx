@@ -47,7 +47,7 @@ const modulosConexoes = [
     },
     {
         title: 'Você e o Criador',
-        description: 'Fortaleça sua conexão com a fonte criadora. Expanda sua fé, sua confiança e sua capacidade de receber guidance divino em todas as áreas da vida.',
+        description: 'Fortaleça sua conexão com a fonte criadora. Expanda sua fé, sua confiança e sua capacidade de receber guiança divina em todas as áreas da vida.',
         prereq: 'Aprofunde-se',
         duration: '2 dias',
     },
@@ -73,11 +73,26 @@ const modulosConexoes = [
 
 const modulosProsperidade = [
     {
-        title: 'Relações Mundiais',
-        description: 'Expanda sua perspectiva sobre as dinâmicas do mundo. Cure crenças coletivas que limitam sua percepção e sua capacidade de agir com consciência global.',
+        title: 'Manifestação e Abundância',
+        description: 'Libere bloqueios relacionados à prosperidade e aprenda a manifestar seus desejos mais profundos. Transforme crenças sobre dinheiro, merecimento e abundância em todas as áreas da vida.',
         prereq: 'Aprofunde-se',
         duration: '2 dias',
     },
+    {
+        title: 'Jogo da Vida',
+        description: 'Compreenda as regras do campo energético que rege sua trajetória. Aprenda a jogar conscientemente o jogo da vida, transformando padrões repetitivos em oportunidades de crescimento.',
+        prereq: 'Aprofunde-se',
+        duration: '3 dias',
+    },
+    {
+        title: 'Relações Mundiais',
+        description: 'Expanda sua perspectiva sobre as dinâmicas do mundo. Cure crenças coletivas que limitam sua percepção e sua capacidade de agir com consciência global.',
+        prereq: 'Aprofunde-se',
+        duration: '5 dias',
+    },
+];
+
+const modulosFormEspecializadas = [
     {
         title: 'Animal',
         description: 'Aprenda a se comunicar e trabalhar energeticamente com animais. Cure desequilíbrios emocionais e físicos dos seus companheiros de vida.',
@@ -94,7 +109,7 @@ const modulosProsperidade = [
         title: 'Criança Intuitiva em Mim (Adulto)',
         description: 'Reconecte-se com sua intuição e criatividade naturais. Cure a criança interior e libere o potencial intuitivo que habita em você desde o nascimento.',
         prereq: 'Aprofunde-se',
-        duration: '2 dias',
+        duration: '4 dias',
     },
     {
         title: 'Criança Intuitiva em Mim (Infantil)',
@@ -114,20 +129,26 @@ const modulosSaude = [
     {
         title: 'Anatomia Intuitiva',
         description: 'Mergulhe profundamente nos sistemas do corpo humano e descubra as emoções e crenças armazenadas em cada órgão e sistema.',
-        prereq: 'Aprofunde-se',
+        prereq: 'Você e o Criador',
         duration: '15 dias',
     },
     {
         title: 'DNA 3',
         description: 'Aprofunde seu entendimento sobre o DNA e aprenda a trabalhar com o potencial de cura contido na estrutura genética. Técnicas avançadas de reprogramação a nível celular.',
         prereq: 'Anatomia Intuitiva',
-        duration: '2 dias',
+        duration: '5 dias',
     },
     {
         title: 'Planos de Existência',
         description: 'Explore os sete planos de existência e aprenda a trabalhar com cada um deles para cura e manifestação.',
         prereq: 'Anatomia Intuitiva',
-        duration: '2 dias',
+        duration: '5 dias',
+    },
+    {
+        title: 'Doenças e Desordens',
+        description: 'Aprofunde-se no entendimento energético e espiritual das doenças. Aprenda a trabalhar com os programas de crenças associados a desordens físicas e emocionais para promover curas profundas.',
+        prereq: 'Anatomia Intuitiva',
+        duration: '10 dias',
     },
 ];
 
@@ -140,8 +161,10 @@ const modulosEspecializacoes = [
     { title: 'Animal', img: '/icons/theta/animal.png', variant: 'lilac' as const },
     { title: 'Anatomia Intuitiva', img: '/icons/theta/anatomia-intuitiva.png', variant: 'gold' as const },
     { title: 'Relações Mundiais', img: '/icons/theta/relacoes-mundiais.png', variant: 'lilac' as const },
-    { title: 'Laços Familiares', img: '/icons/theta/lacos-familiares.png', variant: 'gold' as const },
-    { title: 'Você e o Criador', img: '/icons/theta/voce-criador.png', variant: 'lilac' as const },
+    { title: 'Amor pela Família', img: '/icons/theta/amor-pela-familia.png', variant: 'gold' as const },
+    { title: 'Amor Próprio', img: '/icons/theta/amor-proprio.png', variant: 'lilac' as const },
+    { title: 'Você e o Criador', img: '/icons/theta/voce-criador.png', variant: 'gold' as const },
+    { title: 'Ritmo e Peso Perfeito', img: '/icons/theta/ritmo-peso-perfeito.png', variant: 'lilac' as const },
     { title: 'Você e Seu Parceiro', img: '/icons/theta/voce-parceiro.png', variant: 'gold' as const },
     { title: 'Você e a Terra', img: '/icons/theta/voce-terra.png', variant: 'lilac' as const },
     { title: 'Você e o Seu Círculo Íntimo', img: '/icons/theta/voce-circulo-intimo.png', variant: 'gold' as const },
@@ -413,6 +436,46 @@ const ThetaHealing: React.FC = () => {
                                 <div
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative"
+                                >
+                                    <div className="absolute top-4 right-4 bg-brand-lilac/30 px-3 py-1 rounded-full">
+                                        <span className="font-sans text-xs text-brand-lilacDark font-medium">{modulo.duration}</span>
+                                    </div>
+                                    <h3 className="font-serif text-xl text-brand-dark mb-3 pr-16">{modulo.title}</h3>
+                                    <p className="font-sans text-gray-600 text-sm leading-relaxed mb-4">
+                                        {modulo.description}
+                                    </p>
+                                    <div className="text-xs text-brand-goldDark font-medium">
+                                        Pré-requisito: {modulo.prereq}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            </ScrollReveal>
+
+            {/* Formações Especializadas */}
+            <ScrollReveal>
+                <section className="py-20 bg-brand-lilac/10">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <div className="flex items-center gap-3 justify-center mb-4">
+                            <MagicStar size={24} variant="Linear" color="currentColor" className="text-brand-lilacDark" />
+                            <span className="font-sans text-brand-lilacDark font-bold uppercase tracking-wider text-sm">
+                                ✦ Formações Especializadas
+                            </span>
+                        </div>
+                        <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-4">
+                            Expansões do Campo
+                        </h2>
+                        <p className="font-sans text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                            Módulos especiais que expandem sua prática para o mundo natural e o potencial intuitivo infantil.
+                        </p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {modulosFormEspecializadas.map((modulo, index) => (
+                                <div
+                                    key={index}
+                                    className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative"
                                 >
                                     <div className="absolute top-4 right-4 bg-brand-lilac/30 px-3 py-1 rounded-full">
                                         <span className="font-sans text-xs text-brand-lilacDark font-medium">{modulo.duration}</span>

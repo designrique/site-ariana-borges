@@ -14,19 +14,19 @@ const AstrologySection: React.FC = () => {
                     <div className="flex-1 text-center md:text-left">
                         <div className="mb-4">
                             <h3 className="font-serif text-2xl md:text-3xl text-brand-dark mb-2">
-                                A Energia do Momento: Sol em Touro ♉
+                                A Energia do Momento: Lua Nova em Virgem ♍
                             </h3>
                             <p className="font-sans text-brand-goldDark font-bold uppercase tracking-wide text-sm">
-                                Pés no chão, Prazer e Construção
+                                Purificação, Recomeço e Realinhamento
                             </p>
                         </div>
 
                         <div className="font-sans text-gray-700 leading-relaxed space-y-4">
                             <p>
-                                Este encontro acontece sob a regência de Touro. Na astrologia, isso significa que não vamos buscar "fugir para o etéreo". Touro convoca para a Terra, para o corpo e para a realidade.
+                                Este encontro acontece sob a energia da Lua Nova em Virgem, marcando um novo ciclo de cura, organização interna e reconexão com o corpo. Virgem nos convida a olhar para os detalhes, a escutar os sinais sutis do nosso ser e a reorganizar o que precisa de atenção.
                             </p>
                             <p>
-                                É o momento astrológico perfeito para <strong className="text-brand-dark">materializar mudanças</strong>, cuidar das finanças emocionais e restaurar o prazer de estar viva, com solidez e segurança.
+                                É o momento astrológico perfeito para <strong className="text-brand-dark">iniciar processos de purificação interior</strong>, estabelecer novos rituais de autocuidado e realinhar sua trajetória com sua essência mais pura e autêntica.
                             </p>
                         </div>
                     </div>

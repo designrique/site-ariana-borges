@@ -77,6 +77,9 @@ export interface SiteSettingsData {
     social?: {
         instagram?: string;
         youtube?: string;
+        tiktok?: string;
+        threads?: string;
+        substack?: string;
     };
     footer?: {
         copyrightText?: string;

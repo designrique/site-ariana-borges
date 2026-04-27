@@ -1,31 +1,35 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Teacher } from 'iconsax-react';
+import { Teacher, Book1, Heart, MagicStar, Flash } from 'iconsax-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useWhatsApp } from '@/components/WhatsAppButton';
 import { Link } from 'react-router-dom';
 
 const formacoes = [
     {
-        emoji: '📚',
+        icon: <Book1 size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
         title: 'Leitura de Registros Akáshicos',
         description: 'Aprenda a acessar o campo quântico de memórias da alma. Desenvolva a habilidade de realizar leituras precisas para si e para outros, revelando padrões kármicos e orientações espirituais.',
         highlights: ['Acesso ao campo akáshico', 'Leitura para terceiros', 'Certificação profissional'],
     },
     {
-        emoji: '✨',
+        icon: <Heart size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
         title: 'Reiki Essencial',
         description: 'Formação completa em Reiki, desde o nível básico até o mestrado. Aprenda a canalizar a energia vital universal para promover cura e equilíbrio em todos os níveis do ser.',
         highlights: ['Níveis I, II e Mestrado', 'Símbolos sagrados', 'Atendimento profissional'],
     },
     {
-        emoji: '🌈',
+        icon: <MagicStar size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-lilac/10 text-brand-lilacDark',
         title: 'Leitura de Aura – Método Essence',
         description: 'Desenvolva a percepção extrassensorial para ler campos energéticos. Um método exclusivo que permite identificar bloqueios, padrões e potenciais através da leitura da aura.',
         highlights: ['Método exclusivo', 'Percepção extrassensorial', 'Interpretação energética'],
     },
     {
-        emoji: '🔮',
+        icon: <Flash size={28} variant="Linear" color="currentColor" />,
+        iconBg: 'bg-brand-gold/10 text-brand-goldDark',
         title: 'ThetaHealing® – Formação Oficial',
         description: 'Formação certificada internacionalmente em ThetaHealing®. Aprenda a acessar a onda cerebral Theta para realizar curas profundas e transformar crenças limitantes.',
         highlights: ['Certificação internacional', 'DNA Básico e Avançado', 'Prática supervisionada'],
@@ -117,7 +121,9 @@ const FormacaoTerapeutas: React.FC = () => {
                                     className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4 mb-4">
-                                        <span className="text-4xl">{formacao.emoji}</span>
+                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${formacao.iconBg}`}>
+                                            {formacao.icon}
+                                        </div>
                                         <h3 className="font-serif text-2xl text-brand-dark">{formacao.title}</h3>
                                     </div>
                                     <p className="font-sans text-gray-600 leading-relaxed mb-6">
@@ -237,8 +243,9 @@ const FormacaoTerapeutas: React.FC = () => {
                 <section className="py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
-                            ✨ Você está pronta para se transformar?
+                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 flex items-center justify-center gap-3">
+                            <MagicStar size={36} variant="Linear" color="currentColor" className="text-brand-gold shrink-0" />
+                            Você está pronta para se transformar?
                         </h2>
                         <p className="font-sans text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
                             Escolha sua jornada e venha florescer com a gente.
