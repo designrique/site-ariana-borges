@@ -115,8 +115,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                     key={index}
                                     className="bg-brand-beige p-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/10 flex flex-col"
                                 >
-                                    <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center mb-4 shrink-0 bg-white shadow-sm">
-                                        <img src={vivencia.img} alt={vivencia.title} className="w-12 h-12 md:w-16 md:h-16 object-contain" />
+                                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center mb-4 shrink-0 bg-white shadow-sm">
+                                        <img src={vivencia.img} alt={vivencia.title} className="w-16 h-16 md:w-24 md:h-24 object-contain" />
                                     </div>
                                     <h3 className="font-serif text-xl text-brand-dark mb-3">{vivencia.title}</h3>
                                     <p className="font-sans text-gray-600 text-sm leading-relaxed mb-4 flex-1">
@@ -191,8 +191,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 to="/terapia-individual"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center shrink-0">
-                                    <img src="/icons/site/terapia-individual.png" alt="Terapia Individual" className="w-9 h-9 object-contain" />
+                                <div className="bg-brand-lilac/10 w-20 h-20 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/terapia-individual.png" alt="Terapia Individual" className="w-12 h-12 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Terapia Individual</h3>
@@ -203,8 +203,8 @@ const AutoconhecimentoGrupo: React.FC = () => {
                                 to="/formacao-de-terapeutas"
                                 className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 flex items-center gap-4"
                             >
-                                <div className="bg-brand-gold/10 w-16 h-16 rounded-full flex items-center justify-center shrink-0">
-                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-9 h-9 object-contain" />
+                                <div className="bg-brand-gold/10 w-20 h-20 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-12 h-12 object-contain" />
                                 </div>
                                 <div>
                                     <h3 className="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">Formação de Terapeutas</h3>
