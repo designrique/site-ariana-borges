@@ -34,10 +34,10 @@ const Home: React.FC = () => {
 
             {/* Final CTA Section */}
             <ScrollReveal>
-                <section className="py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
+                <section className="py-14 md:py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
+                        <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6">
                             Olá, Ser de Luz
                         </h2>
                         <p className="font-sans text-gray-600 text-lg mb-10 max-w-2xl mx-auto">

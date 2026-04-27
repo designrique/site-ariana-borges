@@ -110,7 +110,7 @@ const TerapiaIndividual: React.FC = () => {
             </Helmet>
 
             {/* Hero Section */}
-            <section className="relative py-20 bg-brand-beige overflow-hidden">
+            <section className="relative py-12 md:py-20 bg-brand-beige overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-lilac/20 rounded-full blur-3xl -z-10"></div>
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-3xl -z-10"></div>
 
@@ -118,7 +118,7 @@ const TerapiaIndividual: React.FC = () => {
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
                         <MagicStar size={14} variant="Linear" color="currentColor" /> Terapia Individual
                     </div>
-                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
+                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
                         Ferramentas para <span className="text-brand-goldDark italic">despertar, curar</span> e transformar vidas
                     </h1>
                     <p className="font-sans text-gray-600 text-lg max-w-3xl mx-auto mb-10">
@@ -135,7 +135,7 @@ const TerapiaIndividual: React.FC = () => {
 
             {/* Online Therapies Section */}
             <ScrollReveal>
-                <section className="py-20 bg-white">
+                <section className="py-12 md:py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <Video size={24} variant="Linear" color="currentColor" className="text-brand-lilacDark" />
@@ -180,7 +180,7 @@ const TerapiaIndividual: React.FC = () => {
 
             {/* Presencial Only Section */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-lilac/10">
+                <section className="py-12 md:py-20 bg-brand-lilac/10">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <Location size={24} variant="Linear" color="currentColor" className="text-brand-goldDark" />
@@ -225,7 +225,7 @@ const TerapiaIndividual: React.FC = () => {
 
             {/* Healing Message Section */}
             <ScrollReveal>
-                <section className="py-20 bg-white">
+                <section className="py-12 md:py-20 bg-white">
                     <div className="max-w-4xl mx-auto px-6 text-center">
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark mb-6">
                             ✦ A Cura Começa com a Escolha
@@ -239,7 +239,7 @@ const TerapiaIndividual: React.FC = () => {
 
             {/* Other Pillars Section */}
             <ScrollReveal>
-                <section className="py-16 bg-brand-beige">
+                <section className="py-10 md:py-16 bg-brand-beige">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="font-serif text-2xl md:text-3xl text-brand-dark text-center mb-8">
                             Conheça também
@@ -276,10 +276,10 @@ const TerapiaIndividual: React.FC = () => {
 
             {/* CTA Section */}
             <ScrollReveal>
-                <section className="py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
+                <section className="py-14 md:py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 flex items-center justify-center gap-3">
+                        <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6 flex flex-wrap items-center justify-center gap-3">
                             <MagicStar size={36} variant="Linear" color="currentColor" className="text-brand-gold shrink-0" />
                             Você está pronta para se transformar?
                         </h2>

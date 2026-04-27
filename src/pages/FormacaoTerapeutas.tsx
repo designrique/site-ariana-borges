@@ -49,7 +49,7 @@ const FormacaoTerapeutas: React.FC = () => {
             </Helmet>
 
             {/* Hero Section */}
-            <section className="relative py-20 bg-brand-beige overflow-hidden">
+            <section className="relative py-12 md:py-20 bg-brand-beige overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-lilac/20 rounded-full blur-3xl -z-10"></div>
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-3xl -z-10"></div>
 
@@ -57,7 +57,7 @@ const FormacaoTerapeutas: React.FC = () => {
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
                         <Teacher size={14} variant="Linear" color="currentColor" /> Formação de Terapeutas
                     </div>
-                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
+                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
                         Torne-se terapeuta, <span className="text-brand-goldDark italic">transforme vidas</span> e desperte sua própria cura
                     </h1>
                     <p className="font-sans text-gray-600 text-lg max-w-3xl mx-auto mb-10">
@@ -74,9 +74,9 @@ const FormacaoTerapeutas: React.FC = () => {
 
             {/* Intro Section */}
             <ScrollReveal>
-                <section className="py-16 bg-white">
+                <section className="py-10 md:py-16 bg-white">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                             <div className="text-center">
                                 <div className="text-brand-gold mb-4 bg-brand-lilac/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                                     <img src="/icons/site/abordagem-humanizada.png" alt="Abordagem Humanizada" className="w-7 h-7 object-contain" />
@@ -105,7 +105,7 @@ const FormacaoTerapeutas: React.FC = () => {
 
             {/* Formações Section */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-beige">
+                <section className="py-12 md:py-20 bg-brand-beige">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-4">
                             Nossas Formações
@@ -118,7 +118,7 @@ const FormacaoTerapeutas: React.FC = () => {
                             {formacoes.map((formacao, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                                    className="bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                                 >
                                     <div className="flex items-start gap-4 mb-4">
                                         <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 ${formacao.color === 'gold' ? 'bg-brand-gold/10' : 'bg-brand-lilac/20'}`}>
@@ -165,7 +165,7 @@ const FormacaoTerapeutas: React.FC = () => {
 
             {/* ThetaHealing Highlight */}
             <ScrollReveal>
-                <section className="py-20 bg-white">
+                <section className="py-12 md:py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="bg-gradient-to-r from-brand-lilac/30 to-brand-gold/20 p-8 md:p-12 rounded-3xl">
                             <div className="flex flex-col md:flex-row items-center gap-8">
@@ -203,7 +203,7 @@ const FormacaoTerapeutas: React.FC = () => {
 
             {/* Other Pillars Section */}
             <ScrollReveal>
-                <section className="py-16 bg-brand-beige">
+                <section className="py-10 md:py-16 bg-brand-beige">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="font-serif text-2xl md:text-3xl text-brand-dark text-center mb-8">
                             Conheça também
@@ -240,10 +240,10 @@ const FormacaoTerapeutas: React.FC = () => {
 
             {/* CTA Section */}
             <ScrollReveal>
-                <section className="py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
+                <section className="py-14 md:py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 flex items-center justify-center gap-3">
+                        <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6 flex flex-wrap items-center justify-center gap-3">
                             <MagicStar size={36} variant="Linear" color="currentColor" className="text-brand-gold shrink-0" />
                             Você está pronta para se transformar?
                         </h2>

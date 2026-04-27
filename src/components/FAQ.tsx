@@ -31,9 +31,9 @@ const FAQ: React.FC = () => {
     ];
 
     return (
-        <section className="py-20 bg-brand-beige">
+        <section className="py-12 md:py-20 bg-brand-beige">
             <div className="max-w-3xl mx-auto px-6">
-                <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-12">
+                <h2 className="font-serif text-2xl md:text-4xl text-brand-dark text-center mb-6 md:mb-12">
                     Perguntas Frequentes
                 </h2>
                 <div className="space-y-4">
@@ -53,7 +53,7 @@ const FAQ: React.FC = () => {
                             </button>
 
                             <div
-                                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                                     }`}
                             >
                                 <div className="p-6 pt-0 font-sans text-gray-600 bg-white border-t border-gray-100 whitespace-pre-wrap">

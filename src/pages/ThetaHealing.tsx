@@ -182,7 +182,7 @@ const ThetaHealing: React.FC = () => {
             </Helmet>
 
             {/* Hero Section */}
-            <section className="relative py-20 bg-brand-beige overflow-hidden">
+            <section className="relative py-12 md:py-20 bg-brand-beige overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-lilac/20 rounded-full blur-3xl -z-10"></div>
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-3xl -z-10"></div>
 
@@ -190,7 +190,7 @@ const ThetaHealing: React.FC = () => {
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
                         <MagicStar size={14} variant="Linear" color="currentColor" /> Cursos ThetaHealing®
                     </div>
-                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
+                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
                         Cursos <span className="text-brand-goldDark italic">ThetaHealing®</span>
                     </h1>
                     <p className="font-sans text-gray-600 text-lg max-w-3xl mx-auto mb-10">
@@ -218,7 +218,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Formação Essencial */}
             <ScrollReveal>
-                <section className="py-20 bg-white">
+                <section className="py-12 md:py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <Book1 size={24} variant="Linear" color="currentColor" className="text-brand-lilacDark" />
@@ -233,7 +233,7 @@ const ThetaHealing: React.FC = () => {
                             Os cursos fundamentais para iniciar sua jornada como praticante de ThetaHealing®.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                             {modulosEssencial.map((modulo, index) => (
                                 <div
                                     key={index}
@@ -258,7 +258,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Trilha Completa - Flowchart */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-beige overflow-hidden">
+                <section className="py-12 md:py-20 bg-brand-beige overflow-hidden">
                     <div className="max-w-7xl mx-auto px-6">
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-4">
                             Trilha Completa de Formação
@@ -474,7 +474,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Conexões e Relacionamentos */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-lilac/10">
+                <section className="py-12 md:py-20 bg-brand-lilac/10">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <Heart size={24} variant="Linear" color="currentColor" className="text-brand-goldDark" />
@@ -514,7 +514,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Prosperidade e Realização */}
             <ScrollReveal>
-                <section className="py-20 bg-white">
+                <section className="py-12 md:py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <Flash size={24} variant="Linear" color="currentColor" className="text-brand-lilacDark" />
@@ -554,7 +554,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Formações Especializadas */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-lilac/10">
+                <section className="py-12 md:py-20 bg-brand-lilac/10">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <MagicStar size={24} variant="Linear" color="currentColor" className="text-brand-lilacDark" />
@@ -594,7 +594,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Saúde, Corpo e Espiritualidade */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-beige">
+                <section className="py-12 md:py-20 bg-brand-beige">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="flex items-center gap-3 justify-center mb-4">
                             <People size={24} variant="Linear" color="currentColor" className="text-brand-goldDark" />
@@ -609,7 +609,7 @@ const ThetaHealing: React.FC = () => {
                             Cursos aprofundados para quem deseja se especializar em cura física e espiritual.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                             {modulosSaude.map((modulo, index) => (
                                 <div
                                     key={index}
@@ -634,7 +634,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Certification Banner */}
             <ScrollReveal>
-                <section className="py-16 bg-white">
+                <section className="py-10 md:py-16 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="bg-gradient-to-r from-brand-lilac/30 to-brand-gold/20 p-8 md:p-12 rounded-3xl">
                             <div className="flex flex-col md:flex-row items-center gap-8">
@@ -669,7 +669,7 @@ const ThetaHealing: React.FC = () => {
 
             {/* Other Pillars Section */}
             <ScrollReveal>
-                <section className="py-16 bg-brand-beige">
+                <section className="py-10 md:py-16 bg-brand-beige">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="font-serif text-2xl md:text-3xl text-brand-dark text-center mb-8">
                             Conheça também
@@ -718,10 +718,10 @@ const ThetaHealing: React.FC = () => {
 
             {/* CTA Section */}
             <ScrollReveal>
-                <section className="py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
+                <section className="py-14 md:py-24 bg-brand-lilac/10 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
+                        <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6">
                             Pronta para iniciar sua jornada?
                         </h2>
                         <p className="font-sans text-gray-600 text-lg mb-10 max-w-2xl mx-auto">

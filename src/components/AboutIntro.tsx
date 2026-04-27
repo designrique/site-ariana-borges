@@ -2,8 +2,8 @@ import React from 'react';
 
 const AboutIntro: React.FC = () => {
     return (
-        <section className="py-20 bg-white overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+        <section className="py-12 md:py-20 bg-white overflow-hidden">
+            <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="md:w-1/2 relative">
                     <div className="aspect-[4/5] rounded-2xl relative overflow-hidden shadow-xl">
                         <img
@@ -20,7 +20,7 @@ const AboutIntro: React.FC = () => {
                     <div className="inline-block px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
                         Sobre Mim
                     </div>
-                    <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 leading-tight">
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6 leading-tight">
                         Olá! Sou Ariana Borges
                     </h2>
                     <p className="font-sans text-gray-600 text-lg leading-relaxed mb-6">

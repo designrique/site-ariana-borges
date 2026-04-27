@@ -31,10 +31,10 @@ const Sobre: React.FC = () => {
             </Helmet>
 
             {/* Hero Section */}
-            <section className="relative py-20 bg-brand-beige overflow-hidden">
+            <section className="relative py-12 md:py-20 bg-brand-beige overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-lilac/20 rounded-full blur-3xl -z-10"></div>
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="flex flex-col md:flex-row items-center gap-12">
+                    <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                         <div className="md:w-1/2 relative">
                             <div className="aspect-[4/5] rounded-2xl relative overflow-hidden shadow-2xl">
                                 <img
@@ -51,7 +51,7 @@ const Sobre: React.FC = () => {
                             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/30 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
                                 <MagicStar size={14} variant="Linear" color="currentColor" /> Sobre Mim
                             </div>
-                            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
+                            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-dark mb-6 leading-tight">
                                 Olá, sou <span className="text-brand-goldDark italic">Ariana Borges</span>
                             </h1>
                             <p className="font-sans text-gray-600 text-lg leading-relaxed mb-6">
@@ -78,7 +78,7 @@ const Sobre: React.FC = () => {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                             {stats.map((stat, index) => (
                                 <div key={index} className="text-center">
-                                    <div className="font-serif text-4xl md:text-5xl text-brand-goldDark mb-2">{stat.number}</div>
+                                    <div className="font-serif text-3xl md:text-5xl text-brand-goldDark mb-2">{stat.number}</div>
                                     <div className="font-sans text-gray-600 text-sm">{stat.label}</div>
                                 </div>
                             ))}
@@ -89,7 +89,7 @@ const Sobre: React.FC = () => {
 
             {/* About Text Section */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-beige">
+                <section className="py-12 md:py-20 bg-brand-beige">
                     <div className="max-w-4xl mx-auto px-6">
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-12">
                             Minha Jornada
@@ -111,7 +111,7 @@ const Sobre: React.FC = () => {
 
             {/* Credentials Section */}
             <ScrollReveal>
-                <section className="py-20 bg-white">
+                <section className="py-12 md:py-20 bg-white">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-12">
                             Formação e Certificações
@@ -136,7 +136,7 @@ const Sobre: React.FC = () => {
 
             {/* Instituto Section */}
             <ScrollReveal>
-                <section className="py-20 bg-brand-lilac/10">
+                <section className="py-12 md:py-20 bg-brand-lilac/10">
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="text-center mb-12">
                             <h2 className="font-serif text-3xl md:text-4xl text-brand-dark mb-4">
@@ -147,8 +147,8 @@ const Sobre: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <Link to="/terapia-individual" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                            <Link to="/terapia-individual" className="group bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div className="mb-4 w-10 h-10">
                                     <img src="/icons/site/terapia-individual.png" alt="Terapia Individual" className="w-8 h-8 object-contain" />
                                 </div>
@@ -161,7 +161,7 @@ const Sobre: React.FC = () => {
                                 </span>
                             </Link>
 
-                            <Link to="/formacao-de-terapeutas" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <Link to="/formacao-de-terapeutas" className="group bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div className="mb-4 w-10 h-10">
                                     <img src="/icons/site/formacao-terapeutas.png" alt="Formação de Terapeutas" className="w-8 h-8 object-contain" />
                                 </div>
@@ -174,7 +174,7 @@ const Sobre: React.FC = () => {
                                 </span>
                             </Link>
 
-                            <Link to="/autoconhecimento-em-grupo" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <Link to="/autoconhecimento-em-grupo" className="group bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div className="mb-4 w-10 h-10">
                                     <img src="/icons/site/autoconhecimento-grupo.png" alt="Autoconhecimento em Grupo" className="w-8 h-8 object-contain" />
                                 </div>
@@ -193,10 +193,10 @@ const Sobre: React.FC = () => {
 
             {/* CTA Section */}
             <ScrollReveal>
-                <section className="py-24 bg-white text-center relative overflow-hidden">
+                <section className="py-14 md:py-24 bg-white text-center relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-brand-lilac/20 rounded-full blur-3xl -z-10"></div>
                     <div className="max-w-4xl mx-auto px-6">
-                        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
+                        <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6">
                             Olá, Ser de Luz
                         </h2>
                         <p className="font-sans text-gray-600 text-lg mb-10 max-w-2xl mx-auto">

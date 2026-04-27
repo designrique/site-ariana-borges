@@ -3,8 +3,8 @@ import { MagicStar } from 'iconsax-react';
 
 const AboutSection: React.FC = () => {
     return (
-        <section className="py-20 bg-white overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+        <section className="py-12 md:py-20 bg-white overflow-hidden">
+            <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="md:w-1/2 relative">
                     <div className="aspect-[4/5] rounded-2xl relative overflow-hidden shadow-xl">
                         <img
@@ -21,7 +21,7 @@ const AboutSection: React.FC = () => {
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-lilac/50 text-brand-lilacDark text-xs font-bold tracking-widest uppercase mb-6">
                         <MagicStar size={14} variant="Linear" color="currentColor" /> Facilitadora
                     </div>
-                    <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6 leading-tight">
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-dark mb-6 leading-tight">
                         Quem irá conduzir o encontro
                     </h2>
                     <h3 className="font-serif text-2xl text-brand-goldDark italic mb-4">Ariana Borges</h3>

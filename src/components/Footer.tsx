@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
     <>
     <footer className="bg-brand-beige py-12 md:py-16 border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="font-serif text-xl md:text-2xl text-brand-dark mb-2">Instituto Ariana Borges</h3>

@@ -94,7 +94,7 @@ export const WhatsAppFloatingWidget: React.FC = () => {
 
             {/* Popup */}
             <div
-                className={`fixed bottom-24 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right ${
+                className={`fixed bottom-24 right-6 z-50 w-80 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right ${
                     isOpen
                         ? 'opacity-100 scale-100 translate-y-0'
                         : 'opacity-0 scale-95 translate-y-4 pointer-events-none'

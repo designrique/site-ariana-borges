@@ -50,16 +50,16 @@ const Pillars: React.FC = () => {
     ];
 
     return (
-        <section className="py-16 bg-brand-beige">
+        <section className="py-10 md:py-16 bg-brand-beige">
             <div className="max-w-6xl mx-auto px-6">
-                <h2 className="font-serif text-3xl md:text-4xl text-brand-dark text-center mb-12">
+                <h2 className="font-serif text-2xl md:text-4xl text-brand-dark text-center mb-8 md:mb-12">
                     Nossas Frentes de Atuação
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                     {pillars.map((pillar, index) => (
                         <div
                             key={index}
-                            className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/20"
+                            className="bg-white p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-brand-lilac/20"
                         >
                             <div className="mb-6 bg-brand-lilac/10 w-20 h-20 rounded-full flex items-center justify-center">
                                 <img src={pillar.img} alt={pillar.title} className="w-14 h-14 object-contain" />
