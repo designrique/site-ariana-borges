@@ -14,7 +14,7 @@ const FAQ: React.FC = () => {
     const faqs = faqData && faqData.length > 0 ? faqData : [
         {
             question: "Como funcionam os atendimentos?",
-            answer: "Os atendimentos podem ser realizados de forma online ou presencial, com duração média de 50 minutos a 1h30, dependendo da técnica escolhida."
+            answer: "Os atendimentos podem ser realizados de forma online ou presencial, com duração média de 45 minutos a 1h, dependendo da técnica escolhida."
         },
         {
             question: "Quais técnicas são utilizadas?",
