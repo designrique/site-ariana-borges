@@ -25,4 +25,4 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
-Sitemap: https://institutoarianaborges.com.br/sitemap.xml
+Sitemap: https://arianaborges.com/sitemap.xml
