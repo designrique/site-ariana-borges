@@ -57,3 +57,6 @@ Thumbs.db
 .aiox-core/local/
 .claude/settings.local.json
 .aiox/install-log.txt
+
+# FUSE deleted-but-open file leftovers
+**/.fuse_hidden*

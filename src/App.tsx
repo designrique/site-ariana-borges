@@ -17,6 +17,7 @@ import ClubeDoLivroMulherMaravilha from '@/pages/ClubeDoLivroMulherMaravilha';
 import ThankYouClubeDoLivro from '@/pages/ClubeDoLivroMulherMaravilha/ThankYou';
 import DNABasico from '@/pages/DNABasico';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
+import Portal5_5 from '@/pages/Portal5_5';
 import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
 import TermosDeUso from '@/pages/TermosDeUso';
 import Footer from '@/components/Footer';
@@ -209,17 +210,20 @@ const isDNASubdomain = hostname === 'dnabasico.arianaborges.com';
 const isDeusasSubdomain = hostname === 'encontrodeusas.arianaborges.com';
 const isClubeSubdomain = hostname === 'clubelivromulhermaravilha.arianaborges.com'
   || new URLSearchParams(window.location.search).get('_testClube') === '1';
+const isPortal5_5Subdomain = hostname === 'portal.arianaborges.com'
+  || new URLSearchParams(window.location.search).get('_testPortal') === '1';
 
 function getRootPage() {
   if (isDNASubdomain) return <DNABasico />;
   if (isDeusasSubdomain) return <EncontroDeusas />;
   if (isClubeSubdomain) return <ClubeDoLivroMulherMaravilha />;
+  if (isPortal5_5Subdomain) return <Portal5_5 />;
   return <Home />;
 }
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
@@ -242,6 +246,8 @@ const MainContent = () => {
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
           <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
           <Route path="/clubelivromulhermaravilha" element={<ClubeDoLivroMulherMaravilha />} />
+          <Route path="/portal-5-5" element={<Portal5_5 />} />
+          <Route path="/portal" element={<Portal5_5 />} />
           <Route path="/privacidade" element={<PoliticaPrivacidade />} />
           <Route path="/termos" element={<TermosDeUso />} />
         </Routes>
