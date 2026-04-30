@@ -8,17 +8,30 @@ const HeroSection: React.FC = () => {
             className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-brand-dark text-brand-beige"
         >
             <div className="absolute inset-0 z-0 bg-brand-dark">
-                <video
-                    className="absolute inset-0 w-full h-full object-cover"
-                    src="/portal-5-5/hero.mp4"
-                    poster="/portal-5-5/hero-poster.webp"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
+                <div
+                    className="absolute inset-0 opacity-90"
+                    style={{
+                        background:
+                            'radial-gradient(circle at 50% 30%, rgba(212,175,55,0.35) 0%, rgba(102,51,153,0.45) 35%, rgba(20,8,40,0.95) 75%, #0a0420 100%)',
+                    }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-transparent to-brand-dark/90" />
+                <div
+                    className="absolute inset-0 mix-blend-screen opacity-60"
+                    style={{
+                        background:
+                            'conic-gradient(from 90deg at 50% 50%, rgba(212,175,55,0.15), rgba(180,140,255,0.15), rgba(212,175,55,0.15))',
+                        animation: 'spin 60s linear infinite',
+                    }}
+                />
+                <div
+                    className="absolute inset-0 opacity-50 mix-blend-screen"
+                    style={{
+                        background:
+                            'radial-gradient(ellipse 60% 50% at 50% 45%, rgba(255,200,110,0.25), transparent 70%)',
+                        animation: 'portal-pulse 6s ease-in-out infinite',
+                    }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark" />
             </div>
 
             <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
