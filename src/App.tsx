@@ -18,6 +18,7 @@ import ThankYouClubeDoLivro from '@/pages/ClubeDoLivroMulherMaravilha/ThankYou';
 import DNABasico from '@/pages/DNABasico';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
 import Portal5_5 from '@/pages/Portal5_5';
+import ThankYouPortal5_5 from '@/pages/Portal5_5/ThankYou';
 import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
 import TermosDeUso from '@/pages/TermosDeUso';
 import Footer from '@/components/Footer';
@@ -241,7 +242,7 @@ const MainContent = () => {
           <Route path="/dna-basico-simple" element={<DNABasicoSimple />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/obrigado" element={isClubeSubdomain ? <ThankYouClubeDoLivro /> : <ThankYou />} />
+          <Route path="/obrigado" element={isPortal5_5Subdomain ? <ThankYouPortal5_5 /> : (isClubeSubdomain ? <ThankYouClubeDoLivro /> : <ThankYou />)} />
           <Route path="/payment-return" element={<PaymentReturn />} />
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
           <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
