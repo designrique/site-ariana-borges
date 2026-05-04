@@ -121,7 +121,7 @@ const ThankYouPortal5_5: React.FC = () => {
                             <h1 className="font-serif text-3xl sm:text-5xl text-white mb-3 leading-tight">
                                 Pagamento confirmado
                             </h1>
-                            <p className="font-serif italic text-brand-gold text-lg sm:text-xl mb-8">
+                            <p className="font-serif italic font-bold text-brand-gold text-lg sm:text-xl mb-8">
                                 Sua entrada no Portal 5/5 está garantida.
                             </p>
 
