@@ -3,11 +3,14 @@ import { Helmet } from 'react-helmet-async';
 import { Container, Row, Col, SectionHeader, Button, Card, CardGrid } from '@/components/DesignSystem';
 import DNASequenceBackground from '@/components/DNASequenceBackground';
 import DNABasicoGallerySection from './DNABasico/components/DNABasicoGallerySection';
+import { trackDNABasicoViewContent, trackDNABasicoInitiateCheckout } from '@/lib/metaTracking';
 import { Health, Heart, People, TickSquare, Star1, Medal, Clock, Shield, Book1, Gps, MagicStar, Flash, ArrowRight, Repeat as InfinityIcon, Calendar as CalendarDays } from 'iconsax-react';
 const UsersIcon = People;
 
-const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G58AYJwHts3mjNLb9NmrDBdb0R67skwrqLBYm2Q4HHYdHHKksYZJcpW2soyKaOrmPdkbPj3onE2CBLZNkPI8nRw4HN92aAuCFmCMgSca6MbiDUksY2I01mtIRpOUfmOrlnCNjWDdl3izxrHMeGmMakfQGnrrcHCg1g_w0wn4f_R_wql6NxEFbnUMcXTZPHfcaaeBgCx9Bw.v1.8896b32e6a7fb79c";
-const COUPON_URL = "https://loja.infinitepay.io/institutoarianaborges/kkt5516-dna-basico---cupom-albabany";
+// Links recriados via InfinityPay API com redirect_url + webhook_url configurados
+// pra disparar tracking server-side e ThankYou page custom (06/05/2026).
+const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0ABYJwJxu3Iwzk-9EC4rQMMZfddrQ0aJV7HLJPSz5n98mKRISRCdimVTg4lNWVMi9S6AzuofKd_O3w7fcE9kIK2LLMCDiwAC2pupTGAHQ8GZ9HN4MDVB2GSfVmI2zANtD3Wg0m7mOy01u-hvONY4xATiCVPtsxltTxMxupbvu2vxo0zzPif5XmcYHj4-9Ah47YpGmtAc6oFRyE8TrXQFFMMV1TZ6axPchSrQpZeYgUOQRa7f_NrqcFC3M3SQcaRPQCJtcQM9gUnCsAu1qnQmidQXLZ1KJYy-RxX.v1.b51876a5ea49ecd0";
+const COUPON_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=GzoBYBwJ2VnMrTjy0crYxdxYatowzyTqQtn9zH6iEe2E7FoamVXTUxmZPj2wQKVFQdAWtSAP6PDtdrMf-Ho68KFOVpphO4-ksPnDYN7V8k4QfSUHyjA3LNugNzplsARwso3a8l7LM_g6OCCgr8rBmjoWk11vlFgTLn8FYvY_4vR5f2jLfgB4-vtnkfV2ud4lgY4kJ4u6IpNlchC5aJOSTHJss1YjU2G5M6NMhVF48mvf8JFv5cWnUl1yoI6pgorNekDB11WQcJvIgoZojpapUBonUFyWdUcZx5RdyAA.v1.aa58f000e3d9c2ba";
 
 const DNABasico: React.FC = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -15,12 +18,19 @@ const DNABasico: React.FC = () => {
 
   const couponValid = couponInput.trim().toUpperCase() === 'ALBANY';
 
+  // M1 — Pixel/CAPI ViewContent on landing mount (deduplicated por session)
+  React.useEffect(() => {
+    trackDNABasicoViewContent();
+  }, []);
+
   const openModal = () => {
     setCouponInput('');
     setShowModal(true);
+    trackDNABasicoInitiateCheckout('cta_button_click');
   };
 
   const proceed = () => {
+    trackDNABasicoInitiateCheckout(couponValid ? 'modal_proceed_with_coupon' : 'modal_proceed_full_price');
     window.open(couponValid ? COUPON_URL : CHECKOUT_URL, '_blank', 'noopener,noreferrer');
     setShowModal(false);
   };

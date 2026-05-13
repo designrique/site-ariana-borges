@@ -6,6 +6,10 @@ const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/EAEoS3N7tCWKMO81NY9Uv8';
 const PORTAL_5_5_WHATSAPP_LINK = 'https://chat.whatsapp.com/CMeZf3iVA0QHWHlmBOBBNz';
 const PORTAL_5_5_AMOUNT_CENTS = 19800;
+// DNA Basico: R$ 1.298 cheio. Tickets >= R$1000 sao tratados como DNA Basico
+// (cobre cupom ALBANY com desconto eventual mantendo o produto correto).
+const DNA_BASICO_THRESHOLD_CENTS = 100000;
+const DNA_BASICO_FULL_PRICE_CENTS = 129800;
 
 const buildPortal5_5EmailHtml = (firstName: string): string => `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -158,6 +162,16 @@ export default async function handler(req: any, res: any) {
         const data = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
         console.log('Received webhook from InfinitePay:', JSON.stringify(data, null, 2));
 
+        // BLOQUEIO TESTE: payloads com order_nsu/transaction_nsu prefixados "TEST"
+        // ou flag explicita _test=true nao disparam Purchase real (evita poluir Pixel).
+        const isTestPayload = data._test === true
+            || (typeof data.order_nsu === 'string' && data.order_nsu.toUpperCase().startsWith('TEST'))
+            || (typeof data.transaction_nsu === 'string' && data.transaction_nsu.toUpperCase().startsWith('TEST'));
+        if (isTestPayload) {
+            console.warn('[webhook-infinitepay] TEST payload detected — skipping CAPI Purchase + email');
+            return res.status(200).json({ success: true, test_mode: true, skipped: 'CAPI + email' });
+        }
+
         if (data.status === 'approved' || data.paid === true) {
             console.log('Payment confirmed. Processing...');
 
@@ -166,7 +180,10 @@ export default async function handler(req: any, res: any) {
             const name = data.customer?.name || 'cliente';
             const amountCents = typeof data.amount === 'number' ? data.amount : 0;
             const isPortal5_5 = amountCents === PORTAL_5_5_AMOUNT_CENTS;
-            const value = amountCents ? amountCents / 100 : (isPortal5_5 ? 198.00 : 298.00);
+            const isDnaBasico = !isPortal5_5 && amountCents >= DNA_BASICO_THRESHOLD_CENTS;
+            const value = amountCents
+                ? amountCents / 100
+                : isPortal5_5 ? 198.00 : isDnaBasico ? 1298.00 : 298.00;
           const orderNsu = getFirstString(data.order_nsu, data.orderNsu, data.invoice?.order_nsu, data.invoice?.orderNsu);
           const transactionNsu = getFirstString(
             data.transaction_nsu,
@@ -174,7 +191,11 @@ export default async function handler(req: any, res: any) {
             data.transaction?.nsu,
             data.payment?.transaction_nsu,
           );
-          const eventPrefix = isPortal5_5 ? 'portal-5-5-purchase' : 'clube-purchase';
+          const eventPrefix = isPortal5_5
+            ? 'portal-5-5-purchase'
+            : isDnaBasico
+              ? 'dna-basico-purchase'
+              : 'clube-purchase';
           const eventId = orderNsu && transactionNsu
             ? `${eventPrefix}-${orderNsu}-${transactionNsu}`
             : orderNsu
@@ -194,7 +215,9 @@ export default async function handler(req: any, res: any) {
                 ...(eventId ? { event_id: eventId } : {}),
                 event_source_url: isPortal5_5
                   ? 'https://portal.arianaborges.com/obrigado'
-                  : 'https://clubelivromulhermaravilha.arianaborges.com/obrigado',
+                  : isDnaBasico
+                    ? 'https://dnabasico.arianaborges.com/obrigado'
+                    : 'https://clubelivromulhermaravilha.arianaborges.com/obrigado',
                         user_data: {
                             em: email ? [hashData(email)] : [],
                   ph: phone ? [hashData(phone)] : [],
@@ -205,8 +228,14 @@ export default async function handler(req: any, res: any) {
                   value: value.toString(),
                   content_name: isPortal5_5
                     ? 'Portal 5/5 - Mesa de Salomao + Kundalini'
-                    : 'Clube do Livro - A Psicologia da Mulher-Maravilha',
-                  content_category: isPortal5_5 ? 'energy_portal' : 'book_club',
+                    : isDnaBasico
+                      ? 'DNA Basico - ThetaHealing'
+                      : 'Clube do Livro - A Psicologia da Mulher-Maravilha',
+                  content_category: isPortal5_5
+                    ? 'energy_portal'
+                    : isDnaBasico
+                      ? 'thetahealing_basico'
+                      : 'book_club',
                   source: 'webhook_infinitepay',
                 },
                         original_event_data: { event_name: 'Purchase', event_time: eventTime },
