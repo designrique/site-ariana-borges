@@ -1,7 +1,9 @@
 import React from 'react';
 import { Flash, Clock } from 'iconsax-react';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const KundaliniSection: React.FC = () => {
+    const portal = useCurrentPortal();
     return (
         <section className="relative py-20 md:py-28 overflow-hidden bg-[#1a0d33] text-brand-beige">
             <div
@@ -14,9 +16,12 @@ const KundaliniSection: React.FC = () => {
 
             <div className="relative max-w-4xl mx-auto px-6">
                 <div className="text-center mb-12">
-                    <span className="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-brand-gold/15 text-brand-gold border border-brand-gold/40 text-xs font-bold uppercase tracking-[0.25em] mb-6">
-                        <Clock size={14} variant="Linear" color="currentColor" />
-                        Incluso no Portal · 20h
+                    <span className="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-red-500/20 text-red-300 border border-red-500/50 text-xs font-bold uppercase tracking-[0.25em] mb-3 animate-pulse">
+                        <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                        AO VIVO · {portal.displayTime}
+                    </span>
+                    <span className="block text-xs uppercase tracking-[0.25em] text-brand-gold mb-6">
+                        Incluso no Portal
                     </span>
                     <h2 className="font-serif text-3xl md:text-5xl text-white leading-tight mb-4">
                         Ativação da Kundalini
@@ -33,7 +38,10 @@ const KundaliniSection: React.FC = () => {
                                 Se a <strong className="text-white">Mesa de Salomão reorganiza…</strong>
                             </p>
                             <p className="font-sans text-gray-300 leading-relaxed mb-4">
-                                A <strong className="text-brand-gold">Kundalini ativa.</strong>
+                                A <strong className="text-brand-gold">Kundalini ativa AO VIVO.</strong>
+                            </p>
+                            <p className="font-sans text-gray-300 leading-relaxed mb-4 italic">
+                                {portal.kundalini_aspect}
                             </p>
                             <ul className="space-y-3 mt-6 font-sans text-gray-300">
                                 <li className="flex items-start gap-3">
@@ -60,6 +68,10 @@ const KundaliniSection: React.FC = () => {
                                 <span className="text-white">+</span>
                                 <br />
                                 acender o motor.
+                            </p>
+                            <p className="font-sans text-xs text-red-300 mt-4 uppercase tracking-widest">
+                                <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-1 align-middle"></span>
+                                Ao vivo, com a Ariana
                             </p>
                         </div>
                     </div>

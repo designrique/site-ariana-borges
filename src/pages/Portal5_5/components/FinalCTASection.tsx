@@ -1,9 +1,11 @@
 import React from 'react';
 import { ArrowRight2 } from 'iconsax-react';
 import { buildInfinitePayCheckoutUrl } from '../checkout';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const FinalCTASection: React.FC = () => {
     const checkoutUrl = buildInfinitePayCheckoutUrl();
+    const portal = useCurrentPortal();
 
     return (
         <section className="relative py-20 md:py-28 overflow-hidden bg-brand-dark text-brand-beige">
@@ -49,7 +51,7 @@ const FinalCTASection: React.FC = () => {
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-3 bg-brand-gold hover:bg-brand-goldDark text-brand-dark font-sans font-bold py-4 px-10 md:px-12 rounded-full shadow-lg hover:shadow-brand-gold/30 transition-all duration-300 transform hover:-translate-y-1 text-base md:text-lg"
                 >
-                    Quero participar do Portal 5/5
+                    Quero participar do {portal.title}
                     <ArrowRight2 size={20} variant="Linear" color="currentColor" className="group-hover:translate-x-1 transition-transform" />
                 </a>
 

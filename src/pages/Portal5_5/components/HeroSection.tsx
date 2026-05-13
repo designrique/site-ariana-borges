@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowDown2 } from 'iconsax-react';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const HeroSection: React.FC = () => {
+    const portal = useCurrentPortal();
     return (
         <section
             id="hero_section"
@@ -36,20 +38,18 @@ const HeroSection: React.FC = () => {
 
             <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
                 <span className="inline-block py-1 px-4 rounded-full bg-purple-950/70 text-white border border-brand-gold/40 text-xs sm:text-sm font-sans tracking-[0.25em] uppercase mb-6 backdrop-blur-sm">
-                    5 de Maio • 20h • Online
+                    {portal.displayDate} • {portal.displayTime} • {portal.format}
                 </span>
 
                 <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2 leading-none">
-                    Portal 5/5
+                    {portal.title}
                 </h1>
                 <p className="font-serif italic text-brand-gold text-xl sm:text-2xl md:text-3xl mb-8">
-                    Mesa de Salomão Coletiva + Ativação da Kundalini
+                    Mesa de Salomão Coletiva + Ativação da Kundalini <span className="text-white not-italic text-xs align-super tracking-widest">AO VIVO</span>
                 </p>
 
                 <p className="font-sans text-lg md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
-                    Um portal que não pede permissão.
-                    <br className="hidden md:block" />
-                    Ele move a sua vida.
+                    {portal.tagline}
                 </p>
 
                 <a

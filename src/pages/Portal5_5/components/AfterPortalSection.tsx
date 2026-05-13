@@ -1,15 +1,11 @@
 import React from 'react';
 import { TickSquare, Warning2 } from 'iconsax-react';
-
-const sensacoes = [
-    'Sensação de libertação',
-    'Clareza sobre decisões importantes',
-    'Desapego natural do que não faz mais sentido',
-    'Abertura de novos caminhos',
-    'Movimento real na vida',
-];
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const AfterPortalSection: React.FC = () => {
+    const portal = useCurrentPortal();
+    // Lista de sensacoes derivada da energia do portal vigente
+    const sensacoes = portal.energia.map(e => e.charAt(0).toUpperCase() + e.slice(1));
     return (
         <section className="py-20 md:py-28 bg-brand-beige text-brand-dark">
             <div className="max-w-5xl mx-auto px-6">
@@ -24,6 +20,9 @@ const AfterPortalSection: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                     <div className="bg-white border border-brand-dark/10 rounded-2xl p-8 shadow-sm">
+                        <p className="font-sans text-base md:text-lg text-brand-dark/85 mb-6 italic">
+                            {portal.after_portal}
+                        </p>
                         <ul className="space-y-4">
                             {sensacoes.map((item, i) => (
                                 <li key={i} className="flex items-start gap-3 font-sans text-base md:text-lg">

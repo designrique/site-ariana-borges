@@ -10,29 +10,34 @@ import KundaliniSection from './components/KundaliniSection';
 import AfterPortalSection from './components/AfterPortalSection';
 import PricingSection from './components/PricingSection';
 import FinalCTASection from './components/FinalCTASection';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const Portal5_5: React.FC = () => {
+    const portal = useCurrentPortal();
+    const ogImage = `https://portal.arianaborges.com/og-portal-${portal.id}.png`;
+    const titleFull = `${portal.title} — Mesa de Salomão + Ativação da Kundalini AO VIVO | Ariana Borges`;
+    const desc = `${portal.displayDate}: ${portal.title} online às ${portal.displayTime}. ${portal.tagline} Mesa de Salomão + Kundalini AO VIVO.`;
     return (
         <div className="font-sans antialiased text-brand-dark">
             <Helmet>
-                <title>Portal 5/5 — Mesa de Salomão Coletiva + Ativação da Kundalini | Ariana Borges</title>
-                <meta name="description" content="5 de Maio: Portal 5/5 online às 20h. Mesa de Salomão Coletiva e Ativação da Kundalini para reorganizar caminhos, romper padrões e mover sua vida." />
+                <title>{titleFull}</title>
+                <meta name="description" content={desc} />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://portal.arianaborges.com/" />
-                <meta property="og:title" content="Portal 5/5 — Mesa de Salomão Coletiva + Ativação da Kundalini" />
-                <meta property="og:description" content="5 de Maio às 20h, online. Um portal de ruptura de padrões e aceleração de destino. Mesa de Salomão + Kundalini por R$198." />
-                <meta property="og:image" content="https://portal.arianaborges.com/og-portal-5-5.png" />
+                <meta property="og:title" content={titleFull} />
+                <meta property="og:description" content={desc} />
+                <meta property="og:image" content={ogImage} />
                 <meta property="og:site_name" content="Ariana Borges" />
                 <meta property="og:locale" content="pt_BR" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Portal 5/5 — Mesa de Salomão Coletiva + Ativação da Kundalini" />
-                <meta name="twitter:description" content="5 de Maio às 20h, online. Movimento, ruptura e abertura de caminhos." />
-                <meta name="twitter:image" content="https://portal.arianaborges.com/og-portal-5-5.png" />
+                <meta name="twitter:title" content={titleFull} />
+                <meta name="twitter:description" content={desc} />
+                <meta name="twitter:image" content={ogImage} />
 
                 <link rel="canonical" href="https://portal.arianaborges.com/" />
             </Helmet>

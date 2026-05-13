@@ -1,5 +1,6 @@
 import React from 'react';
 import { TickSquare, CloseCircle } from 'iconsax-react';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const trabalhados = [
     'Padrões que te mantêm preso(a) no mesmo lugar',
@@ -16,6 +17,7 @@ const ativados = [
 ];
 
 const MesaSalomaoSection: React.FC = () => {
+    const portal = useCurrentPortal();
     return (
         <section className="py-20 md:py-28 bg-brand-beige text-brand-dark">
             <div className="max-w-5xl mx-auto px-6">
@@ -24,12 +26,10 @@ const MesaSalomaoSection: React.FC = () => {
                         A prática central
                     </span>
                     <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight">
-                        A Mesa de Salomão no Portal 5/5
+                        A Mesa de Salomão no {portal.title}
                     </h2>
                     <p className="font-sans text-base md:text-lg text-brand-dark/80 max-w-3xl mx-auto leading-relaxed">
-                        A Mesa de Salomão atua como um campo de <strong>reorganização energética profunda</strong>.
-                        <br />
-                        Neste portal, ela não apenas limpa.
+                        {portal.mesa_aspect}
                     </p>
                     <p className="font-serif italic text-2xl md:text-3xl text-brand-gold mt-4">
                         Ela reposiciona sua vida.

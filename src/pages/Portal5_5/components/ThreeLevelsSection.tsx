@@ -1,5 +1,6 @@
 import React from 'react';
 import { LampOn, HeartCircle, Flash } from 'iconsax-react';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const levels = [
     {
@@ -36,6 +37,7 @@ const levels = [
 ];
 
 const ThreeLevelsSection: React.FC = () => {
+    const portal = useCurrentPortal();
     return (
         <section className="py-20 md:py-28 bg-brand-dark text-brand-beige">
             <div className="max-w-6xl mx-auto px-6">
@@ -44,7 +46,7 @@ const ThreeLevelsSection: React.FC = () => {
                         Em três níveis
                     </span>
                     <h2 className="font-serif text-3xl md:text-5xl text-white">
-                        O que o Portal 5/5 ativa em você
+                        O que o {portal.title} ativa em você
                     </h2>
                 </div>
 
