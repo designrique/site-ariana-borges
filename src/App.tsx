@@ -16,9 +16,11 @@ import EncontroDeusas from '@/pages/EncontroDeusas';
 import ClubeDoLivroMulherMaravilha from '@/pages/ClubeDoLivroMulherMaravilha';
 import ThankYouClubeDoLivro from '@/pages/ClubeDoLivroMulherMaravilha/ThankYou';
 import DNABasico from '@/pages/DNABasico';
+import ThankYouDNABasico from '@/pages/DNABasico/ThankYou';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
 import Portal5_5 from '@/pages/Portal5_5';
 import ThankYouPortal5_5 from '@/pages/Portal5_5/ThankYou';
+import LinkInBio from '@/pages/LinkInBio';
 import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
 import TermosDeUso from '@/pages/TermosDeUso';
 import Footer from '@/components/Footer';
@@ -224,7 +226,7 @@ function getRootPage() {
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5' || location.pathname === '/bio' || location.pathname === '/links';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
@@ -242,13 +244,20 @@ const MainContent = () => {
           <Route path="/dna-basico-simple" element={<DNABasicoSimple />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/obrigado" element={isPortal5_5Subdomain ? <ThankYouPortal5_5 /> : (isClubeSubdomain ? <ThankYouClubeDoLivro /> : <ThankYou />)} />
+          <Route path="/obrigado" element={
+            isPortal5_5Subdomain ? <ThankYouPortal5_5 />
+            : isClubeSubdomain ? <ThankYouClubeDoLivro />
+            : (isDNASubdomain || new URLSearchParams(window.location.search).get('_testDNA') === '1') ? <ThankYouDNABasico />
+            : <ThankYou />
+          } />
           <Route path="/payment-return" element={<PaymentReturn />} />
           <Route path="/encontro-das-deusas" element={<EncontroDeusas />} />
           <Route path="/clube-livro-mulher-maravilha" element={<ClubeDoLivroMulherMaravilha />} />
           <Route path="/clubelivromulhermaravilha" element={<ClubeDoLivroMulherMaravilha />} />
           <Route path="/portal-5-5" element={<Portal5_5 />} />
           <Route path="/portal" element={<Portal5_5 />} />
+          <Route path="/bio" element={<LinkInBio />} />
+          <Route path="/links" element={<LinkInBio />} />
           <Route path="/privacidade" element={<PoliticaPrivacidade />} />
           <Route path="/termos" element={<TermosDeUso />} />
         </Routes>
