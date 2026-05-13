@@ -5,7 +5,7 @@
  *
  * Auth: Authorization: Bearer ${CRON_SECRET}
  */
-import portalsData from '../src/data/portals.json' assert { type: 'json' };
+import portalsData from '../src/data/portals.json';
 
 const BREVO_SMTP_API = 'https://api.brevo.com/v3/smtp/email';
 const TZ = 'America/Recife';
