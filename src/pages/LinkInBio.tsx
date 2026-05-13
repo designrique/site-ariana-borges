@@ -24,7 +24,7 @@ const LinkInBio: React.FC = () => {
 
     const eventos: BioLink[] = [
         {
-            icon: '/bio-icons/portal.png',
+            icon: '/bio-icons/portal.webp',
             title: `${portal.title} — ${portal.displayDate} · ${portal.displayTime}`,
             subtitle: portal.tagline,
             href: 'https://portal.arianaborges.com',
@@ -32,7 +32,7 @@ const LinkInBio: React.FC = () => {
             highlight: true,
         },
         ...(showDnaBasico ? [{
-            icon: '/bio-icons/dna-basico.png',
+            icon: '/bio-icons/dna-basico.webp',
             title: 'DNA Básico — 15, 16 e 17 de Maio',
             subtitle: 'Imersão presencial em Recife · Certificação ThetaHealing®',
             href: 'https://dnabasico.arianaborges.com',
@@ -42,15 +42,15 @@ const LinkInBio: React.FC = () => {
     ];
 
     const servicos: BioLink[] = [
-        { icon: '/bio-icons/thetahealing.png',           title: 'ThetaHealing® — Conheça a técnica',     subtitle: 'Reprograme crenças que sabotam sua vida', href: '/thetahealing' },
-        { icon: '/bio-icons/terapia-individual.png',     title: 'Terapia Individual',                    subtitle: 'Sessões 1-a-1 com Ariana',                href: '/terapia-individual' },
-        { icon: '/bio-icons/formacao.png',               title: 'Formação de Terapeutas',                subtitle: 'Torne-se terapeuta certificado ThetaHealing®', href: '/formacao-de-terapeutas' },
-        { icon: '/bio-icons/autoconhecimento-grupo.png', title: 'Autoconhecimento em Grupo',             subtitle: 'Encontros mensais de transformação coletiva', href: '/autoconhecimento-em-grupo' },
+        { icon: '/bio-icons/thetahealing.webp',           title: 'ThetaHealing® — Conheça a técnica',     subtitle: 'Reprograme crenças que sabotam sua vida', href: '/thetahealing' },
+        { icon: '/bio-icons/terapia-individual.webp',     title: 'Terapia Individual',                    subtitle: 'Sessões 1-a-1 com Ariana',                href: '/terapia-individual' },
+        { icon: '/bio-icons/formacao.webp',               title: 'Formação de Terapeutas',                subtitle: 'Torne-se terapeuta certificado ThetaHealing®', href: '/formacao-de-terapeutas' },
+        { icon: '/bio-icons/autoconhecimento-grupo.webp', title: 'Autoconhecimento em Grupo',             subtitle: 'Encontros mensais de transformação coletiva', href: '/autoconhecimento-em-grupo' },
     ];
 
     const conteudo: BioLink[] = [
-        { icon: '/bio-icons/blog.png',  title: 'Blog & Reflexões', subtitle: 'Conteúdo gratuito sobre transformação',    href: '/blog' },
-        { icon: '/bio-icons/sobre.png', title: 'Quem é Ariana',    subtitle: 'Instrutora Master & Science ThetaHealing®', href: '/sobre' },
+        { icon: '/bio-icons/blog.webp',  title: 'Blog & Reflexões', subtitle: 'Conteúdo gratuito sobre transformação',    href: '/blog' },
+        { icon: '/bio-icons/sobre.webp', title: 'Quem é Ariana',    subtitle: 'Instrutora Master & Science ThetaHealing®', href: '/sobre' },
     ];
 
     return (
@@ -119,7 +119,7 @@ const LinkInBio: React.FC = () => {
                     className="block mt-8 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#1ebe5d] hover:to-[#0f7567] text-white font-sans font-bold py-4 px-6 rounded-2xl shadow-xl shadow-[#25D366]/20 transition-all duration-300 hover:scale-[1.02] text-center"
                 >
                     <div className="flex items-center justify-center gap-3">
-                        <img src="/bio-icons/whatsapp.png" alt="" className="w-7 h-7 brightness-0 invert" />
+                        <img src="/bio-icons/whatsapp.webp" alt="" className="w-7 h-7 brightness-0 invert" />
                         <div className="text-left">
                             <p className="text-base">Falar pelo WhatsApp</p>
                             <p className="text-xs font-normal opacity-90">Atendimento personalizado · resposta rápida</p>
