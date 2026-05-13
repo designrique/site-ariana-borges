@@ -75,6 +75,10 @@ ICONS = [
         "slug": "whatsapp",
         "subject": "A minimalist speech bubble or chat bubble with a small heart inside, rendered in elegant flowing lines. Direct, warm, conversational.",
     },
+    {
+        "slug": "encontro-deusas",
+        "subject": "A crescent moon embraced by feminine flowing lines and floral motifs, with three small stars representing divine feminine wisdom. Sacred goddess emblem with art nouveau elegance.",
+    },
 ]
 
 

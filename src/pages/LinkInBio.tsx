@@ -6,8 +6,9 @@ const WHATSAPP_NUMBER = '551153041409';
 const WHATSAPP_MESSAGE = encodeURIComponent('Olá Ariana! Vim do link do seu Instagram 🙏');
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
-// DNA Basico hidden after the event end
-const DNA_BASICO_END_DATE = new Date('2026-05-18T00:00:00-03:00'); // dia seguinte ao 17/05
+// Eventos com data fixa — escondem automaticamente apos D+1
+const DNA_BASICO_END_DATE = new Date('2026-05-18T00:00:00-03:00'); // D+1 do 17/05
+const ENCONTRO_DEUSAS_END_DATE = new Date('2026-09-14T00:00:00-03:00'); // D+1 do 13/09
 
 interface BioLink {
     icon: string;        // path em /bio-icons
@@ -20,7 +21,9 @@ interface BioLink {
 
 const LinkInBio: React.FC = () => {
     const portal = useCurrentPortal();
-    const showDnaBasico = new Date() < DNA_BASICO_END_DATE;
+    const now = new Date();
+    const showDnaBasico = now < DNA_BASICO_END_DATE;
+    const showEncontroDeusas = now < ENCONTRO_DEUSAS_END_DATE;
 
     const eventos: BioLink[] = [
         {
@@ -36,6 +39,14 @@ const LinkInBio: React.FC = () => {
             title: 'DNA Básico — 15, 16 e 17 de Maio',
             subtitle: 'Imersão presencial em Recife · Certificação ThetaHealing®',
             href: 'https://dnabasico.arianaborges.com',
+            target: '_blank',
+            highlight: true,
+        }] : []),
+        ...(showEncontroDeusas ? [{
+            icon: '/bio-icons/encontro-deusas.webp',
+            title: 'Encontro das Deusas — 11 a 13 de Setembro',
+            subtitle: 'Imersão feminina em Bonito/PE · Lua Nova em Virgem',
+            href: 'https://encontrodeusas.arianaborges.com',
             target: '_blank',
             highlight: true,
         }] : []),
