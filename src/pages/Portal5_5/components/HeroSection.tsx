@@ -1,9 +1,10 @@
 import React from 'react';
 import { ArrowDown2 } from 'iconsax-react';
-import { useCurrentPortal } from '@/hooks/useCurrentPortal';
+import { useCurrentPortal, formatPortalPrice } from '@/hooks/useCurrentPortal';
 
 const HeroSection: React.FC = () => {
     const portal = useCurrentPortal();
+    const price = formatPortalPrice(portal);
     return (
         <section
             id="hero_section"
@@ -61,7 +62,7 @@ const HeroSection: React.FC = () => {
                 </a>
 
                 <p className="font-sans text-xs text-gray-400 mt-6 tracking-widest uppercase">
-                    Mesa + Kundalini · R$ 198
+                    Mesa + Kundalini · R$ {price}
                 </p>
             </div>
         </section>

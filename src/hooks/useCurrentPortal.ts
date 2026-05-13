@@ -16,7 +16,15 @@ export interface PortalData {
     astrology_context: string;
     after_portal: string;
     ogImageHint: string;
+    price?: number; // BRL — default 198 se omitido (ver PORTAL_DEFAULT_PRICE)
 }
+
+export const PORTAL_DEFAULT_PRICE = 198;
+
+export const formatPortalPrice = (portal: PortalData): string => {
+    const v = portal.price ?? PORTAL_DEFAULT_PRICE;
+    return v.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+};
 
 const PORTALS = portals as PortalData[];
 
