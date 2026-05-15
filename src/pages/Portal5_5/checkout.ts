@@ -2,7 +2,7 @@ const INFINITEPAY_HANDLE = 'institutoarianaborges';
 
 export const PORTAL_PRICE_BRL = 198;
 export const PORTAL_PRICE_CENTS = PORTAL_PRICE_BRL * 100;
-export const PORTAL_PRODUCT_NAME = 'Portal 5/5 — Mesa de Salomão + Ativação da Kundalini';
+export const PORTAL_PRODUCT_NAME = 'Portal Mensal — Mesa de Salomão + Ativação da Kundalini AO VIVO';
 export const PORTAL_REDIRECT_URL = 'https://portal.arianaborges.com/obrigado';
 
 export function buildInfinitePayCheckoutUrl(): string {

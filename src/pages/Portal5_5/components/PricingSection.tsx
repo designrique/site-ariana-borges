@@ -1,16 +1,18 @@
 import React from 'react';
 import { TickSquare, Calendar, Global, Clock } from 'iconsax-react';
 import { buildInfinitePayCheckoutUrl, PORTAL_PRICE_BRL } from '../checkout';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const includes = [
-    'Mesa de Salomão Coletiva (online)',
-    'Ativação da Kundalini às 20h',
+    'Mesa de Salomão Coletiva — gravação enviada às 21h no grupo exclusivo',
+    'Ativação da Kundalini AO VIVO às 20h, com Ariana',
     'Campo estruturado de transformação',
-    'Acesso ao vivo com Ariana Borges',
+    'Acesso ao grupo exclusivo do portal',
 ];
 
 const PricingSection: React.FC = () => {
     const checkoutUrl = buildInfinitePayCheckoutUrl();
+    const portal = useCurrentPortal();
 
     return (
         <section id="investimento" className="py-20 md:py-28 bg-brand-dark text-brand-beige">
@@ -20,31 +22,31 @@ const PricingSection: React.FC = () => {
                         Sua decisão
                     </span>
                     <h2 className="font-serif text-3xl md:text-5xl text-white mb-3 leading-tight">
-                        Atravesse o Portal 5/5
+                        Atravesse o {portal.title}
                     </h2>
                     <p className="font-sans text-brand-lilac/80">
-                        Mesa de Salomão Coletiva + Ativação da Kundalini.
+                        Mesa de Salomão Coletiva + Ativação da Kundalini AO VIVO.
                     </p>
                 </div>
 
                 <div className="relative rounded-3xl bg-gradient-to-br from-brand-gold to-brand-goldDark text-brand-dark p-1 shadow-2xl shadow-brand-gold/20">
                     <div className="bg-[#fdf6e3] rounded-3xl p-8 md:p-12">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-dark text-brand-gold px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.25em] shadow-md whitespace-nowrap">
-                            Portal 5/5
+                            {portal.title}
                         </div>
 
                         <div className="flex flex-wrap justify-center gap-3 mb-8 text-xs uppercase tracking-widest text-brand-dark/70 font-bold">
                             <span className="inline-flex items-center gap-1.5">
                                 <Calendar size={14} variant="Linear" color="currentColor" />
-                                5 de Maio
+                                {portal.displayDate}
                             </span>
                             <span className="inline-flex items-center gap-1.5">
                                 <Clock size={14} variant="Linear" color="currentColor" />
-                                20h
+                                {portal.displayTime}
                             </span>
                             <span className="inline-flex items-center gap-1.5">
                                 <Global size={14} variant="Linear" color="currentColor" />
-                                Online
+                                {portal.format}
                             </span>
                         </div>
 
@@ -78,7 +80,7 @@ const PricingSection: React.FC = () => {
                             rel="noopener noreferrer"
                             className="block w-full py-4 md:py-5 rounded-xl font-bold text-center transition-all duration-300 bg-brand-dark text-white hover:bg-opacity-90 shadow-lg hover:shadow-xl text-base md:text-lg"
                         >
-                            Garantir minha vaga no Portal 5/5
+                            Garantir minha vaga no {portal.title}
                         </a>
 
                         <p className="text-center text-xs text-brand-dark/60 mt-4">

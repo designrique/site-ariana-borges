@@ -34,6 +34,12 @@ const MesaSalomaoSection: React.FC = () => {
                     <p className="font-serif italic text-2xl md:text-3xl text-brand-gold mt-4">
                         Ela reposiciona sua vida.
                     </p>
+                    <div className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/30">
+                        <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
+                        <span className="font-sans text-xs uppercase tracking-widest text-brand-dark/85 font-bold">
+                            Gravação enviada às 21h em grupo exclusivo
+                        </span>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

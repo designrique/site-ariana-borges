@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { TickCircle, RefreshCircle, CloseCircle, InfoCircle, ArrowRight2, Sms } from 'iconsax-react';
+import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 interface PaymentStatus {
     success: boolean;
@@ -26,6 +27,7 @@ const ThankYouPortal5_5: React.FC = () => {
     const [status, setStatus] = useState<'loading' | 'success' | 'pending' | 'error' | 'none'>('none');
     const [paymentData, setPaymentData] = useState<PaymentStatus | null>(null);
     const [pixelFired, setPixelFired] = useState(false);
+    const portal = useCurrentPortal();
 
     useEffect(() => {
         const slug = searchParams.get('slug');
@@ -44,7 +46,7 @@ const ThankYouPortal5_5: React.FC = () => {
                 window.fbq('track', 'Purchase', {
                     value: paymentData ? paymentData.paid_amount / 100 : PORTAL_PRICE,
                     currency: 'BRL',
-                    content_name: 'Portal 5/5 — Mesa de Salomão + Kundalini',
+                    content_name: `${portal.title} — Mesa de Salomão + Kundalini AO VIVO`,
                     content_category: 'energy_portal',
                 });
                 setPixelFired(true);
@@ -76,7 +78,7 @@ const ThankYouPortal5_5: React.FC = () => {
     return (
         <div className="font-sans antialiased min-h-screen bg-brand-dark text-brand-beige relative overflow-hidden flex items-center justify-center px-4 py-16">
             <Helmet>
-                <title>Pagamento Confirmado — Portal 5/5 | Ariana Borges</title>
+                <title>Pagamento Confirmado — {portal.title} | Ariana Borges</title>
                 <meta name="robots" content="noindex,nofollow" />
             </Helmet>
 
@@ -113,7 +115,7 @@ const ThankYouPortal5_5: React.FC = () => {
                     {showSuccess && (
                         <>
                             <span className="inline-block py-1 px-4 rounded-full bg-purple-950/70 text-white border border-brand-gold/40 text-xs font-sans tracking-[0.25em] uppercase mb-6 backdrop-blur-sm">
-                                5 de Maio • 20h • Online
+                                {portal.displayDate} • {portal.displayTime} • {portal.format}
                             </span>
 
                             <TickCircle size={72} variant="Bulk" color="#D4AF37" className="mx-auto mb-6" />
@@ -122,7 +124,7 @@ const ThankYouPortal5_5: React.FC = () => {
                                 Pagamento confirmado
                             </h1>
                             <p className="font-serif italic font-bold text-brand-gold text-lg sm:text-xl mb-8">
-                                Sua entrada no Portal 5/5 está garantida.
+                                Sua entrada no {portal.title} está garantida.
                             </p>
 
                             <p className="font-sans text-gray-300 text-base sm:text-lg leading-relaxed mb-8 max-w-lg mx-auto">
@@ -197,7 +199,7 @@ const ThankYouPortal5_5: React.FC = () => {
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <span className="text-brand-gold mt-1 flex-shrink-0">3.</span>
-                                    <span><strong className="text-white">Marque na agenda</strong> — encontro online no dia <strong className="text-white">5 de Maio às 20h</strong>.</span>
+                                    <span><strong className="text-white">Marque na agenda</strong> — Kundalini AO VIVO no dia <strong className="text-white">{portal.displayDate} às {portal.displayTime}</strong>. Mesa de Salomão (gravação) chega às 21h no grupo.</span>
                                 </li>
                             </ul>
                         </div>
