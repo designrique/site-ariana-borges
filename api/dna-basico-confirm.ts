@@ -22,7 +22,7 @@ const buildDnaEmailHtml = (firstName: string): string => `<!DOCTYPE html>
       <table width="600" cellpadding="0" cellspacing="0" style="background:#12102b;border-radius:16px;overflow:hidden;max-width:600px;width:100%;border:1px solid rgba(212,175,55,0.3);">
         <tr>
           <td style="background:linear-gradient(135deg,#12102b,#0b0916);padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(212,175,55,0.3);">
-            <p style="color:#D4AF37;font-size:11px;letter-spacing:4px;text-transform:uppercase;margin:0 0 14px;font-family:Arial,sans-serif;">15 · 16 · 17 de Maio · Recife</p>
+            <p style="color:#D4AF37;font-size:11px;letter-spacing:4px;text-transform:uppercase;margin:0 0 14px;font-family:Arial,sans-serif;">12 · 13 · 14 de Junho · Online ao vivo</p>
             <h1 style="color:#ffffff;font-size:30px;margin:0 0 6px;font-weight:normal;font-family:Georgia,serif;">DNA Básico ThetaHealing®</h1>
             <p style="color:#D4AF37;font-size:15px;margin:0;font-style:italic;font-family:Georgia,serif;">Pagamento confirmado ✨</p>
           </td>
@@ -31,19 +31,20 @@ const buildDnaEmailHtml = (firstName: string): string => `<!DOCTYPE html>
           <td style="padding:40px;">
             <p style="color:#f5e8c8;font-size:18px;line-height:1.7;margin:0 0 20px;font-family:Georgia,serif;">Olá, <strong>${firstName}</strong>!</p>
             <p style="color:#cfc4a8;font-size:16px;line-height:1.7;margin:0 0 20px;font-family:Arial,sans-serif;">
-              Sua vaga na imersão <strong>DNA Básico ThetaHealing®</strong> está garantida. Em 3 dias presenciais você recebe a técnica completa e o certificado internacional.
+              Sua vaga na imersão <strong>DNA Básico ThetaHealing®</strong> está garantida. Em 3 dias online ao vivo você recebe a técnica completa e o certificado internacional.
             </p>
             <hr style="border:none;border-top:1px solid rgba(212,175,55,0.15);margin:28px 0;">
             <p style="color:#D4AF37;font-size:14px;font-weight:bold;margin:0 0 12px;font-family:Arial,sans-serif;letter-spacing:1px;">DETALHES DA TURMA</p>
             <p style="color:#cfc4a8;font-size:15px;line-height:1.8;margin:0 0 24px;font-family:Arial,sans-serif;">
-              <strong style="color:#fff;">Datas:</strong> 15, 16 e 17 de Maio de 2026<br>
-              <strong style="color:#fff;">Local:</strong> Recife — Pernambuco<br>
-              <strong style="color:#fff;">Carga horária:</strong> 3 dias de imersão presencial
+              <strong style="color:#fff;">Sexta 12/06:</strong> 19h às 21h<br>
+              <strong style="color:#fff;">Sábado 13/06:</strong> 9h às 19h<br>
+              <strong style="color:#fff;">Domingo 14/06:</strong> 8h às 13h<br>
+              <strong style="color:#fff;">Formato:</strong> 100% Online ao Vivo (link enviado antes do início)
             </p>
             <p style="color:#D4AF37;font-size:14px;font-weight:bold;margin:0 0 12px;font-family:Arial,sans-serif;letter-spacing:1px;">PRÓXIMOS PASSOS</p>
             <ol style="color:#cfc4a8;font-size:14px;line-height:1.8;margin:0 0 28px;padding-left:20px;font-family:Arial,sans-serif;">
-              <li>Bloqueie a agenda: 15, 16 e 17 de Maio</li>
-              <li>Em breve você receberá o link do grupo exclusivo no WhatsApp com endereço completo, horários e o que levar</li>
+              <li>Bloqueie a agenda: Sex 12/06 19h-21h · Sáb 13/06 9h-19h · Dom 14/06 8h-13h</li>
+              <li>Em breve você receberá o link do grupo exclusivo no WhatsApp com link de acesso e materiais</li>
               <li>Qualquer dúvida, fale com a equipe pelo WhatsApp</li>
             </ol>
             <table cellpadding="0" cellspacing="0" style="margin:0 auto 16px;">

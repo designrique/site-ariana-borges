@@ -169,11 +169,11 @@ const DNABasico: React.FC = () => {
           <div className="flex items-center gap-3 mb-8">
             <div className="flex items-center gap-2 bg-goddess-gold/20 border border-goddess-gold/50 px-4 py-2.5 rounded-xl backdrop-blur-sm">
               <CalendarDays size={16} variant="Linear" color="currentColor" className="text-goddess-gold flex-shrink-0" />
-              <span className="text-goddess-gold font-bold text-sm tracking-wide">15, 16 e 17 de Maio</span>
+              <span className="text-goddess-gold font-bold text-sm tracking-wide">12, 13 e 14 de Junho</span>
             </div>
             <div className="flex items-center gap-1.5 text-white/60 text-sm font-medium">
               <Gps size={14} variant="Linear" color="currentColor" />
-              <span>Recife</span>
+              <span>Online ao vivo</span>
             </div>
           </div>
 
@@ -181,7 +181,7 @@ const DNABasico: React.FC = () => {
           <div className="flex flex-wrap gap-3 mb-10">
             <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/25 px-4 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
               <Clock size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
-              <span>3 dias de imersão</span>
+              <span>3 dias online ao vivo</span>
             </div>
             <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/25 px-4 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
               <Medal size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
@@ -552,8 +552,9 @@ const DNABasico: React.FC = () => {
       <div className="max-w-md mx-auto">
         <Card variant="elevated" className="border-4 border-goddess-purple relative overflow-hidden flex flex-col h-full shadow-2xl p-0">
           <div className="bg-gradient-to-r from-goddess-purple to-goddess-purpleDark text-white text-center py-6">
-            <h3 className="font-heading text-4xl font-bold mb-2">Turma Presencial</h3>
-            <p className="text-white/80 text-lg">15, 16 e 17 de Maio</p>
+            <h3 className="font-heading text-4xl font-bold mb-2">Turma Online ao Vivo</h3>
+            <p className="text-white/80 text-lg">12, 13 e 14 de Junho</p>
+            <p className="text-white/70 text-sm mt-1">Sexta 19h–21h · Sábado 9h–19h · Domingo 8h–13h</p>
           </div>
 
           <div className="p-8 text-center flex-grow bg-white">
@@ -564,9 +565,9 @@ const DNABasico: React.FC = () => {
 
             <ul className="text-left mb-10 space-y-5">
               {[
-                "3 dias de Formação Presencial",
+                "3 dias de Formação Online ao Vivo",
                 "Certificado Oficial de Praticante",
-                "Livro Físico + Apostila Oficial",
+                "Apostila Oficial digital + bônus",
                 "BÔNUS: Grupo VIP com aulas mensais ao vivo",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
@@ -635,27 +636,29 @@ const DNABasico: React.FC = () => {
     </Container>
   );
 
-  // === LOCALIZAÇÃO ===
+  // === FORMATO ONLINE ===
   const LocationSection = () => (
-    <>
-      <div className="bg-white py-10 text-center border-t border-gray-100">
-        <p className="font-sans text-gray-500 text-sm font-semibold uppercase tracking-widest mb-1">Local do Curso</p>
-        <p className="font-serif text-xl text-gray-800">Av. Rui Barbosa, 715, sala 403</p>
-        <p className="font-sans text-gray-500 text-sm">Empresaria Rui Barbosa · Recife – PE</p>
+    <div className="bg-white py-12 px-6 text-center border-t border-gray-100">
+      <p className="font-sans text-gray-500 text-xs font-semibold uppercase tracking-widest mb-3">Formato</p>
+      <p className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">Curso 100% Online ao Vivo</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div className="bg-gray-50 rounded-xl p-5">
+          <p className="font-sans text-xs uppercase tracking-widest text-goddess-gold font-bold mb-1">Sexta · 12 Jun</p>
+          <p className="font-serif text-lg text-gray-800">19h — 21h</p>
+        </div>
+        <div className="bg-gray-50 rounded-xl p-5">
+          <p className="font-sans text-xs uppercase tracking-widest text-goddess-gold font-bold mb-1">Sábado · 13 Jun</p>
+          <p className="font-serif text-lg text-gray-800">9h — 19h</p>
+        </div>
+        <div className="bg-gray-50 rounded-xl p-5">
+          <p className="font-sans text-xs uppercase tracking-widest text-goddess-gold font-bold mb-1">Domingo · 14 Jun</p>
+          <p className="font-serif text-lg text-gray-800">8h — 13h</p>
+        </div>
       </div>
-      <div className="w-full h-72 md:h-96">
-        <iframe
-          title="Localização DNA Básico ThetaHealing®"
-          src="https://maps.google.com/maps?q=Av.+Rui+Barbosa,+715,+Recife,+PE,+Brasil&output=embed&hl=pt-BR&z=17"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
-    </>
+      <p className="font-sans text-gray-500 text-sm mt-6 max-w-xl mx-auto">
+        Transmissão ao vivo via plataforma exclusiva. Você recebe o link de acesso após a inscrição.
+      </p>
+    </div>
   );
 
   // === FINAL CTA ===
@@ -699,7 +702,7 @@ const DNABasico: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://arianaborges.com/dna-basico" />
         <meta property="og:title" content="DNA Básico ThetaHealing® | Formação Oficial com Ariana Borges" />
-        <meta property="og:description" content="Imersão de 3 dias para liberar crenças que bloqueiam sua vida. Certificação internacional THInK®. Reprograme padrões inconscientes em relacionamentos, finanças e autoestima." />
+        <meta property="og:description" content="Imersão online ao vivo de 3 dias (12, 13 e 14 de Junho) para liberar crenças que bloqueiam sua vida. Certificação internacional THInK®. Reprograme padrões inconscientes em relacionamentos, finanças e autoestima." />
         <meta property="og:image" content="https://arianaborges.com/og-dna-basico.png" />
         <meta property="og:image:secure_url" content="https://arianaborges.com/og-dna-basico.png" />
         <meta property="og:image:type" content="image/png" />
