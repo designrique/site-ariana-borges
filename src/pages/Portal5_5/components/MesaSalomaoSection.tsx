@@ -34,8 +34,30 @@ const MesaSalomaoSection: React.FC = () => {
                     <p className="font-serif italic text-2xl md:text-3xl text-brand-gold mt-4">
                         Ela reposiciona sua vida.
                     </p>
-                    <div className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/30">
-                        <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
+                    <style>{`
+                        @keyframes mesa-badge-pulse {
+                            0%, 100% {
+                                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.30);
+                                background-color: rgba(212, 175, 55, 0.10);
+                            }
+                            50% {
+                                box-shadow: 0 0 16px 4px rgba(212, 175, 55, 0.18);
+                                background-color: rgba(212, 175, 55, 0.16);
+                            }
+                        }
+                        @keyframes mesa-dot-pulse {
+                            0%, 100% { opacity: 1; transform: scale(1); }
+                            50%      { opacity: 0.55; transform: scale(1.18); }
+                        }
+                    `}</style>
+                    <div
+                        className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full border border-brand-gold/40"
+                        style={{ animation: 'mesa-badge-pulse 2.4s ease-in-out infinite' }}
+                    >
+                        <span
+                            className="w-2 h-2 rounded-full bg-brand-gold"
+                            style={{ animation: 'mesa-dot-pulse 2.4s ease-in-out infinite' }}
+                        ></span>
                         <span className="font-sans text-xs uppercase tracking-widest text-brand-dark/85 font-bold">
                             Gravação enviada às 21h em grupo exclusivo
                         </span>
