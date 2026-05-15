@@ -5,7 +5,6 @@ import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 const levels = [
     {
         icon: LampOn,
-        emoji: '🧠',
         title: 'Mental',
         items: [
             'Quebra de padrões repetitivos',
@@ -15,9 +14,7 @@ const levels = [
     },
     {
         icon: HeartCircle,
-        emoji: '💔',
         title: 'Emocional',
-        subtitle: 'Lua do período',
         items: [
             'Liberação de apegos',
             'Desbloqueio de sentimentos presos',
@@ -26,7 +23,6 @@ const levels = [
     },
     {
         icon: Flash,
-        emoji: '🔥',
         title: 'Espiritual',
         items: [
             'Reorganização de caminhos',
@@ -61,12 +57,9 @@ const ThreeLevelsSection: React.FC = () => {
                                 <div className="w-14 h-14 rounded-full bg-brand-gold/15 flex items-center justify-center mb-6">
                                     <Icon size={28} variant="Linear" color="#D4AF37" />
                                 </div>
-                                <h3 className="font-serif text-2xl text-white mb-1">
-                                    {level.emoji} {level.title}
+                                <h3 className="font-serif text-2xl text-white mb-4">
+                                    {level.title}
                                 </h3>
-                                {level.subtitle && (
-                                    <p className="text-sm text-brand-lilac/70 italic mb-4">{level.subtitle}</p>
-                                )}
                                 <ul className="space-y-3 mt-4">
                                     {level.items.map((item, i) => (
                                         <li key={i} className="flex items-start gap-3 text-gray-300 font-sans text-sm md:text-base">
