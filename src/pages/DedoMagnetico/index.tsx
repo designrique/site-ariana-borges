@@ -37,8 +37,10 @@ const DedoMagnetico: React.FC = () => {
                 <meta property="og:url" content="https://dedomagnetico.arianaborges.com/" />
                 <meta property="og:title" content="Dedo Magnético® | Pare de atrair relações que machucam — Ariana Borges" />
                 <meta property="og:description" content="Uma jornada profunda de autoconhecimento e transformação emocional para você compreender por que continua atraindo determinadas pessoas e aprender a romper padrões que sabotam sua vida amorosa." />
-                <meta property="og:image" content="https://dedomagnetico.arianaborges.com/og-dedo-magnetico.jpg" />
-                <meta property="og:image:alt" content="Dedo Magnético® - Instituto Ariana Borges" />
+                <meta property="og:image" content="https://arianaborges.com/og-dedo-magnetico.jpg" />
+                <meta property="og:image:secure_url" content="https://arianaborges.com/og-dedo-magnetico.jpg" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Dedo Magnético® - Curso online com Ariana Borges" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:site_name" content="Instituto Ariana Borges" />
@@ -48,7 +50,7 @@ const DedoMagnetico: React.FC = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Dedo Magnético® | Pare de atrair relações que machucam" />
                 <meta name="twitter:description" content="Curso online com Ariana Borges para romper padrões e construir relacionamentos conscientes." />
-                <meta name="twitter:image" content="https://dedomagnetico.arianaborges.com/og-dedo-magnetico.jpg" />
+                <meta name="twitter:image" content="https://arianaborges.com/og-dedo-magnetico.jpg" />
 
                 <link rel="canonical" href="https://dedomagnetico.arianaborges.com/" />
             </Helmet>
