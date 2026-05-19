@@ -28,6 +28,18 @@
   status = 200
   force = true
 
+# Rewrites por path — servem o shell HTML correto (meta tags OG estaticas)
+# para crawlers sociais, que nao executam JavaScript.
+[[redirects]]
+  from = "/dedo-magnetico"
+  to = "/dedomagnetico.html"
+  status = 200
+
+[[redirects]]
+  from = "/dedomagnetico"
+  to = "/dedomagnetico.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
