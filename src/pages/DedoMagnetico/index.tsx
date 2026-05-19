@@ -34,7 +34,7 @@ const DedoMagnetico: React.FC = () => {
 
                 {/* Open Graph */}
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://dedomagnetico.arianaborges.com/" />
+                <meta property="og:url" content="https://arianaborges.com/dedo-magnetico" />
                 <meta property="og:title" content="Dedo Magnético® | Pare de atrair relações que machucam — Ariana Borges" />
                 <meta property="og:description" content="Uma jornada profunda de autoconhecimento e transformação emocional para você compreender por que continua atraindo determinadas pessoas e aprender a romper padrões que sabotam sua vida amorosa." />
                 <meta property="og:image" content="https://arianaborges.com/og-dedo-magnetico.jpg" />
@@ -52,7 +52,7 @@ const DedoMagnetico: React.FC = () => {
                 <meta name="twitter:description" content="Curso online com Ariana Borges para romper padrões e construir relacionamentos conscientes." />
                 <meta name="twitter:image" content="https://arianaborges.com/og-dedo-magnetico.jpg" />
 
-                <link rel="canonical" href="https://dedomagnetico.arianaborges.com/" />
+                <link rel="canonical" href="https://arianaborges.com/dedo-magnetico" />
             </Helmet>
 
             <a href="#hero_section" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-gold text-brand-dark px-4 py-2 rounded-full font-bold z-50">
