@@ -23,6 +23,12 @@
   force = true
 
 [[redirects]]
+  from = "https://dedomagnetico.arianaborges.com/"
+  to = "/dedomagnetico.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

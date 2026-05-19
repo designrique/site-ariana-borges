@@ -18,6 +18,7 @@ import ThankYouClubeDoLivro from '@/pages/ClubeDoLivroMulherMaravilha/ThankYou';
 import DNABasico from '@/pages/DNABasico';
 import ThankYouDNABasico from '@/pages/DNABasico/ThankYou';
 import DNABasicoSimple from '@/pages/DNABasicoSimple';
+import DedoMagnetico from '@/pages/DedoMagnetico';
 import Portal5_5 from '@/pages/Portal5_5';
 import ThankYouPortal5_5 from '@/pages/Portal5_5/ThankYou';
 import LinkInBio from '@/pages/LinkInBio';
@@ -215,18 +216,21 @@ const isClubeSubdomain = hostname === 'clubelivromulhermaravilha.arianaborges.co
   || new URLSearchParams(window.location.search).get('_testClube') === '1';
 const isPortal5_5Subdomain = hostname === 'portal.arianaborges.com'
   || new URLSearchParams(window.location.search).get('_testPortal') === '1';
+const isDedoMagneticoSubdomain = hostname === 'dedomagnetico.arianaborges.com'
+  || new URLSearchParams(window.location.search).get('_testDedo') === '1';
 
 function getRootPage() {
   if (isDNASubdomain) return <DNABasico />;
   if (isDeusasSubdomain) return <EncontroDeusas />;
   if (isClubeSubdomain) return <ClubeDoLivroMulherMaravilha />;
   if (isPortal5_5Subdomain) return <Portal5_5 />;
+  if (isDedoMagneticoSubdomain) return <DedoMagnetico />;
   return <Home />;
 }
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5' || location.pathname === '/bio' || location.pathname === '/links';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || isDedoMagneticoSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5' || location.pathname === '/dedo-magnetico' || location.pathname === '/bio' || location.pathname === '/links';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
@@ -256,6 +260,8 @@ const MainContent = () => {
           <Route path="/clubelivromulhermaravilha" element={<ClubeDoLivroMulherMaravilha />} />
           <Route path="/portal-5-5" element={<Portal5_5 />} />
           <Route path="/portal" element={<Portal5_5 />} />
+          <Route path="/dedo-magnetico" element={<DedoMagnetico />} />
+          <Route path="/dedomagnetico" element={<DedoMagnetico />} />
           <Route path="/bio" element={<LinkInBio />} />
           <Route path="/links" element={<LinkInBio />} />
           <Route path="/privacidade" element={<PoliticaPrivacidade />} />

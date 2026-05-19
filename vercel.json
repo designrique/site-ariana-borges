@@ -29,6 +29,16 @@
             "dest": "/clubelivromulhermaravilha.html"
         },
         {
+            "src": "^/$",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "dedomagnetico.arianaborges.com"
+                }
+            ],
+            "dest": "/dedomagnetico.html"
+        },
+        {
             "src": "^/webhook-infinitepay$",
             "dest": "/api/webhook-infinitepay"
         },
