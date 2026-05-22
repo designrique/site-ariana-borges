@@ -96,7 +96,7 @@ const ThankYouDNABasico: React.FC = () => {
                         {status === 'success' && (
                             <>
                                 Bem-vinda ao <strong>DNA Básico ThetaHealing®</strong><br />
-                                <em>12, 13 e 14 de Junho · Online ao vivo</em>
+                                <em>11, 13 e 14 de Junho · Online ao vivo</em>
                             </>
                         )}
                         {status === 'pending' && 'Recebemos seu pedido, mas a InfinitePay ainda não confirmou o pagamento.'}
@@ -119,7 +119,7 @@ const ThankYouDNABasico: React.FC = () => {
                                 <div className="space-y-3 text-white">
                                     <div className="flex items-center gap-3">
                                         <Calendar size={20} variant="Linear" color="currentColor" className="text-[#D4AF37]" />
-                                        <span className="font-sans text-sm">12, 13 e 14 de Junho · 2026</span>
+                                        <span className="font-sans text-sm">11, 13 e 14 de Junho · 2026</span>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <Location size={20} variant="Linear" color="currentColor" className="text-[#D4AF37]" />
@@ -133,7 +133,7 @@ const ThankYouDNABasico: React.FC = () => {
                                 <ul className="space-y-3">
                                     {[
                                         'Verifique seu e-mail com todos os detalhes (local exato, horários, o que levar)',
-                                        'Bloqueie a agenda: Sex 12/06 19h-21h · Sáb 13/06 9h-19h · Dom 14/06 8h-13h',
+                                        'Bloqueie a agenda: Qui 11/06 19h-21h · Sáb 13/06 9h-19h · Dom 14/06 8h-13h',
                                         'Em breve você receberá o link do grupo exclusivo no WhatsApp',
                                         'Prepare-se para 3 dias de transformação profunda',
                                     ].map((step, i) => (

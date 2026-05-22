@@ -36,7 +36,7 @@ const LinkInBio: React.FC = () => {
         },
         ...(showDnaBasico ? [{
             icon: '/bio-icons/dna-basico.webp',
-            title: 'DNA Básico — 12, 13 e 14 de Junho',
+            title: 'DNA Básico — 11, 13 e 14 de Junho',
             subtitle: 'Online ao vivo · Certificação ThetaHealing®',
             href: 'https://dnabasico.arianaborges.com',
             target: '_blank',
