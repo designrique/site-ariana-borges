@@ -11,12 +11,22 @@ const UsersIcon = People;
 // pra disparar tracking server-side e ThankYou page custom (06/05/2026).
 const CHECKOUT_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=G0ABYJwJxu3Iwzk-9EC4rQMMZfddrQ0aJV7HLJPSz5n98mKRISRCdimVTg4lNWVMi9S6AzuofKd_O3w7fcE9kIK2LLMCDiwAC2pupTGAHQ8GZ9HN4MDVB2GSfVmI2zANtD3Wg0m7mOy01u-hvONY4xATiCVPtsxltTxMxupbvu2vxo0zzPif5XmcYHj4-9Ah47YpGmtAc6oFRyE8TrXQFFMMV1TZ6axPchSrQpZeYgUOQRa7f_NrqcFC3M3SQcaRPQCJtcQM9gUnCsAu1qnQmidQXLZ1KJYy-RxX.v1.b51876a5ea49ecd0";
 const COUPON_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=GzoBYBwJ2VnMrTjy0crYxdxYatowzyTqQtn9zH6iEe2E7FoamVXTUxmZPj2wQKVFQdAWtSAP6PDtdrMf-Ho68KFOVpphO4-ksPnDYN7V8k4QfSUHyjA3LNugNzplsARwso3a8l7LM_g6OCCgr8rBmjoWk11vlFgTLn8FYvY_4vR5f2jLfgB4-vtnkfV2ud4lgY4kJ4u6IpNlchC5aJOSTHJss1YjU2G5M6NMhVF48mvf8JFv5cWnUl1yoI6pgorNekDB11WQcJvIgoZojpapUBonUFyWdUcZx5RdyAA.v1.aa58f000e3d9c2ba";
+// Cupom RECONEXAO — link gerado via InfinitePay API com redirect_url + webhook_url DNA (R$98).
+const RECONEXAO_URL = "https://checkout.infinitepay.io/institutoarianaborges?lenc=GzMBYORibkdqS7hEsWTSdj-zH2LROyG7l8J1nh4ApdSiIGgLg8raCS520AMf5Dsf6tTFMIuQ85hbm90dJkPXpNbqfBkNHE2WRo3tAzo8oVDEb-X2B9Zyy-suz9AUQQMKmzzbWmH7fLwdjhpWiOvPmDnQ9N-SyEZfOv5HoiywbciwoIgaTziIeEdHlSgm47lssh7NrQWVGyKqMrDTPjZb3ZCdpvK3_SE1GQ2owpMTDGfzgFRT5IHBTY-lBER5uEiFBikjHKLG7WGwOgwA.v1.129c74d528412b7b";
+
+// Cupons de desconto — codigo digitado (UPPERCASE) -> desconto, preco final e link de checkout.
+const COUPONS: Record<string, { discount: number; finalPrice: number; url: string }> = {
+  ALBANY: { discount: 300, finalPrice: 998, url: COUPON_URL },
+  RECONEXAO: { discount: 1200, finalPrice: 98, url: RECONEXAO_URL },
+};
 
 const DNABasico: React.FC = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [couponInput, setCouponInput] = React.useState('');
 
-  const couponValid = couponInput.trim().toUpperCase() === 'ALBANY';
+  const normalizedCoupon = couponInput.trim().toUpperCase();
+  const activeCoupon = COUPONS[normalizedCoupon] ?? null;
+  const couponValid = activeCoupon !== null;
 
   // M1 — Pixel/CAPI ViewContent on landing mount (deduplicated por session)
   React.useEffect(() => {
@@ -30,8 +40,8 @@ const DNABasico: React.FC = () => {
   };
 
   const proceed = () => {
-    trackDNABasicoInitiateCheckout(couponValid ? 'modal_proceed_with_coupon' : 'modal_proceed_full_price');
-    window.open(couponValid ? COUPON_URL : CHECKOUT_URL, '_blank', 'noopener,noreferrer');
+    trackDNABasicoInitiateCheckout(activeCoupon ? 'modal_proceed_with_coupon' : 'modal_proceed_full_price');
+    window.open(activeCoupon ? activeCoupon.url : CHECKOUT_URL, '_blank', 'noopener,noreferrer');
     setShowModal(false);
   };
 
@@ -88,17 +98,17 @@ const DNABasico: React.FC = () => {
               <span>Valor original</span>
               <span className={couponValid ? 'line-through' : ''}>R$ 1.298</span>
             </div>
-            {couponValid && (
+            {activeCoupon && (
               <div className="flex items-center justify-between text-sm text-green-600 font-semibold mb-2 animate-fade-in">
-                <span>Desconto (cupom ALBANY)</span>
-                <span>- R$ 300</span>
+                <span>Desconto (cupom {normalizedCoupon})</span>
+                <span>- R$ {activeCoupon.discount.toLocaleString('pt-BR')}</span>
               </div>
             )}
             <div className={`flex items-center justify-between font-bold border-t pt-3 mt-1 transition-colors ${
               couponValid ? 'border-green-200 text-green-700 text-xl' : 'border-gray-200 text-gray-800 text-lg'
             }`}>
               <span>Total</span>
-              <span>{couponValid ? 'R$ 998' : 'R$ 1.298'}</span>
+              <span>{activeCoupon ? `R$ ${activeCoupon.finalPrice.toLocaleString('pt-BR')}` : 'R$ 1.298'}</span>
             </div>
             {couponValid && (
               <p className="text-xs text-green-600 mt-2 text-center font-medium">
@@ -112,7 +122,7 @@ const DNABasico: React.FC = () => {
             onClick={proceed}
             className="w-full py-4 rounded-xl font-bold text-base bg-gradient-to-r from-goddess-earth to-goddess-gold text-brand-dark hover:brightness-105 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
           >
-            {couponValid ? 'Ir para pagamento — R$ 998' : 'Ir para pagamento'}
+            {activeCoupon ? `Ir para pagamento — R$ ${activeCoupon.finalPrice.toLocaleString('pt-BR')}` : 'Ir para pagamento'}
           </button>
 
           <button

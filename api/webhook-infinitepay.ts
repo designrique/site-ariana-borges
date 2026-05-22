@@ -10,6 +10,9 @@ const PORTAL_5_5_AMOUNT_CENTS = 19800;
 // (cobre cupom ALBANY com desconto eventual mantendo o produto correto).
 const DNA_BASICO_THRESHOLD_CENTS = 100000;
 const DNA_BASICO_FULL_PRICE_CENTS = 129800;
+// Cupom RECONEXAO — R$98. Valor fixo abaixo do limiar; reconhecido explicitamente
+// para nao cair no fallback "Clube" (e-mail/tracking/grupo de WhatsApp errados).
+const DNA_BASICO_RECONEXAO_CENTS = 9800;
 
 const buildPortal5_5EmailHtml = (firstName: string): string => `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -180,7 +183,7 @@ export default async function handler(req: any, res: any) {
             const name = data.customer?.name || 'cliente';
             const amountCents = typeof data.amount === 'number' ? data.amount : 0;
             const isPortal5_5 = amountCents === PORTAL_5_5_AMOUNT_CENTS;
-            const isDnaBasico = !isPortal5_5 && amountCents >= DNA_BASICO_THRESHOLD_CENTS;
+            const isDnaBasico = !isPortal5_5 && (amountCents >= DNA_BASICO_THRESHOLD_CENTS || amountCents === DNA_BASICO_RECONEXAO_CENTS);
             const value = amountCents
                 ? amountCents / 100
                 : isPortal5_5 ? 198.00 : isDnaBasico ? 1298.00 : 298.00;
