@@ -6,13 +6,15 @@ const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/EAEoS3N7tCWKMO81NY9Uv8';
 const PORTAL_5_5_WHATSAPP_LINK = 'https://chat.whatsapp.com/CMeZf3iVA0QHWHlmBOBBNz';
 const PORTAL_5_5_AMOUNT_CENTS = 19800;
-// DNA Basico: R$ 1.298 cheio. Tickets >= R$1000 sao tratados como DNA Basico
-// (cobre cupom ALBANY com desconto eventual mantendo o produto correto).
+// DNA Basico: R$ 1.298 cheio. Tickets >= R$1000 sao tratados como DNA Basico.
 const DNA_BASICO_THRESHOLD_CENTS = 100000;
 const DNA_BASICO_FULL_PRICE_CENTS = 129800;
-// Cupom RECONEXAO — R$98. Valor fixo abaixo do limiar; reconhecido explicitamente
-// para nao cair no fallback "Clube" (e-mail/tracking/grupo de WhatsApp errados).
-const DNA_BASICO_RECONEXAO_CENTS = 9800;
+// Valores fixos dos cupons DNA Basico abaixo do limiar de R$1.000 — reconhecidos
+// explicitamente para nao cair no fallback "Clube" (e-mail/tracking/grupo errados).
+const DNA_BASICO_COUPON_AMOUNTS_CENTS = new Set([
+  99800, // cupom ALBANY — R$998
+  9800,  // cupom RECONEXAO — R$98
+]);
 
 const buildPortal5_5EmailHtml = (firstName: string): string => `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -183,7 +185,7 @@ export default async function handler(req: any, res: any) {
             const name = data.customer?.name || 'cliente';
             const amountCents = typeof data.amount === 'number' ? data.amount : 0;
             const isPortal5_5 = amountCents === PORTAL_5_5_AMOUNT_CENTS;
-            const isDnaBasico = !isPortal5_5 && (amountCents >= DNA_BASICO_THRESHOLD_CENTS || amountCents === DNA_BASICO_RECONEXAO_CENTS);
+            const isDnaBasico = !isPortal5_5 && (amountCents >= DNA_BASICO_THRESHOLD_CENTS || DNA_BASICO_COUPON_AMOUNTS_CENTS.has(amountCents));
             const value = amountCents
                 ? amountCents / 100
                 : isPortal5_5 ? 198.00 : isDnaBasico ? 1298.00 : 298.00;
