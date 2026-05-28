@@ -14,8 +14,11 @@ import FinalCTASection from './components/FinalCTASection';
 
 const DedoMagnetico: React.FC = () => {
     useEffect(() => {
-        // Injeta apenas o script do widget Hotmart (sem o CSS, que estiliza
-        // o botão verde padrão e conflitaria com o nosso design custom).
+        // Widget popup do Hotmart so no desktop — no mobile o popup e instavel
+        // e o botao navega direto pro checkout (ver FinalCTASection).
+        // Injeta apenas o script (sem o CSS, que estiliza o botao verde padrao
+        // e conflitaria com o nosso design custom).
+        if (!window.matchMedia('(min-width: 769px)').matches) return;
         const scriptId = 'hotmart-checkout-script';
         if (!document.getElementById(scriptId)) {
             const script = document.createElement('script');
