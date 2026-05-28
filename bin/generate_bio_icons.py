@@ -79,6 +79,10 @@ ICONS = [
         "slug": "encontro-deusas",
         "subject": "A crescent moon embraced by feminine flowing lines and floral motifs, with three small stars representing divine feminine wisdom. Sacred goddess emblem with art nouveau elegance.",
     },
+    {
+        "slug": "dedo-magnetico",
+        "subject": "Curved magnetic field lines flowing inward from both sides toward a single radiant heart at the center, with subtle hexagram sacred geometry behind. Symbolizes magnetic feminine attraction in conscious love.",
+    },
 ]
 
 
