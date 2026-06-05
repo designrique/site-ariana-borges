@@ -219,10 +219,10 @@ export default async function handler(req: any, res: any) {
                         action_source: 'website',
                 ...(eventId ? { event_id: eventId } : {}),
                 event_source_url: isPortal5_5
-                  ? 'https://portal.arianaborges.com/obrigado'
+                  ? 'https://arianaborges.com/portal/obrigado'
                   : isDnaBasico
-                    ? 'https://dnabasico.arianaborges.com/obrigado'
-                    : 'https://clubelivromulhermaravilha.arianaborges.com/obrigado',
+                    ? 'https://arianaborges.com/dna-basico/obrigado'
+                    : 'https://arianaborges.com/clube-do-livro/obrigado',
                         user_data: {
                             em: email ? [hashData(email)] : [],
                   ph: phone ? [hashData(phone)] : [],
