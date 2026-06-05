@@ -19,7 +19,7 @@ declare global {
     }
 }
 
-const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/CMeZf3iVA0QHWHlmBOBBNz';
+const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/IJqUIeijDspHXyvIYgVYmn';
 const PORTAL_PRICE = 198;
 
 const ThankYouPortal5_5: React.FC = () => {
