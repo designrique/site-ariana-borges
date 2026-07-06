@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { getCurrentPortal, type PortalInfo } from './_portals';
 
 const PIXEL_ID = process.env.META_PIXEL_ID || '1414964383316703';
 const META_ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
@@ -6,6 +7,7 @@ const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/EAEoS3N7tCWKMO81NY9Uv8';
 const PORTAL_5_5_WHATSAPP_LINK = 'https://chat.whatsapp.com/BNhOSOpZlzl2YHGJeRuI4v';
 const PORTAL_5_5_AMOUNT_CENTS = 19800;
+const MESA_AVULSA_AMOUNT_CENTS = 13000; // Mesa de Salomão avulsa — mesmo grupo/e-mail do portal
 // DNA Basico: R$ 1.298 cheio. Tickets >= R$1000 sao tratados como DNA Basico.
 const DNA_BASICO_THRESHOLD_CENTS = 100000;
 const DNA_BASICO_FULL_PRICE_CENTS = 129800;
@@ -16,12 +18,12 @@ const DNA_BASICO_COUPON_AMOUNTS_CENTS = new Set([
   9800,  // cupom RECONEXAO — R$98
 ]);
 
-const buildPortal5_5EmailHtml = (firstName: string): string => `<!DOCTYPE html>
+const buildPortalEmailHtml = (firstName: string, portal: PortalInfo): string => `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal 5/5 — Pagamento Confirmado</title>
+  <title>${portal.title} — Pagamento Confirmado</title>
 </head>
 <body style="margin:0;padding:0;background-color:#0a0420;font-family:Georgia,serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0420;padding:40px 0;">
@@ -29,8 +31,8 @@ const buildPortal5_5EmailHtml = (firstName: string): string => `<!DOCTYPE html>
       <table width="600" cellpadding="0" cellspacing="0" style="background:#1a0d33;border-radius:16px;overflow:hidden;max-width:600px;width:100%;border:1px solid rgba(212,175,55,0.3);">
         <tr>
           <td style="background:linear-gradient(135deg,#1a0d33,#0a0420);padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(212,175,55,0.2);">
-            <p style="color:#D4AF37;font-size:12px;letter-spacing:4px;text-transform:uppercase;margin:0 0 14px;font-family:Arial,sans-serif;">5 de Maio · 20h · Online</p>
-            <h1 style="color:#ffffff;font-size:30px;margin:0 0 6px;font-weight:normal;font-family:Georgia,serif;">Portal 5/5</h1>
+            <p style="color:#D4AF37;font-size:12px;letter-spacing:4px;text-transform:uppercase;margin:0 0 14px;font-family:Arial,sans-serif;">${portal.displayDate} · ${portal.displayTime} · Online</p>
+            <h1 style="color:#ffffff;font-size:30px;margin:0 0 6px;font-weight:normal;font-family:Georgia,serif;">${portal.title}</h1>
             <p style="color:#D4AF37;font-size:15px;margin:0;font-style:italic;font-family:Georgia,serif;">Pagamento confirmado ✨</p>
           </td>
         </tr>
@@ -62,7 +64,7 @@ const buildPortal5_5EmailHtml = (firstName: string): string => `<!DOCTYPE html>
             <p style="color:#cfc4a8;font-size:14px;line-height:1.7;margin:0 0 6px;font-family:Arial,sans-serif;"><strong style="color:#D4AF37;">Próximos passos:</strong></p>
             <ol style="color:#cfc4a8;font-size:14px;line-height:1.8;margin:0 0 24px;padding-left:20px;font-family:Arial,sans-serif;">
               <li>Entre no grupo agora pelo botão acima</li>
-              <li>Marque na agenda: <strong>5 de Maio às 20h</strong></li>
+              <li>Marque na agenda: <strong>${portal.displayDate} às ${portal.displayTime}</strong></li>
               <li>O link de transmissão será enviado no grupo no dia</li>
             </ol>
             <p style="color:#cfc4a8;font-size:14px;line-height:1.7;margin:0 0 4px;font-family:Georgia,serif;font-style:italic;">Com presença,</p>
@@ -184,8 +186,9 @@ export default async function handler(req: any, res: any) {
             const phone = data.customer?.phone_number || '';
             const name = data.customer?.name || 'cliente';
             const amountCents = typeof data.amount === 'number' ? data.amount : 0;
-            const isPortal5_5 = amountCents === PORTAL_5_5_AMOUNT_CENTS;
+            const isPortal5_5 = amountCents === PORTAL_5_5_AMOUNT_CENTS || amountCents === MESA_AVULSA_AMOUNT_CENTS;
             const isDnaBasico = !isPortal5_5 && (amountCents >= DNA_BASICO_THRESHOLD_CENTS || DNA_BASICO_COUPON_AMOUNTS_CENTS.has(amountCents));
+            const currentPortal = getCurrentPortal();
             const value = amountCents
                 ? amountCents / 100
                 : isPortal5_5 ? 198.00 : isDnaBasico ? 1298.00 : 298.00;
@@ -232,7 +235,7 @@ export default async function handler(req: any, res: any) {
                   currency: 'BRL',
                   value: value.toString(),
                   content_name: isPortal5_5
-                    ? 'Portal 5/5 - Mesa de Salomao + Kundalini'
+                    ? `${currentPortal.title} — Mesa de Salomão + Kundalini AO VIVO`
                     : isDnaBasico
                       ? 'DNA Basico - ThetaHealing'
                       : 'Clube do Livro - A Psicologia da Mulher-Maravilha',
@@ -263,10 +266,10 @@ export default async function handler(req: any, res: any) {
                     sender: { name: 'Instituto Ariana Borges', email: 'contato@arianaborges.com' },
                     to: [{ email, name }],
                     subject: isPortal5_5
-                        ? 'Pagamento confirmado — Portal 5/5 ✨'
+                        ? `Pagamento confirmado — ${currentPortal.title} ✨`
                         : 'Pagamento confirmado — Clube do Livro Mulher Maravilha ✨',
                     htmlContent: isPortal5_5
-                        ? buildPortal5_5EmailHtml(firstName)
+                        ? buildPortalEmailHtml(firstName, currentPortal)
                         : buildEmailHtml(firstName),
                 };
 

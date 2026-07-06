@@ -1,6 +1,6 @@
 import React from 'react';
 import { TickSquare, Calendar, Global, Clock } from 'iconsax-react';
-import { buildInfinitePayCheckoutUrl, PORTAL_PRICE_BRL } from '../checkout';
+import { buildInfinitePayCheckoutUrl, buildMesaCheckoutUrl, PORTAL_PRICE_BRL, MESA_PRICE_BRL } from '../checkout';
 import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
 const includes = [
@@ -12,6 +12,7 @@ const includes = [
 
 const PricingSection: React.FC = () => {
     const checkoutUrl = buildInfinitePayCheckoutUrl();
+    const mesaCheckoutUrl = buildMesaCheckoutUrl();
     const portal = useCurrentPortal();
 
     return (
@@ -86,6 +87,26 @@ const PricingSection: React.FC = () => {
                         <p className="text-center text-xs text-brand-dark/60 mt-4">
                             Pagamento seguro via InfinitePay · Pix, cartão ou parcelamento
                         </p>
+
+                        <div className="mt-8 pt-6 border-t border-brand-dark/10 text-center">
+                            <p className="font-sans text-sm text-brand-dark/70 mb-1">
+                                Só a Mesa de Salomão <span className="text-brand-dark/50">(gravação)</span>
+                            </p>
+                            <div className="mb-3">
+                                <span className="text-sm font-sans align-top mr-0.5">R$</span>
+                                <span className="text-4xl font-bold font-sans text-brand-dark leading-none">
+                                    {MESA_PRICE_BRL}
+                                </span>
+                            </div>
+                            <a
+                                href={mesaCheckoutUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block px-6 py-3 rounded-xl font-bold text-sm border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300"
+                            >
+                                Quero só a Mesa de Salomão
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

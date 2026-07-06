@@ -6,34 +6,12 @@
  * Auth: Authorization: Bearer ${CRON_SECRET}
  */
 
+import { findPortalForDate, findNextPortal, type PortalInfo as Portal } from './_portals';
+
 const BREVO_SMTP_API = 'https://api.brevo.com/v3/smtp/email';
 const TZ = 'America/Recife';
 
-interface Portal {
-    id: string;
-    date: string;
-    displayDate: string;
-    displayTime: string;
-    title: string;
-    subtitle: string;
-    tagline: string;
-}
-
-// Inline pra evitar problemas de import JSON em serverless build
-const PORTALS: Portal[] = [
-    { id: '01-01', date: '2026-01-01', displayDate: '1 de Janeiro', displayTime: '20h', title: 'Portal 1/1', subtitle: 'Início + manifestação + abertura de ano', tagline: 'O ano em que tudo recomeça pede sua decisão.' },
-    { id: '02-02', date: '2026-02-02', displayDate: '2 de Fevereiro', displayTime: '20h', title: 'Portal 2/2', subtitle: 'Intuição + relações + equilíbrio emocional', tagline: 'O primeiro número espiritual te chama de volta para casa.' },
-    { id: '03-03', date: '2026-03-03', displayDate: '3 de Março', displayTime: '20h', title: 'Portal 3/3', subtitle: 'Voz + criatividade + verdade que cura', tagline: 'Diga em voz alta o que sua alma vem sussurrando.' },
-    { id: '04-04', date: '2026-04-04', displayDate: '4 de Abril', displayTime: '20h', title: 'Portal 4/4', subtitle: 'Estrutura + ancoragem + materialização', tagline: 'O céu desce e pede chão para acontecer.' },
-    { id: '05-05', date: '2026-05-05', displayDate: '5 de Maio', displayTime: '20h', title: 'Portal 5/5', subtitle: 'Mudança + liberdade + quebra de padrões', tagline: 'A vida pede que você saia do lugar onde já não cabe.' },
-    { id: '06-06', date: '2026-06-06', displayDate: '6 de Junho', displayTime: '20h', title: 'Portal 6/6', subtitle: 'Amor + harmonia + cura do feminino', tagline: 'O amor verdadeiro começa pela maneira como você se trata.' },
-    { id: '07-07', date: '2026-07-07', displayDate: '7 de Julho', displayTime: '20h', title: 'Portal 7/7', subtitle: 'Sabedoria + introspecção + canal espiritual', tagline: 'O silêncio é onde sua alma fala mais alto.' },
-    { id: '08-08', date: '2026-08-08', displayDate: '8 de Agosto', displayTime: '20h', title: 'Portal 8/8', subtitle: 'Prosperidade + poder pessoal + Portal do Leão', tagline: 'A abundância encontra quem se reconhece como soberano.' },
-    { id: '09-09', date: '2026-09-09', displayDate: '9 de Setembro', displayTime: '20h', title: 'Portal 9/9', subtitle: 'Encerramento + perdão + libertação kármica', tagline: 'Para o novo nascer, o velho precisa ser sepultado com honra.' },
-    { id: '10-10', date: '2026-10-10', displayDate: '10 de Outubro', displayTime: '20h', title: 'Portal 10/10', subtitle: 'Virada + destino + Roda da Fortuna', tagline: 'O destino se move quando você toma a sua posição.' },
-    { id: '11-11', date: '2026-11-11', displayDate: '11 de Novembro', displayTime: '20h', title: 'Portal 11/11', subtitle: 'Despertar + iluminação + propósito de alma', tagline: 'O céu te chama pelo nome que só sua alma conhece.' },
-    { id: '12-12', date: '2026-12-12', displayDate: '12 de Dezembro', displayTime: '20h', title: 'Portal 12/12', subtitle: 'Integração + síntese + último portal do ano', tagline: 'O último portal do ano colhe tudo o que você plantou.' },
-];
+// PORTALS, findPortalForDate e findNextPortal agora vêm de ./_portals (fonte única serverless).
 
 const env = (k: string, fallback = ''): string => (process.env[k] ?? fallback).trim();
 
@@ -46,15 +24,6 @@ function dateInTz(tz: string, offsetDays = 0): string {
     const m = parts.find(p => p.type === 'month')!.value;
     const day = parts.find(p => p.type === 'day')!.value;
     return `${y}-${m}-${day}`;
-}
-
-function findPortalForDate(dateStr: string): Portal | null {
-    return PORTALS.find(p => p.date === dateStr) ?? null;
-}
-
-function findNextPortal(afterDate: string): Portal | null {
-    const upcoming = PORTALS.filter(p => p.date > afterDate);
-    return upcoming[0] ?? null;
 }
 
 function buildEmailHtml(closedPortal: Portal, nextPortal: Portal | null): string {
