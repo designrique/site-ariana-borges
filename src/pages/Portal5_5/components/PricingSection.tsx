@@ -102,7 +102,7 @@ const PricingSection: React.FC = () => {
                                 href={mesaCheckoutUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block px-6 py-3 rounded-xl font-bold text-sm border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300"
+                                className="inline-block px-6 py-3 rounded-xl font-bold text-sm bg-[#C2410C] text-white hover:bg-[#9A3412] transition-all duration-300 shadow-lg hover:shadow-xl"
                             >
                                 Quero só a Mesa de Salomão
                             </a>
