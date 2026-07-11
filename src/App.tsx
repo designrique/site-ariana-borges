@@ -25,6 +25,7 @@ import LinkInBio from '@/pages/LinkInBio';
 import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
 import TermosDeUso from '@/pages/TermosDeUso';
 import Footer from '@/components/Footer';
+import CookieConsent from '@/components/CookieConsent';
 
 import { WhatsAppProvider, WhatsAppFloatingWidget, useWhatsApp } from '@/components/WhatsAppButton';
 import { HambergerMenu, CloseSquare, ArrowDown2 } from 'iconsax-react';
@@ -270,6 +271,7 @@ const MainContent = () => {
       </div>
       <Footer />
       {!isLandingPage && <WhatsAppFloatingWidget />}
+      <CookieConsent />
     </div>
   );
 };
