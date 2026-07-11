@@ -1,6 +1,7 @@
 declare global {
     interface Window {
         fbq?: (...args: unknown[]) => void;
+        gtag?: (...args: unknown[]) => void;
     }
 }
 
@@ -103,6 +104,33 @@ export const trackBrowserMetaEvent = (
     window.fbq?.('track', eventName, customData);
 };
 
+// Espelho GA4: cada conversao Meta dispara o evento e-commerce equivalente no
+// GA4 (gtag). Chamado JUNTO com o Meta, dentro de cada funcao, para herdar o
+// mesmo dedup (sessionStorage). Sem gtag disponivel (ex: consent negado), no-op.
+type GA4EventName = 'view_item' | 'generate_lead' | 'begin_checkout' | 'purchase';
+
+const trackGA4Event = (
+    eventName: GA4EventName,
+    customData: Record<string, string | number | boolean>,
+    extra?: Record<string, string | number>,
+): void => {
+    if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+        return;
+    }
+    const value = typeof customData.value === 'number' ? customData.value : undefined;
+    window.gtag('event', eventName, {
+        currency: customData.currency,
+        value,
+        items: [{
+            item_name: customData.content_name,
+            item_category: customData.content_category,
+            price: value,
+            quantity: 1,
+        }],
+        ...extra,
+    });
+};
+
 export const postMetaServerEvent = async ({
     eventName,
     eventId,
@@ -137,6 +165,7 @@ export const trackClubeViewContent = (): void => {
     const customData = defaultCustomData('landing_view');
 
     trackBrowserMetaEvent('ViewContent', customData, eventId);
+    trackGA4Event('view_item', customData);
     void postMetaServerEvent({
         eventName: 'ViewContent',
         eventId,
@@ -154,6 +183,7 @@ export const trackClubeLead = (source: string): void => {
     const browserEventFired = hasBrowserPixel();
 
     trackBrowserMetaEvent('Lead', customData, eventId);
+    trackGA4Event('generate_lead', customData);
     void postMetaServerEvent({
         eventName: 'Lead',
         eventId,
@@ -178,6 +208,7 @@ export const trackClubeInitiateCheckout = (source: string): void => {
     const customData = defaultCustomData(source);
 
     trackBrowserMetaEvent('InitiateCheckout', customData, eventId);
+    trackGA4Event('begin_checkout', customData);
     void postMetaServerEvent({
         eventName: 'InitiateCheckout',
         eventId,
@@ -207,6 +238,7 @@ export const trackClubePurchase = (
     };
 
     trackBrowserMetaEvent('Purchase', customData, eventId);
+    trackGA4Event('purchase', customData, eventId ? { transaction_id: eventId } : undefined);
 
     if (purchaseSessionKey && typeof sessionStorage !== 'undefined') {
         sessionStorage.setItem(purchaseSessionKey, '1');
@@ -243,6 +275,7 @@ export const trackDNABasicoViewContent = (): void => {
     const eventId = createEventId('dna-basico-view-content');
     const customData = dnaCustomData('landing_view');
     trackBrowserMetaEvent('ViewContent', customData, eventId);
+    trackGA4Event('view_item', customData);
     void postMetaServerEvent({ eventName: 'ViewContent', eventId, customData, userData: getEMQUserData() });
     if (typeof sessionStorage !== 'undefined') {
         sessionStorage.setItem(DNA_VIEW_CONTENT_SESSION_KEY, '1');
@@ -253,6 +286,7 @@ export const trackDNABasicoInitiateCheckout = (source: string): void => {
     const eventId = createEventId('dna-basico-initiate-checkout');
     const customData = dnaCustomData(source);
     trackBrowserMetaEvent('InitiateCheckout', customData, eventId);
+    trackGA4Event('begin_checkout', customData);
     void postMetaServerEvent({ eventName: 'InitiateCheckout', eventId, customData, userData: getEMQUserData() });
 };
 
@@ -278,6 +312,7 @@ export const trackDNABasicoPurchase = (
     };
 
     trackBrowserMetaEvent('Purchase', customData, eventId);
+    trackGA4Event('purchase', customData, eventId ? { transaction_id: eventId } : undefined);
 
     if (purchaseSessionKey && typeof sessionStorage !== 'undefined') {
         sessionStorage.setItem(purchaseSessionKey, '1');

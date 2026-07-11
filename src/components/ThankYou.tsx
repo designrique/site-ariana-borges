@@ -14,6 +14,7 @@ interface PaymentStatus {
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -35,14 +36,24 @@ const ThankYou: React.FC = () => {
 
   useEffect(() => {
     if ((status === 'success' || (status === 'none' && !searchParams.get('slug'))) && !pixelFired) {
+      const purchaseValue = paymentData ? paymentData.paid_amount / 100 : 555.00;
+      const txId = searchParams.get('transaction_nsu') || undefined;
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Purchase', {
-          value: paymentData ? paymentData.paid_amount / 100 : 555.00,
+          value: purchaseValue,
           currency: 'BRL',
           content_name: 'Mesa de Salomão'
         });
-        setPixelFired(true);
       }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'purchase', {
+          currency: 'BRL',
+          value: purchaseValue,
+          transaction_id: txId,
+          items: [{ item_name: 'Mesa de Salomão', item_category: 'energy_portal', price: purchaseValue, quantity: 1 }],
+        });
+      }
+      setPixelFired(true);
     }
   }, [status, paymentData, pixelFired, searchParams]);
 

@@ -28,6 +28,17 @@ const DedoMagnetico: React.FC = () => {
         }
     }, []);
 
+    // view_item no GA4 (topo do funil). begin_checkout e purchase vem da
+    // integracao GA4 da Hotmart, nao daqui — nao duplicar.
+    useEffect(() => {
+        if (typeof window.gtag !== 'function') return;
+        window.gtag('event', 'view_item', {
+            currency: 'BRL',
+            value: 97,
+            items: [{ item_id: 'N96775692V', item_name: 'Dedo Magnético', price: 97, quantity: 1 }],
+        });
+    }, []);
+
     return (
         <div className="font-sans antialiased text-brand-dark">
             <Helmet>

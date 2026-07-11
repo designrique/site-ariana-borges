@@ -16,6 +16,7 @@ interface PaymentStatus {
 declare global {
     interface Window {
         fbq?: (...args: unknown[]) => void;
+        gtag?: (...args: unknown[]) => void;
     }
 }
 
@@ -42,15 +43,25 @@ const ThankYouPortal5_5: React.FC = () => {
     useEffect(() => {
         const noParams = !searchParams.get('slug');
         if ((status === 'success' || (status === 'none' && noParams)) && !pixelFired) {
+            const purchaseValue = paymentData ? paymentData.paid_amount / 100 : PORTAL_PRICE;
+            const txId = searchParams.get('transaction_nsu') || undefined;
             if (typeof window.fbq === 'function') {
                 window.fbq('track', 'Purchase', {
-                    value: paymentData ? paymentData.paid_amount / 100 : PORTAL_PRICE,
+                    value: purchaseValue,
                     currency: 'BRL',
                     content_name: `${portal.title} — Mesa de Salomão + Kundalini AO VIVO`,
                     content_category: 'energy_portal',
                 });
-                setPixelFired(true);
             }
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', 'purchase', {
+                    currency: 'BRL',
+                    value: purchaseValue,
+                    transaction_id: txId,
+                    items: [{ item_name: `${portal.title} — Portal 5.5`, item_category: 'energy_portal', price: purchaseValue, quantity: 1 }],
+                });
+            }
+            setPixelFired(true);
         }
     }, [status, paymentData, pixelFired, searchParams]);
 
