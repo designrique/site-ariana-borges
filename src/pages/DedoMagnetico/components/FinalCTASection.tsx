@@ -1,6 +1,12 @@
 import React, { useMemo } from 'react';
 import { ArrowDown2 } from 'iconsax-react';
 
+declare global {
+    interface Window {
+        gtag?: (...args: unknown[]) => void;
+    }
+}
+
 // Monta o link do checkout carregando a origem REAL da visita: repassa as UTMs
 // de entrada (a Hotmart as lê nativamente) e consolida um `sck` — parametro
 // nativo da Hotmart, max 30 chars — para o Dashboard de Origem de Vendas
@@ -35,6 +41,17 @@ const FinalCTASection: React.FC = () => {
     const checkoutUrl = useMemo(buildCheckoutUrl, []);
 
     const handleCheckoutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // Conversao mensuravel na LP: o clique que abre o checkout = begin_checkout
+        // (key event no GA4). A compra em si acontece na Hotmart, fora do dominio —
+        // o `purchase` real vem da integracao GA4 da Hotmart, nao daqui.
+        // gtag usa sendBeacon por padrao, entao o evento sobrevive a navegacao no mobile.
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', 'begin_checkout', {
+                currency: 'BRL',
+                value: 97,
+                items: [{ item_id: 'N96775692V', item_name: 'Dedo Magnetico' }],
+            });
+        }
         // Desktop: o widget Hotmart intercepta e abre o popup — previne a
         // navegacao dupla. Mobile: o popup do widget e instavel, entao deixa
         // o link navegar direto pro checkout (confiavel em qualquer device).
