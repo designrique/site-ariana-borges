@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ArrowDown2 } from 'iconsax-react';
 
+// Monta o link do checkout carregando a origem REAL da visita: repassa as UTMs
+// de entrada (a Hotmart as lê nativamente) e consolida um `sck` — parametro
+// nativo da Hotmart, max 30 chars — para o Dashboard de Origem de Vendas
+// distinguir tráfego pago de orgânico. Sem isso, nao da pra saber se a venda
+// veio do anuncio. Origem sem utm_source => "direto".
+const buildCheckoutUrl = (): string => {
+    const base = 'https://pay.hotmart.com/N96775692V';
+    const params = new URLSearchParams({ checkoutMode: '2' });
+    const entry = new URLSearchParams(
+        typeof window !== 'undefined' ? window.location.search : '',
+    );
+
+    (['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const)
+        .forEach((k) => {
+            const v = entry.get(k);
+            if (v) params.set(k, v);
+        });
+
+    const src = entry.get('utm_source');
+    const sck = (src
+        ? [src, entry.get('utm_medium'), entry.get('utm_campaign')].filter(Boolean).join('-')
+        : 'direto'
+    ).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
+    params.set('sck', sck);
+
+    return `${base}?${params.toString()}`;
+};
+
 const FinalCTASection: React.FC = () => {
+    // useMemo com [] => href estável (calculado uma vez no mount), pro widget
+    // Hotmart nao ver o href mudar entre o init e o clique.
+    const checkoutUrl = useMemo(buildCheckoutUrl, []);
+
     const handleCheckoutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         // Desktop: o widget Hotmart intercepta e abre o popup — previne a
         // navegacao dupla. Mobile: o popup do widget e instavel, entao deixa
@@ -29,7 +61,7 @@ const FinalCTASection: React.FC = () => {
                 </p>
 
                 <a
-                    href="https://pay.hotmart.com/N96775692V?checkoutMode=2"
+                    href={checkoutUrl}
                     onClick={handleCheckoutClick}
                     className="hotmart-fb hotmart__button-checkout inline-flex items-center gap-2 bg-brand-dark text-white font-sans font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-transform duration-300 text-base md:text-lg cursor-pointer"
                 >
