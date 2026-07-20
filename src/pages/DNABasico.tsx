@@ -183,7 +183,7 @@ const DNABasico: React.FC = () => {
             </div>
             <div className="flex items-center gap-1.5 text-white/60 text-sm font-medium">
               <Gps size={14} variant="Linear" color="currentColor" />
-              <span>Online ao vivo</span>
+              <span>Presencial</span>
             </div>
           </div>
 
@@ -191,7 +191,7 @@ const DNABasico: React.FC = () => {
           <div className="flex flex-wrap gap-3 mb-10">
             <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/25 px-4 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
               <Clock size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
-              <span>3 dias online ao vivo</span>
+              <span>3 dias presenciais</span>
             </div>
             <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/25 px-4 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
               <Medal size={16} variant="Linear" color="currentColor" className="text-goddess-gold" />
@@ -562,7 +562,7 @@ const DNABasico: React.FC = () => {
       <div className="max-w-md mx-auto">
         <Card variant="elevated" className="border-4 border-goddess-purple relative overflow-hidden flex flex-col h-full shadow-2xl p-0">
           <div className="bg-gradient-to-r from-goddess-purple to-goddess-purpleDark text-white text-center py-6">
-            <h3 className="font-heading text-4xl font-bold mb-2">Turma Online ao Vivo</h3>
+            <h3 className="font-heading text-4xl font-bold mb-2">Turma Presencial</h3>
             <p className="text-white/80 text-lg">7, 8 e 9 de Agosto</p>
             <p className="text-white/70 text-sm mt-1">Sexta 19h–21h · Sábado 9h–19h · Domingo 8h–13h</p>
           </div>
@@ -575,7 +575,7 @@ const DNABasico: React.FC = () => {
 
             <ul className="text-left mb-10 space-y-5">
               {[
-                "3 dias de Formação Online ao Vivo",
+                "3 dias de Formação Presencial",
                 "Certificado Oficial de Praticante",
                 "Apostila Oficial digital + bônus",
                 "BÔNUS: Grupo VIP com aulas mensais ao vivo",
@@ -646,11 +646,11 @@ const DNABasico: React.FC = () => {
     </Container>
   );
 
-  // === FORMATO ONLINE ===
+  // === FORMATO PRESENCIAL ===
   const LocationSection = () => (
     <div className="bg-white py-12 px-6 text-center border-t border-gray-100">
       <p className="font-sans text-gray-500 text-xs font-semibold uppercase tracking-widest mb-3">Formato</p>
-      <p className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">Curso 100% Online ao Vivo</p>
+      <p className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">Curso 100% Presencial</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
         <div className="bg-gray-50 rounded-xl p-5">
           <p className="font-sans text-xs uppercase tracking-widest text-goddess-gold font-bold mb-1">Sexta · 7 Ago</p>
@@ -712,7 +712,7 @@ const DNABasico: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://arianaborges.com/dna-basico" />
         <meta property="og:title" content="DNA Básico ThetaHealing® | Formação Oficial com Ariana Borges" />
-        <meta property="og:description" content="Imersão online ao vivo de 3 dias (7, 8 e 9 de Agosto) para liberar crenças que bloqueiam sua vida. Certificação internacional THInK®. Reprograme padrões inconscientes em relacionamentos, finanças e autoestima." />
+        <meta property="og:description" content="Imersão presencial de 3 dias (7, 8 e 9 de Agosto) para liberar crenças que bloqueiam sua vida. Certificação internacional THInK®. Reprograme padrões inconscientes em relacionamentos, finanças e autoestima." />
         <meta property="og:image" content="https://arianaborges.com/og-dna-basico.png" />
         <meta property="og:image:secure_url" content="https://arianaborges.com/og-dna-basico.png" />
         <meta property="og:image:type" content="image/png" />

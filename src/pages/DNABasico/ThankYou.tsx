@@ -96,7 +96,7 @@ const ThankYouDNABasico: React.FC = () => {
                         {status === 'success' && (
                             <>
                                 Bem-vinda ao <strong>DNA Básico ThetaHealing®</strong><br />
-                                <em>7, 8 e 9 de Agosto · Online ao vivo</em>
+                                <em>7, 8 e 9 de Agosto · Presencial</em>
                             </>
                         )}
                         {status === 'pending' && 'Recebemos seu pedido, mas a InfinitePay ainda não confirmou o pagamento.'}
@@ -123,7 +123,7 @@ const ThankYouDNABasico: React.FC = () => {
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <Location size={20} variant="Linear" color="currentColor" className="text-[#D4AF37]" />
-                                        <span className="font-sans text-sm">100% Online ao Vivo</span>
+                                        <span className="font-sans text-sm">100% Presencial</span>
                                     </div>
                                 </div>
                             </div>
