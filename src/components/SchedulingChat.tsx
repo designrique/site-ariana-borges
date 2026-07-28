@@ -7,8 +7,11 @@ import {
     validatePhone,
     validateEmail,
     formatPhone,
-    SERVICE_TYPES
+    SERVICE_TYPES,
+    AGENDA_HINT
 } from '../services/schedulingService';
+
+const formatBRL = (cents: number) => (cents / 100).toFixed(2).replace('.', ',');
 import { createCheckoutLink } from '../services/infinityPayService';
 import { useQuery } from '@tanstack/react-query';
 import { getSiteSettings } from '@/lib/cms';
@@ -87,7 +90,7 @@ const SchedulingChat: React.FC = () => {
                 setMessages([{
                     id: 'welcome_back',
                     role: 'assistant',
-                    content: `Pagamento confirmado! 🎉\n\nOlá de volta, ${parsedData.name.split(' ')[0]}.\n\nAgora que está tudo certo, quando você gostaria de agendar seu atendimento?`
+                    content: `Pagamento confirmado! 🎉\n\nOlá de volta, ${parsedData.name.split(' ')[0]}.\n\nAgora que está tudo certo, quando você gostaria de agendar seu atendimento?\n\n${AGENDA_HINT}`
                 }]);
 
                 // Try to restore selected service if possible, or default to a generic one/null?
@@ -273,7 +276,7 @@ const SchedulingChat: React.FC = () => {
         // Se for "Outro/Dúvida" ou preço for 0, pula pagamento
         if (service.price === 0) {
             setTimeout(() => {
-                addMessage('assistant', `Sem problemas! Vamos conversar melhor. 💜\n\nQuando você gostaria de agendar?\n\n(Escreva de forma natural, ex: "Amanhã à tarde")`);
+                addMessage('assistant', `Sem problemas! Vamos conversar melhor. 💜\n\nQuando você gostaria de agendar?\n\n${AGENDA_HINT}`);
                 setStep('timeframe');
             }, 500);
             return;
@@ -403,7 +406,7 @@ const SchedulingChat: React.FC = () => {
     const handleCancelBooking = () => {
         addMessage('user', 'Escolher outro horário');
         setTimeout(() => {
-            addMessage('assistant', 'Sem problemas! 🙏\n\nDigite outro horário de sua preferência:');
+            addMessage('assistant', `Sem problemas! 🙏\n\nDigite outro horário de sua preferência:\n\n${AGENDA_HINT}`);
             setStep('timeframe');
         }, 300);
     };
@@ -439,7 +442,7 @@ const SchedulingChat: React.FC = () => {
             case 'name': return 'Digite seu nome completo...';
             case 'phone': return 'Digite seu telefone com DDD...';
             case 'email': return 'Digite seu e-mail...';
-            case 'timeframe': return 'Ex: Segunda às 14h, Amanhã de manhã...';
+            case 'timeframe': return 'Ex: Terça às 9h, Quarta às 15h...';
             default: return '';
         }
     };
@@ -524,7 +527,9 @@ const SchedulingChat: React.FC = () => {
                     {/* Service Selection */}
                     {step === 'service' && (
                         <div className="space-y-2">
-                            {SERVICE_TYPES.map((service) => (
+                            {SERVICE_TYPES.map((service) => {
+                                const promoFrom = 'promoFrom' in service ? service.promoFrom : undefined;
+                                return (
                                 <button
                                     key={service.id}
                                     onClick={() => handleServiceSelect(service)}
@@ -534,15 +539,30 @@ const SchedulingChat: React.FC = () => {
                                         <MagicStar size={18} variant="Linear" color="currentColor" className="text-brand-lilacDark group-hover:text-brand-gold" />
                                     </div>
                                     <div>
-                                        <span className="font-sans text-sm text-brand-dark font-medium block">{service.name}</span>
+                                        <span className="font-sans text-sm text-brand-dark font-medium flex items-center gap-2">
+                                            {service.name}
+                                            {promoFrom && (
+                                                <span className="text-[10px] font-bold uppercase tracking-wider bg-brand-gold/20 text-brand-goldDark px-1.5 py-0.5 rounded">
+                                                    50% off
+                                                </span>
+                                            )}
+                                        </span>
                                         <span className="font-sans text-xs text-gray-500">
-                                            {service.price > 0 && !('variants' in service)
-                                                ? `R$ ${(service.price / 100).toFixed(2).replace('.', ',')} • ${service.description}`
+                                            {promoFrom ? (
+                                                <>
+                                                    <span className="line-through text-gray-400">R$ {formatBRL(promoFrom)}</span>
+                                                    {' '}
+                                                    <span className="text-brand-goldDark font-bold">R$ {formatBRL(service.price)}</span>
+                                                    {` • ${service.description}`}
+                                                </>
+                                            ) : service.price > 0 && !('variants' in service)
+                                                ? `R$ ${formatBRL(service.price)} • ${service.description}`
                                                 : service.description}
                                         </span>
                                     </div>
                                 </button>
-                            ))}
+                                );
+                            })}
                         </div>
                     )}
 
