@@ -51,6 +51,14 @@
             "dest": "/dedomagnetico.html"
         },
         {
+            "src": "^/kundalini-natal/?$",
+            "dest": "/kundalininatal.html"
+        },
+        {
+            "src": "^/kundalininatal/?$",
+            "dest": "/kundalininatal.html"
+        },
+        {
             "handle": "filesystem"
         },
         {

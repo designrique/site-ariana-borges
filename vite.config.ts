@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
           encontrodeusas: './encontrodeusas.html',
           clubelivromulhermaravilha: './clubelivromulhermaravilha.html',
           dedomagnetico: './dedomagnetico.html',
+          kundalininatal: './kundalininatal.html',
         },
       },
     },

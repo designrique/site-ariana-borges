@@ -245,6 +245,26 @@ export const trackClubePurchase = (
     }
 };
 
+// === Generico ===
+// Landings novas usam isto em vez de duplicar um bloco de tracking por produto.
+// dedupKey (sessionStorage) evita disparo duplo em re-render do React.
+export const trackProductEvent = (
+    metaEvent: MetaEventName,
+    ga4Event: GA4EventName,
+    customData: Record<string, string | number | boolean>,
+    dedupKey?: string,
+): void => {
+    if (dedupKey && typeof sessionStorage !== 'undefined') {
+        if (sessionStorage.getItem(dedupKey) === '1') return;
+        sessionStorage.setItem(dedupKey, '1');
+    }
+
+    const eventId = createEventId(metaEvent.toLowerCase());
+    trackBrowserMetaEvent(metaEvent, customData, eventId);
+    trackGA4Event(ga4Event, customData);
+    void postMetaServerEvent({ eventName: metaEvent, eventId, customData, userData: getEMQUserData() });
+};
+
 // === DNA Basico ===
 
 const dnaCustomData = (source: string) => ({
