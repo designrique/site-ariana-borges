@@ -219,8 +219,8 @@ const LeituraAura: React.FC = () => (
 const roteiro = [
     { hora: '19h', titulo: 'Abertura do círculo', texto: 'Chegada, acolhimento e alinhamento do campo do grupo. Você chega, respira e para.' },
     { hora: '19h30', titulo: 'Leitura de Aura do Beija-Flor', texto: `A leitura individual de cada uma das ${VAGAS_TOTAIS} participantes, conduzida por Ariana.` },
-    { hora: '20h30', titulo: 'Ativação da Kundalini', texto: 'Respiração, som e condução energética para a energia subir pelos centros — no seu tempo.' },
-    { hora: '21h30', titulo: 'Integração', texto: 'Água, silêncio e partilha. O momento em que o que subiu encontra lugar para ficar.' },
+    { hora: '20h', titulo: 'Ativação da Kundalini', texto: 'Respiração, som e condução energética para a energia subir pelos centros — no seu tempo.' },
+    { hora: '21h', titulo: 'Integração', texto: 'Água, silêncio e partilha. O momento em que o que subiu encontra lugar para ficar.' },
 ];
 
 const ComoFunciona: React.FC = () => (
