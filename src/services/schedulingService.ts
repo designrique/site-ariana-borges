@@ -145,6 +145,18 @@ export const formatPhone = (phone: string): string => {
 };
 
 /**
+ * Janela de atendimento oferecida no chat.
+ * ATENÇÃO: precisa bater com o prompt dos nós "IA - Converter Texto para Data" e
+ * "IA - Verificar Disponibilidade" do workflow n8n EwpbF19wrtZ1EEdU. Se divergir,
+ * o chat oferece um horário que o n8n recusa na confirmação.
+ */
+export const HORARIOS_DISPONIVEIS = ['7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h'];
+export const DIAS_DISPONIVEIS = 'segunda, terça ou quarta';
+
+export const AGENDA_HINT =
+    `Atendo ${DIAS_DISPONIVEIS}, nos horários:\n${HORARIOS_DISPONIVEIS.join(' · ')}\n\nA confirmação na agenda é automática.`;
+
+/**
  * Service types available for booking
  */
 export const SERVICE_TYPES = [
@@ -159,7 +171,8 @@ export const SERVICE_TYPES = [
             { id: 'terapia-10', name: 'Pacote 10 Sessões', description: 'R$ 229,80 por sessão', price: 229800 }
         ]
     },
-    { id: 'taro-salomao', name: 'Tarô de Salomão', description: 'Leitura oracular (45 min)', price: 15000 },
+    // Promoção do mês: 50% off, só online. promoFrom = preço cheio, exibido riscado.
+    { id: 'taro-salomao', name: 'Tarô de Salomão', description: 'Promoção do mês · online (45 min)', price: 7500, promoFrom: 15000 },
     { id: 'mesa-salomao', name: 'Mesa de Salomão', description: 'Cura vibracional (1h)', price: 15000 },
     { id: 'leitura-aura', name: 'Leitura de Aura', description: 'Método Essence (1h)', price: 15000 },
     { id: 'registros-akashicos', name: 'Registros Akáshicos', description: 'Leitura de registros (1h)', price: 15000 },
