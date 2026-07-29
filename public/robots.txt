@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 # GEO Optimization - Explicitly Allow AI Bots
 User-agent: GPTBot
