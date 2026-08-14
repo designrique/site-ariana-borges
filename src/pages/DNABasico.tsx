@@ -666,7 +666,7 @@ const DNABasico: React.FC = () => {
         </div>
       </div>
       <p className="font-sans text-gray-500 text-sm mt-6 max-w-xl mx-auto">
-        Transmissão ao vivo via plataforma exclusiva. Você recebe o link de acesso após a inscrição.
+        Imersão presencial em turma reduzida. O endereço e as orientações são enviados por e-mail após a inscrição.
       </p>
     </div>
   );
