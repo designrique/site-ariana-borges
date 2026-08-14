@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
           clubelivromulhermaravilha: './clubelivromulhermaravilha.html',
           dedomagnetico: './dedomagnetico.html',
           kundalininatal: './kundalininatal.html',
+          tercadoreiki: './tercadoreiki.html',
         },
       },
     },

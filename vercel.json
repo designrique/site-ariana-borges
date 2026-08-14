@@ -59,6 +59,14 @@
             "dest": "/kundalininatal.html"
         },
         {
+            "src": "^/terca-do-reiki/?$",
+            "dest": "/tercadoreiki.html"
+        },
+        {
+            "src": "^/tercadoreiki/?$",
+            "dest": "/tercadoreiki.html"
+        },
+        {
             "handle": "filesystem"
         },
         {

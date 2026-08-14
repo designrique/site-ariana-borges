@@ -61,6 +61,7 @@ const LinkInBio: React.FC = () => {
     ];
 
     const servicos: BioLink[] = [
+        { icon: '/bio-icons/terapia-individual.webp',     title: 'Terça do Reiki — R$ 80',                subtitle: 'Sessão individual de 45 min · presencial em Recife', href: '/terca-do-reiki' },
         { icon: '/bio-icons/thetahealing.webp',           title: 'ThetaHealing® — Conheça a técnica',     subtitle: 'Reprograme crenças que sabotam sua vida', href: '/thetahealing' },
         { icon: '/bio-icons/terapia-individual.webp',     title: 'Terapia Individual',                    subtitle: 'Sessões 1-a-1 com Ariana',                href: '/terapia-individual' },
         { icon: '/bio-icons/formacao.webp',               title: 'Formação de Terapeutas',                subtitle: 'Torne-se terapeuta certificado ThetaHealing®', href: '/formacao-de-terapeutas' },
