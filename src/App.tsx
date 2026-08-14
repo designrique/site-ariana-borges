@@ -21,6 +21,7 @@ import DNABasicoSimple from '@/pages/DNABasicoSimple';
 import DedoMagnetico from '@/pages/DedoMagnetico';
 import Portal5_5 from '@/pages/Portal5_5';
 import KundaliniNatal from '@/pages/KundaliniNatal';
+import TercaDoReiki from '@/pages/TercaDoReiki';
 import ThankYouPortal5_5 from '@/pages/Portal5_5/ThankYou';
 import LinkInBio from '@/pages/LinkInBio';
 import PoliticaPrivacidade from '@/pages/PoliticaPrivacidade';
@@ -232,7 +233,7 @@ function getRootPage() {
 
 const MainContent = () => {
   const location = window.location;
-  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || isDedoMagneticoSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5' || location.pathname === '/dedo-magnetico' || location.pathname === '/kundalini-natal' || location.pathname === '/kundalininatal' || location.pathname === '/bio' || location.pathname === '/links';
+  const isLandingPage = isDNASubdomain || isDeusasSubdomain || isClubeSubdomain || isPortal5_5Subdomain || isDedoMagneticoSubdomain || location.pathname === '/encontro-das-deusas' || location.pathname === '/clube-livro-mulher-maravilha' || location.pathname === '/portal-5-5' || location.pathname === '/dedo-magnetico' || location.pathname === '/kundalini-natal' || location.pathname === '/kundalininatal' || location.pathname === '/terca-do-reiki' || location.pathname === '/tercadoreiki' || location.pathname === '/bio' || location.pathname === '/links';
 
   return (
     <div className="min-h-screen bg-brand-beige overflow-x-hidden selection:bg-brand-lilac selection:text-brand-dark font-sans">
@@ -266,6 +267,8 @@ const MainContent = () => {
           <Route path="/dedomagnetico" element={<DedoMagnetico />} />
           <Route path="/kundalini-natal" element={<KundaliniNatal />} />
           <Route path="/kundalininatal" element={<KundaliniNatal />} />
+          <Route path="/terca-do-reiki" element={<TercaDoReiki />} />
+          <Route path="/tercadoreiki" element={<TercaDoReiki />} />
           <Route path="/bio" element={<LinkInBio />} />
           <Route path="/links" element={<LinkInBio />} />
           <Route path="/privacidade" element={<PoliticaPrivacidade />} />

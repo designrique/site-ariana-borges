@@ -55,6 +55,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-serif text-lg text-brand-dark mb-4">Serviços</h4>
             <div className="flex flex-col gap-2 text-sm text-gray-600">
+              <Link to="/terca-do-reiki" className="hover:text-brand-gold transition-colors">Terça do Reiki</Link>
               <Link to="/terapia-individual" className="hover:text-brand-gold transition-colors">Terapia Individual</Link>
               <Link to="/formacao-de-terapeutas" className="hover:text-brand-gold transition-colors">Formação de Terapeutas</Link>
               <Link to="/autoconhecimento-em-grupo" className="hover:text-brand-gold transition-colors">Autoconhecimento em Grupo</Link>
