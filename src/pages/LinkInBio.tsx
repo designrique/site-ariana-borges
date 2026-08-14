@@ -7,7 +7,7 @@ const WHATSAPP_MESSAGE = encodeURIComponent('Olá Ariana! Vim do link do seu Ins
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 // Eventos com data fixa — escondem automaticamente apos D+1
-const DNA_BASICO_END_DATE = new Date('2026-08-10T00:00:00-03:00'); // D+1 do 09/08
+const DNA_BASICO_END_DATE = new Date('2026-10-12T00:00:00-03:00'); // D+1 do 11/10
 const ENCONTRO_DEUSAS_END_DATE = new Date('2026-09-14T00:00:00-03:00'); // D+1 do 13/09
 
 interface BioLink {
@@ -36,7 +36,7 @@ const LinkInBio: React.FC = () => {
         },
         ...(showDnaBasico ? [{
             icon: '/bio-icons/dna-basico.webp',
-            title: 'DNA Básico — 7, 8 e 9 de Agosto',
+            title: 'DNA Básico — 9, 10 e 11 de Outubro',
             subtitle: 'Presencial · Certificação ThetaHealing®',
             href: 'https://dnabasico.arianaborges.com',
             target: '_blank',
@@ -51,6 +51,14 @@ const LinkInBio: React.FC = () => {
             highlight: true,
         }] : []),
         {
+            icon: '/bio-icons/terapia-individual.webp',
+            title: 'Terça do Reiki — R$ 80',
+            subtitle: 'Sessão individual de 45 min · toda terça em Recife',
+            href: 'https://arianaborges.com/terca-do-reiki',
+            target: '_blank',
+            highlight: true,
+        },
+        {
             icon: '/bio-icons/dedo-magnetico.webp',
             title: 'Dedo Magnético® — Curso Online',
             subtitle: 'Pare de atrair relações que machucam',
@@ -61,7 +69,6 @@ const LinkInBio: React.FC = () => {
     ];
 
     const servicos: BioLink[] = [
-        { icon: '/bio-icons/terapia-individual.webp',     title: 'Terça do Reiki — R$ 80',                subtitle: 'Sessão individual de 45 min · presencial em Recife', href: '/terca-do-reiki' },
         { icon: '/bio-icons/thetahealing.webp',           title: 'ThetaHealing® — Conheça a técnica',     subtitle: 'Reprograme crenças que sabotam sua vida', href: '/thetahealing' },
         { icon: '/bio-icons/terapia-individual.webp',     title: 'Terapia Individual',                    subtitle: 'Sessões 1-a-1 com Ariana',                href: '/terapia-individual' },
         { icon: '/bio-icons/formacao.webp',               title: 'Formação de Terapeutas',                subtitle: 'Torne-se terapeuta certificado ThetaHealing®', href: '/formacao-de-terapeutas' },
