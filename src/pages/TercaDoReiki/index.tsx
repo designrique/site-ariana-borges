@@ -52,7 +52,7 @@ const Hero: React.FC = () => (
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 text-center flex flex-col items-center">
             <span className="inline-block py-1.5 px-4 rounded-full bg-purple-950/70 text-white border border-brand-gold/40 text-[11px] sm:text-xs font-sans tracking-[0.2em] uppercase mb-6 backdrop-blur-sm">
-                Toda terça · Presencial · Recife
+                Primeira terça do mês · Presencial · Recife
             </span>
 
             <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl leading-[1.05] mb-3">
@@ -63,7 +63,7 @@ const Hero: React.FC = () => (
             </h1>
 
             <p className="font-sans text-lg md:text-xl text-gray-200 mb-4 max-w-2xl leading-relaxed mt-4">
-                {DURACAO_MIN} minutos só seus, no meio da semana, para o corpo desacelerar de verdade.
+                Na primeira terça de cada mês, {DURACAO_MIN} minutos só seus para o corpo desacelerar de verdade.
                 Reiki é imposição de mãos: você deita, vestida, e recebe. Sem esforço, sem manipulação —
                 só descanso profundo.
             </p>
@@ -107,8 +107,9 @@ const OQueEReiki: React.FC = () => (
             <div className="space-y-6 font-sans text-lg leading-relaxed text-brand-dark/85">
                 <p>
                     O Reiki é uma prática japonesa de imposição de mãos. Na sessão, você fica deitada e
-                    vestida numa maca confortável, e a Ariana posiciona as mãos sobre pontos do corpo. Não
-                    tem agulha, não tem massagem, não tem esforço da sua parte. É só receber.
+                    vestida numa maca confortável, e a terapeuta parceira do Instituto posiciona as mãos
+                    sobre pontos do corpo. Não tem agulha, não tem massagem, não tem esforço da sua parte.
+                    É só receber.
                 </p>
                 <p>
                     A proposta é simples e honesta: criar um espaço para o seu sistema nervoso sair do modo
@@ -144,7 +145,7 @@ const ComoESessao: React.FC = () => (
             <div className="relative order-2 md:order-1">
                 <img
                     src="/fotos-hero/hero-maos-cura-energetica-ariana-borges.webp"
-                    alt="Mãos em cura energética durante uma sessão de Reiki com Ariana Borges"
+                    alt="Mãos em cura energética durante uma sessão de Reiki no Instituto Ariana Borges"
                     className="rounded-3xl shadow-2xl w-full object-cover aspect-[4/5]"
                     loading="lazy"
                 />
@@ -163,9 +164,9 @@ const ComoESessao: React.FC = () => (
                         baixa, o som é suave.
                     </p>
                     <p>
-                        Durante os {DURACAO_MIN} minutos, a Ariana conduz a sessão com as mãos sobre pontos
-                        do corpo. Você não precisa conversar, controlar a respiração ou "fazer certo". A
-                        maioria das pessoas relaxa tão fundo que quase dorme.
+                        Durante os {DURACAO_MIN} minutos, uma terapeuta parceira do Instituto conduz a
+                        sessão com as mãos sobre pontos do corpo. Você não precisa conversar, controlar a
+                        respiração ou "fazer certo". A maioria das pessoas relaxa tão fundo que quase dorme.
                     </p>
                     <p className="text-base text-gray-400 border-l-2 border-brand-gold/40 pl-5">
                         No fim, você levanta no seu tempo, bebe uma água e volta para o dia com o corpo mais
@@ -200,11 +201,12 @@ const Agendar: React.FC = () => (
                     Reserve seu horário
                 </span>
                 <h2 className="font-serif text-3xl md:text-5xl mb-4 leading-tight">
-                    Escolha um horário desta terça
+                    Escolha um horário da próxima terça do Reiki
                 </h2>
                 <p className="font-sans text-lg text-brand-dark/70 max-w-xl mx-auto">
                     Toque no horário que combina com você. Ele abre uma conversa no WhatsApp com a mensagem
-                    pronta — a Ariana confirma a sua vaga daquela terça.
+                    pronta — a equipe do Instituto confirma a sua vaga. O pagamento é prévio e garante a
+                    reserva.
                 </p>
             </div>
 
@@ -228,7 +230,7 @@ const Agendar: React.FC = () => (
                 </div>
 
                 <p className="text-center text-sm text-brand-dark/60 mt-8">
-                    Vagas limitadas por horário · pagamento (Pix ou presencial) combinado no WhatsApp
+                    Vagas limitadas por horário · pagamento prévio (Pix) garante a reserva
                 </p>
 
                 <p className="text-center text-sm text-brand-dark/70 mt-4">
@@ -240,7 +242,7 @@ const Agendar: React.FC = () => (
                         onClick={() => trackProductEvent('Lead', 'generate_lead', trackData('duvidas_whatsapp'))}
                         className="font-bold text-brand-goldDark underline underline-offset-2 hover:text-brand-dark"
                     >
-                        Fale com a Ariana
+                        Fale com o Instituto
                     </a>
                 </p>
             </div>
@@ -294,24 +296,24 @@ const Ariana: React.FC = () => (
         <div className="max-w-4xl mx-auto px-6 grid md:grid-cols-[240px_1fr] gap-10 items-center">
             <img
                 src="/perfil-ariana-borges.webp"
-                alt="Ariana Borges, terapeuta holística e reikiana"
+                alt="Instituto Ariana Borges, espaço de terapias holísticas em Recife"
                 className="rounded-2xl shadow-xl w-full max-w-[240px] mx-auto object-cover aspect-[3/4]"
                 loading="lazy"
             />
             <div>
                 <span className="inline-block text-xs uppercase tracking-[0.3em] text-brand-goldDark font-bold mb-4">
-                    Quem conduz
+                    O Instituto
                 </span>
-                <h2 className="font-serif text-3xl md:text-4xl mb-5 leading-tight">Ariana Borges</h2>
+                <h2 className="font-serif text-3xl md:text-4xl mb-5 leading-tight">Instituto Ariana Borges</h2>
                 <div className="space-y-4 font-sans text-brand-dark/80 leading-relaxed">
                     <p>
-                        Terapeuta holística e instrutora de ThetaHealing®, Ariana conduz há anos processos
-                        de autoconhecimento — individuais, em grupo e em retiros — com uma mistura rara de
-                        sensibilidade e pé no chão.
+                        A Terça do Reiki acontece no Instituto Ariana Borges, em Recife, com sessões
+                        conduzidas por terapeuta parceira do Instituto — sempre no mesmo espaço acolhedor
+                        da Av. Rui Barbosa.
                     </p>
                     <p>
-                        Não promete milagre e não usa mistério como isca. Na Terça do Reiki, o convite é
-                        pequeno e concreto: parar, descansar e sair mais leve do que entrou.
+                        Não prometemos milagre e não usamos mistério como isca. O convite é pequeno e
+                        concreto: parar, descansar e sair mais leve do que entrou.
                     </p>
                 </div>
             </div>
@@ -328,7 +330,7 @@ const faq = [
     },
     {
         q: 'Como é a sessão, na prática?',
-        a: `Você fica deitada, vestida, numa maca confortável. São ${DURACAO_MIN} minutos com a Ariana posicionando as mãos sobre pontos do corpo. Sem agulha, sem massagem, sem manipulação.`,
+        a: `Você fica deitada, vestida, numa maca confortável. São ${DURACAO_MIN} minutos com a terapeuta parceira do Instituto posicionando as mãos sobre pontos do corpo. Sem agulha, sem massagem, sem manipulação.`,
     },
     {
         q: 'Reiki substitui tratamento médico?',
@@ -336,7 +338,7 @@ const faq = [
     },
     {
         q: 'Como agendo e pago?',
-        a: `Você escolhe o horário aqui na página, fala com a Ariana no WhatsApp para confirmar a vaga daquela terça, e o pagamento de R$ ${PRECO_BRL} é combinado direto com ela — Pix na hora ou presencial.`,
+        a: `Você escolhe o horário aqui na página e fala com a equipe do Instituto no WhatsApp para confirmar a vaga da primeira terça do mês. O pagamento de R$ ${PRECO_BRL} é prévio (Pix) e garante a reserva.`,
     },
     {
         q: 'Preciso levar alguma coisa?',
@@ -344,7 +346,7 @@ const faq = [
     },
     {
         q: 'Estou grávida ou tenho uma condição de saúde. Posso participar?',
-        a: 'O Reiki é suave e não invasivo. Ainda assim, se você tem alguma condição, comente com a Ariana no WhatsApp antes — ela te orienta com honestidade.',
+        a: 'O Reiki é suave e não invasivo. Ainda assim, se você tem alguma condição, comente com a equipe do Instituto no WhatsApp antes — eles te orientam com honestidade.',
     },
 ];
 
@@ -383,7 +385,7 @@ const CTAFinal: React.FC = () => (
             </h2>
             <p className="font-sans text-lg text-gray-300 mb-10 leading-relaxed">
                 {DURACAO_MIN} minutos de descanso profundo, por R$ {PRECO_BRL}. Escolha um horário e deixe o
-                resto com a Ariana.
+                resto com a equipe do Instituto.
             </p>
             <a
                 href="#agendar"
@@ -393,7 +395,7 @@ const CTAFinal: React.FC = () => (
                 Escolher meu horário
             </a>
             <p className="font-sans text-xs text-gray-400 mt-6 tracking-widest uppercase">
-                Toda terça · {LOCAL.cidade} · R$ {PRECO_BRL} · {DURACAO_MIN} min
+                Primeira terça de cada mês · {LOCAL.cidade} · R$ {PRECO_BRL} · {DURACAO_MIN} min
             </p>
         </div>
     </section>
@@ -407,7 +409,7 @@ const TercaDoReiki: React.FC = () => {
     }, []);
 
     const title = 'Terça do Reiki — Sessão Individual em Recife | Ariana Borges';
-    const description = `Toda terça, sessão individual de Reiki de ${DURACAO_MIN} minutos por R$ ${PRECO_BRL}, presencial em Recife. Escolha seu horário (7h às 14h) e agende pelo WhatsApp.`;
+    const description = `Primeira terça de cada mês, sessão individual de Reiki de ${DURACAO_MIN} minutos por R$ ${PRECO_BRL}, presencial em Recife, no Instituto Ariana Borges. Escolha seu horário (7h às 14h) e agende pelo WhatsApp. Pagamento prévio garante a reserva.`;
     const url = 'https://arianaborges.com/terca-do-reiki';
     // Interino: OG genérico da marca (existe no repo). Trocar por /og-terca-do-reiki.jpg (1200×630) quando houver arte dedicada.
     const ogImage = 'https://arianaborges.com/og-image.png';
@@ -440,7 +442,7 @@ const TercaDoReiki: React.FC = () => {
                     serviceType: 'Sessão individual de Reiki',
                     name: 'Terça do Reiki — Sessão Individual',
                     description:
-                        `Sessão individual de Reiki de ${DURACAO_MIN} minutos, presencial em ${LOCAL.cidade}, toda terça-feira.`,
+                        `Sessão individual de Reiki de ${DURACAO_MIN} minutos, presencial em ${LOCAL.cidade}, na primeira terça de cada mês.`,
                     provider: {
                         '@type': 'Organization',
                         name: 'Instituto Ariana Borges',

@@ -173,12 +173,12 @@ export const SERVICE_TYPES = [
     },
     // Promoção do mês: 50% off, só online. promoFrom = preço cheio, exibido riscado.
     { id: 'taro-salomao', name: 'Tarô de Salomão', description: 'Promoção do mês · online (45 min)', price: 7500, promoFrom: 15000 },
-    { id: 'mesa-salomao', name: 'Mesa de Salomão', description: 'Cura vibracional (1h)', price: 15000 },
-    { id: 'leitura-aura', name: 'Leitura de Aura', description: 'Método Essence (1h)', price: 15000 },
-    { id: 'registros-akashicos', name: 'Registros Akáshicos', description: 'Leitura de registros (1h)', price: 15000 },
-    { id: 'thetahealing', name: 'ThetaHealing®', description: 'Sessão de ThetaHealing (1h)', price: 15000 },
-    { id: 'constelacao', name: 'Constelação Sistêmica', description: 'Sessão individual (1h30)', price: 25000 },
-    { id: 'reiki', name: 'Reiki', description: 'Terapia energética (1h)', price: 10000 },
+    { id: 'mesa-salomao', name: 'Mesa de Salomão', description: 'Cura vibracional (1h)', price: 49800 },
+    { id: 'leitura-aura', name: 'Leitura de Aura', description: 'Método Essence (1h)', price: 49800 },
+    { id: 'registros-akashicos', name: 'Registros Akáshicos', description: 'Leitura de registros (1h)', price: 49800 },
+    { id: 'thetahealing', name: 'ThetaHealing®', description: 'Sessão de ThetaHealing (1h)', price: 49800 },
+    { id: 'constelacao', name: 'Constelação Sistêmica', description: 'Sessão individual (1h30)', price: 49800 },
+    { id: 'reiki', name: 'Reiki', description: 'Terapia energética (1h)', price: 15000 },
     { id: 'barras-access', name: 'Barras de Access®', description: 'Presencial (1h)', price: 15000 },
     { id: 'outro', name: 'Outro / Dúvida', description: 'Quero saber mais sobre os serviços', price: 0 },
 ];
