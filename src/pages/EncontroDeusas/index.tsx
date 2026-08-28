@@ -38,7 +38,7 @@ const EncontroDeusas: React.FC = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:url" content="https://encontrodeusas.arianaborges.com/" />
                 <meta name="twitter:title" content="Encontro das Deusas: A consagração | Retiro Terapêutico" />
-                <meta name="twitter:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força." />
+                <meta name="twitter:description" content="Um retiro exclusivo para mulheres que atravessam momentos de ruptura e decidiram que é hora de retomar a própria força. 11 a 13 de Setembro em Bonito/PE." />
                 <meta name="twitter:image" content="https://encontrodeusas.arianaborges.com/og-site-encontro-deusas.png" />
 
                 <link rel="canonical" href="https://encontrodeusas.arianaborges.com/" />
