@@ -1,0 +1,8 @@
+node_modules
+.git
+.repowise
+.vscode
+.claude
+dist
+.server
+test-results
