@@ -342,7 +342,7 @@ const faq = [
     },
     {
         q: 'Preciso levar alguma coisa?',
-        a: 'Só você. Roupa confortável ajuda. O resto está no espaço.',
+        a: 'Só você. O resto está no espaço.',
     },
     {
         q: 'Estou grávida ou tenho uma condição de saúde. Posso participar?',
