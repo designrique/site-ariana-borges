@@ -46,6 +46,22 @@ async function saveBotLead(name: string, email: string, phone: string, source: s
     });
 }
 
+// Cria contato + conversa + negócio na org ariana-borges do DFChat (best-effort).
+async function saveDfchatLead(name: string, email: string, phone: string) {
+    const dfchatUrl = process.env.DFCHAT_LEAD_URL;
+    const dfchatToken = process.env.DFCHAT_LEAD_TOKEN;
+    if (!dfchatUrl || !dfchatToken) return;
+
+    await fetch(dfchatUrl, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${dfchatToken}`,
+        },
+        body: JSON.stringify({ name, email, phone, source: 'whatsapp-button' }),
+    });
+}
+
 export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
@@ -68,6 +84,7 @@ export default async function handler(req: any, res: any) {
         await Promise.allSettled([
             saveBrevoContact(name, email, phone, source, apiKey),
             saveBotLead(name, email, phone, source),
+            saveDfchatLead(name, email, phone),
         ]);
 
         return res.status(200).json({ success: true });
