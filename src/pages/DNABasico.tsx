@@ -179,7 +179,7 @@ const DNABasico: React.FC = () => {
           <div className="flex items-center gap-3 mb-8">
             <div className="flex items-center gap-2 bg-goddess-gold/20 border border-goddess-gold/50 px-4 py-2.5 rounded-xl backdrop-blur-sm">
               <CalendarDays size={16} variant="Linear" color="currentColor" className="text-goddess-gold flex-shrink-0" />
-              <span className="text-goddess-gold font-bold text-sm tracking-wide">9, 10 e 11 de Outubro</span>
+              <span className="text-goddess-gold font-bold text-sm tracking-wide">16, 17 e 18 de Outubro</span>
             </div>
             <div className="flex items-center gap-1.5 text-white/60 text-sm font-medium">
               <Gps size={14} variant="Linear" color="currentColor" />
@@ -563,7 +563,7 @@ const DNABasico: React.FC = () => {
         <Card variant="elevated" className="border-4 border-goddess-purple relative overflow-hidden flex flex-col h-full shadow-2xl p-0">
           <div className="bg-gradient-to-r from-goddess-purple to-goddess-purpleDark text-white text-center py-6">
             <h3 className="font-heading text-4xl font-bold mb-2">Turma Presencial</h3>
-            <p className="text-white/80 text-lg">9, 10 e 11 de Outubro</p>
+            <p className="text-white/80 text-lg">16, 17 e 18 de Outubro</p>
             <p className="text-white/70 text-sm mt-1">Sexta 19h–21h · Sábado 9h–19h · Domingo 8h–13h</p>
           </div>
 
@@ -712,7 +712,7 @@ const DNABasico: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://arianaborges.com/dna-basico" />
         <meta property="og:title" content="DNA Básico ThetaHealing® | Formação Oficial com Ariana Borges" />
-        <meta property="og:description" content="Imersão presencial de 3 dias (9, 10 e 11 de Outubro) para liberar crenças que bloqueiam sua vida. Certificação internacional THInK®. Reprograme padrões inconscientes em relacionamentos, finanças e autoestima." />
+        <meta property="og:description" content="Imersão presencial de 3 dias (16, 17 e 18 de Outubro) para liberar crenças que bloqueiam sua vida. Certificação internacional THInK®. Reprograme padrões inconscientes em relacionamentos, finanças e autoestima." />
         <meta property="og:image" content="https://arianaborges.com/og-dna-basico.png" />
         <meta property="og:image:secure_url" content="https://arianaborges.com/og-dna-basico.png" />
         <meta property="og:image:type" content="image/png" />
