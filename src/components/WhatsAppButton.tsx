@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const WA_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '5511999999999';
+const WA_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '558199878407';
 const WA_MESSAGE = 'Olá! Gostaria de saber mais sobre os serviços do Instituto Ariana Borges. 💫';
 
 interface WhatsAppCtx {

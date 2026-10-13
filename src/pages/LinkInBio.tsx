@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useCurrentPortal } from '@/hooks/useCurrentPortal';
 
-const WHATSAPP_NUMBER = '551153041409';
+const WHATSAPP_NUMBER = '558199878407';
 const WHATSAPP_MESSAGE = encodeURIComponent('Olá Ariana! Vim do link do seu Instagram 🙏');
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 

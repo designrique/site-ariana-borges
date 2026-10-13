@@ -146,7 +146,7 @@ const ThankYouDNABasico: React.FC = () => {
                             </div>
 
                             <a
-                                href="https://wa.me/551153041409?text=Acabei%20de%20me%20inscrever%20no%20DNA%20B%C3%A1sico%21"
+                                href="https://wa.me/558199878407?text=Acabei%20de%20me%20inscrever%20no%20DNA%20B%C3%A1sico%21"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] transition-colors duration-300 text-white font-sans font-bold py-4 px-8 rounded-xl shadow-lg"

@@ -1,5 +1,5 @@
 // `?.` para o whatsapp.check.ts rodar no Node puro, onde import.meta.env nao existe.
-const WHATSAPP_NUMBER = import.meta.env?.VITE_WHATSAPP_NUMBER || '551153041409';
+const WHATSAPP_NUMBER = import.meta.env?.VITE_WHATSAPP_NUMBER || '558199878407';
 
 export const PRECO_BRL = 150;
 export const DURACAO_MIN = 45;

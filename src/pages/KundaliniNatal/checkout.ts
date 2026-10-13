@@ -1,6 +1,6 @@
 const INFINITEPAY_HANDLE = 'institutoarianaborges';
 // `?.` para o checkout.check.ts rodar no Node puro, onde import.meta.env nao existe.
-const WHATSAPP_NUMBER = import.meta.env?.VITE_WHATSAPP_NUMBER || '551153041409';
+const WHATSAPP_NUMBER = import.meta.env?.VITE_WHATSAPP_NUMBER || '558199878407';
 
 // 1o lote ate 28/07 23h59 (horario de Brasilia); depois a pagina vira sozinha pro 2o lote.
 export const LOTE_1_DEADLINE = new Date('2026-07-28T23:59:59-03:00');

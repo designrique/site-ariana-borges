@@ -50,7 +50,7 @@ const buildDnaEmailHtml = (firstName: string): string => `<!DOCTYPE html>
             <table cellpadding="0" cellspacing="0" style="margin:0 auto 16px;">
               <tr>
                 <td style="background:#25D366;border-radius:999px;padding:16px 36px;text-align:center;">
-                  <a href="https://wa.me/551153041409?text=Acabei%20de%20me%20inscrever%20no%20DNA%20B%C3%A1sico%21"
+                  <a href="https://wa.me/558199878407?text=Acabei%20de%20me%20inscrever%20no%20DNA%20B%C3%A1sico%21"
                      style="color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;display:block;font-family:Arial,sans-serif;">
                     Falar com a equipe pelo WhatsApp
                   </a>

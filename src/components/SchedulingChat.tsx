@@ -704,7 +704,7 @@ const SchedulingChat: React.FC = () => {
                             Recomeçar
                         </button>
                         <a
-                            href={`https://wa.me/${siteSettings?.contact?.whatsappRequest || '5511999999999'}`}
+                            href={`https://wa.me/${siteSettings?.contact?.whatsappRequest || '558199878407'}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-sans font-bold py-3 px-4 rounded-xl hover:bg-green-600 transition-all"
