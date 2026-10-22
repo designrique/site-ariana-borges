@@ -22,7 +22,7 @@ const buildDnaEmailHtml = (firstName: string): string => `<!DOCTYPE html>
       <table width="600" cellpadding="0" cellspacing="0" style="background:#12102b;border-radius:16px;overflow:hidden;max-width:600px;width:100%;border:1px solid rgba(212,175,55,0.3);">
         <tr>
           <td style="background:linear-gradient(135deg,#12102b,#0b0916);padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(212,175,55,0.3);">
-            <p style="color:#D4AF37;font-size:11px;letter-spacing:4px;text-transform:uppercase;margin:0 0 14px;font-family:Arial,sans-serif;">9 · 10 · 11 de Outubro · Presencial</p>
+            <p style="color:#D4AF37;font-size:11px;letter-spacing:4px;text-transform:uppercase;margin:0 0 14px;font-family:Arial,sans-serif;">6 · 7 · 8 de Novembro · Presencial</p>
             <h1 style="color:#ffffff;font-size:30px;margin:0 0 6px;font-weight:normal;font-family:Georgia,serif;">DNA Básico ThetaHealing®</h1>
             <p style="color:#D4AF37;font-size:15px;margin:0;font-style:italic;font-family:Georgia,serif;">Pagamento confirmado ✨</p>
           </td>
@@ -36,14 +36,14 @@ const buildDnaEmailHtml = (firstName: string): string => `<!DOCTYPE html>
             <hr style="border:none;border-top:1px solid rgba(212,175,55,0.15);margin:28px 0;">
             <p style="color:#D4AF37;font-size:14px;font-weight:bold;margin:0 0 12px;font-family:Arial,sans-serif;letter-spacing:1px;">DETALHES DA TURMA</p>
             <p style="color:#cfc4a8;font-size:15px;line-height:1.8;margin:0 0 24px;font-family:Arial,sans-serif;">
-              <strong style="color:#fff;">Sexta 09/10:</strong> 19h às 21h<br>
-              <strong style="color:#fff;">Sábado 10/10:</strong> 9h às 19h<br>
-              <strong style="color:#fff;">Domingo 11/10:</strong> 8h às 13h<br>
+              <strong style="color:#fff;">Sexta 06/11:</strong> 19h às 21h<br>
+              <strong style="color:#fff;">Sábado 07/11:</strong> 9h às 19h<br>
+              <strong style="color:#fff;">Domingo 08/11:</strong> 8h às 13h<br>
               <strong style="color:#fff;">Formato:</strong> 100% Presencial (endereço enviado antes do início)
             </p>
             <p style="color:#D4AF37;font-size:14px;font-weight:bold;margin:0 0 12px;font-family:Arial,sans-serif;letter-spacing:1px;">PRÓXIMOS PASSOS</p>
             <ol style="color:#cfc4a8;font-size:14px;line-height:1.8;margin:0 0 28px;padding-left:20px;font-family:Arial,sans-serif;">
-              <li>Bloqueie a agenda: Sex 09/10 19h-21h · Sáb 10/10 9h-19h · Dom 11/10 8h-13h</li>
+              <li>Bloqueie a agenda: Sex 06/11 19h-21h · Sáb 07/11 9h-19h · Dom 08/11 8h-13h</li>
               <li>Em breve você receberá o convite do grupo exclusivo no WhatsApp com as orientações e materiais</li>
               <li>Qualquer dúvida, fale com a equipe pelo WhatsApp</li>
             </ol>

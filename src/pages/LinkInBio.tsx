@@ -7,7 +7,7 @@ const WHATSAPP_MESSAGE = encodeURIComponent('Olá Ariana! Vim do link do seu Ins
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 // Eventos com data fixa — escondem automaticamente apos D+1
-const DNA_BASICO_END_DATE = new Date('2026-10-19T00:00:00-03:00'); // D+1 do 18/10
+const DNA_BASICO_END_DATE = new Date('2026-11-09T00:00:00-03:00'); // D+1 do 08/11
 const ENCONTRO_DEUSAS_END_DATE = new Date('2026-09-14T00:00:00-03:00'); // D+1 do 13/09
 
 interface BioLink {
@@ -36,7 +36,7 @@ const LinkInBio: React.FC = () => {
         },
         ...(showDnaBasico ? [{
             icon: '/bio-icons/dna-basico.webp',
-            title: 'DNA Básico — 16, 17 e 18 de Outubro',
+            title: 'DNA Básico — 6, 7 e 8 de Novembro',
             subtitle: 'Presencial · Certificação ThetaHealing®',
             href: 'https://dnabasico.arianaborges.com',
             target: '_blank',
